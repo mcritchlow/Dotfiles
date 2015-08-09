@@ -1,3 +1,6 @@
+[user]
+  name = Matt Critchlow
+  email = matt.critchlow@gmail.com
 [init]
   templatedir = ~/.git_template
 [push]

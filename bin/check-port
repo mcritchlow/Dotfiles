@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Quick lookup for what is running on a given port 
+
+check-port() {
+  sudo lsof -i :$1
+}
+check-port
