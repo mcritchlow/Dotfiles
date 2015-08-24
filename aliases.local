@@ -1,0 +1,4 @@
+# tmux
+alias tls="tmux ls"
+alias td="tmux detach"
+alias tnew="echo use tat!!"

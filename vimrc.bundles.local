@@ -1,0 +1,23 @@
+Plug 'vim-scripts/ZoomWin'
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'christoomey/vim-sort-motion'
+Plug 'ervandew/supertab'
+Plug 'mileszs/ack.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'sickill/vim-pasta'
+Plug 'vim-scripts/xoria256.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
+
+
+" text objects
+ Plug 'kana/vim-textobj-indent'
+ Plug 'kana/vim-textobj-user'
+ Plug 'nelstrom/vim-textobj-rubyblock'
+ " ultisnips and snippets
+ Plug 'SirVer/ultisnips'
+ Plug 'honza/vim-snippets'
+

@@ -1,0 +1,7 @@
+[user]
+  name = Matt Critchlow
+  email = matt.critchlow@gmail.com
+[core]
+  editor = vim
+[help]
+  autocorrect = 1

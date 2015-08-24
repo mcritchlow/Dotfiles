@@ -1,0 +1,24 @@
+" theme
+colorscheme xoria256
+set cursorline
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+" rspec command to send to tmux
+let g:rspec_command = "call VtrSendCommand('rspec {spec}', 1)"
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+ " If you want :UltiSnipsEdit to split your window.
+ let g:UltiSnipsEditSplit="vertical"
