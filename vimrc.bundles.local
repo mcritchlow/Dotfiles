@@ -20,3 +20,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
  " ultisnips and snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+
+Plug 'bling/vim-airline' "Awesome looking meta at bottom
+Plug 'majutsushi/tagbar'
