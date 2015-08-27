@@ -1,7 +1,9 @@
 " theme
 colorscheme xoria256
 set cursorline
-
+set relativenumber
+set hlsearch
+set textwidth=100
 " syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

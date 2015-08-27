@@ -10,6 +10,7 @@ Plug 'sickill/vim-pasta'
 Plug 'vim-scripts/xoria256.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'vimwiki/vimwiki'
 
 
 " text objects
