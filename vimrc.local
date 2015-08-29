@@ -27,3 +27,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 " install powerline fonts via https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
+
+" turn off vimwiki table tab to not conflict with ultisnips
+let g:vimwiki_table_mappings = 0
