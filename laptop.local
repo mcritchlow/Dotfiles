@@ -1,0 +1,97 @@
+brew_cask_install_or_upgrade() {
+  if brew cask list | grep -Fqx "$1"; then
+    # TODO: update with upgrade when added to cask
+    brew cask install --force "$1"
+  else
+    brew cask install "$1"
+  fi
+}
+
+fancy_echo "Installing Elixir ..."
+  brew_install_or_upgrade 'elixir'
+
+fancy_echo "Installing Ant ..."
+  brew_install_or_upgrade 'ant'
+
+fancy_echo "Installing wget ..."
+  brew_install_or_upgrade 'wget'
+
+fancy_echo "Installing Maven ..."
+  brew_install_or_upgrade 'maven'
+
+fancy_echo "Installing ffmpeg ..."
+  brew_install_or_upgrade 'ffmpeg'
+
+fancy_echo "Installing netpbm ..."
+  brew_install_or_upgrade 'netpbm'
+
+fancy_echo "Installing Git, to make it easier to manage ..."
+  brew_install_or_upgrade 'git'
+
+fancy_echo "Installing Git Flow ..."
+  brew_install_or_upgrade 'git-flow'
+
+fancy_echo "Installing youtube-dl ..."
+  brew_install_or_upgrade 'youtube-dl'
+
+fancy_echo "Installing Tor bundle ..."
+  brew_install_or_upgrade 'tor'
+
+fancy_echo "Installing brew-cask, let's get our cask on ..."
+  brew install caskroom/cask/brew-cask
+
+fancy_echo "Installing latest Java ..."
+  brew_cask_install_or_upgrade 'java'
+
+fancy_echo "Installing Dropbox ..."
+  brew_cask_install_or_upgrade 'dropbox'
+
+fancy_echo "Installing OmniGraffle ..."
+  brew_cask_install_or_upgrade 'omnigraffle'
+
+fancy_echo "Installing VLC Video Player ..."
+  brew_cask_install_or_upgrade 'vlc'
+
+fancy_echo "Installing Chrome browser ..."
+  brew_cask_install_or_upgrade 'google-chrome'
+
+fancy_echo "Installing Firefox browser ..."
+  brew_cask_install_or_upgrade 'firefox'
+
+fancy_echo "Installing Seil for mapping ESC to CAPS Lock"
+  brew_cask_install_or_upgrade 'seil'
+
+fancy_echo "Installing Limechat for IRC ..."
+  brew_cask_install_or_upgrade 'limechat'
+
+fancy_echo "Installing Skype ..."
+  brew_cask_install_or_upgrade 'skype'
+
+fancy_echo "Installing Evernote ..."
+  brew_cask_install_or_upgrade 'evernote'
+
+fancy_echo "Installing Google Drive ..."
+  brew_cask_install_or_upgrade 'google-drive'
+
+fancy_echo "Installing Boot2Docker ..."
+  brew_cask_install_or_upgrade 'boot2docker'
+
+fancy_echo "Installing Spotify, because music ..."
+  brew_cask_install_or_upgrade 'spotify'
+
+fancy_echo "Installing iTerm2 ..."
+  brew_cask_install_or_upgrade 'iterm2'
+
+fancy_echo "Installing LastPass ..."
+  brew_cask_install_or_upgrade 'lastpass'
+
+# download hack font for use in iIterm2
+curl -o ~/Hack-Regular.otf https://github.com/mcritchlow/Hack/raw/master/build/otf/Hack-Regular.otf
+curl -o ~/Hack-Bold.otf https://github.com/mcritchlow/Hack/raw/master/build/otf/Hack-Bold.otf
+curl -o ~/Hack-RegularOblique.otf
+https://github.com/mcritchlow/Hack/raw/master/build/otf/Hack-RegularOblique.otf
+curl -o ~/Hack-BoldOblique.otf
+https://github.com/mcritchlow/Hack/raw/master/build/otf/Hack-BoldOblique.otf
+
+
+
