@@ -1,4 +1,5 @@
 " theme
+set t_Co=256
 colorscheme xoria256
 set cursorline
 set relativenumber
@@ -14,8 +15,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
+" vim-rspec commands
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 " rspec command to send to tmux
-let g:rspec_command = "call VtrSendCommand('rspec {spec}', 1)"
+let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}', 1)"
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.

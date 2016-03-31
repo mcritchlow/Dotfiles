@@ -1,8 +1,13 @@
 # recommended by brew doctor
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/Users/mcritchlow/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 # node/npm
 export PATH="$PATH:/usr/local/lib/node_modules"
 source $(brew --prefix nvm)/nvm.sh
+#
+# load rbenv if available
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
 
 # Github 'hub' alias
 eval "$(hub alias -s)"
