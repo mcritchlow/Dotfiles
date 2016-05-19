@@ -22,5 +22,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 
-Plug 'bling/vim-airline' "Awesome looking meta at bottom
+Plug 'vim-airline/vim-airline' "Awesome looking meta at bottom
+Plug 'vim-airline/vim-airline-themes' "theme support for airline
 Plug 'majutsushi/tagbar'
