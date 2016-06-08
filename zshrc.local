@@ -1,5 +1,7 @@
 # recommended by brew doctor
 export PATH="/Users/mcritchlow/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+# postgresql
+export PATH="/Library/PostgreSQL/9.5/bin:$PATH"
 # node/npm
 export PATH="$PATH:/usr/local/lib/node_modules"
 source $(brew --prefix nvm)/nvm.sh
