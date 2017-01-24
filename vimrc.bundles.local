@@ -19,8 +19,9 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
  " ultisnips and snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+ "
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 
 Plug 'vim-airline/vim-airline' "Awesome looking meta at bottom

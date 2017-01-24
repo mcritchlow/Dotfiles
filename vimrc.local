@@ -1,10 +1,10 @@
 " theme
 set t_Co=256
 " colorscheme xoria256
-let g:solarized_termcolors=256
-set background=light
+" let g:solarized_termcolors=256
+" set background=light
 " let g:solarized_base16=1
-colorscheme solarized
+colorscheme default
 set cursorline
 set relativenumber
 set hlsearch
@@ -37,22 +37,14 @@ let g:airline_powerline_fonts = 1
 " turn off vimwiki table tab to not conflict with ultisnips
 let g:vimwiki_table_mappings = 0
 
-function! FixLastSpellingError()
-  normal! mm[s1z=`m
-endfunction
-nnoremap <leader>sp :call FixLastSpellingError()<cr>
-
-nnoremap m1 :normal! kmmjdd{p`m<cr>
-
-function! UnderlineHeading(level)
-  if a:level == 1
-    normal! yypVr=
-  elseif a:level == 2
-    normal! yypVr-
-  else
-    normal! I###<space>
-  endif
-endfunction
-nnoremap <leader>u1 :call UnderlineHeading(1);
-nnoremap <leader>u2 :call UnderlineHeading(2);
-nnoremap <leader>u3 :call UnderlineHeading(3);
+" Seeing is Believing Gem - Ruby
+" Annotate every line
+nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
+" Annotate marked lines
+nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+" Remove annotations
+nmap <leader>c :%.!seeing_is_believing --clean<CR>;
+" Mark the current line for annotation
+nmap <leader>m A # => <Esc>
+" Mark the highlighted lines for annotation
+vmap <leader>m :norm A # => <Esc>

@@ -1,1 +1,2 @@
-gem: --user-install -n~/bin --no-document
+/* gem: --user-install -n~/bin --no-document */
+gem: -n~/bin --no-document
