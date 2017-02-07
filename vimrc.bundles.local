@@ -1,17 +1,29 @@
 Plug 'vim-scripts/ZoomWin'
 
-Plug 'altercation/vim-colors-solarized'
+" themes/colors
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/limelight.vim'
+
+" Formatting
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
-Plug 'ervandew/supertab'
-Plug 'mileszs/ack.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'sickill/vim-pasta'
-Plug 'vim-scripts/xoria256.vim'
+
+" TODO: evaluate need for
+Plug 'ervandew/supertab' "not sure i need
+Plug 'mileszs/ack.vim' "TODO: delete after FZF?
+
+" tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
-Plug 'vimwiki/vimwiki'
+
+" languages
 Plug 'elixir-lang/vim-elixir'
+Plug 'pangloss/vim-javascript'
+
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 
 " text objects

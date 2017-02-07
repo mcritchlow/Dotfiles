@@ -29,6 +29,12 @@ endif
 
 filetype plugin indent on
 
+" load currently set base16 theme
+if filereadable(expand("~/.vimrc_background"))
+  let g:base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 augroup vimrcEx
   autocmd!
 
@@ -56,6 +62,7 @@ augroup vimrcEx
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
+
 augroup END
 
 " Softtabs, 2 spaces
