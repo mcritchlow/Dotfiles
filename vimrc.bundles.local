@@ -17,6 +17,9 @@ Plug 'mileszs/ack.vim' "TODO: delete after FZF?
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 
+" tmux syntax highlighting
+Plug 'keith/tmux.vim'
+
 " languages
 Plug 'elixir-lang/vim-elixir'
 Plug 'pangloss/vim-javascript'
