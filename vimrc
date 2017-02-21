@@ -1,5 +1,6 @@
 " Leader
-let mapleader = " "
+" let mapleader = " "
+let mapleader = ","
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -103,8 +104,12 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
 
-" Ensure correct tags path
-" set tags=./tags;/
+" Folding
+set foldlevelstart=0
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
