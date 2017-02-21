@@ -1,3 +1,7 @@
+" vim: set foldmethod=marker foldlevel=0:
+" ============================================================================
+" Vundle to Plug Shim {{{
+" ============================================================================
 if &compatible
   set nocompatible
 end
@@ -24,30 +28,104 @@ endfunction
 com! -nargs=+  -bar Plugin call VundleToPlug("Plugin", <args>)
 com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 
+" }}}
+" ============================================================================
+" VIM-PLUG BLOCK {{{
+" ============================================================================
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
-Plug 'christoomey/vim-run-interactive'
-Plug 'kchmck/vim-coffee-script'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'scrooloose/syntastic'
-Plug 'slim-template/vim-slim'
-Plug 'janko-m/vim-test'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-projectionist'
+" ============================================================================
+" Ruby/Rails {{{
+" ============================================================================
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise' " add end after if, do, def
+
+" }}}
+
+" ============================================================================
+" Testing/Validation {{{
+" ============================================================================
+Plug 'janko-m/vim-test'
+Plug 'scrooloose/syntastic'
+
+" }}}
+" ============================================================================
+" General Nice Things {{{
+" ============================================================================
+Plug 'tpope/vim-repeat' "repeat map commands (surround)
+Plug 'pbrisbin/vim-mkdir' "TODO: might not need because eunuch
+Plug 'tpope/vim-eunuch' "Unix-y stuff.
+Plug 'tpope/vim-fugitive' "Git integration
+Plug 'tpope/vim-rhubarb' "Github integration
+Plug 'tpope/vim-projectionist' "Project config for alternate files (spec/impl), custom nav
+Plug 'vim-scripts/ZoomWin' " window to full screen <c-w>o
+Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
+Plug 'sickill/vim-pasta' "remaps p and P to do content aware pasting. TODO: might not need anymore
+Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
+
+" }}}
+" ============================================================================
+" Theming {{{
+" ============================================================================
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/limelight.vim'
+Plug 'vim-airline/vim-airline' "Awesome looking meta at bottom
+Plug 'vim-airline/vim-airline-themes' "theme support for airline
+Plug 'majutsushi/tagbar'
+
+" }}}
+" ============================================================================
+" Custom Motions {{{
+" ============================================================================
+Plug 'vim-scripts/tComment' "comments w/ gc motion
+Plug 'christoomey/vim-sort-motion' "sorting with gs motion
+Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
+
+" }}}
+" ============================================================================
+" Auto-complete {{{
+" ============================================================================
+" TODO: evaluate need for
+Plug 'ervandew/supertab' "not sure i need
+
+" }}}
+" ============================================================================
+" Tmux {{{
+" ============================================================================
+Plug 'christoomey/vim-run-interactive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
+" tmux syntax highlighting
+Plug 'keith/tmux.vim'
+
+" }}}
+" ============================================================================
+" Languages {{{
+" ============================================================================
+Plug 'elixir-lang/vim-elixir'
 Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/tComment'
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
 
-if filereadable(expand("~/.vimrc.bundles.local"))
-  source ~/.vimrc.bundles.local
-endif
+" }}}
+" ============================================================================
+" Fuzzy Finder (FZF) {{{
+" ============================================================================
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
+" }}}
+" ============================================================================
+" Custom Text Objects {{{
+" ============================================================================
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+
+" }}}
 call plug#end()
+
+" }}}

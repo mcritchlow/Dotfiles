@@ -1,12 +1,9 @@
-set cursorline
-set relativenumber
-set hlsearch
-set textwidth=100
+" vim: set foldmethod=marker foldlevel=0:
 
+" " ============================================================================
+" Syntastic {{{
+" ============================================================================
 " Folding
-" Ruby
-let ruby_fold = 1
-let ruby_foldable_groups = 'class module do def' "only fold higher level groups
 " syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -16,25 +13,30 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {"regex": "possibly useless use of a variable in void context"}
 
+" }}}
+" ============================================================================
+" Vim Test {{{
+" ============================================================================
 " vim-test sends command to send to tmux usign Vim Tmux Runner
 let test#strategy = "vtr"
 " use vim-tmux-runner keybindings. E.g. <leader>fr = focus runner
 let g:VtrUseVtrMaps = 1
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" vim-test mappings
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
 
-" install powerline fonts via https://github.com/powerline/fonts
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16'
-
-
-" Seeing is Believing Gem - Ruby
+" }}}
+" ============================================================================
+" Seeing Is Believing (Ruby) {{{
+" ============================================================================
 " Annotate every line
 nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
 " Annotate marked lines
@@ -46,13 +48,26 @@ nmap <leader>m A # => <Esc>
 " Mark the highlighted lines for annotation
 vmap <leader>m :norm A # => <Esc>
 
-" Limelight settings
-let g:limelight_conceal_ctermfg = 245
-" let g:limelight_conceal_ctermfg = 254
-let g:limelight_conceal_guifg = '#8a8a8a'
-" let g:limelight_conceal_guifg = '#eee8d5'
+" }}}
+" ============================================================================
+" Airline {{{
+" ============================================================================
+" install powerline fonts via https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16'
 
-" FZF settings
+" }}}
+" ============================================================================
+" Limelight {{{
+" ============================================================================
+
+let g:limelight_conceal_ctermfg = 245
+let g:limelight_conceal_guifg = '#8a8a8a'
+
+" }}}
+" ============================================================================
+" FZF {{{
+" ============================================================================
 " use FZF like CTRL-P
 nnoremap <c-p> :FZF<cr>
 
@@ -86,20 +101,4 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" Bracketed paste
-" http://www.xfree86.org/current/ctlseqs.html#Bracketed%20Paste%20Mode
-" http://stackoverflow.com/a/7053522
-if &term =~ "xterm.*"
-    let &t_ti = &t_ti . "\e[?2004h"
-    let &t_te = "\e[?2004l" . &t_te
-    function XTermPasteBegin(ret)
-        set pastetoggle=<Esc>[201~
-        set paste
-        return a:ret
-    endfunction
-    map <expr> <Esc>[200~ XTermPasteBegin("i")
-    imap <expr> <Esc>[200~ XTermPasteBegin("")
-    vmap <expr> <Esc>[200~ XTermPasteBegin("c")
-    cmap <Esc>[200~ <nop>
-    cmap <Esc>[201~ <nop>
-endif
+" }}}
