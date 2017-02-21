@@ -2,6 +2,11 @@ set cursorline
 set relativenumber
 set hlsearch
 set textwidth=100
+
+" Folding
+" Ruby
+let ruby_fold = 1
+let ruby_foldable_groups = 'class module do def' "only fold higher level groups
 " syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -50,6 +55,22 @@ let g:limelight_conceal_guifg = '#8a8a8a'
 " FZF settings
 " use FZF like CTRL-P
 nnoremap <c-p> :FZF<cr>
+
+" File preview using Highlight (http://www.andre-simon.de/doku/highlight/en/highlight.php)
+let g:fzf_files_options = printf('--preview "%s {} | head -'.&lines.'"',
+      \ g:plugs['fzf.vim'].dir.'/bin/preview.rb')
+
+" TODO: test some of these out
+inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
 " Customize fzf colors to match color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
