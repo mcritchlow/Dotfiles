@@ -202,11 +202,110 @@ nnoremap <C-l> <C-w>l
 
 " }}}
 " ============================================================================
-" Source Local Config {{{
+" Plugin Configurations {{{
 " ============================================================================
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
+" Individual plugin mappings and settings
+" ============================================================================
+" Syntastic {{{
+" ============================================================================
+" Folding
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {"regex": "possibly useless use of a variable in void context"}
+
+" }}}
+" ============================================================================
+" Vim Test {{{
+" ============================================================================
+" vim-test sends command to send to tmux usign Vim Tmux Runner
+let test#strategy = "vtr"
+" use vim-tmux-runner keybindings. E.g. <leader>fr = focus runner
+let g:VtrUseVtrMaps = 1
+" vim-test mappings
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
+
+" }}}
+" ============================================================================
+" Seeing Is Believing (Ruby) {{{
+" ============================================================================
+" Annotate every line
+nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
+" Annotate marked lines
+nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+" Remove annotations
+nmap <leader>c :%.!seeing_is_believing --clean<CR>;
+" Mark the current line for annotation
+nmap <leader>m A # => <Esc>
+" Mark the highlighted lines for annotation
+vmap <leader>m :norm A # => <Esc>
+
+" }}}
+" ============================================================================
+" Airline {{{
+" ============================================================================
+" install powerline fonts via https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16'
+
+" }}}
+" ============================================================================
+" Limelight {{{
+" ============================================================================
+
+let g:limelight_conceal_ctermfg = 245
+let g:limelight_conceal_guifg = '#8a8a8a'
+
+" }}}
+" ============================================================================
+" FZF {{{
+" ============================================================================
+" use FZF like CTRL-P
+nnoremap <c-p> :FZF<cr>
+
+" File preview using Highlight (http://www.andre-simon.de/doku/highlight/en/highlight.php)
+let g:fzf_files_options = printf('--preview "%s {} | head -'.&lines.'"',
+      \ g:plugs['fzf.vim'].dir.'/bin/preview.rb')
+
+" TODO: test some of these out
+inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Customize fzf colors to match color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" }}}
 
 " }}}
