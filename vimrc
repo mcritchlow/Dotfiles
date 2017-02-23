@@ -274,12 +274,11 @@ let g:limelight_conceal_guifg = '#8a8a8a'
 " FZF {{{
 " ============================================================================
 " use FZF like CTRL-P
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :Files<cr>
 
 " File preview using Highlight (http://www.andre-simon.de/doku/highlight/en/highlight.php)
-let g:fzf_files_options = printf('--preview "%s {} | head -'.&lines.'"',
-      \ g:plugs['fzf.vim'].dir.'/bin/preview.rb')
-
+let g:fzf_files_options =
+  \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 " TODO: test some of these out
 inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -305,6 +304,38 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" custom FZF command borrowed from @dkarter
+fun! s:change_branch(e)
+  let l:_ = system('git checkout ' . a:e)
+  :e!
+  :AirlineRefresh
+  echom 'Changed branch to' . a:e
+endfun
+
+command! Gbranch call fzf#run(
+      \ {
+      \ 'source': 'git branch',
+      \ 'sink': function('<sid>change_branch'),
+      \ 'options': '-m',
+      \ 'down': '20%'
+      \ })
+
+fun! s:change_remote_branch(e)
+  let l:_ = system('git checkout --track ' . a:e)
+  :e!
+  :AirlineRefresh
+  echom 'Changed to remote branch' . a:e
+endfun
+
+command! Grbranch call fzf#run(
+      \ {
+      \ 'source': 'git branch -r',
+      \ 'sink': function('<sid>change_remote_branch'),
+      \ 'options': '-m',
+      \ 'down': '20%'
+      \ })
+
 
 " }}}
 

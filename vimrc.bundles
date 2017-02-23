@@ -62,7 +62,7 @@ Plug 'tpope/vim-rhubarb' "Github integration
 Plug 'tpope/vim-projectionist' "Project config for alternate files (spec/impl), custom nav
 Plug 'vim-scripts/ZoomWin' " window to full screen <c-w>o
 Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
-Plug 'sickill/vim-pasta' "remaps p and P to do content aware pasting. TODO: might not need anymore
+" Plug 'sickill/vim-pasta' "remaps p and P to do content aware pasting. TODO: might not need anymore
 Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
 
 " }}}
@@ -87,8 +87,7 @@ Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
 " ============================================================================
 " Auto-complete {{{
 " ============================================================================
-" TODO: evaluate need for
-Plug 'ervandew/supertab' "not sure i need
+Plug 'ervandew/supertab' "<c-p> in imode to autocomplete tags
 
 " }}}
 " ============================================================================
