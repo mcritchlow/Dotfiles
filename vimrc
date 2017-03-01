@@ -18,12 +18,21 @@ set cursorline
 set relativenumber
 set hlsearch
 set textwidth=100
+set smartcase     " Case insensitive searches become sensitive with capitals
+set smarttab      " sw at the start of the line, sts everywhere else
+set ttimeoutlen=50  " Make Esc work faster
+set visualbell
 
 " Softtabs, 2 spaces
 set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
+
+
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -40,7 +49,9 @@ set numberwidth=5
 set foldlevelstart=0
 " Ruby
 let ruby_fold = 1
-let ruby_foldable_groups = 'class module do def' "only fold higher level groups
+let ruby_foldable_groups = 'class module def' "only fold higher level groups
+let g:ruby_indent_block_style = 'do'
+let ruby_spellcheck_strings = 1
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -54,6 +65,7 @@ set splitright
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Autocomplete with dictionary words when spell check is on
+set dictionary+=/usr/share/dict/words
 set complete+=kspell
 
 " Always use vertical diffs
@@ -129,9 +141,20 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.html.erb set filetype=html
+  autocmd BufNewFile,BufRead *.css.scss set filetype=css
+  autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+
+  " set space/tab settings for languages
+  autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+  autocmd FileType ruby set tabstop=2|set sw=2
+  autocmd FileType html set tabstop=2|set sw=2
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
+
+  " Use emoji complete for Markdown
+  autocmd FileType markdown setlocal completefunc=emoji#complete
 
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
@@ -205,6 +228,26 @@ nnoremap <C-l> <C-w>l
 " Plugin Configurations {{{
 " ============================================================================
 " Individual plugin mappings and settings
+" ============================================================================
+" Vim Markdown {{{
+" ============================================================================
+
+let g:markdown_fenced_languages = [
+      \ 'javascript',
+      \ 'ruby',
+      \ 'sh',
+      \ 'yaml',
+      \ 'javascript',
+      \ 'html',
+      \ 'vim',
+      \ 'json',
+      \ 'diff',
+      \ 'css',
+      \ 'scss',
+      \ 'python'
+      \ ]
+
+" }}}
 " ============================================================================
 " Syntastic {{{
 " ============================================================================
@@ -280,11 +323,11 @@ nnoremap <c-p> :Files<cr>
 let g:fzf_files_options =
   \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 " TODO: test some of these out
-inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+" inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
+" imap <c-x><c-k> <plug>(fzf-complete-word)
+" imap <c-x><c-f> <plug>(fzf-complete-path)
+" imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+" imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)

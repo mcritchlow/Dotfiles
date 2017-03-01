@@ -62,7 +62,7 @@ Plug 'tpope/vim-rhubarb' "Github integration
 Plug 'tpope/vim-projectionist' "Project config for alternate files (spec/impl), custom nav
 Plug 'vim-scripts/ZoomWin' " window to full screen <c-w>o
 Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
-" Plug 'sickill/vim-pasta' "remaps p and P to do content aware pasting. TODO: might not need anymore
+Plug 'tpope/vim-markdown' "add folding to markdown files
 Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
 
 " }}}
@@ -74,6 +74,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline' "Awesome looking meta at bottom
 Plug 'vim-airline/vim-airline-themes' "theme support for airline
 Plug 'majutsushi/tagbar'
+Plug 'junegunn/vim-emoji' "because emoji!
 
 " }}}
 " ============================================================================
@@ -87,7 +88,7 @@ Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
 " ============================================================================
 " Auto-complete {{{
 " ============================================================================
-Plug 'ervandew/supertab' "<c-p> in imode to autocomplete tags
+" Plug 'ervandew/supertab' "<c-p> in imode to autocomplete tags
 
 " }}}
 " ============================================================================
