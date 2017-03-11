@@ -101,3 +101,6 @@ _load_settings "$HOME/.zsh/configs"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# TODO: may need for linux
+# [ -z "$TMUX" ] && export TERM=xterm-256color

@@ -348,6 +348,61 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+" split Ag line into parts
+function! s:ag_to_qf(line)
+    let parts = split(a:line, ':')
+    return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
+            \ 'text': join(parts[3:], ':')}
+endfunction
+
+" manage selected line from search result
+function! s:ag_handler(lines)
+    if len(a:lines) < 2 | return | endif
+
+    let cmd = get({'ctrl-x': 'split',
+                  \ 'ctrl-v': 'vertical split',
+                  \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+    let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+
+    let first = list[0]
+    execute cmd escape(first.filename, ' %#\')
+    execute first.lnum
+    execute 'normal!' first.col.'|zz'
+
+    if len(list) > 1
+      call setqflist(list)
+      copen
+      wincmd p
+    endif
+endfunction
+
+" bundler show command integration via fzf/ag
+" https://github.com/junegunn/fzf/wiki/Examples-(vim)#narrow-ag-results-within-vim
+command! -nargs=* Bsearch call fzf#run({
+  \ 'source':  printf('ag --nogroup --column --color "%s" $(bundle show --paths)',
+  \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+  \ 'sink*':    function('<sid>ag_handler'),
+  \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
+  \            '--multi --reverse --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
+  \            '--color hl:68,hl+:110',
+  \ 'down':    '50%'
+  \ })
+
+" need to get filename and line number to open
+" fun! s:bundle_search(e)
+"   let result_list = split(a:e, ':')
+"   :e +result_list[0].' '.result_list[1]
+"   echom 'Chosen file is' . result_list[0] . ' with line number' . result_list[1]
+" endfun
+"
+" command! -bang -nargs=* Bsearch call fzf#run(
+"       \ {
+"       \ 'source': 'ag '.<q-args>.' $(bundle show --paths)',
+"       \ 'sink': function('<sid>bundle_search'),
+"       \ 'options': '-m',
+"       \ 'down': '40%'
+"       \ })
+
 " custom FZF command borrowed from @dkarter
 fun! s:change_branch(e)
   let l:_ = system('git checkout ' . a:e)
