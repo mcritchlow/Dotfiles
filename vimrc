@@ -261,6 +261,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_sh_checkers = ['shellcheck']
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_eruby_ruby_quiet_messages =
@@ -317,11 +318,13 @@ let g:limelight_conceal_guifg = '#8a8a8a'
 " FZF {{{
 " ============================================================================
 " use FZF like CTRL-P
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 nnoremap <c-p> :Files<cr>
 
 " File preview using Highlight (http://www.andre-simon.de/doku/highlight/en/highlight.php)
-let g:fzf_files_options =
-  \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+" let g:fzf_files_options =
+"   \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 " TODO: test some of these out
 " inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
 " imap <c-x><c-k> <plug>(fzf-complete-word)
