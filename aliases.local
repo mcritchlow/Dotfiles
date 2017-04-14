@@ -1,3 +1,4 @@
+#!/bin/bash
 # tmux
 alias tls="tmux ls"
 alias td="tmux detach"
