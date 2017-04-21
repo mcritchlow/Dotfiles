@@ -25,9 +25,31 @@ autoload -U compinit
 compinit
 
 # load custom executable functions
+#
 for function in ~/.zsh/functions/*; do
   source $function
 done
+
+bundler-search() {
+  # Search your bundle for the provided pattern
+  #   Requires bundler 1.8+ for execution as a bundler subcommand.
+  #   Examples:
+  #     bundle search Kernal.warn
+  #     bundle search current_user clearance
+  #     bundle search "Change your password" clearance
+  #
+  # Arguments:
+  #  1. What to search for
+  #  2. Which gem names to search (defaults to all gems)
+
+  pattern="$1"; shift
+  ag "$pattern" $(bundle show --paths "$@")
+  }
+
+git-ctags() {
+  [ -f .git/hooks/ctags ] || git init
+  .git/hooks/ctags
+}
 
 # makes color constants available
 autoload -U colors
@@ -107,6 +129,21 @@ _load_settings() {
 _load_settings "$HOME/.zsh/configs"
 
 # Local config
+export PATH="$HOME/bin:$PATH"
+# load rbenv if available
+if which rbenv &>/dev/null ; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - )"
+  export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+fi
+
+# setup Base16 colorscheme config
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+if [ -n uname="Linux" ]; then
+  [ -z "$TMUX" ] && export TERM=xterm-256color
+fi
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

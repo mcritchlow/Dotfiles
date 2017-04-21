@@ -1,9 +1,0 @@
-[user]
-  name = Matt Critchlow
-  email = matt.critchlow@gmail.com
-[core]
-  editor = vim
-[alias]
-  lg = log --graph --decorate --oneline
-[help]
-  autocorrect = 1

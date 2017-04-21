@@ -1,5 +1,8 @@
 [init]
   templatedir = ~/.git_template
+[user]
+  name = Matt Critchlow
+  email = matt.critchlow@gmail.com
 [push]
   default = current
 [color]
@@ -11,8 +14,10 @@
   ci = commit -v
   co = checkout
   st = status
+  lg = log --graph --decorate --oneline
 [core]
   excludesfile = ~/.gitignore
+  editor = vim
   autocrlf = input
 [merge]
   ff = only
@@ -23,5 +28,5 @@
   prune = true
 [rebase]
   autosquash = true
-[include]
-  path = ~/.gitconfig.local
+[help]
+  autocorrect = 1

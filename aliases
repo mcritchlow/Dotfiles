@@ -16,5 +16,14 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+#!/bin/bash
+# tmux
+alias tls="tmux ls"
+alias td="tmux detach"
+alias tnew="echo use tat!!"
+# TODO: IF os == solus
+# alias fetchYml="$HOME/projects/solus/common/Scripts/yauto.py"
+# alias updatePackage='/usr/share/ypkg/yupdate.py'
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
