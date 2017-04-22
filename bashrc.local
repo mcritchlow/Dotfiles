@@ -10,17 +10,16 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # ensure dotfiles bin directory is loaded first
-# TODO: is the /bin directory actually needed here?
 export PATH="$HOME/.bin:$HOME/bin:$PATH"
 
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
 # load rbenv if available
-if which rbenv &>/dev/null ; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - )"
-  export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-fi
+# if which rbenv &>/dev/null ; then
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - )"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# fi
 
 # setup Base16 colorscheme config
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -76,7 +75,7 @@ bundler-search() {
   #  2. Which gem names to search (defaults to all gems)
 
   pattern="$1"; shift
-  ag "$pattern" $(bundle show --paths "$@")
+  ag "$pattern" "$(bundle show --paths "$@")"
   }
 git-ctags() {
   [ -f .git/hooks/ctags ] || git init
@@ -90,7 +89,7 @@ lessc () {
 
 ..cd() {
   cd ..
-  cd "$@"
+  cd "$@" || return
 }
 
 _parent_dirs() {
@@ -99,19 +98,15 @@ _parent_dirs() {
 
 complete -F _parent_dirs -o default -o bashdefault ..cd
 
-viw() {
-  vim `which "$1"`
-}
-
 gd() {
-  [ "$1" ] && cd *$1*
+  [ "$1" ] && "cd *$1*" || return
 }
 
 csbuild() {
   [ $# -eq 0 ] && return
 
-  cmd="find `pwd`"
-  for ext in $@; do
+  cmd="find $(pwd)"
+  for ext in "$@"; do
     cmd=" $cmd -name '*.$ext' -o"
   done
   echo ${cmd: 0: ${#cmd} - 3}
@@ -273,5 +268,4 @@ bind '"\C-g\C-t": "$(gt)\e\C-e\er"'
 bind '"\C-g\C-h": "$(gh)\e\C-e\er"'
 bind '"\C-g\C-r": "$(gr)\e\C-e\er"'
 
-[ -f ~/.bashrc.local ] && source ~/.bashrc.local
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
