@@ -17,7 +17,6 @@ set autowrite     " Automatically :write before running commands
 set cursorline
 set relativenumber
 set hlsearch
-set textwidth=100
 set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
 set ttimeoutlen=50  " Make Esc work faster
@@ -37,8 +36,8 @@ let g:is_posix = 1
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-" Make it obvious where 80 characters is
-set textwidth=80
+" Make it obvious where 120 characters is
+set textwidth=120
 set colorcolumn=+1
 
 " Numbers
@@ -156,8 +155,8 @@ augroup vimrcEx
   " Use emoji complete for Markdown
   autocmd FileType markdown setlocal completefunc=emoji#complete
 
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+  " Automatically wrap at 120 characters for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=120
 
   " Automatically wrap at 72 characters and spell check git commit messages
   autocmd FileType gitcommit setlocal textwidth=72
