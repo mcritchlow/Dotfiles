@@ -217,6 +217,14 @@ fe() {
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
 
+# fs [FUZZY PATTERN] - Choose an existing tmux session
+fs() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+  tmux switch-client -t "$session"
+}
+
 # GIT heart FZF
 # -------------
 
