@@ -113,13 +113,10 @@ filetype plugin indent on
 
 " }}}
 " ============================================================================
-" Load Base16 theme {{{
+" Load theme {{{
 " ============================================================================
-" load currently set base16 theme
-if filereadable(expand("~/.vimrc_background"))
-  let g:base16colorspace=256
-  source ~/.vimrc_background
-endif
+syntax enable
+colorscheme jellybeans
 
 " }}}
 " ============================================================================

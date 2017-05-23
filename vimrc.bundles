@@ -42,7 +42,8 @@ Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
 " ============================================================================
 " Theming {{{
 " ============================================================================
-Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline' "Awesome looking meta at bottom
 Plug 'vim-airline/vim-airline-themes' "theme support for airline
