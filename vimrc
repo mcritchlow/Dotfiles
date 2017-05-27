@@ -116,7 +116,9 @@ filetype plugin indent on
 " Load theme {{{
 " ============================================================================
 syntax enable
-colorscheme jellybeans
+set t_Co=256
+set background=dark
+colorscheme solarized
 
 " }}}
 " ============================================================================
