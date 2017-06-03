@@ -283,6 +283,14 @@ fs() {
   tmux switch-client -t "$session"
 }
 
+# fts [FUZZY PATTERN] - Launch tmux session from ~/.tmux-projects
+fts() {
+  local tmux_project
+  tmux_project=$(find -L "$HOME/.tmux-projects" -type f | \
+    fzf --height 25% --select-1 --exit-0) &&
+  sh "$tmux_project"
+}
+
 # GIT heart FZF
 # -------------
 
