@@ -87,6 +87,9 @@ alias fetchYml="~/projects/solus/common/Scripts/yauto.py"
 alias updatePackage='/usr/share/ypkg/yupdate.py'
 alias solup='sudo solbuild update unstable-x86_64'
 
+# OpenSuse Tumbleweed
+alias zypup='zypper dup --no-allow-vendor-change'
+
 # Shortcut functions
 # --------------------------------------------------------------------
 
@@ -286,9 +289,10 @@ fs() {
 # fts [FUZZY PATTERN] - Launch tmux session from ~/.tmux-projects
 fts() {
   local tmux_project
-  tmux_project=$(find -L "$HOME/.tmux-projects" -type f | \
+  local base="$HOME/.tmux-projects"
+  tmux_project=$(ls "$base" | \
     fzf --height 25% --select-1 --exit-0) &&
-  sh "$tmux_project"
+  sh "$base/$tmux_project"
 }
 
 # GIT heart FZF
