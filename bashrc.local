@@ -108,6 +108,8 @@ bundler-search() {
   pattern="$1"; shift
   ag "$pattern" "$(bundle show --paths "$@")"
   }
+
+# invoke ctags hook in git repository
 git-ctags() {
   [ -f .git/hooks/ctags ] || git init
   .git/hooks/ctags
@@ -116,6 +118,11 @@ git-ctags() {
 # Use Vim less script for color
 lessc () {
   /usr/share/vim/vim80/macros/less.sh "$@"
+}
+
+# LastPass-CLI - copy pw to clipboard w/ fzf
+lpp () {
+  lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
 }
 
 ..cd() {
