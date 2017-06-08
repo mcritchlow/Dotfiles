@@ -1,0 +1,14 @@
+#!/bin/sh
+TMUX_PROJECT_PATH="$HOME/projects/ucsd/spotlight-demo"
+tmux new-session -s spotlight-demo -n vim -d
+tmux send-keys -t spotlight-demo "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t spotlight-demo 'vim' C-m
+tmux new-window -n rails-console -t spotlight-demo
+tmux send-keys -t spotlight-demo:2 "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t spotlight-demo:2 'rails c' C-m
+tmux new-window -n rails-server -t spotlight-demo
+tmux send-keys -t spotlight-demo:3 "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t spotlight-demo:3 'rails s' C-m
+tmux select-window -t spotlight-demo:1
+tmux attach -t spotlight-demo
+unset TMUX_PROJECT_PATH

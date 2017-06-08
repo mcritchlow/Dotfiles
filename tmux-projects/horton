@@ -1,4 +1,5 @@
-TMUX_PROJECT_PATH="~/projects/ucsd/horton"
+#!/bin/sh
+TMUX_PROJECT_PATH="$HOME/projects/ucsd/horton"
 tmux new-session -s horton -n vim -d
 tmux send-keys -t horton "cd $TMUX_PROJECT_PATH" C-m
 tmux send-keys -t horton 'vim' C-m
@@ -24,4 +25,4 @@ tmux new-window -t horton
 tmux send-keys -t horton:8 "cd $TMUX_PROJECT_PATH" C-m
 tmux select-window -t horton:1
 tmux attach -t horton
-unset PROJECT_PATH
+unset TMUX_PROJECT_PATH

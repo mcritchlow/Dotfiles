@@ -1,0 +1,14 @@
+#!/bin/sh
+TMUX_PROJECT_PATH="$HOME/projects/ucsd/env-variables"
+tmux new-session -s env-variables -n vim -d
+tmux send-keys -t env-variables "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t env-variables 'vim' C-m
+tmux new-window -n rails-console -t env-variables
+tmux send-keys -t env-variables:2 "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t env-variables:2 'rails c' C-m
+tmux new-window -n rails-server -t env-variables
+tmux send-keys -t env-variables:3 "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t env-variables:3 'rails s' C-m
+tmux select-window -t env-variables:1
+tmux attach -t env-variables
+unset TMUX_PROJECT_PATH

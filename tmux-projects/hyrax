@@ -1,4 +1,5 @@
-TMUX_PROJECT_PATH="~/projects/ucsd/hydra-projects/.internal_test_app"
+#!/bin/sh
+TMUX_PROJECT_PATH="$HOME/projects/ucsd/hydra-projects/.internal_test_app"
 tmux new-session -s hyrax -n vim -d
 tmux send-keys -t hyrax "cd $TMUX_PROJECT_PATH" C-m
 tmux send-keys -t hyrax 'vim' C-m

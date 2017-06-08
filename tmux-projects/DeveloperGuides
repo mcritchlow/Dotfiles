@@ -1,0 +1,8 @@
+#!/bin/sh
+TMUX_PROJECT_PATH="$HOME/projects/ucsd/DeveloperGuides"
+tmux new-session -s DeveloperGuides -n vim -d
+tmux send-keys -t DeveloperGuides "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t DeveloperGuides 'vim' C-m
+tmux select-window -t DeveloperGuides:1
+tmux attach -t DeveloperGuides
+unset TMUX_PROJECT_PATH
