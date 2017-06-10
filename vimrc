@@ -143,6 +143,9 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *.css.scss set filetype=css
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
 
+  " setup mutt usage
+  autocmd BufRead,BufNewFile /tmp/mutt-* setlocal spell nolist
+
   " set space/tab settings for languages
   autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
   autocmd FileType ruby set tabstop=2|set sw=2

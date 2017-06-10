@@ -3,6 +3,7 @@
 [user]
   name = Matt Critchlow
   email = matt.critchlow@gmail.com
+  signingkey = E53B4D1FE0B14937
 [push]
   default = current
 [color]
