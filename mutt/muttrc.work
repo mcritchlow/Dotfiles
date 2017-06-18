@@ -3,7 +3,7 @@
 ## General Setup
 set mail_check=60 #check for new mail every 60 seconds
 set timeout=300
-set imap_keepalive=900 # keep imap connection alive by polling 900 seconds
+set imap_keepalive=300 # keep imap connection alive by polling 900 seconds
 set imap_check_subscribed # check all folders for new mail
 set text_flowed=yes #sets format=flowed for text email
 set ssl_starttls=yes
@@ -11,7 +11,19 @@ set ssl_force_tls=yes
 set include=yes #include body of email in reply
 set move = no #don't move mail once read
 set net_inc=50 # Display download progress every 50k
+set fast_reply #don't prompt for to/subject
+set edit_headers #can tweak headers in editor/vim
 
+## Bindings
+# Index
+bind index G last-entry
+bind index gg first-entry
+bind index R group-reply
+
+# Pager
+bind pager G bottom
+bind pager gg top
+bind pager R group-reply
 
 ## Account info
 set imap_user="mcritchlow@ucsd.edu"
