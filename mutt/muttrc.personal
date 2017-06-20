@@ -12,7 +12,7 @@ set include=yes #include body of email in reply
 set move = no #don't move gmail once read
 set net_inc=50 # Display download progress every 50k
 set fast_reply #don't prompt for to/subject
-set edit_headers #can tweak headers in editor/vim
+# set edit_headers #can tweak headers in editor/vim
 
 ## Bindings
 # Index
