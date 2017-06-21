@@ -208,6 +208,11 @@ vnoremap <Space> za
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" Show list of TODO entries
+" Ignore tmp folder in projects, usually Hydra-based ones
+set wildignore+=tmp/**
+noremap <Leader>T :noautocmd vimgrep /TODO/j **/*.*<CR>:cw<CR>
+
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
