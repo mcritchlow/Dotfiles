@@ -52,7 +52,8 @@ source $alias_file
 macro index,pager \cb "<pipe-message> urlscan -cd<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan -cd<Enter>" "call urlscan to extract URLs out of a message"
 # Email macros
-macro index,pager A ":set confirmappend=no delete=yes\n<save-message>=Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+# macro index,pager A ":set confirmappend=no delete=yes\n<save-message>=Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+macro index,pager A ":set confirmappend=no delete=yes\n<save-message>=Archive\n:set confirmappend=yes delete=ask-yes\n"
 # delete everything in folder
 macro index \cd "<delete-pattern>~s .*<Enter>" "Delete all messages in current folder"
 # Navigation

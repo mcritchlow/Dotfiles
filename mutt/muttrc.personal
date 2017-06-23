@@ -52,7 +52,8 @@ bind editor <Tab> complete-query
 # unset record # might be needed because gmail auto copies sends
 
 ## Macros
-macro index,pager A ":set confirmappend=no delete=yes<enter><save-message>=[Gmail]/All<tab><enter><sync-mailbox>:set confirmappend=yes delete=ask-yes<enter>"
+macro index,pager A ":set confirmappend=no delete=yes<enter><save-message>=[Gmail]/All<tab><enter>:set confirmappend=yes delete=ask-yes<enter>"
+# macro index,pager A ":set confirmappend=no delete=yes<enter><save-message>=[Gmail]/All<tab><enter><sync-mailbox>:set confirmappend=yes delete=ask-yes<enter>"
 # delete everything in folder
 macro index \cd "<delete-pattern>~s .*<Enter>" "Delete all messages in current folder"
 # Links
