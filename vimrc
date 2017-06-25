@@ -191,6 +191,18 @@ inoremap <S-Tab> <c-n>
 
 " }}}
 " ============================================================================
+" Solarized Theme Toggle {{{
+" ============================================================================
+" :ToggleBG will switch main theme btw light/dark, but not vim-airline. This does both.
+function! ToggleSolarizedTheme()
+    let g:airline_solarized_bg = ( g:airline_solarized_bg == "dark" ? "light" : "dark" )
+    :ToggleBG
+    :AirlineRefresh
+endfunction
+nnoremap <F6> :call ToggleSolarizedTheme()<cr>
+
+" }}}
+" ============================================================================
 " Ctags {{{
 " ============================================================================
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
