@@ -119,6 +119,8 @@ syntax enable
 set t_Co=256
 set background=dark
 colorscheme solarized
+" toggle background btw light/dark
+call togglebg#map("<F5>")
 
 " }}}
 " ============================================================================
