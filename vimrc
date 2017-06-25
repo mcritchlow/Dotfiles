@@ -311,7 +311,8 @@ vmap <leader>m :norm A # => <Esc>
 " ============================================================================
 " install powerline fonts via https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16'
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg = 'dark'
 
 " }}}
 " ============================================================================
