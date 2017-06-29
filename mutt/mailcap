@@ -2,3 +2,4 @@ text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; name
 application/pdf; pdftotext '%s' -; copiousoutput; description=PDF Document; nametemplate=%s.pdf
 text/calendar; evolution -i %s; nametemplate=%s.ics; copiousoutput;
 application/ics; evolution -i %s; nametemplate=%s.ics; copiousoutput;
+image/*; eog '%s';
