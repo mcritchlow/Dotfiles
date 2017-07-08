@@ -1,0 +1,12 @@
+#!/bin/sh
+TMUX_PROJECT_PATH="$HOME/projects/ucsd/horton-bot"
+tmux new-session -s horton-bot -n vim -d
+tmux send-keys -t horton-bot "cd $TMUX_PROJECT_PATH" C-m
+tmux send-keys -t horton-bot 'vim' C-m
+tmux new-window -t horton-bot
+tmux send-keys -t horton-bot:2 "cd $TMUX_PROJECT_PATH" C-m
+tmux new-window -n puma-server -t horton-bot
+tmux send-keys -t horton-bot:3 "cd $TMUX_PROJECT_PATH" C-m
+tmux select-window -t horton-bot:1
+tmux attach -t horton-bot
+unset TMUX_PROJECT_PATH
