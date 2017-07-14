@@ -107,7 +107,7 @@ bundler-search() {
 
   pattern="$1"; shift
   ag "$pattern" "$(bundle show --paths "$@")"
-  }
+}
 
 # invoke ctags hook in git repository
 git-ctags() {
@@ -300,6 +300,13 @@ fts() {
   tmux_project=$(ls "$base" | \
     fzf --height 25% --select-1 --exit-0) &&
   sh "$base/$tmux_project"
+}
+# fts [FUZZY PATTERN] - Choose a tmux session to kill
+fks() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+  tmux kill-session -t "$session"
 }
 
 # GIT heart FZF
