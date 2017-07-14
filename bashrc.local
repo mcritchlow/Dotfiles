@@ -36,10 +36,10 @@ if [ "$UID" = "0" ]; then
     endchar="#"
 fi
 
-FG="\[\033[38;5;081m\]"
-BG="\[\033[38;5;245m\]"
+FG="\[\033[38;5;033m\]"
+BG="\[\033[38;5;003m\]"
 AT="\[\033[38;5;245m\]"
-HCOLOR="\[\033[38;5;206m\]"
+HCOLOR="\[\033[38;5;245m\]"
 # git prompt settings
 GIT_PS1_SHOWUPSTREAM="verbose"
 GIT_PS1_SHOWDIRTYSTATE=true
