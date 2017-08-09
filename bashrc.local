@@ -9,6 +9,10 @@ export EDITOR=vim
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Lastpass
+# Don't use pinentry, because it's being ridiculous
+export LPASS_DISABLE_PINENTRY=1
+
 # History
 # don't store duplicate entries in history
 export HISTCONTROL=ignoreboth:erasedups
