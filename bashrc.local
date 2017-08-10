@@ -94,6 +94,9 @@ alias solup='sudo solbuild update unstable-x86_64'
 # OpenSuse Tumbleweed
 alias zypup='zypper dup --no-allow-vendor-change'
 
+# Lastpass
+alias lplogin='lpass login --trust matt.critchlow@gmail.com'
+
 # Shortcut functions
 # --------------------------------------------------------------------
 
