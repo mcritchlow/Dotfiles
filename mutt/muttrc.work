@@ -78,12 +78,16 @@ ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
 
+# Sign w/ GPG
+source "~/.mutt/gpg.rc"
+set pgp_use_gpg_agent=yes
+set pgp_sign_as=E53B4D1FE0B14937
+set pgp_timeout=3600
+set crypt_autosign=no # don't crypt all teh things
+set crypt_replyencrypt=yes # if original msg was encrypted, reply w/ crypto
 # auto-delete anything that's a month old
 # push D~r>31d\n
 # push D~d>31d\n
 
-
-# include solarized colors
 # https://github.com/altercation/mutt-colors-solarized
-# source "~/.mutt/mutt-colors-solarized-dark-256.muttrc
 source "~/.mutt/mutt-colors-solarized-dark-16.muttrc
