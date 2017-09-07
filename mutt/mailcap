@@ -1,4 +1,4 @@
-text/html; w3m -I %{charset} -dump %s; nametemplate=%s.html; copiousoutput;
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
 application/pdf; pdftotext '%s' -; copiousoutput; description=PDF Document; nametemplate=%s.pdf
 text/calendar; evolution -i %s; nametemplate=%s.ics; copiousoutput;
 application/ics; evolution -i %s; nametemplate=%s.ics; copiousoutput;
