@@ -83,6 +83,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
+Plug 'pearofducks/ansible-vim'
 
 " }}}
 " ============================================================================

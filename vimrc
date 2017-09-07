@@ -282,6 +282,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_sh_checkers = ['shellcheck']
+let g:syntastic_ansible_checkers = ['ansible_lint']
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_eruby_ruby_quiet_messages =
@@ -326,6 +327,12 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
 let g:airline_solarized_bg = 'dark'
 
+" }}}
+" ============================================================================
+" Ansible {{{
+" ============================================================================
+" indentation will completely reset (unindent to column 0) after two newlines in insert-mode.
+let g:ansible_unindent_after_newline = 1
 " }}}
 " ============================================================================
 " Limelight {{{
