@@ -203,6 +203,19 @@ nnoremap <F6> :call ToggleSolarizedTheme()<cr>
 
 " }}}
 " ============================================================================
+" Markdown Preview {{{
+" ============================================================================
+" pandoc , markdown
+function! MarkdownPreview()
+  :RunSilent pandoc -f markdown_github -o /tmp/vim-pandoc-out.html %
+  :RunSilent xdg-open /tmp/vim-pandoc-out.html
+endfunction
+command! -nargs=* RunSilent
+      \ | execute ':silent !'.'<args>'
+      \ | execute ':redraw!'
+nnoremap <F7> :call MarkdownPreview()<cr>
+" }}}
+" ============================================================================
 " Ctags {{{
 " ============================================================================
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
