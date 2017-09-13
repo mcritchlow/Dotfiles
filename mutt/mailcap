@@ -1,8 +1,14 @@
+# Normal-ish text
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 application/pdf; pdftotext '%s' -; copiousoutput; description=PDF Document; nametemplate=%s.pdf
+
+# Calendar
 text/calendar; evolution -i %s; nametemplate=%s.ics; copiousoutput;
 application/ics; evolution -i %s; nametemplate=%s.ics; copiousoutput;
+# Images/Audio/Video
 image/*; eog '%s';
+audio/*; gnome-mpv '%s';
+video/*; gnome-mpv '%s';
 # MS Office crap
 # word-like things
 application/msword; libreoffice %s;
