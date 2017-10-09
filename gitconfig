@@ -34,6 +34,7 @@
   ph = push
   pht = push --tags
   phom = push origin master
+  phomf = push origin master --force-with-lease
   phomt = push origin master --tags
   phum = push upstream master
   phumt = push upstream master --tags
