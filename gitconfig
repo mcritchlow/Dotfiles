@@ -41,6 +41,7 @@
   pl = pull
   plt = pull --tags
   plom = pull origin master
+  plomr = pull origin master --rebase
   plomt = pull origin master --tags
   plum = pull upstream master
   plumt = pull upstream master --tags
