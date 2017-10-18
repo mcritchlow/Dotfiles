@@ -93,7 +93,6 @@ URxvt.cursorColor:white
 URxvt.cursorBlink:true
 ! Perl things
 URxvt.perl-ext-common:default,matcher,resize-font
-URxvt.perl-lib:$HOME/.config/scripts
 URxvt.url-launcher:/usr/bin/firefox
 URxvt.matcher.button:1
 URxvt.matcher.rend.0: Uline Bold fg5
