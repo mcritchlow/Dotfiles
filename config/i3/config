@@ -213,12 +213,13 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 
 smart_gaps on
-gaps inner 5
-gaps outer 5
+gaps inner 3
+gaps outer 3
 
 
 ########## local customization ##########
 for_window [class="zoom"] floating enable
+for_window [class="Solus-sc"] floating enable
 
 # pin apps to workspaces
 for_window [class="Slack"] move to workspace 3
