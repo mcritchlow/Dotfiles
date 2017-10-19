@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require 'open-uri'
+require 'json'
+require 'yaml'
+
+config = YAML.safe_load(File.open("#{ENV['HOME']}/.config/i3blocks/scripts/config.yml"))['weather']
+
+response = JSON.parse(open("#{config['base']}zip=#{config['zipcode']}&units=imperial&APPID=#{config['apikey']}").read)
+
+# icon placeholders, just use text for now
+sun = 'Sunny'
+cloud = 'Cloudy'
+rain = 'Rain'
+snow = 'Snow'
+icon = response['weather'][0]['main']
+# icon = case response['weather'][0]['main']
+#         when 'Clouds' then cloud
+#         when 'Rain' then rain
+#         when 'Snow' then snow
+#         else sun
+#       end
+
+temp = Integer(response['main']['temp'].ceil)
+color = case temp
+          when 0..60 then '#268bd2'
+          when 61..80 then '#b58900'
+          when 81..100 then '#dc322f'
+        end
+
+print "#{icon} <span foreground='#{color}'>#{temp}F</span>".force_encoding(Encoding::BINARY)
