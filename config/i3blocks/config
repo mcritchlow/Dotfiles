@@ -28,6 +28,11 @@ command=/usr/lib64/libexec//i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
+[MPD]
+label=
+command=$HOME/.config/i3blocks/scripts/music
+color=#00FF00
+interval=5
 # Volume indicator
 #
 # The first parameter sets the step (and units to display)
