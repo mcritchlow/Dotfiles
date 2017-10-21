@@ -28,4 +28,4 @@ color = case temp
           when 81..100 then '#dc322f'
         end
 
-print "#{icon} <span foreground='#{color}'>#{temp}F</span>".force_encoding(Encoding::BINARY)
+print "<span foreground='#{color}'>#{icon} #{temp}F</span>".force_encoding(Encoding::BINARY)
