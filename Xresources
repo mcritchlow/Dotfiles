@@ -96,6 +96,7 @@ URxvt.perl-ext-common:default,matcher,resize-font
 URxvt.url-launcher:/usr/bin/firefox
 URxvt.matcher.button:1
 URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.saveLines: 100000
 ! perl: resize-font
 ! URxvt.resize-font.smaller: C-Down
 ! URxvt.resize-font.bigger: C-Up
