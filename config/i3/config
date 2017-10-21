@@ -18,6 +18,7 @@ font pango:Clear Sans 11
 
 ########## Autolaunch ##########
 exec --no-startup-id nm-applet
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
 # exec --no-startup-id mpd
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 # use gnome-keyring-daemon to manage keys
@@ -27,7 +28,23 @@ exec --no-startup-id /usr/bin/redshift-gtk
 exec --no-startup-id "xrdb -merge ~/.Xresources"
 
 ########## Keybindings ##########
-bindsym $mod+Shift+s exec i3lock # Easier locking
+set $Locker i3lock -i $HOME/Pictures/wallpaper.png && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+s mode "$mode_system"
 
 ### Backlight (is failing on Thinkpad) ###
 # these are the keycodes, but they're not recognized..
