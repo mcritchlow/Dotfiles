@@ -1,4 +1,5 @@
 ! For otf/ttf fonts
+Xcursor.size: 50
 Xft.dpi: 192
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
@@ -83,10 +84,10 @@ Xft.rgba: rgb
 ! URxvt.background:       [70]#000000
 ! Fonts
 URxvt.depth:   32
-URxvt.font:   xft:Sauce\ Code\ Powerline:size=13
-URxvt.boldFont:   xft:Sauce\ Code\ Powerline:size=13:style=Bold
-URxvt.italicFont:   xft:Sauce\ Code\ Powerline:size=13:style=Italic
-URxvt.bolditalicFont:   xft:Sauce\ Code\ Powerline:size=13:style=Bold Italic
+URxvt.font:   xft:Sauce\ Code\ Powerline:size=14
+URxvt.boldFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold
+URxvt.italicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Italic
+URxvt.bolditalicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold Italic
 URxvt.letterSpace: -1
 ! General config
 URxvt.scrollBar: false
@@ -103,6 +104,8 @@ URxvt.saveLines: 100000
 ! URxvt.resize-font.bigger: C-Up
 
 ! Rofi
+! rofi.dpi: 0
+rofi.dpi: 192
 rofi.color-enabled: true
 rofi.color-window: #002b37, #002b37, #003642
 rofi.color-normal: #002b37, #819396, #003643, #008ed4, #ffffff
