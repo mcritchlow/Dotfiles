@@ -16,6 +16,7 @@ else
   # Do the same with Qt5, the other Qt/KDE options do general things to make Qt5
   # apps look/run better.
   #export QT_DEVICE_PIXEL_RATIO=2
+  export QT_SCALE_FACTOR=2
   export QT_STYLE_OVERRIDE=Breeze
   export KDE_FULL_SESSION=1
   export KDE_SESSION_VERSION=5
