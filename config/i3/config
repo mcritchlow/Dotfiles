@@ -76,12 +76,14 @@ bindsym $mod+Return exec $term
 # start ranger
 bindsym $mod+Shift+f exec $term -e ranger
 
+# start mutt
+bindsym $mod+Shift+m exec $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # music
-# TODO: this works w/ gnome-terminal.. wtf
-bindsym $mod+m exec urxvt -name ncmpcpp -e ncmpcpp
+bindsym $mod+m exec urxvt -name ncmpcpp -e bash -i -c "ncmpcpp"
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym $mod+bracketleft exec --no-startup-id mpc seek +10
 bindsym $mod+Shift+bracketleft exec --no-startup-id mpc seek +120
@@ -160,9 +162,9 @@ set $ws5 "5: "
 # calendar
 set $ws6 "6: "
 # email
-# set $ws7 "7: "
-set $ws7 "7"
-set $ws8 "8"
+set $ws7 "7: "
+# music
+set $ws8 "8: "
 set $ws9 "9"
 set $ws10 "10"
 
@@ -230,6 +232,8 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3blocks
         position bottom
+        font pango:Clear Sans, FontAwesome 11
+
 
         colors {
             background #404552
@@ -270,3 +274,5 @@ for_window [class="Slack"] move to workspace $ws3
 for_window [class="Hexchat"] move to workspace $ws4
 for_window [class="Spotify"] move to workspace $ws5
 for_window [class="Gnome-calendar"] move to workspace $ws6
+for_window [class="URxvt" instance="mutt"] move to workspace $ws7
+for_window [class="URxvt" instance="ncmpcpp"] move to workspace $ws8
