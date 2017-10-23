@@ -18,7 +18,7 @@ else
   #export QT_DEVICE_PIXEL_RATIO=2
   export QT_SCALE_FACTOR=2
   export QT_STYLE_OVERRIDE=Breeze
-  export KDE_FULL_SESSION=1
+  # export KDE_FULL_SESSION=1
   export KDE_SESSION_VERSION=5
   export SAL_USE_VCLPLUGIN=kde5
 fi
