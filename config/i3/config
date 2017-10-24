@@ -72,18 +72,19 @@ bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mu
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec --no-startup-id $term
 # start ranger
-bindsym $mod+Shift+f exec $term -e ranger
+bindsym $mod+Shift+f exec --no-startup-id $term -e ranger
 
 # start mutt
-bindsym $mod+Shift+m exec $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
+bindsym $mod+Shift+m exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # music
-bindsym $mod+m exec urxvt -name ncmpcpp -e bash -i -c "ncmpcpp"
+bindsym $mod+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp"
+bindsym $mod+v exec pavucontrol
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym $mod+bracketleft exec --no-startup-id mpc seek +10
 bindsym $mod+Shift+bracketleft exec --no-startup-id mpc seek +120
@@ -270,9 +271,9 @@ for_window [class="zoom"] floating enable
 for_window [class="Solus-sc"] floating enable
 
 # pin apps to workspaces
-for_window [class="Slack"] move to workspace $ws3
-for_window [class="Hexchat"] move to workspace $ws4
-for_window [class="Spotify"] move to workspace $ws5
-for_window [class="Gnome-calendar"] move to workspace $ws6
-for_window [class="URxvt" instance="mutt"] move to workspace $ws7
-for_window [class="URxvt" instance="ncmpcpp"] move to workspace $ws8
+assign [class="Slack"] $ws3
+assign [class="Hexchat"] $ws4
+assign [class="Spotify"] $ws5
+assign [class="Gnome-calendar"] $ws6
+assign [class="URxvt" instance="mutt"] $ws7
+assign [class="URxvt" instance="ncmpcpp"] $ws8
