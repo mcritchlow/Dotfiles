@@ -90,7 +90,7 @@ alias tls="tmux ls"
 alias td="tmux detach"
 
 # Solus
-alias fetchYml="~/projects/solus/common/Scripts/yauto.py"
+alias fetchYml="~/projects/personal/solus/common/Scripts/yauto.py"
 alias updatePackage='/usr/share/ypkg/yupdate.py'
 alias solup='sudo solbuild update unstable-x86_64'
 
