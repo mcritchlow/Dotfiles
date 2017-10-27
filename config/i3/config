@@ -259,21 +259,29 @@ bar {
 }
 
 ########## Styling ##########
+set_from_resource $fg color7 #f0f0f0
+set_from_resource $bd color3 #f0f0f0
+set_from_resource $bg color0 #f0f0f0
+set_from_resource $bg1 color10 #f0f0f0
 
-client.focused #404552 #404552 #fafafa #ff5757 #666666
-client.focused_inactive #666666 #404552 #eeeeee #5294e2 #666666
-client.unfocused #404552 #484b52 #eeeeee #ff5757 #404552
-client.urgent #ff5757 #404552 #ffffff #555757 #404552
-client.background #404552
+# class                 border  backgr. text indicator child_border
+client.focused          $bd     $fg     $bg  $bg       $bd
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bd     $bg1    $fg  $bg       $bd
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 ########## i3-gaps integration ##########
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 
 # smart_gaps on
+smart_borders on
 gaps inner 3
 gaps outer 3
 
