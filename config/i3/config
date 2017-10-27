@@ -85,7 +85,7 @@ bindsym $mod+Shift+m exec --no-startup-id $term -name mutt -e bash -i -c ~/.conf
 bindsym $mod+Shift+q kill
 
 # music
-bindsym $mod+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp"
+bindsym $mod+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp -s media_library"
 bindsym $mod+v exec pavucontrol
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym $mod+bracketleft exec --no-startup-id mpc seek +10
