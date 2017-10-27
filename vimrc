@@ -145,6 +145,10 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *.css.scss set filetype=css
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
 
+  "Make calcurse notes markdown compatible:
+  autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
+  autocmd BufRead,BufNewFile ~/.config/calcurse/notes/* set filetype=markdown
+
   " setup mutt usage
   autocmd BufRead,BufNewFile /tmp/mutt-* setlocal spell nolist
 
