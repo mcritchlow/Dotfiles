@@ -114,11 +114,11 @@ label=⚡
 interval=30
 
 # Solus Packages for download
-[packages]
-# label=PAC
-label=
-command=eopkg list-upgrades | sed -e '/No packages*/ { !N; d; }' | wc -l
-interval=60
+# [packages]
+# # label=PAC
+# label=
+# command=eopkg list-upgrades | sed -e '/No packages*/ { !N; d; }' | wc -l
+# interval=60
 
 [weather]
 command=$HOME/.config/i3blocks/scripts/weather
