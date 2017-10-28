@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo eopkg ur &>/dev/null
+eopkg list-upgrades | sed -e '/No packages*/ { !N; d; }' | wc -l
