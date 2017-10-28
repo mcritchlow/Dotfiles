@@ -84,11 +84,15 @@ Xft.rgba: rgb
 ! URxvt.background:       [70]#000000
 ! Fonts
 URxvt.depth:   32
-URxvt.font:   xft:Sauce\ Code\ Powerline:size=14
-URxvt.boldFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold
-URxvt.italicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Italic
-URxvt.bolditalicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold Italic
-URxvt.letterSpace: -1
+URxvt.font:   xft:Hack:size=13
+URxvt.boldFont:   xft:Hack:size=13:style=Bold
+URxvt.italicFont:   xft:Hack:size=13:style=Italic
+URxvt.bolditalicFont:   xft:Hack:size=13:style=Bold Italic
+! URxvt.font:   xft:Sauce\ Code\ Powerline:size=14
+! URxvt.boldFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold
+! URxvt.italicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Italic
+! URxvt.bolditalicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold Italic
+URxvt.letterSpace: 0
 ! General config
 URxvt.scrollBar: false
 URxvt.cursorColor:white
