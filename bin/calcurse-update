@@ -40,6 +40,9 @@ begin
         lines << 'END:VEVENT'
         event_info = {}
       elsif line.match?(/^[A-Z\-]+[:;]{1}/) # standard ical key/value match
+        if line.start_with?('DTSTART') || line.start_with?('DTEND')
+          line = line.gsub(/;TZID=.+:/, ':')
+        end
         key, value = line.split(':', 2)
         current_key = key
         event_info[key] = value
