@@ -300,22 +300,13 @@ fe() {
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
 
-# fas [FUZZY PATTERN] - Choose an existing tmux session with attach-session
-# relevant when not in a tmux session already
-fas() {
-  local session
-  session=$(tmux list-sessions -F "#{session_name}" | \
-    fzf --query="$1" --select-1 --exit-0)
-  tmux attach-session -t "$session"
-}
-
-# fsc [FUZZY PATTERN] - Choose an existing tmux session with switch-client
-# relevant when in a tmux session
-fsc() {
-  local session
-  session=$(tmux list-sessions -F "#{session_name}" | \
-    fzf --query="$1" --select-1 --exit-0)
-  tmux switch-client -t "$session"
+# ftm [FUZZY PATTERN] - Choose an existing tmux session to attach and switch to, or create a new one
+ftm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
 # fts [FUZZY PATTERN] - Launch tmux session from ~/.tmux-projects
