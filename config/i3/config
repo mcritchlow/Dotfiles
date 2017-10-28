@@ -21,8 +21,6 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
 # exec --no-startup-id mpd
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
-# use gnome-keyring-daemon to manage keys
-exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,gpg,ssh,secrets"
 exec --no-startup-id "sleep 1; setxkbmap -option caps:swapescape"
 exec --no-startup-id /usr/bin/redshift-gtk
 
