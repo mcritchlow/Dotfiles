@@ -23,6 +23,7 @@ exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id "sleep 1; setxkbmap -option caps:swapescape"
 exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,gpg,ssh,secrets"
 exec --no-startup-id /usr/bin/redshift-gtk
+exec --no-startup-id dropbox start
 
 ########## Keybindings ##########
 set $Locker $HOME/.config/i3/scripts/lock.sh && sleep 1
