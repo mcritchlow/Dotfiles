@@ -52,8 +52,6 @@
   excludesfile = ~/.gitignore
   editor = vim
   autocrlf = input
-[merge]
-  ff = only
 [commit]
   template = ~/.gitmessage
   gpgsign = true
