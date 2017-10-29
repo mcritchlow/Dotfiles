@@ -109,7 +109,7 @@ URxvt.saveLines: 100000
 
 ! Rofi
 rofi.dpi: 192
-rofi.font: mono 16
+rofi.font: monospace 16
 rofi.color-enabled: true
 rofi.color-window: #002b37, #002b37, #003642
 rofi.color-normal: #002b37, #819396, #003643, #008ed4, #ffffff
