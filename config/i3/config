@@ -76,7 +76,8 @@ bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Shift+f exec --no-startup-id $term -e ranger
 # start calcurse
 bindsym $mod+c exec --no-startup-id $term -name calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
-
+# start w3m browser
+bindsym $mod+b exec --no-startup-id $term -name w3m -e bash -i -c "w3m https://duckduckgo.com"
 # start mutt
 bindsym $mod+Shift+m exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
 
@@ -290,6 +291,7 @@ for_window [class="zoom"] floating enable
 for_window [class="Solus-sc"] floating enable
 
 # pin apps to workspaces
+assign [class="URxvt" instance="w3m"] $ws2
 assign [class="Slack"] $ws3
 assign [class="Hexchat"] $ws4
 assign [class="Spotify"] $ws5
