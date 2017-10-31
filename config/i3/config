@@ -25,6 +25,14 @@ exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,
 exec --no-startup-id /usr/bin/redshift-gtk
 exec --no-startup-id dropbox start
 
+
+########## Scratchpad Windows ##########
+for_window [instance="math"] floating enable
+for_window [instance="math"] resize set 800 300
+for_window [instance="math"] move position center
+for_window [instance="math"] move scratchpad
+exec --no-startup-id $term -fn "xft:mono:pixelsize=24" -name math -e R -q
+
 ########## Keybindings ##########
 set $Locker $HOME/.config/i3/scripts/lock.sh && sleep 1
 
@@ -146,8 +154,12 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# scratchpad toggle
+bindsym $mod+a [instance="math"] scratchpad show; move position center
+
+
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 # focus the child container
 # bindsym $mod+d focus child
 
@@ -168,7 +180,8 @@ set $ws6 "6: "
 set $ws7 "7: "
 # music
 set $ws8 "8: "
-set $ws9 "9"
+# gimp
+set $ws9 "9: "
 set $ws10 "10"
 
 # custom workspace gaps
@@ -181,9 +194,10 @@ workspace $ws7 gaps outer 50
 workspace $ws8 gaps inner 0
 workspace $ws8 gaps outer 50
 
-# switch to workspace
+# workspace bindings
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
+bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -214,31 +228,12 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# resizing windows
+bindsym $mod+Shift+y resize shrink width 10 px or 10ppt
+bindsym $mod+Shift+u resize shrink height 10 px or 10ppt
+bindsym $mod+Shift+i resize grow width 10 px or 10ppt
+bindsym $mod+Shift+o resize grow height 10 px or 10ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -298,3 +293,7 @@ assign [class="Spotify"] $ws5
 assign [class="URxvt" instance="calcurse"] $ws6
 assign [class="URxvt" instance="mutt"] $ws7
 assign [class="URxvt" instance="ncmpcpp"] $ws8
+for_window [title="GIMP Startup"] move workspace $ws9
+for_window [class="Gimp"] move workspace $ws9
+for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
+for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
