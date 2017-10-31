@@ -84,6 +84,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pearofducks/ansible-vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
 
 " }}}
 " ============================================================================
