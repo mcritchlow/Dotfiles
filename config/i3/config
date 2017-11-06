@@ -28,11 +28,22 @@ exec --no-startup-id dropbox start
 
 
 ########## Scratchpad Windows ##########
+# Simple 'calculator' using R for arithmetic
+# bound to mod+a (a == arithmetic)
 for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 800 300
 for_window [instance="math"] move position center
 for_window [instance="math"] move scratchpad
 exec --no-startup-id $term -fn "xft:mono:pixelsize=24" -name math -e R -q
+
+# Dropdown tmux window for background scripts.
+# Primary use case is package updates.
+# bound to mod+u (u == updates)
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 800 400
+for_window [instance="dropdown"] move position center
+for_window [instance="dropdown"] move scratchpad
+exec --no-startup-id $term -name dropdown -e bash -i -c "tmux new-session -s dropdown"
 
 ########## Keybindings ##########
 set $Locker $HOME/.config/i3/scripts/lock.sh && sleep 1
@@ -157,6 +168,7 @@ bindsym $mod+space focus mode_toggle
 
 # scratchpad toggle
 bindsym $mod+a [instance="math"] scratchpad show; move position center
+bindsym $mod+u [instance="dropdown"] scratchpad show; move position center
 
 
 # focus the parent container
