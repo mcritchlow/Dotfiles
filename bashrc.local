@@ -33,7 +33,7 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 eval "$(pandoc --bash-completion)"
 
 [ -z "$TMUX" ] && export TERM=xterm-256color
-eval `dircolors ~/.dir_colors`
+eval "$(dircolors ~/.dir_colors)"
 
 # Prompt
 # -------------------------------------------------------------------
@@ -137,7 +137,7 @@ lessc () {
 
 # LastPass-CLI - copy pw to clipboard w/ fzf
 lpp () {
-  lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
+  lpass show -c --password "$(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')"
 }
 
 ..cd() {
