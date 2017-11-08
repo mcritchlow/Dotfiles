@@ -296,6 +296,7 @@ gaps outer 3
 
 ########## local customization ##########
 for_window [class="zoom"] floating enable
+for_window [class="etcher"] floating enable
 for_window [class="Solus-sc"] floating enable
 
 # pin apps to workspaces
