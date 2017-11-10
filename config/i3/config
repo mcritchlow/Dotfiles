@@ -248,6 +248,14 @@ bindsym $mod+Shift+i resize grow width 10 px or 10ppt
 bindsym $mod+Shift+o resize grow height 10 px or 10ppt
 
 
+########## Styling from ~/.Xresources ##########
+set_from_resource $fg color7 #f0f0f0
+set_from_resource $yellow color3 #f0f0f0
+set_from_resource $bg color0 #f0f0f0
+set_from_resource $bg1 color10 #f0f0f0
+set_from_resource $cyan color6 #f0f0f0
+set_from_resource $red color1 #f0f0f0
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -257,26 +265,21 @@ bar {
 
 
         colors {
-            background #404552
+            background $bg
 
-            focused_workspace #3685e2 #3685e2 #fafafa
-            active_workspace #5294e2 #5294e2 #fafafa
-            inactive_workspace #404552 #404552 #fafafa
-            urgent_workspace #ff5757 #ff5757 #fafafa
+            focused_workspace $cyan $cyan #fafafa
+            active_workspace $yellow $yellow #fafafa
+            inactive_workspace $bg $bg #fafafa
+            urgent_workspace $red $red #fafafa
         }
 }
 
-########## Styling ##########
-set_from_resource $fg color7 #f0f0f0
-set_from_resource $bd color3 #f0f0f0
-set_from_resource $bg color0 #f0f0f0
-set_from_resource $bg1 color10 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bd     $fg     $bg  $bg       $bd
+client.focused          $yellow     $fg     $bg  $bg       $yellow
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bd     $bg1    $fg  $bg       $bd
+client.urgent           $yellow     $bg1    $fg  $bg       $yellow
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
