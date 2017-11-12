@@ -21,7 +21,7 @@ font pango:Noto Sans 12
 exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id "sleep 1; setxkbmap -option caps:swapescape"
+exec_always --no-startup-id "sleep 1; setxkbmap -option caps:swapescape"
 exec --no-startup-id "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,gpg,ssh,secrets"
 exec --no-startup-id /usr/bin/redshift-gtk
 exec --no-startup-id dropbox start
@@ -121,6 +121,7 @@ bindsym $mod+Shift+greater exec --no-startup-id mpc next
 bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun -show combi -modi combi
 
 # change focus
+focus_on_window_activation focus #focus newly opened window
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -293,8 +294,8 @@ for_window [title="Preferences$"] floating enable
 
 # smart_gaps on
 smart_borders on
-gaps inner 3
-gaps outer 3
+gaps inner 5
+gaps outer 5
 
 
 ########## local customization ##########
