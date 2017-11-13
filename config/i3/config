@@ -32,6 +32,8 @@ exec --no-startup-id dropbox start
 # bound to mod+a (a == arithmetic)
 for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 800 300
+# TODO: change to percentage once next i3 version ships
+# for_window [instance="math"] resize set 30 ppt 30 ppt
 for_window [instance="math"] move position center
 for_window [instance="math"] move scratchpad
 exec --no-startup-id $term -fn "xft:mono:pixelsize=24" -name math -e R -q
@@ -40,6 +42,8 @@ exec --no-startup-id $term -fn "xft:mono:pixelsize=24" -name math -e R -q
 # Primary use case is package updates.
 # bound to mod+u (u == updates)
 for_window [instance="dropdown"] floating enable
+# TODO: change to percentage once next i3 version ships
+# for_window [instance="math"] resize set 30 ppt 30 ppt
 for_window [instance="dropdown"] resize set 800 400
 for_window [instance="dropdown"] move position center
 for_window [instance="dropdown"] move scratchpad
@@ -199,13 +203,13 @@ set $ws9 "9: "
 set $ws10 "10"
 
 # custom workspace gaps
-workspace $ws5 gaps inner 0
+workspace $ws5 gaps inner 15
 workspace $ws5 gaps outer 50
-workspace $ws6 gaps inner 0
+workspace $ws6 gaps inner 15
 workspace $ws6 gaps outer 50
-workspace $ws7 gaps inner 0
+workspace $ws7 gaps inner 15
 workspace $ws7 gaps outer 50
-workspace $ws8 gaps inner 0
+workspace $ws8 gaps inner 15
 workspace $ws8 gaps outer 50
 
 # workspace bindings
