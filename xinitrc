@@ -20,4 +20,7 @@ else
   # export SAL_USE_VCLPLUGIN=kde5
 fi
 
+# start urxvt daemon
+urxvtd -q -f -o
+
 exec dbus-launch --sh-syntax --exit-with-session i3
