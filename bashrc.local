@@ -12,6 +12,8 @@ export LC_ALL=en_US.UTF-8
 # Lastpass
 # Don't use pinentry, because it's being ridiculous
 export LPASS_DISABLE_PINENTRY=1
+# don't allow agent to expire
+export LPASS_AGENT_TIMEOUT=0
 
 # History
 # don't store duplicate entries in history
