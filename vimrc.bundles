@@ -85,6 +85,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pearofducks/ansible-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 " }}}
 " ============================================================================
