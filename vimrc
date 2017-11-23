@@ -157,6 +157,9 @@ augroup vimrcEx
   autocmd FileType ruby set tabstop=2|set sw=2
   autocmd FileType html set tabstop=2|set sw=2
 
+  " Enable spellchecking for LaTex
+  autocmd FileType tex setlocal spell
+
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
 
