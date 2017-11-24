@@ -29,7 +29,8 @@ separator_block_width=15
 markup=none
 
 [MPD]
-label=
+# label=
+label=
 command=$HOME/.config/i3blocks/scripts/music
 color=#00FF00
 interval=5
