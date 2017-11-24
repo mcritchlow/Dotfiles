@@ -1,9 +1,11 @@
-
 eval "$(ssh-agent -s)"
+# start urxvt daemon
+urxvtd -q -f -o
 
 # for now, simple check for thinkpad
 if hostname | grep 'solus-thinkpad' > /dev/null; then
   xrdb -merge "$HOME/.Xresources"
+  exec dbus-launch --sh-syntax --exit-with-session i3
 else
   # TODO: confirm is pango needs 96*x or if I can use actual DPI
   xrandr --dpi 192
@@ -18,9 +20,9 @@ else
   # export KDE_FULL_SESSION=1
   # export KDE_SESSION_VERSION=5
   # export SAL_USE_VCLPLUGIN=kde5
+  #
+  # custom config for hidpi
+  exec dbus-launch --sh-syntax --exit-with-session i3 -c "$HOME/.config/i3/config.hidpi"
 fi
 
-# start urxvt daemon
-urxvtd -q -f -o
 
-exec dbus-launch --sh-syntax --exit-with-session i3
