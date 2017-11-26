@@ -3,7 +3,7 @@ Xcursor.size: 50
 Xft.dpi: 192
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintslight
+Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
@@ -88,11 +88,7 @@ URxvt.font:   xft:Hack:size=13
 URxvt.boldFont:   xft:Hack:size=13:style=Bold
 URxvt.italicFont:   xft:Hack:size=13:style=Italic
 URxvt.bolditalicFont:   xft:Hack:size=13:style=Bold Italic
-! URxvt.font:   xft:Sauce\ Code\ Powerline:size=14
-! URxvt.boldFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold
-! URxvt.italicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Italic
-! URxvt.bolditalicFont:   xft:Sauce\ Code\ Powerline:size=14:style=Bold Italic
-URxvt.letterSpace: 0
+URxvt.letterSpace: -1
 ! General config
 URxvt.scrollBar: false
 URxvt.cursorColor:white
