@@ -96,6 +96,7 @@ URxvt.cursorBlink:true
 URxvt.perl-ext-common:default,matcher,resize-font
 ! enter URL selection mode for keyboard
 URxvt.keysym.M-u: perl:matcher:select
+URxvt.keysym.M-Delete: perl:matcher:list
 URxvt.matcher.rend.0: Uline Bold fg8
 URxvt.matcher.button:1
 URxvt.url-launcher:/usr/bin/xdg-open
