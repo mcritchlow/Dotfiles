@@ -17,6 +17,9 @@ set autowrite     " Automatically :write before running commands
 set cursorline
 set relativenumber
 set hlsearch
+"clear search by hitting return
+nnoremap <CR> :noh<CR><CR>
+
 set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
 set ttimeoutlen=50  " Make Esc work faster
