@@ -83,6 +83,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
+Plug 'ap/vim-css-color'
 Plug 'pearofducks/ansible-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
