@@ -314,6 +314,8 @@ assign [class="URxvt" instance="w3m"] $ws2
 assign [class="Slack"] $ws3
 assign [class="Hexchat"] $ws4
 assign [class="Spotify"] $ws5
+# hack to get spotify to actually go to WS5
+for_window [class="Spotify"] move to workspace $ws5
 assign [class="URxvt" instance="calcurse"] $ws6
 assign [class="URxvt" instance="mutt"] $ws7
 assign [class="URxvt" instance="ncmpcpp"] $ws8
