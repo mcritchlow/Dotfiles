@@ -590,7 +590,7 @@ ascii_distro="auto"
 # Example:
 # ascii_colors=(distro)      - Ascii is colored based on Distro colors.
 # ascii_colors=(4 6 1 8 8 6) - Ascii is colored using these colors.
-ascii_colors=(13 9 9 9 9 9)
+ascii_colors=(4 5 5 5 5 5)
 # ascii_colors=(distro)
 
 # Bold ascii logo
@@ -599,7 +599,7 @@ ascii_colors=(13 9 9 9 9 9)
 # Default: 'on'
 # Values:  'on', 'off'
 # Flag:    --ascii_bold
-ascii_bold="on"
+ascii_bold="off"
 
 
 # Image Options
