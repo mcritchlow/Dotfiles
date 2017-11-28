@@ -103,6 +103,8 @@ bindsym $mod+Shift+f exec --no-startup-id $term -e ranger
 bindsym $mod+c exec --no-startup-id $term -name calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
 # start w3m browser
 bindsym $mod+b exec --no-startup-id $term -name w3m -e bash -i -c "w3m https://duckduckgo.com"
+# open blueman-manager GUI
+bindsym $mod+Shift+b exec --no-startup-id blueman-manager
 # start mutt
 bindsym $mod+Shift+m exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
 
@@ -309,6 +311,7 @@ gaps outer 10
 for_window [class="zoom"] floating enable
 for_window [class="etcher"] floating enable
 for_window [class="Solus-sc"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 # pin apps to workspaces
 assign [class="URxvt" instance="w3m"] $ws2
