@@ -1,26 +1,27 @@
 #!/bin/sh
 TMUX_PROJECT_PATH="$HOME/projects/ucsd/hydra-projects/hyrax"
+INTERNAL_TEST_APP="$HOME/projects/ucsd/hydra-projects/hyrax/.internal_test_app"
 tmux new-session -s hyrax -n vim -d
 tmux send-keys -t hyrax "cd $TMUX_PROJECT_PATH" C-m
 tmux send-keys -t hyrax 'vim' C-m
 tmux new-window -n solr-test -t hyrax
-tmux send-keys -t hyrax:2 "cd $TMUX_PROJECT_PATH" C-m
-tmux send-keys -t hyrax:2 'solr_wrapper -p 8985 -d solr/config/ --collection_name hydra-test' C-m
+tmux send-keys -t hyrax:2 "cd $INTERNAL_TEST_APP" C-m
+tmux send-keys -t hyrax:2 'solr_wrapper -v --config config/solr_wrapper_test.yml' C-m
 tmux new-window -n fedora-test -t hyrax
-tmux send-keys -t hyrax:3 "cd $TMUX_PROJECT_PATH" C-m
-tmux send-keys -t hyrax:3 'fcrepo_wrapper -p 8986 -d /tmp/fcrepo-test-data --no-jms' C-m
+tmux send-keys -t hyrax:3 "cd $INTERNAL_TEST_APP" C-m
+tmux send-keys -t hyrax:3 'fcrepo_wrapper -v --config config/fcrepo_wrapper_test.yml' C-m
 tmux new-window -n solr-dev -t hyrax
-tmux send-keys -t hyrax:4 "cd $TMUX_PROJECT_PATH" C-m
-tmux send-keys -t hyrax:4 'solr_wrapper -p 8983 -d solr/config/ --collection_name hydra-development' C-m
+tmux send-keys -t hyrax:4 "cd $INTERNAL_TEST_APP" C-m
+tmux send-keys -t hyrax:4 'solr_wrapper' C-m
 tmux new-window -n fedora-dev -t hyrax
-tmux send-keys -t hyrax:5 "cd $TMUX_PROJECT_PATH" C-m
-tmux send-keys -t hyrax:5 'fcrepo_wrapper -p 8984 -d /tmp/fcrepo-dev-data --no-jms' C-m
+tmux send-keys -t hyrax:5 "cd $INTERNAL_TEST_APP" C-m
+tmux send-keys -t hyrax:5 'fcrepo_wrapper' C-m
 tmux new-window -n redis -t hyrax
 tmux send-keys -t hyrax:6 "cd $TMUX_PROJECT_PATH" C-m
 tmux send-keys -t hyrax:6 'redis-server' C-m
 tmux new-window -n rails-server -t hyrax
-tmux send-keys -t hyrax:7 "cd $TMUX_PROJECT_PATH" C-m
-tmux send-keys -t hyrax:7 'rails s' C-m
+tmux send-keys -t hyrax:7 "cd $INTERNAL_TEST_APP" C-m
+tmux send-keys -t hyrax:7 'rails server' C-m
 tmux new-window -t horton
 tmux send-keys -t horton:8 "cd $TMUX_PROJECT_PATH" C-m
 tmux select-window -t hyrax:1
