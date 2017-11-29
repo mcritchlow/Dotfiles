@@ -179,6 +179,11 @@ augroup vimrcEx
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
+  " use blinking pipe bar (5) in insert mode
+  au InsertEnter * silent execute "!echo -en \<esc>[5 q"
+  " use block cursor (2) otherwise
+  au InsertLeave * silent execute "!echo -en \<esc>[2 q"
+
 augroup END
 
 " }}}
