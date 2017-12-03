@@ -10,6 +10,6 @@ surf:
   county: san-diego
 
 weather:
-  base: http://api.openweathermap.org/data/2.5/weather?q=
+  base: http://api.openweathermap.org/data/2.5/weather?
   zipcode: 92024,US
   apikey: your-api-key-here
