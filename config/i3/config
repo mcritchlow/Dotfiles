@@ -122,7 +122,7 @@ bindsym $mod+greater exec --no-startup-id mpc next
 bindsym $mod+Shift+greater exec --no-startup-id mpc next
 
 # Rofi (app/window launcher)
-bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun -show combi -modi combi
+bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun#ssh -show combi -modi combi
 
 # change focus
 focus_on_window_activation focus #focus newly opened window
