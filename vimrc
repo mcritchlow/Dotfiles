@@ -247,6 +247,9 @@ map <Leader>ct :!ctags -R .<CR>
 nnoremap <Space> za
 vnoremap <Space> za
 
+" Copy visual selection to clipboard
+vnoremap <C-c> :w !xclip -sel c<CR><CR>
+
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
