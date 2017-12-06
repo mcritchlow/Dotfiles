@@ -94,7 +94,7 @@ URxvt.scrollBar: false
 URxvt.cursorColor:white
 URxvt.cursorBlink:true
 ! Perl things
-URxvt.perl-ext-common:default,matcher,resize-font
+URxvt.perl-ext-common:default,selection-to-clipboard,matcher,resize-font
 ! enter URL selection mode for keyboard
 URxvt.keysym.M-u: perl:matcher:select
 URxvt.keysym.M-Delete: perl:matcher:list
