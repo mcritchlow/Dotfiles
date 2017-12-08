@@ -98,6 +98,7 @@ alias solup='sudo solbuild update unstable-x86_64'
 
 # Lastpass
 alias lplogin='lpass login --trust matt.critchlow@gmail.com'
+alias lploginwork='lpass login --trust mcritchlow@ucsd.edu'
 
 # Brightlight shortcuts
 alias br100='brightlight -p -w 100'
