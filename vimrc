@@ -357,12 +357,9 @@ vmap <leader>m :norm A # => <Esc>
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
 let g:airline_solarized_bg = 'dark'
-" hack to make lines glyph show in urxvt + hack(font)
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.linenr = '≡'
 
 " }}}
 " ============================================================================
