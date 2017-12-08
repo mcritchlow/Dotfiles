@@ -28,7 +28,7 @@ bind pager R group-reply
 
 ## Account info
 set imap_user="mcritchlow@ucsd.edu"
-set imap_pass=`lpass show --password 'Mail/UCSD Mail'`
+set imap_pass=`lpass show --password 'matt.critchlow@gmail.com/Mail/UCSD Mail'`
 set from=$imap_user
 set use_from=yes
 set realname='Matthew Critchlow'
