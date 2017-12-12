@@ -32,6 +32,7 @@ set shiftround
 set expandtab
 
 
+
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
@@ -48,7 +49,7 @@ set number
 set numberwidth=5
 
 " Folding
-set foldlevelstart=0
+set foldlevelstart=-1
 " Ruby
 let ruby_fold = 1
 let ruby_foldable_groups = 'class module def' "only fold higher level groups
@@ -127,6 +128,8 @@ colorscheme solarized8_high
 let g:solarized_term_italics = 1
 " other diff modes: bold, normal
 let g:solarized_diffmode = "high"
+" Italicize comments
+highlight Comment cterm=italic
 " toggle background btw light/dark
 call togglebg#map("<F5>")
 
