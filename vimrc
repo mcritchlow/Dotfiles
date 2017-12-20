@@ -169,7 +169,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile /tmp/mutt-* setlocal spell nolist
 
   " set space/tab settings for languages
-  autocmd FileType python set tabstop=4|set width=79|set shiftwidth=4|set expandtab|set autoindent
+  autocmd FileType python set tabstop=4|set textwidth=79|set shiftwidth=4|set expandtab|set autoindent
   autocmd FileType ruby set tabstop=2|set sw=2
   autocmd FileType html set tabstop=2|set sw=2
   autocmd FileType css set tabstop=2|set sw=2
