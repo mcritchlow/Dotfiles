@@ -271,10 +271,14 @@ bindsym $mod+Shift+o resize grow height 10 px or 10ppt
 
 
 ########## Styling from ~/.Xresources ##########
-set_from_resource $fg color7 #f0f0f0
+# But keep solarized dark colors, regardless..
+set $fg #eee8d5
+set $bg #073642
+set $bg1 #586e75
+# set_from_resource $fg color7 #f0f0f0
 set_from_resource $yellow color3 #f0f0f0
-set_from_resource $bg color0 #f0f0f0
-set_from_resource $bg1 color10 #f0f0f0
+# set_from_resource $bg color0 #f0f0f0
+# set_from_resource $bg1 color10 #f0f0f0
 set_from_resource $cyan color6 #f0f0f0
 set_from_resource $red color1 #f0f0f0
 
