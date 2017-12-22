@@ -67,6 +67,9 @@ mode "$mode_display" {
 }
 # Declare here the shortcut to bring the display selection menu
 bindsym $mod+x mode "$mode_display"
+bindsym $mod+Shift+x move container to output right
+# bindsym $mod+Shift+y move container to output left
+
 
 set $Locker $HOME/.config/i3/scripts/lock.sh && sleep 1
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
