@@ -273,7 +273,6 @@ set_from_resource $red color1 #f0f0f0
 bar {
         status_command i3blocks
         position bottom
-        # TODO: adjust height and font sizes for hidpi
         font pango:Noto Sans, FontAwesome 13
         # height 50
 
