@@ -372,9 +372,6 @@ vmap <leader>m :norm A # => <Esc>
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
 let g:airline_solarized_bg = 'light'
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
 
 " }}}
 " ============================================================================
