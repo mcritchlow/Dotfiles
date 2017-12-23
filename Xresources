@@ -90,10 +90,11 @@ URxvt.bolditalicFont:   xft:Hack:size=13:style=Bold Italic
 URxvt.letterSpace: -1
 ! General config
 URxvt.scrollBar: false
-URxvt.cursorColor:white
 URxvt.cursorBlink:true
 ! Perl things
-URxvt.perl-ext-common:default,selection-to-clipboard,matcher,resize-font
+URxvt.perl-ext-common:default,selection-to-clipboard,matcher,resize-font,keyboard-select
+! enter keyboard select (copy/paste) mode
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
 ! enter URL selection mode for keyboard
 URxvt.keysym.M-u: perl:matcher:select
 URxvt.keysym.M-Delete: perl:matcher:list
