@@ -37,7 +37,7 @@ Plug 'vim-scripts/ZoomWin' " window to full screen <c-w>o
 Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
 Plug 'tpope/vim-markdown' "add folding to markdown files
 Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
-
+Plug 'wincent/loupe' "better search highlighting and defaults
 " }}}
 " ============================================================================
 " Theming {{{
