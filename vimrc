@@ -218,6 +218,16 @@ inoremap <S-Tab> <c-n>
 
 " }}}
 " ============================================================================
+" Snippets and such {{{
+" ============================================================================
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips/"
+" let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+" }}}
+" ============================================================================
 " Markdown Preview {{{
 " ============================================================================
 " pandoc , markdown

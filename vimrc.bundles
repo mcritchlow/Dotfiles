@@ -23,6 +23,11 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 Plug 'janko-m/vim-test'
 Plug 'scrooloose/syntastic'
 
+" ============================================================================
+" Snippets and such {{{
+" ============================================================================
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " }}}
 " ============================================================================
 " General Nice Things {{{
