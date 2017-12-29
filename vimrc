@@ -136,9 +136,6 @@ endif
 set background=light
 " Italicize comments
 highlight Comment cterm=italic
-" toggle background btw light/dark
-call togglebg#map("<F5>")
-
 " }}}
 " ============================================================================
 " Autocommands {{{
@@ -218,18 +215,6 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
-
-" }}}
-" ============================================================================
-" Solarized Theme Toggle {{{
-" ============================================================================
-" :ToggleBG will switch main theme btw light/dark, but not vim-airline. This does both.
-function! ToggleSolarizedTheme()
-    let g:airline_solarized_bg = ( g:airline_solarized_bg == "dark" ? "light" : "dark" )
-    :ToggleBG
-    :AirlineRefresh
-endfunction
-nnoremap <F6> :call ToggleSolarizedTheme()<cr>
 
 " }}}
 " ============================================================================
@@ -366,13 +351,21 @@ vmap <leader>m :norm A # => <Esc>
 
 " }}}
 " ============================================================================
-" Airline {{{
+" Lightline Statusline {{{
 " ============================================================================
-" install powerline fonts via https://github.com/powerline/fonts
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
-let g:airline_solarized_bg = 'light'
-
+" showing git branch depends on fugitive
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [[ 'mode', 'paste' ],
+      \            [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+" don't need to show line w/ ---INSERT---, etc.
+set noshowmode
 " }}}
 " ============================================================================
 " Ansible {{{
