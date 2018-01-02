@@ -126,10 +126,10 @@ command=$HOME/.config/i3blocks/scripts/weather
 markup=pango
 interval=1800
 
-[surf]
-command=$HOME/.config/i3blocks/scripts/surf
-# markup=pango
-interval=1800
+# [surf]
+# command=$HOME/.config/i3blocks/scripts/surf
+# # markup=pango
+# interval=1800
 
 
 # Date Time
