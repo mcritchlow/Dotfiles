@@ -22,7 +22,7 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 " ============================================================================
 Plug 'janko-m/vim-test'
 Plug 'scrooloose/syntastic'
-
+" }}}
 " ============================================================================
 " Snippets and such {{{
 " ============================================================================
@@ -49,7 +49,6 @@ Plug 'wincent/loupe' "better search highlighting and defaults
 " ============================================================================
 Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
-Plug 'junegunn/limelight.vim'
 Plug 'itchyny/lightline.vim'
 
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
