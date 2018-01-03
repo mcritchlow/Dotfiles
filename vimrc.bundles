@@ -47,7 +47,6 @@ Plug 'wincent/loupe' "better search highlighting and defaults
 " ============================================================================
 " Theming {{{
 " ============================================================================
-Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 

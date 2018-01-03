@@ -86,7 +86,7 @@ alias gst='git status'
 alias gv='vim +GV +"autocmd BufWipeout <buffer> qall"'
 
 # Tmux
-alias tmux="TERM=xterm-256color tmux"
+# alias tmux="TERM=xterm-256color tmux"
 alias tls="tmux ls"
 alias td="tmux detach"
 

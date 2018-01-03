@@ -120,19 +120,13 @@ filetype plugin indent on
 " Load theme {{{
 " ============================================================================
 syntax enable
-if $COLORTERM == "truecolor" || $TMUX != ""
-  set termguicolors
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  colorscheme solarized8_high
-  let g:solarized_term_italics = 1
-  " other diff modes: bold, normal
-  let g:solarized_diffmode = "high"
-else
-  set t_Co=256
-  let g:solarized_termcolors=256
-  colorscheme solarized
-endif
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+colorscheme solarized8_high
+let g:solarized_term_italics = 1
+" other diff modes: bold, normal
+let g:solarized_diffmode = "high"
 set background=light
 " Italicize comments
 highlight Comment cterm=italic
