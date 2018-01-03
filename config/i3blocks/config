@@ -115,7 +115,7 @@ interval=30
 
 # Solus Packages for download
 [packages]
-label=PAC
+label=PKG
 # label=
 command=$HOME/.config/i3blocks/scripts/packages
 interval=1800
