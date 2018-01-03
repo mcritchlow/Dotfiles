@@ -96,7 +96,7 @@ bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mu
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id gnome-terminal
+bindsym $mod+Return exec --no-startup-id $term
 # start ranger
 bindsym $mod+Shift+f exec --no-startup-id $term -e ranger
 # start calcurse
@@ -185,25 +185,43 @@ bindsym $mod+u [instance="dropdown"] scratchpad show; move position center
 # bindsym $mod+d focus child
 
 # workspace labels
-# terminal
-set $ws1 "1: "
+set $ws1 "1"
 # browser
-set $ws2 "2: "
+set $ws2 "2"
 # slack
-set $ws3 "3: "
+set $ws3 "3"
 # hexchat
-set $ws4 "4: "
+set $ws4 "4"
 # spotify
-set $ws5 "5: "
+set $ws5 "5"
 # calendar
-set $ws6 "6: "
+set $ws6 "6"
 # email
-set $ws7 "7: "
+set $ws7 "7"
 # music
-set $ws8 "8: "
+set $ws8 "8"
 # gimp
-set $ws9 "9: "
+set $ws9 "9"
 set $ws10 "10"
+# # terminal
+# set $ws1 "1: "
+# # browser
+# set $ws2 "2: "
+# # slack
+# set $ws3 "3: "
+# # hexchat
+# set $ws4 "4: "
+# # spotify
+# set $ws5 "5: "
+# # calendar
+# set $ws6 "6: "
+# # email
+# set $ws7 "7: "
+# # music
+# set $ws8 "8: "
+# # gimp
+# set $ws9 "9: "
+# set $ws10 "10"
 
 # custom workspace gaps
 workspace $ws5 gaps inner 30
