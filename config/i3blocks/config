@@ -29,8 +29,7 @@ separator_block_width=15
 markup=none
 
 [MPD]
-# label=
-label=
+# label=
 command=$HOME/.config/i3blocks/scripts/music
 color=#00FF00
 interval=5
@@ -40,8 +39,8 @@ interval=5
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-# label=♪
-label=
+label=♪
+# label=
 instance=Master
 #instance=PCM
 # interval=once
@@ -68,8 +67,8 @@ signal=10
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-# label=HOME
-label=
+label=HD
+# label=
 instance=/
 interval=30
 
@@ -116,8 +115,8 @@ interval=30
 
 # Solus Packages for download
 [packages]
-# label=PAC
-label=
+label=PAC
+# label=
 command=$HOME/.config/i3blocks/scripts/packages
 interval=1800
 
