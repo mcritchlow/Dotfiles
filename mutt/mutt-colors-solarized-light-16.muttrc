@@ -33,7 +33,7 @@ color attachment    black           default
 color search        brightmagenta   default
 #color status        J_black         J_status
 color status        brightblue      default
-color indicator     brightwhite     yellow
+color indicator     brightblack     yellow
 color tree          yellow          default                                     # arrow in threads
 
 # basic monocolor screen
@@ -68,7 +68,7 @@ color index         red             default         "~F~p"                      
 color index         red             default         "~N~F"                      # new flagged messages
 color index         red             default         "~N~F~p"                    # new flagged messages to me
 color index         red             default         "~U~F~p"                    # new flagged messages to me
-color index         white           red             "~D"                        # deleted messages
+color index         brightblack           red             "~D"                        # deleted messages
 color index         brightgreen     default         "~v~(!~N)"                  # collapsed thread with no unread
 color index         yellow          default         "~v~(~N)"                   # collapsed thread with some unread
 color index         green           default         "~N~v~(~N)"                 # collapsed thread with unread parent
