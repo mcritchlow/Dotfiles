@@ -76,6 +76,13 @@ alias cd..='cd ..'
 alias l='ls -alF --color=auto'
 alias ll='ls -l --color=auto'
 
+# projects
+alias gd="cd ~/projects/personal/dotfiles/"
+alias gdv="cd ~/projects/personal/dotfiles/ && vim"
+# project bases
+alias gw="cd ~/projects/ucsd/"
+alias gp="cd ~/projects/personal/"
+
 # operational
 alias vi='vim'
 alias vi2='vi -O2 '
@@ -153,9 +160,9 @@ _parent_dirs() {
 
 complete -F _parent_dirs -o default -o bashdefault ..cd
 
-gd() {
-  [ "$1" ] && "cd *$1*" || return
-}
+# gd() {
+#   [ "$1" ] && "cd *$1*" || return
+# }
 
 csbuild() {
   [ $# -eq 0 ] && return
