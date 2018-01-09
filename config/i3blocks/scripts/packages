@@ -1,3 +1,8 @@
 #!/bin/bash
 sudo eopkg ur &>/dev/null
-eopkg list-upgrades | sed -e '/No packages*/ { !N; d; }' | wc -l
+pkg_count=$(eopkg list-upgrades | sed -e '/No packages*/ { !N; d; }' | wc -l)
+if [ "$pkg_count" == 0 ]; then
+  echo "PKG $pkg_count"
+else
+  echo "<span foreground='#ffffff' background='#b58900'>PKG $pkg_count</span>"
+fi

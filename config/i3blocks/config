@@ -116,15 +116,16 @@ interval=30
 
 # Solus Packages for download
 [packages]
-label=PKG
+# label=PKG
 # label=
 command=$HOME/.config/i3blocks/scripts/packages
-interval=1800
-
-[weather]
-command=$HOME/.config/i3blocks/scripts/weather
 markup=pango
 interval=1800
+
+# [weather]
+# command=$HOME/.config/i3blocks/scripts/weather
+# markup=pango
+# interval=1800
 
 # [surf]
 # command=$HOME/.config/i3blocks/scripts/surf
