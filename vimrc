@@ -18,7 +18,7 @@ set cursorline
 set relativenumber
 set hlsearch
 "clear search by hitting return
-nnoremap <CR> :noh<CR><CR>
+nnoremap <CR> :noh<CR>
 
 set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
