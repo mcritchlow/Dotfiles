@@ -51,6 +51,27 @@ for_window [instance="dropdown"] move scratchpad
 exec --no-startup-id $term -name dropdown -e bash -i -c "tmux new-session -s dropdown"
 
 ########## Keybindings ##########
+
+## Manual management of external displays
+# from https://wiki.archlinux.org/index.php/I3#External_displays_manual_management
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (l) LAP ON, (h) HDMI ON, (d) DP ON, (y) HDMI OFF, (z) DP OFF, (x) LAP OFF
+mode "$mode_display" {
+    bindsym l exec --no-startup-id xrandr --output eDP-1-1 --auto, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1-1, mode "default"
+    bindsym d exec --no-startup-id xrandr --output DP-6 --auto --right-of eDP-1-1, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI-1 --auto --off, mode "default"
+    bindsym z exec --no-startup-id xrandr --output DP-6 --auto --off, mode "default"
+    bindsym x exec --no-startup-id xrandr --output eDP-1-1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+x mode "$mode_display"
+bindsym $mod+Shift+x move container to output right
+# bindsym $mod+Shift+y move container to output left
 set $Locker $HOME/.config/i3/scripts/lock.sh && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
