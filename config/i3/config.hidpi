@@ -88,7 +88,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+s mode "$mode_system"
+bindsym $mod+Shift+Delete mode "$mode_system"
 
 ### Backlight (is failing on Thinkpad) ###
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/bin/brightlight -p -i 10
@@ -116,24 +116,27 @@ bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mu
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+## Applications
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $term
 # start ranger
 bindsym $mod+Shift+f exec --no-startup-id $term -e ranger
-# start calcurse
-bindsym $mod+c exec --no-startup-id $term -name calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
-# start w3m browser
-bindsym $mod+b exec --no-startup-id $term -name w3m -e bash -i -c "w3m https://duckduckgo.com"
-# open blueman-manager GUI
-bindsym $mod+Shift+b exec --no-startup-id blueman-manager
-# start mutt
-bindsym $mod+Shift+m exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
 
-# kill focused window
-bindsym $mod+Shift+q kill
+# start chat apps
+bindsym $mod+c exec --no-startup-id /usr/bin/slack
+bindsym $mod+Shift+c exec --no-startup-id hexchat
+
+# start browsers
+bindsym $mod+b exec --no-startup-id $term -name w3m -e bash -i -c "w3m https://duckduckgo.com"
+bindsym $mod+Shift+b exec --no-startup-id /usr/bin/firefox
+
+# start mail/calendar stuff
+bindsym $mod+e exec --no-startup-id $term -name calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
+bindsym $mod+Shift+e exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
 
 # music
 bindsym $mod+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp -s media_library"
+bindsym $mod+Shift+m exec --no-startup-id spotify
 bindsym $mod+v exec pavucontrol
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym $mod+bracketleft exec --no-startup-id mpc seek +10
@@ -148,8 +151,12 @@ bindsym $mod+Shift+greater exec --no-startup-id mpc next
 # Rofi (app/window launcher)
 bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun#ssh -show combi -modi combi
 
+# kill focused window
+bindsym $mod+Shift+q kill
+
 # change focus
-focus_on_window_activation focus #focus newly opened window
+# focus newly opened window
+focus_on_window_activation focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -173,21 +180,22 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-bindsym $mod+apostrophe split h
-
-# split in vertical orientation
-# bindsym $mod+v split v
-bindsym $mod+slash split v
+# toggle split (horizontal, vertical)
+bindsym $mod+t split toggle
+# # bindsym $mod+h split h
+# bindsym $mod+apostrophe split h
+#
+# # split in vertical orientation
+# # bindsym $mod+v split v
+# bindsym $mod+slash split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -282,11 +290,9 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resizing windows
 bindsym $mod+Shift+y resize shrink width 10 px or 10ppt
@@ -345,9 +351,17 @@ for_window [title="Preferences$"] floating enable
 
 # smart_gaps on
 smart_borders on
-gaps inner 10
-gaps outer 10
+set $gap_inner 10
+set $gap_outer 10
+gaps inner $gap_inner
+gaps outer $gap_outer
 
+# toggle gaps
+bindsym $mod+g gaps inner current set $gap_inner; gaps outer current set $gap_outer
+bindsym $mod+Shift+g gaps inner current set 0; gaps outer current set 0
+# adjust gaps
+bindsym $mod+s gaps inner current plus 5; gaps outer current plus 5
+bindsym $mod+Shift+s gaps inner current minus 5; gaps outer current minus 5
 
 ########## local customization ##########
 for_window [class="zoom"] floating enable
