@@ -44,17 +44,22 @@ if [ "$UID" = "0" ]; then
     endchar="#"
 fi
 
-FG="\[\033[38;5;033m\]"
-BG="\[\033[38;5;003m\]"
-AT="\[\033[38;5;245m\]"
-HCOLOR="\[\033[38;5;245m\]"
+FG="\\[\\033[38;5;033m\\]"
+BG="\\[\\033[38;5;003m\\]"
+AT="\\[\\033[38;5;245m\\]"
+HCOLOR="\\[\\033[38;5;245m\\]"
 # git prompt settings
 GIT_PS1_SHOWUPSTREAM="verbose"
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_DESCRIBE_STYLE="branch"
 GIT_PS1_SHOWCOLORHINTS=true
 
-PROMPT_COMMAND="__git_ps1 '${FG}\u${AT}@${HCOLOR}\h:${BG}\w' ' ${FG}$endchar \[\e[0m\]'"
+# don't show hostname on local machine
+if [ "$HOSTNAME" = "solus" ]; then
+  PROMPT_COMMAND="__git_ps1 '${BG}\\w' ' ${FG}$endchar \\[\\e[0m\\]'"
+else
+  PROMPT_COMMAND="__git_ps1 '${FG}\\u${AT}@${HCOLOR}\\h:${BG}\\w' ' ${FG}$endchar \\[\\e[0m\\]'"
+fi
 
 unset FG
 unset BG
