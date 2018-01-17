@@ -2,8 +2,8 @@ eval "$(ssh-agent -s)"
 # start urxvt daemon
 urxvtd -q -f -o
 
-# for now, simple check for thinkpad
-if hostname | grep 'solus-thinkpad' > /dev/null; then
+# for now, simple check for thinkpad screen
+if xrandr --listmonitors | grep 'LVDS-1' > /dev/null; then
   xrdb -merge "$HOME/.Xresources"
   exec dbus-launch --sh-syntax --exit-with-session i3
 else
