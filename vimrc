@@ -18,7 +18,7 @@ set cursorline
 set relativenumber
 set hlsearch
 "clear search by hitting return
-nnoremap <CR> :noh<CR>
+" nnoremap <CR> :noh<CR>
 
 set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
@@ -305,25 +305,20 @@ let g:markdown_fenced_languages = [
 
 " }}}
 " ============================================================================
-" Syntastic {{{
+" Ale (linters) {{{
 " ============================================================================
-" Folding
-" syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_sh_checkers = ['shellcheck']
-let g:syntastic_ansible_checkers = ['ansible_lint']
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
+" Shorten error/warning flags
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+" Disable or enable loclist at the bottom of vim
+let g:ale_open_list = 0
+let g:ale_loclist = 0
 
+" let g:ale_linters = {
+"       \  'ruby':['rubocop'],
+"       \  'python': ['pylint'],
+"       \  'java': ['javac']
+"       \ }
 " }}}
 " ============================================================================
 " Vim Test {{{
