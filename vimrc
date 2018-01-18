@@ -74,6 +74,16 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+" set cursor shape
+" insert mode = bar blinking
+" normal mode = block
+if exists('$TMUX')
+  let &t_SI = "\ePtmux;\e\e[5 q\e\\"
+  let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+else
+  let &t_SI = "\e[5 q"
+  let &t_EI = "\e[2 q"
+endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -185,11 +195,6 @@ augroup vimrcEx
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
-
-  " use blinking pipe bar (5) in insert mode
-  au InsertEnter * silent execute "!echo -en \<esc>[5 q"
-  " use block cursor (2) otherwise
-  au InsertLeave * silent execute "!echo -en \<esc>[2 q"
 
 augroup END
 
