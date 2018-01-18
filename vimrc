@@ -319,11 +319,13 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_open_list = 0
 let g:ale_loclist = 0
 
-" let g:ale_linters = {
-"       \  'ruby':['rubocop'],
-"       \  'python': ['pylint'],
-"       \  'java': ['javac']
-"       \ }
+let g:ale_linters = {
+      \  'ruby':['rubocop'],
+      \  'python': ['pylint'],
+      \  'java': ['javac'],
+      \  'shell': ['shellcheck'],
+      \  'ansible': ['ansible-lint']
+      \ }
 " }}}
 " ============================================================================
 " Vim Test {{{
