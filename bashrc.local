@@ -108,6 +108,7 @@ alias td="tmux detach"
 alias fetchYml="~/projects/personal/solus/common/Scripts/yauto.py"
 alias updatePackage='/usr/share/ypkg/yupdate.py'
 alias solup='sudo solbuild update unstable-x86_64'
+alias update-packages='sudo eopkg up && snap refresh'
 
 # Lastpass
 alias lplogin='lpass login --trust matt.critchlow@gmail.com'
