@@ -136,7 +136,7 @@ bindsym $mod+Shift+e exec --no-startup-id $term -name mutt -e bash -i -c ~/.conf
 
 # music
 bindsym $mod+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp -s media_library"
-bindsym $mod+Shift+m exec --no-startup-id spotify
+bindsym $mod+Shift+m exec --no-startup-id spotify --force-device-scale-factor=2
 bindsym $mod+v exec pavucontrol
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym $mod+bracketleft exec --no-startup-id mpc seek +10
