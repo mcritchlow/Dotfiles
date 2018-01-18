@@ -123,7 +123,7 @@ bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Shift+f exec --no-startup-id $term -e ranger
 
 # start chat apps
-bindsym $mod+c exec --no-startup-id /usr/bin/slack
+bindsym $mod+c exec --no-startup-id /snap/bin/slack
 bindsym $mod+Shift+c exec --no-startup-id hexchat
 
 # start browsers
