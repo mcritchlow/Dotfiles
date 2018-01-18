@@ -196,6 +196,8 @@ augroup vimrcEx
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
+  " Associate ansible filetype to things in a /ops folder for a project
+  autocmd BufRead,BufNewFile */ops/*.yml set filetype=ansible
 augroup END
 
 " }}}
