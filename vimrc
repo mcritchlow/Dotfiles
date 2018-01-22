@@ -159,6 +159,7 @@ augroup vimrcEx
 
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.markdown set filetype=markdown
   autocmd BufNewFile,BufRead *.html.erb set filetype=html
   autocmd BufNewFile,BufRead *.css.scss set filetype=css
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
@@ -176,6 +177,7 @@ augroup vimrcEx
   autocmd FileType html set tabstop=2|set sw=2
   autocmd FileType css set tabstop=2|set sw=2
   autocmd FileType javascript set tabstop=2|set sw=2
+  autocmd FileType markdown set tabstop=4|set sw=4|set textwidth=80
 
   " Enable spellchecking for LaTex
   autocmd FileType tex setlocal spell
@@ -185,9 +187,6 @@ augroup vimrcEx
 
   " Use emoji complete for Markdown
   autocmd FileType markdown setlocal completefunc=emoji#complete
-
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
   " Automatically wrap at 72 characters and spell check git commit messages
   autocmd FileType gitcommit setlocal textwidth=72
