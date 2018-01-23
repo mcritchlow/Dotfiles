@@ -125,16 +125,16 @@ bindsym $mod+c exec --no-startup-id /snap/bin/slack
 bindsym $mod+Shift+c exec --no-startup-id hexchat
 
 # start browsers
-bindsym $mod+b exec --no-startup-id $term -name w3m -e bash -i -c "w3m https://duckduckgo.com"
-bindsym $mod+Shift+b exec --no-startup-id /usr/bin/firefox
+bindsym $mod+Shift+b exec --no-startup-id $term -name w3m -e bash -i -c "w3m https://duckduckgo.com"
+bindsym $mod+b exec --no-startup-id /usr/bin/firefox
 
 # start mail/calendar stuff
-bindsym $mod+e exec --no-startup-id $term -name calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
-bindsym $mod+Shift+e exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
+bindsym $mod+Shift+e exec --no-startup-id $term -name calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
+bindsym $mod+e exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
 
 # music
-bindsym $mod+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp -s media_library"
-bindsym $mod+Shift+m exec --no-startup-id spotify
+bindsym $mod+Shift+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp -s media_library"
+bindsym $mod+m exec --no-startup-id spotify
 bindsym $mod+v exec pavucontrol
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym $mod+bracketleft exec --no-startup-id mpc seek +10
