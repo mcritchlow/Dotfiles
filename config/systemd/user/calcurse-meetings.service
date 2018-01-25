@@ -1,0 +1,8 @@
+[Unit]
+Description=Calcurse Meeting Notification Script
+
+[Service]
+ExecStart=/home/mcritchlow/.bin/calcurse-notify
+
+[Install]
+WantedBy=default.target
