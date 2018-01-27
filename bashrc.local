@@ -30,9 +30,6 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - )"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
-# let systemd user services see modified path
-systemctl --user import-environment PATH
-
 # enable pandoc bash completion
 eval "$(pandoc --bash-completion)"
 

@@ -1,8 +1,9 @@
 [Unit]
 Description=Calcurse Meeting Notification Script
+After=graphical.target
 
 [Service]
-ExecStart=/home/mcritchlow/.bin/calcurse-notify
+ExecStart=/home/mcritchlow/.rbenv/shims/ruby /home/mcritchlow/.bin/calcurse-notify
 
 [Install]
 WantedBy=default.target
