@@ -91,10 +91,10 @@ Xft.rgba: rgb
 ! URxvt.background:       [70]#000000
 ! Fonts
 URxvt.depth:   32
-URxvt.font:   xft:Hack:size=13
-URxvt.boldFont:   xft:Hack:size=13:style=Bold
-URxvt.italicFont:   xft:Hack:size=13:style=Italic
-URxvt.bolditalicFont:   xft:Hack:size=13:style=Bold Italic
+URxvt.font:   xft:mono:size=13
+URxvt.boldFont:   xft:mono:size=13:style=Bold
+URxvt.italicFont:   xft:mono:size=13:style=Italic
+URxvt.bolditalicFont:   xft:mono:size=13:style=Bold Italic
 URxvt.letterSpace: -1
 ! General config
 URxvt.scrollBar: false
@@ -113,5 +113,5 @@ URxvt.saveLines: 100000
 
 ! Rofi
 rofi.color-enabled: true
-rofi.font: monospace 14
+rofi.font: mono 14
 rofi.theme: gruvbox-light
