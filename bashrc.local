@@ -122,6 +122,10 @@ alias br25='brightlight -p -w 25'
 # Music (mpd + mpc)
 alias mpcPlaylistReset='mpc update --wait && mpc clear && mpc ls | mpc add'
 
+# Cowsay + Ansible
+alias ansible-playbook-random='ANSIBLE_COW_SELECTION=random ansible-playbook'
+alias ansible-playbook-tux='ANSIBLE_COW_SELECTION=tux ansible-playbook'
+
 # Shortcut functions
 # --------------------------------------------------------------------
 
