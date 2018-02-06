@@ -115,3 +115,4 @@ URxvt.saveLines: 100000
 rofi.color-enabled: true
 rofi.font: mono 14
 rofi.theme: gruvbox-light
+rofi.terminal: urxvtc

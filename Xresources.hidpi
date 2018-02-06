@@ -118,3 +118,4 @@ rofi.dpi: 192
 rofi.font: mono 16
 rofi.color-enabled: true
 rofi.theme: gruvbox-light
+rofi.terminal: urxvtc
