@@ -247,6 +247,9 @@ map <Leader>ct :!ctags -R .<CR>
 nnoremap <Space> za
 vnoremap <Space> za
 
+" Open urlview on current file
+nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
+
 " Copy visual selection to clipboard
 vnoremap <C-c> :w !xclip -sel c<CR><CR>
 
