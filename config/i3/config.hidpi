@@ -252,16 +252,6 @@ set $ws10 "10"
 # set $ws9 "9: "
 # set $ws10 "10"
 
-# custom workspace gaps
-workspace $ws5 gaps inner 30
-workspace $ws5 gaps outer 100
-workspace $ws6 gaps inner 30
-workspace $ws6 gaps outer 100
-workspace $ws7 gaps inner 30
-workspace $ws7 gaps outer 100
-workspace $ws8 gaps inner 30
-workspace $ws8 gaps outer 100
-
 # workspace bindings
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
