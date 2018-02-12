@@ -11,7 +11,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $term urxvtc
+set $term st
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -37,7 +37,7 @@ for_window [instance="math"] resize set 1600 600
 # for_window [instance="math"] resize set 30 ppt 30 ppt
 for_window [instance="math"] move position center
 for_window [instance="math"] move scratchpad
-exec --no-startup-id $term -fn "xft:mono:size=24" -name math -e R -q
+exec --no-startup-id $term -name math -f mono:size=24 -e R -q
 
 # Dropdown tmux window for background scripts.
 # Primary use case is package updates.
@@ -48,7 +48,7 @@ for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] resize set 1600 800
 for_window [instance="dropdown"] move position center
 for_window [instance="dropdown"] move scratchpad
-exec --no-startup-id $term -name dropdown -e bash -i -c "tmux new-session -s dropdown"
+exec --no-startup-id $term -n dropdown -e bash -i -c "tmux new-session -s dropdown"
 
 ########## Keybindings ##########
 
@@ -127,15 +127,15 @@ bindsym $mod+c exec --no-startup-id /snap/bin/slack
 bindsym $mod+Shift+c exec --no-startup-id hexchat
 
 # start browsers
-bindsym $mod+Shift+b exec --no-startup-id $term -name w3m -e bash -i -c "w3m https://duckduckgo.com"
+bindsym $mod+Shift+b exec --no-startup-id $term -n w3m -e bash -i -c "w3m https://duckduckgo.com"
 bindsym $mod+b exec --no-startup-id /usr/bin/firefox
 
 # start mail/calendar stuff
-bindsym $mod+Shift+e exec --no-startup-id $term -name calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
-bindsym $mod+e exec --no-startup-id $term -name mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
+bindsym $mod+Shift+e exec --no-startup-id $term -n calcurse -e bash -i -c "calcurse -D $HOME/.config/calcurse/"
+bindsym $mod+e exec --no-startup-id $term -n mutt -e bash -i -c ~/.config/i3/scripts/mail.sh
 
 # music
-bindsym $mod+Shift+m exec --no-startup-id $term -name ncmpcpp -e bash -i -c "ncmpcpp -s media_library"
+bindsym $mod+Shift+m exec --no-startup-id $term -n ncmpcpp -e bash -i -c "ncmpcpp -s media_library"
 bindsym $mod+m exec --no-startup-id spotify --force-device-scale-factor=2
 bindsym $mod+v exec pavucontrol
 bindsym $mod+p exec --no-startup-id mpc toggle
@@ -370,15 +370,15 @@ for_window [class="Solus-sc"] floating enable
 for_window [class="Blueman-manager"] floating enable
 
 # pin apps to workspaces
-assign [class="URxvt" instance="w3m"] $ws2
+assign [class="st-256color" instance="w3m"] $ws2
 assign [class="Slack"] $ws3
 assign [class="Hexchat"] $ws4
 assign [class="Spotify"] $ws5
 # hack to get spotify to actually go to WS5
 for_window [class="Spotify"] move to workspace $ws5
-assign [class="URxvt" instance="calcurse"] $ws6
-assign [class="URxvt" instance="mutt"] $ws7
-assign [class="URxvt" instance="ncmpcpp"] $ws8
+assign [class="st-256color" instance="calcurse"] $ws6
+assign [class="st-256color" instance="mutt"] $ws7
+assign [class="st-256color" instance="ncmpcpp"] $ws8
 for_window [title="GIMP Startup"] move workspace $ws9
 for_window [class="Gimp"] move workspace $ws9
 for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt

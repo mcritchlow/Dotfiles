@@ -9,8 +9,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 eval "$(ssh-agent -s)"
-# start urxvt daemon
-urxvtd -q -f -o
 
 # for now, simple check for Lenovo..
 if dmesg | grep 'Lenovo' > /dev/null; then
