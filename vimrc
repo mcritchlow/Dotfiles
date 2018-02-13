@@ -247,6 +247,10 @@ map <Leader>ct :!ctags -R .<CR>
 nnoremap <Space> za
 vnoremap <Space> za
 
+" persist current file quickly
+nnoremap <leader>p <esc>:w<CR>
+vnoremap <leader>p <esc>:w<CR>
+
 " Open urlview on current file
 nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
 
