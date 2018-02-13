@@ -35,9 +35,8 @@ for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 1600 600
 # TODO: change to percentage once next i3 version ships
 # for_window [instance="math"] resize set 30 ppt 30 ppt
-for_window [instance="math"] move position center
 for_window [instance="math"] move scratchpad
-exec --no-startup-id $term -name math -f mono:size=24 -e R -q
+exec --no-startup-id $term -n math -f mono:size=24 -e R -q
 
 # Dropdown tmux window for background scripts.
 # Primary use case is package updates.
@@ -46,7 +45,6 @@ for_window [instance="dropdown"] floating enable
 # TODO: change to percentage once next i3 version ships
 # for_window [instance="math"] resize set 30 ppt 30 ppt
 for_window [instance="dropdown"] resize set 1600 800
-for_window [instance="dropdown"] move position center
 for_window [instance="dropdown"] move scratchpad
 exec --no-startup-id $term -n dropdown -e bash -i -c "tmux new-session -s dropdown"
 
