@@ -1,6 +1,6 @@
 # vim:ft=cfg
 [global]
-    font = Clear Sans 13
+    font = Noto Sans 13
 
     # allow a small subset of html markup:
     # <b>bold</b>
