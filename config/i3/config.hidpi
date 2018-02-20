@@ -57,9 +57,9 @@ set $mode_display Ext Screen (l) LAP ON, (h) HDMI ON, (d) DP ON, (y) HDMI OFF, (
 mode "$mode_display" {
     bindsym l exec --no-startup-id xrandr --output eDP-1-1 --auto, mode "default"
     bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1-1, mode "default"
-    bindsym d exec --no-startup-id xrandr --output DP-6 --auto --right-of eDP-1-1, mode "default"
+    bindsym d exec --no-startup-id xrandr --output DP-1 --auto --right-of eDP-1-1, mode "default"
     bindsym y exec --no-startup-id xrandr --output HDMI-1 --auto --off, mode "default"
-    bindsym z exec --no-startup-id xrandr --output DP-6 --auto --off, mode "default"
+    bindsym z exec --no-startup-id xrandr --output DP-1 --auto --off, mode "default"
     bindsym x exec --no-startup-id xrandr --output eDP-1-1 --auto --off, mode "default"
 
     # back to normal: Enter or Escape
