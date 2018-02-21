@@ -138,7 +138,7 @@ bindsym $mod+v exec pavucontrol
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym $mod+bracketleft exec --no-startup-id mpc seek +10
 bindsym $mod+Shift+bracketleft exec --no-startup-id mpc seek +120
-bindsym $mod+bracketright exec $dec exec --no-startup-id mpc seek -10
+bindsym $mod+bracketright exec --no-startup-id mpc seek -10
 bindsym $mod+Shift+bracketright exec --no-startup-id mpc seek -120
 bindsym $mod+less exec --no-startup-id mpc prev
 bindsym $mod+Shift+less exec --no-startup-id mpc seek 0%
