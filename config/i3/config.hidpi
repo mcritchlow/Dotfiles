@@ -343,8 +343,10 @@ for_window [title="Preferences$"] floating enable
 smart_borders on
 set $gap_inner 10
 set $gap_outer 10
-gaps inner $gap_inner
-gaps outer $gap_outer
+# gaps inner $gap_inner
+# gaps outer $gap_outer
+gaps inner 0
+gaps outer 0
 
 # toggle gaps
 bindsym $mod+g gaps inner current set $gap_inner; gaps outer current set $gap_outer
