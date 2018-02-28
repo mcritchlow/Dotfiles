@@ -31,7 +31,8 @@ eval "$(rbenv init - )"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # enable pandoc bash completion
-eval "$(pandoc --bash-completion)"
+# commented out because SLOW af
+# eval "$(pandoc --bash-completion)"
 
 # [ -z "$TMUX" ] && export TERM=xterm-256color
 eval "$(dircolors ~/.dir_colors)"
