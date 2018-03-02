@@ -114,5 +114,5 @@ URxvt.saveLines: 100000
 ! Rofi
 rofi.color-enabled: true
 rofi.font: mono 14
-rofi.theme: gruvbox-light
+rofi.theme: solarized_alternate
 rofi.terminal: st-256color
