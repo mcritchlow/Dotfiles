@@ -60,7 +60,7 @@ color index         color1          default         "~F~p"                      
 color index         color1          default         "~N~F"                      # new flagged messages
 color index         color1          default         "~N~F~p"                    # new flagged messages to me
 color index         color1          default         "~U~F~p"                    # new flagged messages to me
-color index         color0          color1          "~D"                        # deleted messages
+color index         color15          color9          "~D"                        # deleted messages
 color index         color14         default         "~v~(!~N)"                  # collapsed thread with no unread
 color index         color3          default         "~v~(~N)"                   # collapsed thread with some unread
 color index         color2          default         "~N~v~(~N)"                 # collapsed thread with unread parent
