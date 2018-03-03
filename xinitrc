@@ -8,16 +8,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-eval "$(ssh-agent -s)"
-
-# for now, simple check for Lenovo..
-if dmesg | grep 'Lenovo' > /dev/null; then
-  xrdb -merge "$HOME/.Xresources"
-  exec dbus-launch --sh-syntax --exit-with-session i3
-else
+# for now, simple check for Dell HiDPI laptop first, then fall back to regular DPI otherwise..
+if dmesg | grep 'Dell' > /dev/null; then
   # TODO: confirm is pango needs 96*x or if I can use actual DPI
   xrandr --dpi 192
-  xrdb -merge "$HOME/.Xresources.hidpi"
+  [[ -f ~/.Xresources.hidpi ]] && xrdb -merge -I$HOME ~/.Xresources.hidpi
   # Double the GTK+3 widget scale. NOTE: You must set the GTK+3 font to half size. Hopefully this changes soon.
   export GDK_SCALE=2
   export GDK_DPI_SCALE=0.5
@@ -30,7 +25,8 @@ else
   # export SAL_USE_VCLPLUGIN=kde5
   #
   # custom config for hidpi
-  exec dbus-launch --sh-syntax --exit-with-session i3 -c "$HOME/.config/i3/config.hidpi"
+  exec i3 -c "$HOME/.config/i3/config.hidpi"
+else
+  [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+  exec i3
 fi
-
-
