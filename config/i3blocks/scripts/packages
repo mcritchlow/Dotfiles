@@ -5,5 +5,5 @@ if [ "$list" == "" ]; then
   echo "PKG 0"
 else
   count=$(echo "$list" | wc -l)
-  echo "<span foreground='#ffffff' background='#b58900'>PKG $count</span"
+  echo "<span foreground='#ffffff' background='#b58900'>PKG $count</span>"
 fi
