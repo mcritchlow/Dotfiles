@@ -84,6 +84,7 @@ alias cd.='cd ..'
 alias cd..='cd ..'
 alias l='ls -alF --color=auto'
 alias ll='ls -l --color=auto'
+alias sls="stat -c '%n (%F) %a %A' *"
 
 # projects
 alias gd="cd ~/projects/personal/dotfiles/"
