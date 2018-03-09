@@ -106,6 +106,7 @@ alias gv='vim +GV +"autocmd BufWipeout <buffer> qall"'
 alias pacman-update="sudo pacman -Syu --noconfirm && echo Update complete! | figlet && neofetch && inxi -xDIGS"
 alias aur-update="cd ~/projects/personal/laptop/ && ansible-playbook aur.yml"
 alias orphans="pacman -Qdt"
+alias remove-orphans="sudo pacman -Rns \$(pacman -Qtdq)"
 
 
 # Tmux
