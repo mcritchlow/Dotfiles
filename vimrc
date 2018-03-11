@@ -222,7 +222,7 @@ let g:UltiSnipsEditSplit="vertical"
 " ============================================================================
 " pandoc , markdown
 function! MarkdownPreview()
-  :RunSilent pandoc -f markdown_github -o /tmp/vim-pandoc-out.html %
+  :RunSilent pandoc -f gfm -o /tmp/vim-pandoc-out.html %
   :RunSilent xdg-open /tmp/vim-pandoc-out.html
 endfunction
 command! -nargs=* RunSilent
