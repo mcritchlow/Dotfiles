@@ -30,9 +30,7 @@ exec --no-startup-id dropbox start
 # Simple 'calculator' using R for arithmetic
 # bound to mod+a (a == arithmetic)
 for_window [instance="math"] floating enable
-for_window [instance="math"] resize set 900 400
-# TODO: change to percentage once next i3 version ships
-# for_window [instance="math"] resize set 30 ppt 30 ppt
+for_window [instance="math"] resize set 60 ppt 50 ppt
 for_window [instance="math"] move scratchpad
 exec --no-startup-id $term -n math -f mono:size=24 -e R -q
 
@@ -41,9 +39,7 @@ exec --no-startup-id $term -n math -f mono:size=24 -e R -q
 # Primary use case is package updates.
 # bound to mod+u (u == updates)
 for_window [instance="dropdown"] floating enable
-# TODO: change to percentage once next i3 version ships
-# for_window [instance="math"] resize set 30 ppt 30 ppt
-for_window [instance="dropdown"] resize set 900 500
+for_window [instance="dropdown"] resize set 75 ppt 75 ppt
 for_window [instance="dropdown"] move scratchpad
 exec --no-startup-id $term -n dropdown -e bash -i -c "tmux new-session -s dropdown"
 
