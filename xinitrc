@@ -28,5 +28,5 @@ if dmesg | grep 'Dell' > /dev/null; then
   exec i3 -c "$HOME/.config/i3/config.hidpi"
 else
   [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-  exec i3
+  exec i3 2> /tmp/i3.log
 fi
