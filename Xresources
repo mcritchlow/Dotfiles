@@ -86,31 +86,6 @@ Xft.rgba: rgb
 *color7:                  S_base2
 *color15:                 S_base3
 
-! URXVT
-! URxvt.intensityStyles:false
-! URxvt.background:       [70]#000000
-! Fonts
-URxvt.depth:   32
-URxvt.font:   xft:mono:size=13
-URxvt.boldFont:   xft:mono:size=13:style=Bold
-URxvt.italicFont:   xft:mono:size=13:style=Italic
-URxvt.bolditalicFont:   xft:mono:size=13:style=Bold Italic
-URxvt.letterSpace: -1
-! General config
-URxvt.scrollBar: false
-URxvt.cursorBlink:true
-! Perl things
-URxvt.perl-ext-common:default,selection-to-clipboard,matcher,resize-font,keyboard-select
-! enter keyboard select (copy/paste) mode
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-! enter URL selection mode for keyboard
-URxvt.keysym.M-u: perl:matcher:select
-URxvt.keysym.M-Delete: perl:matcher:list
-URxvt.matcher.rend.0: Uline Bold fg8
-URxvt.matcher.button:1
-URxvt.url-launcher:/usr/bin/xdg-open
-URxvt.saveLines: 100000
-
 ! Rofi
 rofi.color-enabled: true
 rofi.font: mono 14
