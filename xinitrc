@@ -8,25 +8,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# for now, simple check for Dell HiDPI laptop first, then fall back to regular DPI otherwise..
-if dmesg | grep 'Dell' > /dev/null; then
-  # TODO: confirm is pango needs 96*x or if I can use actual DPI
-  xrandr --dpi 192
-  [[ -f ~/.Xresources.hidpi ]] && xrdb -merge -I$HOME ~/.Xresources.hidpi
-  # Double the GTK+3 widget scale. NOTE: You must set the GTK+3 font to half size. Hopefully this changes soon.
-  export GDK_SCALE=2
-  export GDK_DPI_SCALE=0.5
-  # Do the same with Qt5, the other Qt/KDE options do general things to make Qt5
-  #export QT_DEVICE_PIXEL_RATIO=2
-  export QT_SCALE_FACTOR=2
-  export QT_STYLE_OVERRIDE=Breeze
-  # export KDE_FULL_SESSION=1
-  # export KDE_SESSION_VERSION=5
-  # export SAL_USE_VCLPLUGIN=kde5
-  #
-  # custom config for hidpi
-  exec i3 -c "$HOME/.config/i3/config.hidpi"
-else
-  [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-  exec i3 2> /tmp/i3.log
-fi
+xset -b # disable bell
+setxkbmap -model thinkpad -layout us -option caps:swapescape
+
+# autostart
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/bin/redshift-gtk &
+dropbox start &
+/usr/local/bin/slstatus &
+
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+exec dwm 2> /tmp/dwm.log
