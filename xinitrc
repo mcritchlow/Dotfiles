@@ -13,7 +13,7 @@ setxkbmap -model thinkpad -layout us -option caps:swapescape
 
 # autostart
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-/usr/bin/redshift-gtk &
+/usr/bin/redshift &
 dropbox start &
 /usr/local/bin/slstatus &
 
