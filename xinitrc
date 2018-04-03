@@ -13,7 +13,6 @@ xset -b # disable bell
 # autostart
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/redshift &
-dropbox start &
 /usr/local/bin/slstatus &
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
