@@ -9,7 +9,8 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
 # Set GPG TTY
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
@@ -17,8 +18,7 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 export EDITOR=vim
 
 # Lastpass
-# Don't use pinentry, because it's being ridiculous
-export LPASS_DISABLE_PINENTRY=1
+export LPASS_PINENTRY="/usr/bin/pinentry-curses"
 # don't allow agent to expire
 export LPASS_AGENT_TIMEOUT=0
 
