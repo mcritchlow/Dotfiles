@@ -11,7 +11,7 @@ fi
 xset -b # disable bell
 
 # autostart
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/local/bin/slstatus &
 
