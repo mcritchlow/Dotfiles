@@ -11,8 +11,8 @@ fi
 xset -b # disable bell
 
 # autostart
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-/usr/bin/redshift &
 /usr/local/bin/slstatus &
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
