@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# This script will parse a youtube subscription_manager file
+# and output the results in a format that can be parsed by
+# newsboat.
+#
+# Requirements:
+# 1. A reasonably current version of Ruby (2.3+)
+# 2. Bundler installed `gem install bundler`
+# 3. A subscription manager file (see below)
+#
+# Download the subscription_manager file from:
+# https://www.youtube.com/subscription_manager
+#
+# Usage example to load all feeds into newsboat urls file
+# ruby youtube_newsboat.rb >> ~/.newsboat/urls
+require 'bundler/inline'
+
+gemfile do
+  source 'https://rubygems.org'
+  gem 'nokogiri'
+end
+
+doc = File.open('subscription_manager') { |f| Nokogiri::XML(f) }
+
+doc.xpath('//outline').each do |sub|
+  next unless sub.attr('xmlUrl')
+  puts "#{sub.attr('xmlUrl')} \"~#{sub.attr('title')}\""
+end
