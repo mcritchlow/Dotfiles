@@ -8,6 +8,9 @@
 # if a music file or pdf, it will download,
 # otherwise it opens link in browser.
 
+# Download location
+downloads=$HOME/Downloads
+
 # List of sites that will be opened in mpv.
 vidsites="youtube.com
   \|youtu.be
@@ -24,7 +27,7 @@ if echo $fehFiles | grep -w $ext > /dev/null; then
 elif echo $mpvFiles | grep -w $ext > /dev/null; then
   mpv -quiet "$1" > /dev/null & disown
 elif echo $wgetFiles | grep -w $ext > /dev/null; then
-  wget "$1" >/dev/null & disown
+  cd "$downloads" && wget "$1" >/dev/null & disown
 elif echo "$@" | grep "$vidsites">/dev/null; then
   mpv -quiet "$1" > /dev/null & disown
 else
