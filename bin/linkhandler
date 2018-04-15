@@ -10,6 +10,7 @@
 
 # List of sites that will be opened in mpv.
 vidsites="youtube.com
+  \|youtu.be
   \|hooktube.com
   \|bitchute.com
   "
