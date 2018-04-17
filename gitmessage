@@ -9,3 +9,13 @@
 # * Are there any side effects?
 #
 # Include a link to the ticket, if any.
+#
+# If you have pairing partners, add them:
+# Co-authored-by: John H. Robinson, IV <jhriv@ucsd.edu>
+# Co-authored-by: Ron Stanonik <rstanonik@ucsd.edu>
+# Co-authored-by: Allison Flick <aflick@ucsd.edu>
+# Co-authored-by: Huawei Weng <hweng@ucsd.edu>
+# Co-authored-by: VivianChu <tchu@ucsd.edu>
+# Co-authored-by: lsitu <lsitu@ucsd.edu>
+# Co-authored-by: lsitu <lsitu@ucsd.edu>
+# Co-authored-by: dt-ucsd <dtucsd+git@gmail.com>
