@@ -11,8 +11,14 @@ fi
 xset -b # disable bell
 
 # autostart
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+if test -f /usr/bin/gnome-keyring-daemon; then
+  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
+fi
+
+if test -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1; then
+  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+fi
+
 /usr/local/bin/slstatus &
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
