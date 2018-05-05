@@ -1,9 +1,0 @@
-#!/bin/bash
-# use Arch provided checkupdates bash script (via pacman)
-list=$(checkupdates 2> /dev/null)
-if [ "$list" == "" ]; then
-  echo "PKG 0"
-else
-  count=$(echo "$list" | wc -l)
-  echo "<span foreground='#ffffff' background='#b58900'>PKG $count</span>"
-fi
