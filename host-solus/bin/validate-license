@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+#
+require 'net/http'
+require 'json'
+require 'yaml'
+
+current_directory = `pwd`
+package_file = YAML.safe_load(File.open(current_directory.chomp + '/package.yml'))
+license = package_file['license']
+
+url = 'https://raw.githubusercontent.com/spdx/license-list-data/master/json/licenses.json'
+uri = URI(url)
+response = Net::HTTP.get(uri)
+data = JSON.parse(response)
+
+unless data['licenses'].any? { |l| l['licenseId'].eql? license }
+  puts "The #{license} license for this package does not exist in the spdx file"
+  puts 'Look at https://spdx.org/licenses/ for an alternative?'
+end
