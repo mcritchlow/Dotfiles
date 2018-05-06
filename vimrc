@@ -152,6 +152,8 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *.html.erb set filetype=html
   autocmd BufNewFile,BufRead *.css.scss set filetype=css
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+  autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
+
 
   "Make calcurse notes markdown compatible:
   autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
