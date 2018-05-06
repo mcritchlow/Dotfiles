@@ -352,6 +352,20 @@ fks() {
   tmux kill-session -t "$session"
 }
 
+# drc [FUZZY PATTERN] - Choose a docker container to remove
+drc() {
+  local container_id
+  container_id=$(docker ps -a | fzf | awk '{print $1}')
+  docker rm "$container_id"
+}
+
+# dri [FUZZY PATTERN] - Choose a docker image to remove
+dri() {
+  local image_id
+  image_id=$(docker images | fzf | awk '{print $3}')
+  docker rmi "$image_id"
+}
+
 # GIT heart FZF
 # -------------
 
