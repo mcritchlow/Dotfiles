@@ -20,6 +20,9 @@ if test -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1; then
 fi
 
 /usr/local/bin/slstatus &
+if test -f /usr/bin/unclutter; then
+  unclutter &
+fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 exec dwm 2> /tmp/dwm.log
