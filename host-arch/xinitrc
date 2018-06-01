@@ -10,6 +10,11 @@ fi
 
 xset -b # disable bell
 
+# if Kinesis keyboard is not plugged in, swap caps and escape
+if ! cat /sys/bus/usb/devices/*/product | grep -q "Advantage2"; then
+  setxkbmap -option caps:swapescape
+fi
+
 # autostart
 if test -f /usr/bin/gnome-keyring-daemon; then
   eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
