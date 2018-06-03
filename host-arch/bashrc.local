@@ -103,6 +103,7 @@ alias which='type -p'
 alias k5='kill -9 %%'
 alias gst='git status'
 alias gv='vim +GV +"autocmd BufWipeout <buffer> qall"'
+alias gpg-reload-agent='gpg-connect-agent reloadagent /bye'
 
 # arch
 alias pacman-update="clear && echo pacman hungry! | figlet && sudo pacman -Syu --noconfirm && echo pacman full! | figlet"

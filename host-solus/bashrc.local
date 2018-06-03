@@ -103,8 +103,7 @@ alias which='type -p'
 alias k5='kill -9 %%'
 alias gst='git status'
 alias gv='vim +GV +"autocmd BufWipeout <buffer> qall"'
-# install rxvt on vagrant VM
-alias urxvt-vagrant='infocmp rxvt-unicode-256color | vagrant ssh -c "mkdir -p .terminfo && cat >/tmp/ti && tic /tmp/ti"'
+alias gpg-reload-agent='gpg-connect-agent reloadagent /bye'
 
 # Tmux
 # alias tmux="TERM=xterm-256color tmux"
