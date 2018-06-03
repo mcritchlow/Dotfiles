@@ -1,0 +1,424 @@
+#!/bin/bash
+
+# .bashrc.local for Linux (primarily Arch)
+# ====================================================================
+# - several bits and pieces are grabbed from junegunn's bashrc
+
+# autostart X/i3wm at login
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+# Set GPG TTY
+GPG_TTY=$(tty)
+export GPG_TTY
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# Exports and path setting
+export EDITOR=vim
+
+# Lastpass
+export LPASS_PINENTRY="/usr/bin/pinentry-curses"
+# don't allow agent to expire
+export LPASS_AGENT_TIMEOUT=0
+
+# History
+# don't store duplicate entries in history
+export HISTCONTROL=ignoreboth:erasedups
+
+# ensure dotfiles bin directory is loaded first
+export PATH="$HOME/.bin:$HOME/bin:$PATH"
+
+# mkdir .git/safe in the root of repositories you trust
+export PATH=".git/safe/../../bin:$PATH"
+
+# load rbenv
+if test -d "$HOME/.rbenv"; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - )"
+  export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+fi
+
+eval "$(dircolors ~/.dir_colors)"
+
+# Prompt
+# -------------------------------------------------------------------
+source ~/.git_prompt.sh
+endchar="\$"
+if [ "$UID" = "0" ]; then
+    endchar="#"
+fi
+
+FG="\\[\\033[38;5;033m\\]"
+BG="\\[\\033[38;5;003m\\]"
+AT="\\[\\033[38;5;245m\\]"
+HCOLOR="\\[\\033[38;5;245m\\]"
+# git prompt settings
+GIT_PS1_SHOWUPSTREAM="verbose"
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_DESCRIBE_STYLE="branch"
+GIT_PS1_SHOWCOLORHINTS=true
+
+# don't show hostname on local machine
+if [ "$HOSTNAME" = "arch" ]; then
+  PROMPT_COMMAND="__git_ps1 '${BG}\\w' ' ${FG}$endchar \\[\\e[0m\\]'"
+else
+  PROMPT_COMMAND="__git_ps1 '${FG}\\u${AT}@${HCOLOR}\\h:${BG}\\w' ' ${FG}$endchar \\[\\e[0m\\]'"
+fi
+
+unset FG
+unset BG
+unset AT
+unset HCOLOR
+shopt -s checkwinsize
+
+# Aliases
+# --------------------------------------------------------------------
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias cd.='cd ..'
+alias cd..='cd ..'
+alias l='ls -alF --color=auto'
+alias ll='ls -l --color=auto'
+alias sls="stat -c '%n (%F) %a %A' *"
+alias swapcaps='setxkbmap -option caps:swapescape' #when no kinesis
+
+# projects
+alias gd="cd ~/projects/personal/dotfiles/"
+alias gdv="cd ~/projects/personal/dotfiles/ && vim"
+# project bases
+alias gw="cd ~/projects/ucsd/"
+alias gp="cd ~/projects/personal/"
+
+# operational
+alias vi='vim'
+alias vi2='vi -O2 '
+alias hc="history -c"
+alias which='type -p'
+alias k5='kill -9 %%'
+alias gst='git status'
+alias gv='vim +GV +"autocmd BufWipeout <buffer> qall"'
+alias gpg-reload-agent='gpg-connect-agent reloadagent /bye'
+
+# arch
+alias pacman-update="clear && echo pacman hungry! | figlet && sudo pacman -Syu --noconfirm && echo pacman full! | figlet"
+alias aur-update="clear && echo AUR time *fingers crossed* | figlet && cd ~/projects/personal/laptop/ && ansible-playbook aur.yml"
+alias orphans="pacman -Qdt"
+alias remove-orphans="sudo pacman -Rns \$(pacman -Qtdq)"
+
+
+# Tmux
+# alias tmux="TERM=xterm-256color tmux"
+alias tls="tmux ls"
+alias td="tmux detach"
+
+# Lastpass
+alias lplogin='lpass login --trust matt.critchlow@gmail.com'
+alias lploginwork='lpass login --trust mcritchlow@ucsd.edu'
+
+# Brightlight shortcuts
+alias br100='brightlight -p -w 100'
+alias br50='brightlight -p -w 50'
+alias br25='brightlight -p -w 25'
+
+# Music (mpd + mpc)
+alias mpcPlaylistReset='mpc update --wait && mpc clear && mpc ls | mpc add'
+
+# Cowsay + Ansible
+alias ansible-playbook-random='ANSIBLE_COW_SELECTION=random ansible-playbook'
+alias ansible-playbook-tux='ANSIBLE_COW_SELECTION=tux ansible-playbook'
+
+# Shortcut functions
+# --------------------------------------------------------------------
+
+bundler-search() {
+  # Search your bundle for the provided pattern
+  #   Requires bundler 1.8+ for execution as a bundler subcommand.
+  #   Examples:
+  #     bundle search Kernal.warn
+  #     bundle search current_user clearance
+  #     bundle search "Change your password" clearance
+  #
+  # Arguments:
+  #  1. What to search for
+  #  2. Which gem names to search (defaults to all gems)
+
+  pattern="$1"; shift
+  ag "$pattern" "$(bundle show --paths "$@")"
+}
+
+# invoke ctags hook in git repository
+git-ctags() {
+  [ -f .git/hooks/ctags ] || git init
+  .git/hooks/ctags
+}
+
+# Use Vim less script for color
+lessc () {
+  /usr/share/vim/vim80/macros/less.sh "$@"
+}
+
+# LastPass-CLI - copy pw to clipboard w/ fzf
+lpp () {
+  lpass show -c --password "$(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')"
+}
+
+..cd() {
+  cd ..
+  cd "$@" || return
+}
+
+_parent_dirs() {
+  COMPREPLY=( $(cd ..; find . -mindepth 1 -maxdepth 1 -type d -print | cut -c3- | grep "^${COMP_WORDS[COMP_CWORD]}") )
+}
+
+complete -F _parent_dirs -o default -o bashdefault ..cd
+
+# gd() {
+#   [ "$1" ] && "cd *$1*" || return
+# }
+
+csbuild() {
+  [ $# -eq 0 ] && return
+
+  cmd="find $(pwd)"
+  for ext in "$@"; do
+    cmd=" $cmd -name '*.$ext' -o"
+  done
+  echo ${cmd: 0: ${#cmd} - 3}
+  eval "${cmd: 0: ${#cmd} - 3}" > cscope.files &&
+  cscope -b -q && rm cscope.files
+}
+
+tx() {
+  tmux splitw "$*; echo -n Press enter to finish.; read"
+  tmux select-layout tiled
+  tmux last-pane
+}
+
+gitzip() {
+  git archive -o $(basename $PWD).zip HEAD
+}
+
+gittgz() {
+  git archive -o $(basename $PWD).tgz HEAD
+}
+
+gitdiffb() {
+  if [ $# -ne 2 ]; then
+    echo two branch names required
+    return
+  fi
+  git log --graph \
+  --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' \
+  --abbrev-commit --date=relative $1..$2
+}
+
+alias gitv='git log --graph --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+EXTRA=$BASE/bashrc-extra
+[ -f "$EXTRA" ] && source "$EXTRA"
+
+
+# fzf (https://github.com/junegunn/fzf)
+# --------------------------------------------------------------------
+
+csi() {
+  echo -en "\x1b[$@"
+}
+
+fzf-down() {
+  fzf --height 50% "$@" --border
+}
+
+# fzf colorscheme (solarized)
+_gen_fzf_default_opts() {
+  local base03="#002b36"
+  local base02="#073642"
+  local base01="#586e75"
+  local base00="#657b83"
+  local base0="#839496"
+  local base1="#93a1a1"
+  local base2="#eee8d5"
+  local base3="#fdf6e3"
+  local yellow="#b58900"
+  local orange="#cb4b16"
+  local red="#dc322f"
+  local magenta="#d33682"
+  local violet="#6c71c4"
+  local blue="#268bd2"
+  local cyan="#2aa198"
+  local green="#859900"
+
+  # Comment and uncomment below for the light theme.
+
+  # Solarized Dark color scheme for fzf
+  export FZF_DEFAULT_OPTS="
+    --color fg:-1,bg:-1,hl:$blue,fg+:$base2,bg+:$base02,hl+:$blue
+    --color info:$yellow,prompt:$yellow,pointer:$base3,marker:$base3,spinner:$yellow
+  "
+  ## Solarized Light color scheme for fzf
+  # export FZF_DEFAULT_OPTS="
+  #  --color fg:-1,bg:-1,hl:$blue,fg+:$base02,bg+:$base2,hl+:$blue
+  #  --color info:$yellow,prompt:$yellow,pointer:$base03,marker:$base03,spinner:$yellow
+  # "
+}
+_gen_fzf_default_opts
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND | with-dir"
+if [ -x ~/.vim/plugged/fzf.vim/bin/preview.rb ]; then
+  export FZF_CTRL_T_OPTS="--preview '~/.vim/plugged/fzf.vim/bin/preview.rb {} | head -200'"
+fi
+
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -sel clip -i)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
+
+command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
+command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+# fco - checkout git branch/tag
+fco() {
+  local tags branches target
+  tags=$(git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD             |
+    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
+    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$tags"; echo "$branches") | sed '/^$/d' |
+    fzf-down --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*") || return
+  git checkout $(echo "$target" | awk '{print $2}')
+}
+
+# fshow - git commit browser
+fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(blue)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --header "Press CTRL-S to toggle sort" \
+      --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+                 xargs -I % sh -c 'git show --color=always % | head -200 '" \
+      --bind "enter:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+              xargs -I % sh -c 'vim fugitive://\$(git rev-parse --show-toplevel)/.git//% < /dev/tty'"
+}
+
+# ftags - search ctags
+ftags() {
+  local line
+  [ -e tags ] &&
+  line=$(
+    awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
+    cut -c1-$COLUMNS | fzf --nth=2 --tiebreak=begin
+  ) && $EDITOR $(cut -f3 <<< "$line") -c "set nocst" \
+                                      -c "silent tag $(cut -f2 <<< "$line")"
+}
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  local file
+  file=$(fzf-tmux --query="$1" --select-1 --exit-0)
+  [ -n "$file" ] && ${EDITOR:-vim} "$file"
+}
+
+# ftm [FUZZY PATTERN] - Choose an existing tmux session to attach and switch to, or create a new one
+ftm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
+
+# fts [FUZZY PATTERN] - Launch tmux session from ~/.tmux-projects
+fts() {
+  local tmux_project
+  local base="$HOME/.tmux-projects"
+  tmux_project=$(ls "$base" | \
+    fzf --height 25% --select-1 --exit-0) &&
+  sh "$base/$tmux_project"
+}
+# fts [FUZZY PATTERN] - Choose a tmux session to kill
+fks() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+  tmux kill-session -t "$session"
+}
+
+# drc [FUZZY PATTERN] - Choose a docker container to remove
+drc() {
+  local container_id
+  container_id=$(docker ps -a | fzf | awk '{print $1}')
+  docker rm "$container_id"
+}
+
+# dri [FUZZY PATTERN] - Choose a docker image to remove
+dri() {
+  local image_id
+  image_id=$(docker images | fzf | awk '{print $3}')
+  docker rmi "$image_id"
+}
+
+# GIT heart FZF
+# -------------
+
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+gf() {
+  is_in_git_repo || return
+  git -c color.status=always status --short |
+  fzf-down -m --ansi --nth 2..,.. \
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+  cut -c4- | sed 's/.* -> //'
+}
+
+gb() {
+  is_in_git_repo || return
+  git branch -a --color=always | grep -v '/HEAD\s' | sort |
+  fzf-down --ansi --multi --tac --preview-window right:70% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -200' |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##'
+}
+
+gt() {
+  is_in_git_repo || return
+  git tag --sort -version:refname |
+  fzf-down --multi --preview-window right:70% \
+    --preview 'git show --color=always {} | head -200'
+}
+
+gh() {
+  is_in_git_repo || return
+  git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
+  fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+    --header 'Press CTRL-S to toggle sort' \
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -200' |
+  grep -o "[a-f0-9]\{7,\}"
+}
+
+gr() {
+  is_in_git_repo || return
+  git remote -v | awk '{print $1 "\t" $2}' | uniq |
+  fzf-down --tac \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1} | head -200' |
+  cut -d$'\t' -f1
+}
+
+bind '"\er": redraw-current-line'
+bind '"\C-g\C-f": "$(gf)\e\C-e\er"'
+bind '"\C-g\C-b": "$(gb)\e\C-e\er"'
+bind '"\C-g\C-t": "$(gt)\e\C-e\er"'
+bind '"\C-g\C-h": "$(gh)\e\C-e\er"'
+bind '"\C-g\C-r": "$(gr)\e\C-e\er"'
+bind "TAB:menu-complete"
