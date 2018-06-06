@@ -22,6 +22,7 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 " ============================================================================
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
+Plug 'editorconfig/editorconfig-vim'
 " }}}
 " ============================================================================
 " Snippets and such {{{
