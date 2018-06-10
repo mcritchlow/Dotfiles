@@ -107,7 +107,8 @@ alias gpg-reload-agent='gpg-connect-agent reloadagent /bye'
 
 # arch
 alias pacman-update="clear && echo pacman hungry! | figlet && sudo pacman -Syu --noconfirm && echo pacman full! | figlet"
-alias aur-update="clear && echo AUR time *fingers crossed* | figlet && cd ~/projects/personal/laptop/ && ansible-playbook aur.yml"
+alias aur-update="clear && echo AUR time! | figlet && cd ~/projects/personal/laptop/ && ansible-playbook aur.yml --skip-tags work"
+alias aur-update-work="clear && echo AUR time! | figlet && cd ~/projects/personal/laptop/ && ansible-playbook aur.yml"
 alias orphans="pacman -Qdt"
 alias remove-orphans="sudo pacman -Rns \$(pacman -Qtdq)"
 
