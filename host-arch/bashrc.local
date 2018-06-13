@@ -8,6 +8,10 @@
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
+
+# Set default URL for w3m
+export WWW_HOME="https://duckduckgo.com"
+
 # Set GPG TTY
 GPG_TTY=$(tty)
 export GPG_TTY
