@@ -43,8 +43,6 @@ if test -d "$HOME/.rbenv"; then
   export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 fi
 
-eval "$(dircolors ~/.dir_colors)"
-
 # Prompt
 # -------------------------------------------------------------------
 source ~/.git_prompt.sh
