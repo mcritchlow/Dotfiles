@@ -154,6 +154,17 @@ bundler-search() {
   ag "$pattern" "$(bundle show --paths "$@")"
 }
 
+# Replace a A/V file metadata title with one that has no emojis
+# This is needed because dwm barfs horrendously when emojis are in the metadata title/window
+ffmpeg-emoji-fix() {
+  local input_file="$1"; shift
+  local output_file="$1"
+  local file_suffix
+  file_suffix=$(echo "$input_file" | awk -F '.' '{ print $2 }')
+
+  ffmpeg -i "$input_file" -metadata title="$output_file" -acodec copy -vcodec copy "$output_file.$file_suffix"
+}
+
 # invoke ctags hook in git repository
 git-ctags() {
   [ -f .git/hooks/ctags ] || git init
