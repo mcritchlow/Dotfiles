@@ -19,7 +19,7 @@ case "$x" in
   mpv) mpv -quiet "$1" 2&>/dev/null & disown ;;
   "mpv (loop)") mpv -quiet --loop "$1" 2&>/dev/null & disown ;;
   wget) cd "$downloads" && wget "$1" 2&>/dev/null & disown ;;
-  browser) firefox "$1" 2&>/dev/null & disown ;;
+  browser) setsid nohup firefox "$1" 2&>/dev/null & disown ;;
   feh) feh "$1" 2&>/dev/null & disown ;;
   w3m) w3m "$1" 2&>/dev/null & disown ;;
   "youtube-dl") cd "$downloads" && youtube-dl "$1" 2&>/dev/null & disown ;;
