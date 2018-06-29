@@ -23,13 +23,13 @@ fehFiles="png jpg jpeg jpe"
 wgetFiles="mp3 flac opus mp3?source=feed pdf"
 
 if echo $fehFiles | grep -w $ext > /dev/null; then
-  setsid nohup feh "$1" >/dev/null & disown
+  feh "$1" >/dev/null & disown
 elif echo $mpvFiles | grep -w $ext > /dev/null; then
-  setsid nohup mpv -quiet "$1" > /dev/null & disown
+  mpv -quiet "$1" > /dev/null & disown
 elif echo $wgetFiles | grep -w $ext > /dev/null; then
   cd "$downloads" && wget "$1" >/dev/null & disown
 elif echo "$@" | grep "$vidsites">/dev/null; then
-  setsid nohup mpv -quiet "$1" > /dev/null & disown
+  mpv -quiet "$1" > /dev/null & disown
 else
-  setsid nohup firefox "$1" 2>/dev/null & disown
+  firefox "$1" 2>/dev/null & disown
 fi
