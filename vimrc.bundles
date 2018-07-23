@@ -21,6 +21,7 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 " Testing/Validation {{{
 " ============================================================================
 Plug 'janko-m/vim-test'
+Plug 'tpope/vim-dispatch'
 Plug 'w0rp/ale'
 Plug 'editorconfig/editorconfig-vim'
 " }}}
@@ -74,7 +75,6 @@ Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
 " Tmux {{{
 " ============================================================================
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'christoomey/vim-tmux-runner'
 " tmux syntax highlighting
 Plug 'keith/tmux.vim'
 

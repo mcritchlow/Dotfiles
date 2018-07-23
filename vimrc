@@ -326,9 +326,7 @@ let g:ale_linters = {
 " Vim Test {{{
 " ============================================================================
 " vim-test sends command to send to tmux usign Vim Tmux Runner
-let test#strategy = "vtr"
-" use vim-tmux-runner keybindings. E.g. <leader>fr = focus runner
-let g:VtrUseVtrMaps = 1
+let test#strategy = "dispatch"
 " vim-test mappings
 nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <silent> <Leader>s :TestNearest<CR>
