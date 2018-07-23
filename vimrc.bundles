@@ -73,7 +73,6 @@ Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
 " ============================================================================
 " Tmux {{{
 " ============================================================================
-Plug 'christoomey/vim-run-interactive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 " tmux syntax highlighting
