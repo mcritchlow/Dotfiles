@@ -59,7 +59,7 @@ Plug 'junegunn/vim-emoji' "because emoji!
 " ============================================================================
 " Custom Motions {{{
 " ============================================================================
-Plug 'vim-scripts/tComment' "comments w/ gc motion
+Plug 'tpope/vim-commentary' "comments w/ gc motion
 Plug 'christoomey/vim-sort-motion' "sorting with gs motion
 Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
 
