@@ -3,6 +3,8 @@
 " Core Settings {{{
 " ============================================================================
 let mapleader = ","
+" use \ instead of comma for reverse f-searches
+noremap \ ,
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
