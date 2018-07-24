@@ -35,6 +35,7 @@ Plug 'honza/vim-snippets'
 " General Nice Things {{{
 " ============================================================================
 Plug 'tpope/vim-repeat' "repeat map commands (surround)
+Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
 Plug 'pbrisbin/vim-mkdir' "TODO: might not need because eunuch
 Plug 'tpope/vim-eunuch' "Unix-y stuff.
 Plug 'tpope/vim-fugitive' "Git integration
