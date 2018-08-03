@@ -30,9 +30,6 @@ export LPASS_AGENT_TIMEOUT=0
 # don't store duplicate entries in history
 export HISTCONTROL=ignoreboth:erasedups
 
-# ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:$HOME/bin:$PATH"
-
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
 
