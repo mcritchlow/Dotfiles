@@ -87,9 +87,17 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias cd.='cd ..'
 alias cd..='cd ..'
-alias l='ls -alF --color=auto'
-alias ll='ls -l --color=auto'
+alias l='ls -alFh --color=auto'
+alias ll='ls -lh --color=auto'
 alias swapcaps='setxkbmap -option caps:swapescape' #when no kinesis
+
+# dirs
+alias gm="cd ~/Music/"
+alias gpx="cd ~/Pictures/"
+alias gvd="cd ~/Videos/"
+alias gdn="cd ~/Downloads/"
+alias gdo="cd ~/Documents/"
+alias gdr="cd ~/Dropbox/"
 
 # projects
 alias gd="cd ~/projects/personal/dotfiles/"
@@ -97,6 +105,7 @@ alias gdv="cd ~/projects/personal/dotfiles/ && vim"
 # project bases
 alias gw="cd ~/projects/ucsd/"
 alias gp="cd ~/projects/personal/"
+alias gsol="cd ~/projects/personal/solus/"
 
 # operational
 alias vi='vim'
@@ -138,6 +147,8 @@ alias mpcPlaylistReset='mpc update --wait && mpc clear && mpc ls | mpc add'
 alias ansible-playbook-random='ANSIBLE_COW_SELECTION=random ansible-playbook'
 alias ansible-playbook-tux='ANSIBLE_COW_SELECTION=tux ansible-playbook'
 
+# Docker
+alias docker-nuke='docker system prune -f --all --volumes'
 # Shortcut functions
 # --------------------------------------------------------------------
 
@@ -373,7 +384,7 @@ fks() {
 drc() {
   local container_id
   container_id=$(docker ps -a | fzf | awk '{print $1}')
-  docker rm "$container_id"
+  docker rm -v "$container_id"
 }
 
 # dri [FUZZY PATTERN] - Choose a docker image to remove
