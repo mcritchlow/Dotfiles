@@ -396,6 +396,13 @@ dri() {
   docker rmi "$image_id"
 }
 
+# drv [FUZZY PATTERN] - Choose a docker volume to remove
+drv() {
+  local volume_id
+  volume_id=$(docker volume ls | fzf | awk '{print $2}')
+  docker volume rm "$volume_id"
+}
+
 # GIT heart FZF
 # -------------
 
