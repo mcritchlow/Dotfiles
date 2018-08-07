@@ -1,0 +1,99 @@
+#!/usr/bin/env ruby
+require 'bundler/inline'
+
+gemfile do
+  source 'https://rubygems.org'
+  gem 'google-api-client', '~> 0.11'
+  gem 'googleauth'
+end
+require 'google/apis/people_v1'
+require 'googleauth'
+require 'googleauth/stores/file_token_store'
+require 'json'
+
+MUTT_ALIASES_LOCATION = ENV['HOME'] + '/Dropbox/mutt/google.aliases'.freeze
+
+# Setup credentials
+OAUTH_CLIENT_ID = ENV['HOME'] + '/Dropbox/mutt/client_id.json'.freeze
+TOKEN_STORE_FILE = ENV['HOME'] + '/.bin/google-contacts-tokens.yaml'.freeze
+OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
+USER_ID = 'matt.critchlow@gmail.com'.freeze
+
+scope = 'https://www.googleapis.com/auth/contacts.readonly'.freeze
+client_id = Google::Auth::ClientId.from_file(OAUTH_CLIENT_ID)
+token_store = Google::Auth::Stores::FileTokenStore.new(file: TOKEN_STORE_FILE)
+authorizer = Google::Auth::UserAuthorizer.new(client_id, scope, token_store)
+
+credentials = authorizer.get_credentials(USER_ID)
+unless credentials
+  url = authorizer.get_authorization_url(base_url: OOB_URI)
+  puts "Open #{url} in your browser and enter the resulting code:"
+  code = gets
+  credentials = authorizer.get_and_store_credentials_from_code(user_id: USER_ID,
+                                                               code: code,
+                                                               base_url: OOB_URI)
+end
+
+# Setup people service
+People = Google::Apis::PeopleV1 # Alias the module
+service = People::PeopleServiceService.new
+service.authorization = credentials.fetch_access_token!({})["access_token"]
+
+# TODO: figure out what's needed here, these are the options
+# PERSON_FIELDS =
+#   addresses
+#   ageRanges
+#   biographies
+#   birthdays
+#   braggingRights
+#   coverPhotos
+#   emailAddresses
+#   events
+#   genders
+#   imClients
+#   interests
+#   locales
+#   memberships
+#   metadata
+#   names
+#   nicknames
+#   occupations
+#   organizations
+#   phoneNumbers
+#   photos
+#   relations
+#   relationshipInterests
+#   relationshipStatuses
+#   residences
+#   sipAddresses
+#   skills
+#   taglines
+#   urls
+#   userDefined
+
+# Core query
+service.list_person_connections('people/me',
+                                page_size: 1000,
+                                request_mask_include_field: 'person.names,person.emailAddresses',
+                                # person_fields: 'names,nicknames,emailAddresses',
+                                sort_order: 'FIRST_NAME_ASCENDING') do |result, error|
+
+  puts error.inspect if error
+  result.connections.each do |contact|
+    next unless contact.email_addresses # for now, just emails
+    contact_name = contact.names.first.display_name
+    contact.email_addresses.each do |email_address|
+      nick = email_address.value.split('@')[0] # user@example.com -> user
+      puts("alias #{nick} #{contact_name} <#{email_address.value}>")
+    end
+  end
+  # File.open(MUTT_ALIASES_LOCATION, 'w') do |alias_file|
+  #   result.connections.each do |contact|
+  #     next unless contact.email_addresses # for now, just emails
+  #     contact_name = contact.names.first.display_name
+  #     contact.email_addresses.each do |email_address|
+  #       alias_file.puts("alias #{contact_name} #{email_address.display_name} <#{email_address.value}>")
+  #     end
+  #   end
+  # end
+end

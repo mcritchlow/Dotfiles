@@ -2,3 +2,4 @@
 vim/bundle/
 bin/config.yml
 config/i3blocks/scripts/config.yml
+**/*.byebug_history
