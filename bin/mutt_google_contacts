@@ -75,25 +75,17 @@ service.authorization = credentials.fetch_access_token!({})["access_token"]
 service.list_person_connections('people/me',
                                 page_size: 1000,
                                 request_mask_include_field: 'person.names,person.emailAddresses',
-                                # person_fields: 'names,nicknames,emailAddresses',
                                 sort_order: 'FIRST_NAME_ASCENDING') do |result, error|
 
   puts error.inspect if error
-  result.connections.each do |contact|
-    next unless contact.email_addresses # for now, just emails
-    contact_name = contact.names.first.display_name
-    contact.email_addresses.each do |email_address|
-      nick = email_address.value.split('@')[0] # user@example.com -> user
-      puts("alias #{nick} #{contact_name} <#{email_address.value}>")
+  File.open(MUTT_ALIASES_LOCATION, 'w') do |alias_file|
+    result.connections.each do |contact|
+      next unless contact.email_addresses # for now, just emails
+      contact_name = contact.names.first.display_name
+      contact.email_addresses.each do |email_address|
+        nick = email_address.value.split('@')[0] # user@example.com -> user
+        alias_file.puts("alias #{nick} #{contact_name} <#{email_address.value}>")
+      end
     end
   end
-  # File.open(MUTT_ALIASES_LOCATION, 'w') do |alias_file|
-  #   result.connections.each do |contact|
-  #     next unless contact.email_addresses # for now, just emails
-  #     contact_name = contact.names.first.display_name
-  #     contact.email_addresses.each do |email_address|
-  #       alias_file.puts("alias #{contact_name} #{email_address.display_name} <#{email_address.value}>")
-  #     end
-  #   end
-  # end
 end

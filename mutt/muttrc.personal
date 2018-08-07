@@ -46,10 +46,8 @@ set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
 set signature=~/.mutt/personal.signature
-## GooBook
-set query_command="goobook query '%s'"
-macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
-bind editor <Tab> complete-query
+set alias_file=~/Dropbox/mutt/google.aliases
+source $alias_file
 # unset record # might be needed because gmail auto copies sends
 
 ## Macros
