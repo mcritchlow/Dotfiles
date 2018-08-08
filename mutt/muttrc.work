@@ -45,7 +45,7 @@ set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
 set signature=~/.mutt/work.signature
-set alias_file=~/.mutt/ucsd.aliases
+set alias_file=~/Dropbox/mutt/ucsd.aliases
 source $alias_file
 
 ## Macros
