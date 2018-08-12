@@ -1,6 +1,6 @@
 # Normal-ish text
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
-application/pdf; mupdf '%s';
+application/pdf; zathura '%s';
 
 # Calendar
 # text/calendar; evolution -i %s; nametemplate=%s.ics; copiousoutput;
