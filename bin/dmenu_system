@@ -5,8 +5,18 @@ choices="lock\nreboot\nshutdown"
 
 chosen=$(echo -e "$choices" | dmenu -i -fn monospace:size=12 -p "Systemctl Options")
 
+# commit any sync-stuff changes prior to lock/reboot/shutdown
+commit_sync_changes() {
+  cd ~/projects/personal/sync-stuff || return
+  if git diff --quiet; then echo "there are no changes to sync" && return; fi
+  git add .
+  git commit -m "auto-commit"
+  git push origin master
+
+}
+
 case "$chosen" in
-  lock) slock ;;
-  reboot) systemctl reboot ;;
-  shutdown) systemctl poweroff -i ;;
+  lock) commit_sync_changes && slock ;;
+  reboot) commit_sync_changes && systemctl reboot ;;
+  shutdown) commit_sync_changes && systemctl poweroff -i ;;
 esac
