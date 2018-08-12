@@ -46,7 +46,7 @@ set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
 set signature=~/.mutt/personal.signature
-set alias_file=~/Dropbox/mutt/google.aliases
+set alias_file=~/projects/personal/sync-stuff/mutt/google.aliases
 source $alias_file
 # unset record # might be needed because gmail auto copies sends
 
