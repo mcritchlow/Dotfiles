@@ -97,7 +97,6 @@ alias gpx="cd ~/Pictures/"
 alias gvd="cd ~/Videos/"
 alias gdn="cd ~/Downloads/"
 alias gdo="cd ~/Documents/"
-alias gdr="cd ~/Dropbox/"
 
 # projects
 alias gd="cd ~/projects/personal/dotfiles/"
