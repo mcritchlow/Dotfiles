@@ -3,7 +3,7 @@
 ## General Setup
 set mail_check=60 #check for new mail every 60 seconds
 set timeout=300
-set imap_keepalive=300 # keep imap connection alive by polling 900 seconds
+set imap_keepalive=900 # keep imap connection alive by polling 900 seconds
 set imap_check_subscribed # check all folders for new mail
 set text_flowed=yes #sets format=flowed for text email
 set ssl_starttls=yes
@@ -26,41 +26,37 @@ bind pager G bottom
 bind pager gg top
 bind pager R group-reply
 
+
 ## Account info
-set imap_user="mcritchlow@ucsd.edu"
-set imap_pass=`lpass show --password 'matt.critchlow@gmail.com/Mail/UCSD Mail'`
+set imap_user=`lpass show --username matt.critchlow@gmail.com/Email/kolabnow.com`
+set imap_pass=`lpass show --password matt.critchlow@gmail.com/Email/kolabnow.com`
 set from=$imap_user
 set use_from=yes
-set realname='Matthew Critchlow'
+set realname='Matt Critchlow'
 set forward_format="Fwd: %s"
 set mime_forward=no
 set mime_forward_rest=yes
-set folder=imaps://outlook.office365.com/
-set spoolfile=imaps://outlook.office365.com/
-set record="+Sent Items"
-set trash="+Deleted Items"
-set smtp_url=smtps://mcritchlow@smtp.ucsd.edu/
-set smtp_pass=$imap_pass
+set folder=imaps://imap.kolabnow.com/
+set spoolfile=imaps://imap.kolabnow.com/INBOX
+set postponed="+Drafts"
+set trash="+Trash"
+set record="+Sent"
+set smtp_url = "smtp://$imap_user:$imap_pass@smtp.kolabnow.com:587"
 set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
-set signature=~/.mutt/work.signature
-set alias_file=~/projects/personal/sync-stuff/mutt/ucsd.aliases
+set signature=~/.mutt/personal.signature
+set alias_file=~/projects/personal/sync-stuff/mutt/kolab.aliases
 source $alias_file
 
 ## Macros
+macro index \cd "<delete-pattern>~s .*<Enter>" "Delete all messages in current folder"
 # Links
 macro index,pager \cb "<pipe-message> urlscan -cd<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan -cd<Enter>" "call urlscan to extract URLs out of a message"
-# Email macros
-# macro index,pager A ":set confirmappend=no delete=yes\n<save-message>=Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
-macro index,pager A ":set confirmappend=no delete=yes\n<save-message>=Archive\n:set confirmappend=yes delete=ask-yes\n"
-# delete everything in folder
-macro index \cd "<delete-pattern>~s .*<Enter>" "Delete all messages in current folder"
 # Navigation
 macro index gs "<change-folder> =Sent<tab><enter>" "Go to sent mail"
-macro index gi "<change-folder> =INBOX<tab><enter>" "Go to inbox"
-macro index ga "<change-folder> =Archive<tab><enter>" "Go to archive"
+macro index gi "<change-folder> =INBOX<tab><enter>" "Go to inbox mail"
 
 ## html email
 set mailcap_path=~/.mutt/mailcap
@@ -77,6 +73,7 @@ set sort_aux='reverse-last-date-received'
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
+#
 
 # Sign w/ GPG
 source "~/.mutt/gpg.rc"
@@ -85,9 +82,6 @@ set pgp_sign_as=E53B4D1FE0B14937
 set pgp_timeout=3600
 set crypt_autosign=no # don't crypt all teh things
 set crypt_replyencrypt=yes # if original msg was encrypted, reply w/ crypto
-# auto-delete anything that's a month old
-# push D~r>31d\n
-# push D~d>31d\n
 
 # https://github.com/altercation/mutt-colors-solarized
 source "~/.mutt/mutt-colors-solarized-dark-16.muttrc"
