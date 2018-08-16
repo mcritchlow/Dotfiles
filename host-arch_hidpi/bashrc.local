@@ -119,7 +119,7 @@ alias tls="tmux ls"
 alias td="tmux detach"
 
 # Lastpass
-alias lplogin='lpass login --trust matt.critchlow@gmail.com'
+alias lplogin='lpass login --trust matt@critchlow.xyz'
 alias lploginwork='lpass login --trust mcritchlow@ucsd.edu'
 
 # Brightlight shortcuts

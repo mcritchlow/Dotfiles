@@ -131,7 +131,7 @@ alias solup='sudo solbuild update unstable-x86_64'
 alias update-packages='sudo eopkg up && sudo snap refresh'
 
 # Lastpass
-alias lplogin='lpass login --trust matt.critchlow@gmail.com'
+alias lplogin='lpass login --trust matt@critchlow.xyz'
 alias lploginwork='lpass login --trust mcritchlow@ucsd.edu'
 
 # Brightlight shortcuts
