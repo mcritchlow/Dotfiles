@@ -59,6 +59,7 @@ macro attach,compose \cb "<pipe-entry> urlscan -cd<Enter>" "call urlscan to extr
 macro index ga "<change-folder> =Archive<tab><enter>" "Go to archive mail"
 macro index gs "<change-folder> =Sent<tab><enter>" "Go to sent mail"
 macro index gi "<change-folder> =INBOX<tab><enter>" "Go to inbox mail"
+macro index gt "<change-folder> =Trash<tab><enter>" "Go to trash mail"
 
 ## html email
 set mailcap_path=~/.mutt/mailcap
