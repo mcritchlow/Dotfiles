@@ -2,8 +2,8 @@
   templatedir = ~/.git_template
 [user]
   name = Matt Critchlow
-  email = matt.critchlow@gmail.com
-  signingkey = E53B4D1FE0B14937
+  email = matt@critchlow.xyz
+  signingkey = 5B86D84AB60CAB15
 [includeIf "gitdir:~/projects/ucsd/"]
   path = ~/.gitconfig.work
 [push]
