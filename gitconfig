@@ -4,6 +4,8 @@
   name = Matt Critchlow
   email = matt.critchlow@gmail.com
   signingkey = E53B4D1FE0B14937
+[includeIf "gitdir:~/projects/ucsd/"]
+  path = ~/.gitconfig.work
 [push]
   default = current
 [color]
