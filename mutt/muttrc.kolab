@@ -50,11 +50,13 @@ set alias_file=~/projects/personal/sync-stuff/mutt/kolab.aliases
 source $alias_file
 
 ## Macros
+macro index,pager A ":set confirmappend=no delete=yes\n<save-message>=Archive\n:set confirmappend=yes delete=ask-yes\n"
 macro index \cd "<delete-pattern>~s .*<Enter>" "Delete all messages in current folder"
 # Links
 macro index,pager \cb "<pipe-message> urlscan -cd<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan -cd<Enter>" "call urlscan to extract URLs out of a message"
 # Navigation
+macro index ga "<change-folder> =Archive<tab><enter>" "Go to archive mail"
 macro index gs "<change-folder> =Sent<tab><enter>" "Go to sent mail"
 macro index gi "<change-folder> =INBOX<tab><enter>" "Go to inbox mail"
 
