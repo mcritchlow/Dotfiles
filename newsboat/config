@@ -1,4 +1,5 @@
 auto-reload yes
+notify-program "/usr/bin/notify-send"
 
 external-url-viewer "BROWSER=linkhandler urlscan"
 
