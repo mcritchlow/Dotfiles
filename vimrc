@@ -39,9 +39,6 @@ set expandtab
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
 " Make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
