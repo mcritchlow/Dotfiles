@@ -28,7 +28,7 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 export HISTCONTROL=ignoreboth:erasedups
 
 # ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:$HOME/bin:$PATH"
+export PATH="$HOME/.bin:$HOME/bin:$HOME/go/bin:$PATH"
 
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
