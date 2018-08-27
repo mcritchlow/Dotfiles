@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Script to iterate over delayed messages stored in a csv file and send them via mutt. Can be put in cron or a systemd
+# timer to periodically check and send
+
+# Requires a colon-separated file with the following headers
+# Subject, To:, Attachment(s), message , date, muttrc
+# Example:
+# Hello Matt: matt@example.com,matt@example.org::matt.txt:2018 08 27 00 00 00:work
+
+# Notes:
+# attachments not yet supported
+# date must be of form: 2018 08 29 00 00 00
+# message must be relative to delayed-messages dir
+
+
+MUTT_LOCATION="$HOME/.mutt"
+DELAYED_MAIL_FILE="$MUTT_LOCATION/delayed_mail.csv"
+DELAYED_MAIL_NEW="$MUTT_LOCATION/delayed_mail.new"
+
+[ -s "$DELAYED_MAIL_FILE" ] || exit 0
+
+awk -v mutt_home="$MUTT_LOCATION" 'BEGIN {
+  FS=":"
+  OFS=":"
+  message_directory=(mutt_home "/delayed-messages/")
+  mutt_directory=(mutt_home "/muttrc.")
+  total=0
+} {
+message=(message_directory $4);
+mutt_config=(mutt_directory $6);
+if(mktime($5) <= systime()) {
+  printf("cat %s | mutt -F %s -s \"%s\" %s\n", message, mutt_config, $1, $2) | "/bin/bash"
+  printf("rm %s\n", message) | "/bin/bash"
+  total+=1
+} else
+  print $0
+} END {
+  printf("notify-send \"Mutt: Mails Sent\" \"Sent %s emails\"\n", total) | "/bin/bash"
+  close("/bin/bash")
+}' "$DELAYED_MAIL_FILE" > "$DELAYED_MAIL_NEW"
+
+if [ -f "$DELAYED_MAIL_NEW" ]; then
+  cp "$DELAYED_MAIL_FILE" "$MUTT_LOCATION/delayed_mail.csv.bak"
+  mv "$DELAYED_MAIL_NEW" "$DELAYED_MAIL_FILE"
+fi
