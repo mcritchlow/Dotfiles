@@ -83,7 +83,8 @@ source "~/.mutt/gpg.rc"
 set pgp_use_gpg_agent=yes
 set pgp_sign_as=5B86D84AB60CAB15
 set pgp_timeout=3600
-set crypt_autosign=no # don't crypt all teh things
+# set crypt_autosign=no # don't crypt all teh things
+set pgp_autosign=yes
 set crypt_replyencrypt=yes # if original msg was encrypted, reply w/ crypto
 # auto-delete anything that's a month old
 # push D~r>31d\n
