@@ -1,3 +1,0 @@
-#!/bin/bash
-sudo eopkg ur &>/dev/null
-eopkg list-upgrades | less
