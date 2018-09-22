@@ -1,0 +1,10 @@
+[Unit]
+Description=Run newsboat export on XX:30 each hour
+
+[Timer]
+OnCalendar=*-*-* *:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

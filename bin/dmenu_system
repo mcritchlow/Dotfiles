@@ -7,6 +7,10 @@ chosen=$(echo -e "$choices" | dmenu -i -fn monospace:size=12 -p "Systemctl Optio
 
 # commit any sync-stuff changes prior to lock/reboot/shutdown
 commit_sync_changes() {
+  # return immediately if network is down
+  iface=$(ip link show | grep -Eo 'wlp[[:alnum:]]+')
+  if ip link show "$iface" | grep -q 'DOWN'; then echo "no internet connection" && return; fi
+
   cd ~/projects/personal/sync-stuff || return
   if git diff --quiet; then echo "there are no changes to sync" && return; fi
   git add .

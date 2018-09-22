@@ -1,0 +1,9 @@
+[Unit]
+Description=Newsboat Export Script
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/newsboat -qE /home/mcritchlow/projects/personal/sync-stuff/newsboat.read
+
+[Install]
+WantedBy=default.target

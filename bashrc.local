@@ -119,6 +119,9 @@ alias aur-update-work="clear && echo AUR time! | figlet && cd ~/projects/persona
 alias orphans="pacman -Qdt"
 alias remove-orphans="sudo pacman -Rns \$(pacman -Qtdq)"
 
+# Newsboat
+# load shared read file then open
+alias newsboat="newsboat -qI ~/projects/personal/sync-stuff/newsboat.read && newsboat"
 
 # Tmux
 # alias tmux="TERM=xterm-256color tmux"
