@@ -16,16 +16,16 @@
 #color index         J_magent        color1          "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~F !~p !~P"
 
 # basic colors ---------------------------------------------------------
-color normal        color11         default         
-color error         color1          default         
-color tilde         color0          default         
-color message       color6          default         
-color markers       color1          color7          
-color attachment    color7          default         
-color search        color13         default         
-#color status        J_black         J_status        
-color status        color11         color0          
-color indicator     color8          color3          
+color normal        color11         default
+color error         color1          default
+color tilde         color0          default
+color message       color6          default
+color markers       color1          color7
+color attachment    color7          default
+color search        color13         default
+#color status        J_black         J_status
+color status        color6        default
+color indicator     color6          color9
 color tree          color3          default                                     # arrow in threads
 
 # basic monocolor screen
@@ -47,13 +47,13 @@ color index         color4          default         "~N"                        
 color index         color4          default         "~O"                        # old messages
 color index         color13         default         "~Q"                        # messages that have been replied to
 color index         color10         default         "~R"                        # read messages
-color index         color4          default         "~U"                        # unread messages
-color index         color4          default         "~U~$"                      # unread, unreferenced messages
+color index         color15          default         "~U"                        # unread messages
+color index         color15          default         "~U~$"                      # unread, unreferenced messages
 color index         color11         default         "~v"                        # messages part of a collapsed thread
 color index         color11         default         "~P"                        # messages from me
 color index         color6          default         "~p!~F"                     # messages to me
 color index         color6          default         "~N~p!~F"                   # new messages to me
-color index         color6          default         "~U~p!~F"                   # unread messages to me
+color index         color15          default         "~U~p!~F"                   # unread messages to me
 color index         color10         default         "~R~p!~F"                   # messages to me
 color index         color1          default         "~F"                        # flagged messages
 color index         color1          default         "~F~p"                      # flagged messages to me
@@ -80,22 +80,22 @@ color index         color3          color1          "~v~(~D)"                   
 # message headers ------------------------------------------------------
 
 #color header        color10         default         "^"
-color hdrdefault    color10         default         
+color hdrdefault    color10         default
 color header        color11         default         "^(From)"
 color header        color4          default         "^(Subject)"
 
 # body -----------------------------------------------------------------
 
-color quoted        color4          default         
-color quoted1       color6          default         
-color quoted2       color3          default         
-color quoted3       color1          default         
-color quoted4       color9          default         
+color quoted        color4          default
+color quoted1       color6          default
+color quoted2       color3          default
+color quoted3       color1          default
+color quoted4       color9          default
 
-color signature     color10         default         
-color bold          color0          default         
-color underline     color0          default         
-color normal        default         default         
+color signature     color10         default
+color bold          color0          default
+color underline     color0          default
+color normal        default         default
 #
 color body          color14         default         "[;:][-o][)/(|]"    # emoticons
 color body          color14         default         "[;:][)(|]"         # emoticons
