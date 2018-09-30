@@ -12,7 +12,8 @@ commit_sync_changes() {
   if ip link show "$iface" | grep -q 'DOWN'; then echo "no internet connection" && return; fi
 
   cd ~/projects/personal/sync-stuff || return
-  if git diff --quiet; then echo "there are no changes to sync" && return; fi
+  changes=$(git status --porcelain=v1 | wc -l)
+  if [[ $changes = 0 ]]; then echo "there are no changes to sync" && return; fi
   git add .
   git commit -m "auto-commit"
   git push origin master
