@@ -48,6 +48,7 @@ set number
 set numberwidth=5
 
 " Ruby
+let ruby_fold = 1
 let ruby_foldable_groups = 'class module def' "only fold higher level groups
 let g:ruby_indent_block_style = 'do'
 let ruby_spellcheck_strings = 1
@@ -118,14 +119,15 @@ syntax enable
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set background=dark
-colorscheme solarized8
-let g:solarized_term_italics = 1
-let g:solarized_extra_hi_groups = 1
-" other diff modes: bold, normal
-let g:solarized_diffmode = "high"
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+let g:nord_cursor_line_number_background = 1
+let g:nord_comment_brightness = 15
+colorscheme nord
+
 " Italicize comments
-highlight Comment cterm=italic
+" highlight Comment cterm=italic
 " }}}
 " ============================================================================
 " Autocommands {{{
@@ -351,7 +353,7 @@ vmap <leader>m :norm A # => <Esc>
 " ============================================================================
 " showing git branch depends on fugitive
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ],
       \            [ 'gitbranch', 'readonly', 'filename', 'modified' ]],

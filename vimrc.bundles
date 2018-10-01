@@ -50,6 +50,7 @@ Plug 'wincent/loupe' "better search highlighting and defaults
 " Theming {{{
 " ============================================================================
 Plug 'lifepillar/vim-solarized8'
+Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
