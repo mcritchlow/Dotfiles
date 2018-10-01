@@ -84,6 +84,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias cd.='cd ..'
 alias cd..='cd ..'
+alias ccat='highlight --force --out-format=ansi'
 alias l='ls -alFh --color=auto'
 alias ll='ls -lh --color=auto'
 alias sls="stat -c '%n (%F) %a %A' *"
