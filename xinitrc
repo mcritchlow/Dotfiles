@@ -13,6 +13,8 @@ fi
 xset -b # disable bell
 
 if grep -q "arch4k" /etc/hostname; then
+  # Nvidia
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
   # HiDPI
   xrandr --dpi 192
   [ -f "$HOME/.Xresources.hidpi" ] && xrdb -merge "$HOME/.Xresources.hidpi"
