@@ -323,6 +323,17 @@ let g:ale_linters = {
 " ============================================================================
 " Vim Test {{{
 " ============================================================================
+" If docker is running, run tests within that context
+function! DockerRunning()
+  let shellcmd = 'docker-compose ps -q web | xargs docker inspect -f "{{.State.Running}}"'
+  let output=system(shellcmd)
+  if output =~ "true"
+    return 1
+  endif
+endfunction
+if DockerRunning()
+  let test#ruby#rspec#executable = 'docker-compose exec web bundle exec rspec'
+endif
 " vim-test sends command to send to tmux usign Vim Tmux Runner
 let test#strategy = "dispatch"
 " vim-test mappings
