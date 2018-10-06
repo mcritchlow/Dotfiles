@@ -35,6 +35,13 @@ export HISTCONTROL=ignoreboth:erasedups
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
 
+# load Go
+if test -d "$HOME/go"; then
+  export GOPATH="$HOME/go"
+  export PATH="$HOME/go/bin:$PATH"
+fi
+
+
 # load rbenv
 if test -d "$HOME/.rbenv"; then
   export PATH="$HOME/.rbenv/bin:$PATH"
