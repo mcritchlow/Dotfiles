@@ -40,6 +40,7 @@ if test -d "$HOME/go"; then
   export GOPATH="$HOME/go"
   export PATH="$HOME/go/bin:$PATH"
 fi
+alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 
 
 # load rbenv
