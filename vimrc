@@ -324,9 +324,26 @@ let g:ale_linters = {
 " Vim Test {{{
 " ============================================================================
 " If a project uses docker-compose, change test executable
-if filereadable("docker-compose.yml")
-  let test#ruby#rspec#executable = 'docker-compose exec web bundle exec rspec'
+let compose_files = split(glob("`find . -name docker-compose.yml -print`"),'\n')
+if len(compose_files) >= 1
+  if len(compose_files) == 1
+    let test#ruby#rspec#executable = 'docker-compose exec web bundle exec rspec'
+  else
+    let found = 0
+    for cf in compose_files
+      if cf =~ '/dev/'
+        let test#ruby#rspec#executable = 'docker-compose -f '. cf .' exec web bundle exec rspec'
+        let found = 1
+        break
+      endif
+    endfor
+    if !found " this shouldn't happen.. so just use the first one found
+      let test#ruby#rspec#executable = 'docker-compose -f '. compose_files[0] . ' exec web bundle exec rspec'
+    endif
+    unlet found
+  endif
 endif
+unlet compose_files
 "
 " vim-test sends command to send to tmux usign Vim Tmux Runner
 let test#strategy = "dispatch"
