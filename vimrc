@@ -324,7 +324,7 @@ let g:ale_linters = {
 " Vim Test {{{
 " ============================================================================
 " If a project uses docker-compose, change test executable
-let compose_files = split(glob("`find . -name docker-compose.yml -print`"),'\n')
+let compose_files = split(glob("`find . -maxdepth 3 -name docker-compose.yml -print`"),'\n')
 if len(compose_files) >= 1
   if len(compose_files) == 1
     let test#ruby#rspec#executable = 'docker-compose exec web bundle exec rspec'
