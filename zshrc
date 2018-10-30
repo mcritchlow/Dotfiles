@@ -5,7 +5,7 @@ autoload -Uz compinit colors
 colors
 compinit
 
-setopt promptsubst COMPLETE_ALIASES extendedglob hist_ignore_all_dups hist_ignore_space
+setopt promptsubst COMPLETE_ALIASES extendedglob hist_ignore_all_dups hist_ignore_space share_history
 
 # Things to source
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
