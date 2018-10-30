@@ -6,7 +6,6 @@ path=(~/.bin ~/bin ~/.local/bin $path[@])
 if test -d "$HOME/go"; then
   export GOPATH="$HOME/go"
   path=(~/go/bin $path[@])
-  export PATH="$HOME/go/bin:$PATH"
 fi
 
 # load rbenv
