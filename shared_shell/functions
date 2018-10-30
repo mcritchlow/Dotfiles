@@ -1,0 +1,263 @@
+# Shell functions
+# --------------------------------------------------------------------
+# Sometimes gpg-agent struggles w/ ssh..
+gpg-reload-agent() {
+  systemctl --user restart gpg-agent.service
+  sleep 3
+  gpg-connect-agent updatestartuptty /bye >/dev/null
+}
+
+bundler-search() {
+  # Search your bundle for the provided pattern
+  #   Requires bundler 1.8+ for execution as a bundler subcommand.
+  #   Examples:
+  #     bundle search Kernal.warn
+  #     bundle search current_user clearance
+  #     bundle search "Change your password" clearance
+  #
+  # Arguments:
+  #  1. What to search for
+  #  2. Which gem names to search (defaults to all gems)
+
+  pattern="$1"; shift
+  ag "$pattern" "$(bundle show --paths "$@")"
+}
+
+# Replace a A/V file metadata title with one that has no emojis
+# This is needed because dwm barfs horrendously when emojis are in the metadata title/window
+ffmpeg-emoji-fix() {
+  local input_file="$1"; shift
+  local output_file="$1"
+  local file_suffix
+  file_suffix=$(echo "$input_file" | awk -F '.' '{ print $2 }')
+
+  ffmpeg -i "$input_file" -metadata title="$output_file" -acodec copy -vcodec copy "$output_file.$file_suffix"
+}
+
+# invoke ctags hook in git repository
+git-ctags() {
+  [ -f .git/hooks/ctags ] || git init
+  .git/hooks/ctags
+}
+
+# Use Vim less script for color
+lessc () {
+  /usr/share/vim/vim80/macros/less.sh "$@"
+}
+
+# LastPass-CLI - copy pw to clipboard w/ fzf
+lpp () {
+  lpass show -c --password "$(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')"
+}
+
+# gd() {
+#   [ "$1" ] && "cd *$1*" || return
+# }
+
+csbuild() {
+  [ $# -eq 0 ] && return
+
+  cmd="find $(pwd)"
+  for ext in "$@"; do
+    cmd=" $cmd -name '*.$ext' -o"
+  done
+  echo ${cmd: 0: ${#cmd} - 3}
+  eval "${cmd: 0: ${#cmd} - 3}" > cscope.files &&
+  cscope -b -q && rm cscope.files
+}
+
+tx() {
+  tmux splitw "$*; echo -n Press enter to finish.; read"
+  tmux select-layout tiled
+  tmux last-pane
+}
+
+gitzip() {
+  git archive -o $(basename $PWD).zip HEAD
+}
+
+gittgz() {
+  git archive -o $(basename $PWD).tgz HEAD
+}
+
+gitdiffb() {
+  if [ $# -ne 2 ]; then
+    echo two branch names required
+    return
+  fi
+  git log --graph \
+  --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' \
+  --abbrev-commit --date=relative $1..$2
+}
+
+alias gitv='git log --graph --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+EXTRA=$BASE/bashrc-extra
+[ -f "$EXTRA" ] && source "$EXTRA"
+
+
+# fzf (https://github.com/junegunn/fzf)
+# --------------------------------------------------------------------
+
+csi() {
+  echo -en "\x1b[$@"
+}
+
+fzf-down() {
+  fzf --height 50% "$@" --border
+}
+
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND | with-dir"
+if [ -x ~/.vim/plugged/fzf.vim/bin/preview.rb ]; then
+  export FZF_CTRL_T_OPTS="--preview '~/.vim/plugged/fzf.vim/bin/preview.rb {} | head -200'"
+fi
+
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -sel clip -i)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
+
+command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
+command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+# fco - checkout git branch/tag
+fco() {
+  local tags branches target
+  tags=$(git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD             |
+    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
+    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$tags"; echo "$branches") | sed '/^$/d' |
+    fzf-down --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*") || return
+  git checkout $(echo "$target" | awk '{print $2}')
+}
+
+# fshow - git commit browser
+fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(blue)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --header "Press CTRL-S to toggle sort" \
+      --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+                 xargs -I % sh -c 'git show --color=always % | head -200 '" \
+      --bind "enter:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs git rev-parse | xargs -I % sh -c 'vim fugitive://\$(git rev-parse --show-toplevel)/.git//% < /dev/tty'"
+}
+
+# ftags - search ctags
+ftags() {
+  local line
+  [ -e tags ] &&
+  line=$(
+    awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
+    cut -c1-$COLUMNS | fzf --nth=2 --tiebreak=begin
+  ) && $EDITOR $(cut -f3 <<< "$line") -c "set nocst" \
+                                      -c "silent tag $(cut -f2 <<< "$line")"
+}
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  local file
+  file=$(fzf-tmux --query="$1" --select-1 --exit-0)
+  [ -n "$file" ] && ${EDITOR:-vim} "$file"
+}
+
+# ftm [FUZZY PATTERN] - Choose an existing tmux session to attach and switch to, or create a new one
+ftm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
+
+# fts [FUZZY PATTERN] - Launch tmux session from ~/.tmux-projects
+fts() {
+  local tmux_project
+  local base="$HOME/.tmux-projects"
+  tmux_project=$(ls "$base" | \
+    fzf --height 25% --select-1 --exit-0) &&
+  sh "$base/$tmux_project"
+}
+# fts [FUZZY PATTERN] - Choose a tmux session to kill
+fks() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+  tmux kill-session -t "$session"
+}
+
+# Docker heart FZF
+# -------------
+
+# drcv [FUZZY PATTERN] - Choose a docker container to remove (and associated volumes)
+drcv() {
+  docker ps -a | sed '1d' | fzf -m | awk '{print $1}' | xargs docker rm -v
+}
+
+# drc [FUZZY PATTERN] - Choose a docker container to remove
+drc() {
+  docker ps -a | sed '1d' | fzf -m | awk '{print $1}' | xargs docker rm
+}
+
+
+# dri [FUZZY PATTERN] - Choose a docker image to remove
+dri() {
+  docker images | sed '1d' | fzf -m | awk '{print $3}' | xargs docker rmi
+}
+
+# drv [FUZZY PATTERN] - Choose a docker volume to remove
+drv() {
+  docker volume ls | sed '1d'| fzf -m | awk '{print $2}' | xargs docker volume rm
+}
+
+# GIT heart FZF
+# -------------
+
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+gf() {
+  is_in_git_repo || return
+  git -c color.status=always status --short |
+  fzf-down -m --ansi --nth 2..,.. \
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+  cut -c4- | sed 's/.* -> //'
+}
+
+gb() {
+  is_in_git_repo || return
+  git branch -a --color=always | grep -v '/HEAD\s' | sort |
+  fzf-down --ansi --multi --tac --preview-window right:70% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -200' |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##'
+}
+
+gt() {
+  is_in_git_repo || return
+  git tag --sort -version:refname |
+  fzf-down --multi --preview-window right:70% \
+    --preview 'git show --color=always {} | head -200'
+}
+
+gh() {
+  is_in_git_repo || return
+  git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
+  fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+    --header 'Press CTRL-S to toggle sort' \
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -200' |
+  grep -o "[a-f0-9]\{7,\}"
+}
+
+gr() {
+  is_in_git_repo || return
+  git remote -v | awk '{print $1 "\t" $2}' | uniq |
+  fzf-down --tac \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1} | head -200' |
+  cut -d$'\t' -f1
+}
