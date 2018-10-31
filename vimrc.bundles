@@ -96,7 +96,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " ============================================================================
 " Fuzzy Finder (FZF) {{{
 " ============================================================================
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " }}}
