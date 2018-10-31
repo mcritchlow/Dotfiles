@@ -53,4 +53,13 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey '^F' fzf-cd-widget #override Alt-C (because DWM..)
 
+# make Vi-mode more obvious
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
