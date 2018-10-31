@@ -1,3 +1,13 @@
+Host gitlab.com-mcritchlow
+  HostName gitlab.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+Host gitlab.com-mcritchlow1
+  HostName gitlab.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_work
+
 IdentityFile ~/.ssh/id_rsa
 IdentityFile ~/.ssh/id_rsa_work
 AddKeysToAgent yes
