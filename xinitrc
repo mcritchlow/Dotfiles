@@ -21,9 +21,7 @@ if grep -q "arch4k" /etc/hostname; then
   # Double the GTK+3 widget scale. NOTE: You must set the GTK+3 font to half size. Hopefully this changes soon.
   export GDK_SCALE=2
   export GDK_DPI_SCALE=0.5
-  # Do the same with Qt5, the other Qt/KDE options do general things to make Qt5
-  #export QT_DEVICE_PIXEL_RATIO=2
-  export QT_SCALE_FACTOR=2
+  export QT_AUTO_SCREEN_SCALE_FACTOR=1
   export QT_STYLE_OVERRIDE=Breeze
 else
   # Regular DPI
