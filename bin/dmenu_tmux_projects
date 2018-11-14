@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+shopt -s nullglob globstar
+
+projects_base="$HOME/.tmux-projects"
+
+project=$(ls $projects_base | dmenu -i -fn monospace:13 "$@")
+
+[[ -n $project ]] || exit
+
+sh "$projects_base/$project"
