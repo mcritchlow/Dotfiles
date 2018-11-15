@@ -7,4 +7,4 @@ project=$(ls $projects_base | dmenu -i -fn monospace:13 "$@")
 
 [[ -n $project ]] || exit
 
-sh "$projects_base/$project"
+st -t "$project" -e bash -ic "$projects_base/$project"
