@@ -10,7 +10,6 @@ setopt promptsubst COMPLETE_ALIASES extendedglob hist_ignore_all_dups hist_ignor
 # Things to source
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.shared_shell/functions
 source ~/.shared_shell/aliases
@@ -63,3 +62,6 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+# Per readme, source highlighting last since it wraps ZLE widgets
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
