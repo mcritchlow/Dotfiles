@@ -28,8 +28,8 @@ bind pager R group-reply
 
 
 ## Account info
-set imap_user=`lpass show --username matt@critchlow.xyz/Email/kolabnow.com`
-set imap_pass=`lpass show --password matt@critchlow.xyz/Email/kolabnow.com`
+set imap_user=`pass show matt@critchlow.xyz/Email/kolabnow.com | grep username | cut -d" " -f2`
+set imap_pass=`pass show matt@critchlow.xyz/Email/kolabnow.com | head -n1`
 set from=$imap_user
 set use_from=yes
 set realname='Matt Critchlow'
