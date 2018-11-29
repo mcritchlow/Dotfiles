@@ -59,7 +59,7 @@ sites.each do |site|
     successful += 1
   else
     puts ' error!'
-    errors << r
+    errors << "error creating or updating #{name}"
   end
 end
 puts "#{successful} records successfully imported!"
