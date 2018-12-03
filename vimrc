@@ -9,7 +9,7 @@ noremap \ ,
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set noswapfile
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
@@ -19,9 +19,6 @@ set autowrite     " Automatically :write before running commands
 set cursorline
 set relativenumber
 set hlsearch
-"clear search by hitting return
-" nnoremap <CR> :noh<CR>
-
 set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
 set ttimeoutlen=50  " Make Esc work faster
@@ -70,31 +67,6 @@ set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
-
-" Bracketed paste
-" http://www.xfree86.org/current/ctlseqs.html#Bracketed%20Paste%20Mode
-" http://stackoverflow.com/a/7053522
-if &term =~ "xterm.*"
-    let &t_ti = &t_ti . "\e[?2004h"
-    let &t_te = "\e[?2004l" . &t_te
-    function XTermPasteBegin(ret)
-        set pastetoggle=<Esc>[201~
-        set paste
-        return a:ret
-    endfunction
-    map <expr> <Esc>[200~ XTermPasteBegin("i")
-    imap <expr> <Esc>[200~ XTermPasteBegin("")
-    vmap <expr> <Esc>[200~ XTermPasteBegin("c")
-    cmap <Esc>[200~ <nop>
-    cmap <Esc>[201~ <nop>
-endif
-
 " }}}
 "  ============================================================================
 " Load Plugins {{{
