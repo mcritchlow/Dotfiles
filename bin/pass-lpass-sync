@@ -5,7 +5,6 @@
 # 2. You will need lastpass-cli installed and authenticated
 
 require 'English'
-require 'byebug'
 require 'json'
 require 'open3'
 
