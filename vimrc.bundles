@@ -48,9 +48,9 @@ call minpac#add('wincent/loupe') "better search highlighting and defaults
 " ============================================================================
 " Theming {{{
 " ============================================================================
-call minpac#add( 'lifepillar/vim-solarized8')
-call minpac#add( 'arcticicestudio/nord-vim')
-call minpac#add( 'itchyny/lightline.vim')
+call minpac#add('lifepillar/vim-solarized8')
+call minpac#add('arcticicestudio/nord-vim')
+call minpac#add('itchyny/lightline.vim')
 
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
 " Plug 'majutsushi/tagbar'
