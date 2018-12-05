@@ -1,0 +1,46 @@
+#!/bin/bash
+# allow uefi or legacy testing
+BIOS=${1:-legacy}
+
+ARCH_TESTING_DIR="$HOME/projects/personal/arch-testing"
+mkdir -p "$ARCH_TESTING_DIR"
+cd "$ARCH_TESTING_DIR" || exit 1
+
+# if arch iso doesn't already exist, download it
+iso_month=$(date '+%Y.%m')
+ARCH_ISO_URL="http://mirrors.ocf.berkeley.edu/archlinux/iso/$iso_month.01/archlinux-$iso_month.01-x86_64.iso"
+[ ! -f arch.iso ] && wget "$ARCH_ISO_URL" -O arch.iso
+
+# if hard disk already exists delete it
+[ -f arch-test.qcow2 ] && echo rm arch-test.qcow2
+if [ -e arch-test.qcow2 ]; then
+  rm arch-test.qcow2
+fi
+
+# create the virtual hard disk
+qemu-img create -f qcow2 arch-test.qcow2 16G
+
+if test "$BIOS" == "uefi"; then
+  # boot up the VM for UEFI bios
+  [ ! -f local_OVMF_VARS.fd ] && cp /usr/share/ovmf/x64/OVMF_VARS.fd local_OVMF_VARS.fd
+  qemu-system-x86_64 \
+    -enable-kvm \
+    -m 2048 \
+    -cpu host -smp 4,sockets=1,cores=4,threads=1 \
+    -nic user,model=virtio \
+    -drive if=pflash,format=raw,readonly,file=/usr/share/ovmf/x64/OVMF_CODE.fd \
+    -drive if=pflash,format=raw,file=local_OVMF_VARS.fd \
+    -drive file=arch-test.qcow2,media=disk,if=virtio \
+    -cdrom arch.iso \
+    -sdl
+else
+  # boot up the VM for legacy bios
+  qemu-system-x86_64 \
+    -enable-kvm \
+    -m 2048 \
+    -cpu host -smp 4,sockets=1,cores=4,threads=1 \
+    -nic user,model=virtio \
+    -drive file=arch-test.qcow2,media=disk,if=virtio \
+    -cdrom arch.iso \
+    -sdl
+fi
