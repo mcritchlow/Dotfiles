@@ -23,6 +23,16 @@ bundler-search() {
   ag "$pattern" "$(bundle show --paths "$@")"
 }
 
+# update personal repos
+update-personal-repos() {
+  local project_base=~/projects/personal
+  local projects=('dotfiles' 'laptop' 'sync-stuff')
+  for project in $projects
+  do
+    cd "$project_base/$project" && git pull origin master
+  done
+}
+
 # Replace a A/V file metadata title with one that has no emojis
 # This is needed because dwm barfs horrendously when emojis are in the metadata title/window
 ffmpeg-emoji-fix() {
