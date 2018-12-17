@@ -25,12 +25,14 @@ bundler-search() {
 
 # update personal repos
 update-personal-repos() {
+  local current_path=$(pwd)
   local project_base=~/projects/personal
   local projects=('dotfiles' 'laptop' 'sync-stuff')
   for project in $projects
   do
     cd "$project_base/$project" && git pull origin master
   done
+  cd $current_path
 }
 
 # Replace a A/V file metadata title with one that has no emojis
