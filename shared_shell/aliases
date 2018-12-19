@@ -31,6 +31,8 @@ alias gp="cd ~/projects/personal/"
 alias gaur="cd ~/projects/aur/"
 
 # operational
+alias o='xdg-open'
+alias v='vim'
 alias vi='vim'
 alias vi2='vi -O2 '
 alias hc="history -c"
