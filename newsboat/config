@@ -3,6 +3,9 @@ notify-program "/usr/bin/notify-send"
 
 external-url-viewer "BROWSER=linkhandler urlscan"
 
+
+download-path "~/Downloads/"
+
 bind-key j down
 bind-key k up
 bind-key j next articlelist
