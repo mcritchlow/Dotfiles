@@ -2,5 +2,5 @@
 
 # make a selection with scrot and save to file
 # note short sleep is needed or selection never gets triggered properly
-sleep 0.2
+sleep 0.5
 scrot -s -e 'mv $f ~/Pictures'
