@@ -150,10 +150,6 @@ augroup vimrcEx
   " Use emoji complete for Markdown
   autocmd FileType markdown setlocal completefunc=emoji#complete
 
-  " Automatically wrap at 72 characters and spell check git commit messages
-  autocmd FileType gitcommit setlocal textwidth=72
-  autocmd FileType gitcommit setlocal spell
-
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
