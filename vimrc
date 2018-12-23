@@ -33,8 +33,6 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-
-
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
@@ -108,7 +106,6 @@ colorscheme nord
 
 augroup vimrcEx
   autocmd!
-
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
@@ -116,45 +113,6 @@ augroup vimrcEx
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
-
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile *.markdown set filetype=markdown
-  autocmd BufNewFile,BufRead *.html.erb set filetype=html
-  autocmd BufNewFile,BufRead *.css.scss set filetype=css
-  autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
-  autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
-
-
-  "Make calcurse notes markdown compatible:
-  autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
-  autocmd BufRead,BufNewFile ~/.config/calcurse/notes/* set filetype=markdown
-
-  " setup mutt usage
-  autocmd BufRead,BufNewFile /tmp/mutt-* setlocal spell nolist
-
-  " set space/tab settings for languages
-  autocmd FileType python set tabstop=4|set textwidth=79|set shiftwidth=4|set expandtab|set autoindent
-  autocmd FileType ruby set tabstop=2|set sw=2
-  autocmd FileType html set tabstop=2|set sw=2
-  autocmd FileType css set tabstop=2|set sw=2
-  autocmd FileType javascript set tabstop=2|set sw=2
-  autocmd FileType markdown set tabstop=4|set sw=4|set textwidth=80
-
-  " Enable spellchecking for LaTex
-  autocmd FileType tex setlocal spell
-
-  " Enable spellchecking for Markdown
-  autocmd FileType markdown setlocal spell
-
-  " Use emoji complete for Markdown
-  autocmd FileType markdown setlocal completefunc=emoji#complete
-
-  " Allow stylesheets to autocomplete hyphenated words
-  autocmd FileType css,scss,sass setlocal iskeyword+=-
-
-  " Associate ansible filetype to things in a /ops folder for a project
-  autocmd BufRead,BufNewFile */ops/*.yml set filetype=ansible
 augroup END
 
 " }}}
@@ -305,21 +263,6 @@ nnoremap <silent> <Leader>s :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
 nnoremap <silent> <leader>gt :TestVisit<CR>
-
-" }}}
-" ============================================================================
-" Seeing Is Believing (Ruby) {{{
-" ============================================================================
-" Annotate every line
-nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
-" Annotate marked lines
-nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
-" Remove annotations
-nmap <leader>c :%.!seeing_is_believing --clean<CR>;
-" Mark the current line for annotation
-nmap <leader>m A # => <Esc>
-" Mark the highlighted lines for annotation
-vmap <leader>m :norm A # => <Esc>
 
 " }}}
 " ============================================================================
