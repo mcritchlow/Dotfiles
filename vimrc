@@ -125,10 +125,6 @@ augroup END
 nnoremap <Space> za
 vnoremap <Space> za
 
-" persist current file quickly
-nnoremap <leader>p <esc>:w<CR>
-vnoremap <leader>p <esc>:w<CR>
-
 " Open urlview on current file
 nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
 
@@ -256,14 +252,6 @@ let g:ansible_unindent_after_newline = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " }}}
 " ============================================================================
-" Limelight {{{
-" ============================================================================
-
-let g:limelight_conceal_ctermfg = 245
-let g:limelight_conceal_guifg = '#8a8a8a'
-
-" }}}
-" ============================================================================
 " FZF {{{
 " ============================================================================
 " use FZF like CTRL-P
@@ -338,35 +326,4 @@ command! -nargs=* Bsearch call fzf#run({
   \            '--color hl:68,hl+:110',
   \ 'down':    '50%'
   \ })
-
-" custom FZF command borrowed from @dkarter
-fun! s:change_branch(e)
-  let l:_ = system('git checkout ' . a:e)
-  :e!
-  :AirlineRefresh
-  echom 'Changed branch to' . a:e
-endfun
-
-command! Gbranch call fzf#run(
-      \ {
-      \ 'source': 'git branch',
-      \ 'sink': function('<sid>change_branch'),
-      \ 'options': '-m',
-      \ 'down': '20%'
-      \ })
-
-fun! s:change_remote_branch(e)
-  let l:_ = system('git checkout --track ' . a:e)
-  :e!
-  :AirlineRefresh
-  echom 'Changed to remote branch' . a:e
-endfun
-
-command! Grbranch call fzf#run(
-      \ {
-      \ 'source': 'git branch -r',
-      \ 'sink': function('<sid>change_remote_branch'),
-      \ 'options': '-m',
-      \ 'down': '20%'
-      \ })
 " }}}
