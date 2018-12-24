@@ -274,12 +274,11 @@ nnoremap <c-p> :Files<cr>
 " File preview using Highlight (http://www.andre-simon.de/doku/highlight/en/highlight.php)
 " let g:fzf_files_options =
 "   \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-" TODO: test some of these out
 " inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
-" imap <c-x><c-k> <plug>(fzf-complete-word)
-" imap <c-x><c-f> <plug>(fzf-complete-path)
-" imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-" imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -340,21 +339,6 @@ command! -nargs=* Bsearch call fzf#run({
   \ 'down':    '50%'
   \ })
 
-" need to get filename and line number to open
-" fun! s:bundle_search(e)
-"   let result_list = split(a:e, ':')
-"   :e +result_list[0].' '.result_list[1]
-"   echom 'Chosen file is' . result_list[0] . ' with line number' . result_list[1]
-" endfun
-"
-" command! -bang -nargs=* Bsearch call fzf#run(
-"       \ {
-"       \ 'source': 'ag '.<q-args>.' $(bundle show --paths)',
-"       \ 'sink': function('<sid>bundle_search'),
-"       \ 'options': '-m',
-"       \ 'down': '40%'
-"       \ })
-
 " custom FZF command borrowed from @dkarter
 fun! s:change_branch(e)
   let l:_ = system('git checkout ' . a:e)
@@ -385,8 +369,4 @@ command! Grbranch call fzf#run(
       \ 'options': '-m',
       \ 'down': '20%'
       \ })
-
-
-" }}}
-
 " }}}
