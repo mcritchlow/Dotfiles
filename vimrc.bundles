@@ -25,12 +25,6 @@ call minpac#add('w0rp/ale')
 call minpac#add('editorconfig/editorconfig-vim')
 " }}}
 " ============================================================================
-" Snippets and such {{{
-" ============================================================================
-call minpac#add('SirVer/ultisnips')
-call minpac#add('honza/vim-snippets')
-" }}}
-" ============================================================================
 " General Nice Things {{{
 " ============================================================================
 call minpac#add('tpope/vim-repeat') "repeat map commands (surround)

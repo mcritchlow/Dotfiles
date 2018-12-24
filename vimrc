@@ -37,6 +37,8 @@ set expandtab
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
+set wildmode=list:longest,list:full
+
 " Make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
@@ -114,57 +116,6 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 augroup END
-
-" }}}
-" ============================================================================
-" Tab Completion {{{
-" ============================================================================
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
-
-" }}}
-" ============================================================================
-" Snippets and such {{{
-" ============================================================================
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips/"
-" let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
-" }}}
-" ============================================================================
-" Markdown Preview {{{
-" ============================================================================
-" pandoc , markdown
-function! MarkdownPreview()
-  :RunSilent pandoc -f gfm -o /tmp/vim-pandoc-out.html %
-  :RunSilent xdg-open /tmp/vim-pandoc-out.html
-endfunction
-command! -nargs=* RunSilent
-      \ | execute ':silent !'.'<args>'
-      \ | execute ':redraw!'
-nnoremap <F7> :call MarkdownPreview()<cr>
-" }}}
-" ============================================================================
-" Ctags {{{
-" ============================================================================
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
 
 " }}}
 " ============================================================================
