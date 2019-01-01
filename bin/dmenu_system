@@ -3,7 +3,7 @@
 # dmenu script for managing systemctl
 choices="lock\nreboot\nshutdown"
 
-chosen=$(echo -e "$choices" | dmenu -i -fn monospace:size=12 -p "Systemctl Options")
+chosen=$(echo -e "$choices" | dmenu -i -p "Systemctl Options")
 
 # commit any sync-stuff changes prior to lock/reboot/shutdown
 commit_sync_changes() {

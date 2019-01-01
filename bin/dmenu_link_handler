@@ -14,7 +14,7 @@ echo $visual
 # Download location
 downloads=$HOME/Downloads
 
-x=$(echo -e "mpv\nmpv (loop)\nwget\nfeh\nbrowser\nw3m\nyoutube-dl" | dmenu -i -fn monospace:size=12 -p "How should I open '$visual'?")
+x=$(echo -e "mpv\nmpv (loop)\nwget\nfeh\nbrowser\nw3m\nyoutube-dl" | dmenu -i -p "How should I open '$visual'?")
 case "$x" in
   mpv) mpv -quiet "$1" 2&>/dev/null & disown ;;
   "mpv (loop)") mpv -quiet --loop "$1" 2&>/dev/null & disown ;;
