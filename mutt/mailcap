@@ -6,7 +6,7 @@ application/pdf; zathura '%s';
 # text/calendar; evolution -i %s; nametemplate=%s.ics; copiousoutput;
 # application/ics; evolution -i %s; nametemplate=%s.ics; copiousoutput;
 # Images/Audio/Video
-image/*; feh '%s';
+image/*; sxiv '%s';
 audio/*; mpv '%s';
 video/*; mpv '%s';
 # MS Office crap

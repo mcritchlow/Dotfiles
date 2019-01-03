@@ -3,7 +3,7 @@
 # Yanked from Luke Smith (thanks!)
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.scripts/linkhandler
 # Feed script a url.
-# If an image, it will view in feh,
+# If an image, it will view in sxiv,
 # if a video or gif, it will view in mpv
 # if a music file or pdf, it will download,
 # otherwise it opens link in browser.
@@ -19,11 +19,11 @@ vidsites="youtube.com
   "
 ext="${1##*.}"
 mpvFiles="mkv mp4 gif webm"
-fehFiles="png jpg jpeg jpe"
+sxivFiles="png jpg jpeg jpe"
 wgetFiles="mp3 flac opus mp3?source=feed pdf"
 
-if echo $fehFiles | grep -w $ext > /dev/null; then
-  feh "$1" >/dev/null & disown
+if echo $sxivFiles | grep -w $ext > /dev/null; then
+  sxiv "$1" >/dev/null & disown
 elif echo $mpvFiles | grep -w $ext > /dev/null; then
   mpv -quiet "$1" > /dev/null & disown
 elif echo $wgetFiles | grep -w $ext > /dev/null; then
