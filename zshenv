@@ -23,6 +23,8 @@ export LPASS_PINENTRY="/usr/bin/pinentry-curses"
 export LPASS_AGENT_TIMEOUT=0
 # prefer libvirt provider for vagrant
 export VAGRANT_DEFAULT_PROVIDER="libvirt"
+# nnn scripts location
+export NNN_SCRIPT="$HOME/.config/nnn/scripts"
 
 # less colors
 export LESS=-R
