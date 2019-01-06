@@ -11,7 +11,7 @@ do
   "m")
     [ -z "$destdir" ] && destdir="$(ls ${HOME} | dmenu -l 20 -i -p "Move file(s) to where?" | sed "s|~|$HOME|g")"
     [ -z "$destdir" ] && exit
-    cp "$file" "$destdir" && notify-send -i "$fullpath" "$file moved to $destdir." &
+    mv "$file" "$destdir" && notify-send -i "$fullpath" "$file moved to $destdir." &
     ;;
   "r")
     convert -rotate 90 "$file" "$file" ;;
