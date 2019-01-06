@@ -1,7 +1,7 @@
 #!/bin/sh
-while read file
+while read -r file
 do
-	fullpath="$(pwd)/$file"
+  fullpath=$(readlink -f "$file")
   case "$1" in
   "c")
     [ -z "$destdir" ] && destdir="$(ls ${HOME} | dmenu -l 20 -i -p "Copy file(s) to where?" | sed "s|~|$HOME|g")"
