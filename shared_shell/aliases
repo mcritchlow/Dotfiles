@@ -31,6 +31,8 @@ alias gp="cd ~/projects/personal/"
 alias gaur="cd ~/projects/aur/"
 
 # operational
+alias n='nnn'
+alias t='sxiv -Ztq * >/dev/null 2>&1'
 alias o='xdg-open'
 alias v='vim'
 alias vi='vim'
