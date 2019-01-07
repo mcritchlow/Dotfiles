@@ -1,15 +1,15 @@
 #!/bin/sh
 while read -r file
 do
-  fullpath=$(readlink -f "$file")
+  fullpath=$(readlink -nf "$file")
   case "$1" in
   "c")
-    [ -z "$destdir" ] && destdir="$(ls ${HOME} | dmenu -l 20 -i -p "Copy file(s) to where?" | sed "s|~|$HOME|g")"
+    [ -z "$destdir" ] && destdir="$HOME/$(ls ${HOME} | dmenu -l 20 -i -p "Copy file(s) to where?" | sed "s|~|$HOME|g")"
     [ -z "$destdir" ] && exit
     cp "$file" "$destdir" && notify-send -i "$fullpath" "$file copied to $destdir." &
     ;;
   "m")
-    [ -z "$destdir" ] && destdir="$(ls ${HOME} | dmenu -l 20 -i -p "Move file(s) to where?" | sed "s|~|$HOME|g")"
+    [ -z "$destdir" ] && destdir="$HOME/$(ls ${HOME} | dmenu -l 20 -i -p "Move file(s) to where?" | sed "s|~|$HOME|g")"
     [ -z "$destdir" ] && exit
     mv "$file" "$destdir" && notify-send -i "$fullpath" "$file moved to $destdir." &
     ;;
