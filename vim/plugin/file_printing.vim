@@ -12,7 +12,7 @@ function! s:PrintFile()
   :RunSilent lpr %
 endfunction
 
-" this might already be defined my markdown plugin
+" this might already be defined by markdown plugin
 if exists(':RunSilent') != 2
   command! -nargs=* RunSilent
         \ | execute ':silent !'.'<args>'

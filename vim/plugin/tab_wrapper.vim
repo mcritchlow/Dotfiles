@@ -1,3 +1,8 @@
+if exists('g:loaded_tab_wrapper') || &compatible
+  finish
+endif
+let g:loaded_tab_wrapper = 1
+
 " will insert tab at beginning of line,
 " will use completion if not at beginning
 function! InsertTabWrapper()
