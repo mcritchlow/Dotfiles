@@ -5,7 +5,7 @@ let g:loaded_file_printing = 1
 
 function s:PrintMarkdownFile()
   :RunSilent pandoc -f markdown -o /tmp/vim-pandoc-out.pdf %
-  " :RunSilent lpr /tmp/vim-pandoc-out.pdf
+  :RunSilent lpr /tmp/vim-pandoc-out.pdf
 endfunction
 
 function s:PrintFile()
