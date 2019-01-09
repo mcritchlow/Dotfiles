@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Borrowed from Luke Smith (thanks!)
+# Podboat sucks. This script replaces it.
+# It reads the newsboat queue, queuing downloads with taskspooler.
+
+# dlcmd="curl -LO"
+queuefile="$HOME/.local/share/newsboat/queue"
+
+while read -r line; do
+  [ -z "$line" ] && continue
+  url="$(echo $line | awk '{print $1}')"
+  destination="$(echo $line | awk '{gsub(/"/, "", $2); print $2}')"
+  echo $destination
+  base="$(basename $url)"
+  notify-send -t 2000 "Queuing $base..."
+  idnum="$(tsp curl -L "${url}" --output "${destination}")"
+  tsp -D "$idnum" notify-send "$base done."
+  # tsp -D "$idnum" mv "$base" "$(echo $base | sed "s/?dest.*//")"
+done < "$queuefile"
+
+echo > "$queuefile"
