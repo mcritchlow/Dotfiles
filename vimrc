@@ -246,40 +246,6 @@ set noshowmode
 let g:ansible_unindent_after_newline = 1
 " }}}
 " ============================================================================
-" Goyo/Limelight {{{
-" ============================================================================
-function! s:goyo_enter()
-  if exists('$TMUX')
-    silent !tmux set status off
-  endif
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  if exists('$TMUX')
-    silent !tmux set status on
-  endif
-  Limelight!
-endfunction
-
-function! s:goyo_yolo()
-  if !exists('#goyo')
-    Goyo 75%x85%
-  endif
-endfunction
-
-augroup AutomaticGoyo
-autocmd!
-  autocmd User GoyoEnter nested call <SID>goyo_enter()
-  autocmd User GoyoLeave nested call <SID>goyo_leave()
-  autocmd FileType markdown call <SID>goyo_yolo()
-  " Mail doesn't currently work w/ lightline. need to sort that out
-  " autocmd FileType mail call <SID>goyo_yolo()
-augroup END
-
-" indentation will completely reset (unindent to column 0) after two newlines in insert-mode.
-" }}}
-" ============================================================================
 " Editor Config {{{
 " ============================================================================
 " Play nice w/ Vim fugitive

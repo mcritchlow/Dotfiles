@@ -42,8 +42,6 @@ call minpac#add('wincent/loupe') "better search highlighting and defaults
 " ============================================================================
 " Theming {{{
 " ============================================================================
-call minpac#add('junegunn/goyo.vim')
-call minpac#add('junegunn/limelight.vim')
 call minpac#add('arcticicestudio/nord-vim')
 call minpac#add('itchyny/lightline.vim')
 
