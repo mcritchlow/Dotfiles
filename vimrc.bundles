@@ -42,7 +42,8 @@ call minpac#add('wincent/loupe') "better search highlighting and defaults
 " ============================================================================
 " Theming {{{
 " ============================================================================
-call minpac#add('lifepillar/vim-solarized8')
+call minpac#add('junegunn/goyo.vim')
+call minpac#add('junegunn/limelight.vim')
 call minpac#add('arcticicestudio/nord-vim')
 call minpac#add('itchyny/lightline.vim')
 
@@ -57,12 +58,6 @@ call minpac#add('junegunn/vim-emoji') "because emoji!
 call minpac#add('tpope/vim-commentary') "comments w/ gc motion
 call minpac#add('christoomey/vim-sort-motion') "sorting with gs motion
 call minpac#add('tpope/vim-surround') " cs motion for changing quotes, tags, etc.
-
-" }}}
-" ============================================================================
-" Auto-complete {{{
-" ============================================================================
-" call minpac#add( 'ervandew/supertab' "<c-p> in imode to autocomplete tags
 
 " }}}
 " ============================================================================
