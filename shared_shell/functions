@@ -7,6 +7,13 @@ gpg-reload-agent() {
   gpg-connect-agent updatestartuptty /bye >/dev/null
 }
 
+wttr() {
+    # change Paris to your default location
+    local request="wttr.in/${1-92024}"
+    [ "$COLUMNS" -lt 125 ] && request+='?n'
+    curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
+}
+
 bundler-search() {
   # Search your bundle for the provided pattern
   #   Requires bundler 1.8+ for execution as a bundler subcommand.
