@@ -1,19 +1,9 @@
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa_work
 
-Host gitlab.com-mcritchlow
-  HostName gitlab.com
-  User git
-  IdentityFile ~/.ssh/id_rsa
-
-Host git.sr.ht
-  HostName git.sr.ht
-  User git
-  IdentityFile ~/.ssh/id_rsa_personal
-
-Host gitlab.com-mcritchlow1
+Host gitlab.com
   HostName gitlab.com
   User git
   IdentityFile ~/.ssh/id_rsa_work
