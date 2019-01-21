@@ -8,6 +8,11 @@ Host gitlab.com-mcritchlow
   User git
   IdentityFile ~/.ssh/id_rsa
 
+Host git.sr.ht
+  HostName git.sr.ht
+  User git
+  IdentityFile ~/.ssh/id_rsa_personal
+
 Host gitlab.com-mcritchlow1
   HostName gitlab.com
   User git
