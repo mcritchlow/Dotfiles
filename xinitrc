@@ -34,6 +34,9 @@ if ! cat /sys/bus/usb/devices/*/product | grep -q "Advantage2"; then
 fi
 
 # autostart
+
+eval $(ssh-agent)
+
 if test -f /usr/bin/gnome-keyring-daemon; then
   eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
 fi
