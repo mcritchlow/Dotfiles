@@ -35,10 +35,9 @@ fi
 
 # autostart
 
-eval $(ssh-agent)
-
 if test -f /usr/bin/gnome-keyring-daemon; then
-  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
+  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+  export SSH_AUTH_SOCK
 fi
 
 if test -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1; then
