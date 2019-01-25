@@ -6,6 +6,6 @@
 # Spotify com.spotify.Client
 paks=$(flatpak list --app --columns=application | awk '{print $1}')
 
-pak_app=$(echo "$paks" | dmenu -i -p "Choose a Flatpak application to open")
+pak_app=$(echo "$paks" | dmenu -i -l 5 -p "Choose a Flatpak application to open")
 
 flatpak run "$pak_app" & disown
