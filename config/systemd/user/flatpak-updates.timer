@@ -1,0 +1,9 @@
+[Unit]
+Description=Run flatpak updates check XX:45 each hour
+
+[Timer]
+OnCalendar=*-*-* *:45:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
