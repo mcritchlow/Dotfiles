@@ -3,7 +3,7 @@ Description=FlatPak Updates Notification
 After=graphical.target
 
 [Service]
-ExecStart=/usr/bin/flatpak remote-ls --updates | awk '{ if(length($1)==0) { print "None"} else { print $1 } }' | xargs notify-send --app-name="Flatpak Updates"
+ExecStart=/home/mcritchlow/.bin/flatpak-updates
 
 [Install]
 WantedBy=default.target
