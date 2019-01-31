@@ -1,7 +1,7 @@
 #!/bin/bash
 if test -f /usr/bin/flatpak; then
-  updates_count=$(flatpak remote-ls --updates | wc -l)
-  if [ "$updates_count" = '0' ]; then
+  updates_count=$(flatpak remote-ls --updates | awk -v ORS=',' '{ print $1 }')
+  if [ -z "$updates_count" ]; then
     exit 0
   else
     notify-send --app-name="Flatpack Updates" "$updates_count"
