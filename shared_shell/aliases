@@ -78,3 +78,6 @@ alias ansible-playbook-tux='ANSIBLE_COW_SELECTION=tux ansible-playbook'
 
 # Docker
 alias docker-nuke='docker system prune -f --all --volumes'
+
+# Flatpak
+alias fpu='flatpak update --noninteractive'
