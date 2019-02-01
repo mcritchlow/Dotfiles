@@ -4,7 +4,7 @@ if test -f /usr/bin/flatpak; then
   if [ -z "$updates_count" ]; then
     exit 0
   else
-    notify-send --app-name="Flatpack Updates" "$updates_count"
+    notify-send --expire-time=60000 --app-name="Flatpack Updates" "$updates_count"
     exit 0
   fi
 fi
