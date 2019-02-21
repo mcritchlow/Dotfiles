@@ -70,6 +70,8 @@ alternative_order text/plain text/enriched text/html
 ## Sorting and Display
 # set markers=no #removes + sign from wrapped lines
 set pager_index_lines=6
+# see when emails were sent/received
+set index_format="%4C %Z %[!%b %e %I:%M %p] %.20n %s%*"
 hdr_order Date From To Cc #sort order left -> right
 set sort='threads'
 set sort_browser=date
