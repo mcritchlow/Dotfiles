@@ -8,7 +8,7 @@ cd "$ARCH_TESTING_DIR" || exit 1
 
 # if arch iso doesn't already exist, download it
 iso_month=$(date '+%Y.%m')
-ARCH_ISO_URL="http://mirrors.ocf.berkeley.edu/archlinux/iso/$iso_month.01/archlinux-$iso_month.01-x86_64.iso"
+ARCH_ISO_URL="http://mirrors.edge.kernel.org/archlinux/iso/$iso_month.01/archlinux-$iso_month.01-x86_64.iso"
 [ ! -f arch.iso ] && wget "$ARCH_ISO_URL" -O arch.iso
 
 # if hard disk already exists delete it
