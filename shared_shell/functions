@@ -7,6 +7,12 @@ gpg-reload-agent() {
   gpg-connect-agent updatestartuptty /bye >/dev/null
 }
 
+# Arch related
+# remove program as well as dependencies and system configs
+pacman-remove() {
+  sudo pacman -Rns "$1"
+}
+
 wttr() {
     # change Paris to your default location
     local request="wttr.in/${1-92024}"
