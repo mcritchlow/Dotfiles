@@ -12,7 +12,9 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.shared_shell/functions
+[[ -f ~/.shared_shell/functions.local ]] && source ~/.shared_shell/functions.local
 source ~/.shared_shell/aliases
+[[ -f ~/.shared_shell/aliases.local ]] && source ~/.shared_shell/aliases.local
 
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
