@@ -90,4 +90,4 @@ set pgp_autosign=yes
 set crypt_replyencrypt=yes # if original msg was encrypted, reply w/ crypto
 
 # https://github.com/altercation/mutt-colors-solarized
-source "~/.mutt/mutt-colors-solarized-dark-16.muttrc"
+source "~/.mutt/theme.muttrc"

@@ -20,12 +20,12 @@ source ~/.shared_shell/aliases
 git_prompt_info() {
   current_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
   if [[ -n $current_branch ]]; then
-    echo " %{$fg_bold[green]%}$current_branch%{$reset_color%}"
+    echo " %{$fg[yellow]%}$current_branch%{$reset_color%}"
   fi
 }
 # Allow exported PS1 variable to override default prompt.
 if ! env | grep -q '^PS1='; then
-  PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}$(git_prompt_info) %# '
+  PS1='${SSH_CONNECTION+"%{$fg[green]%}%n@%m:"}%{$fg_bold[white]%}%~%{$reset_color%}$(git_prompt_info) %# '
 fi
 
 # Set GPG TTY
@@ -58,7 +58,7 @@ bindkey '^F' fzf-cd-widget #override Alt-C (because DWM..)
 
 # make Vi-mode more obvious
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+  VIM_PROMPT="%{$fg_[brightyellow]%} [% NORMAL]% %{$reset_color%}"
   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
   zle reset-prompt
 }

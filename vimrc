@@ -92,14 +92,25 @@ syntax enable
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let g:nord_italic = 1
-let g:nord_underline = 1
-let g:nord_italic_comments = 1
-let g:nord_cursor_line_number_background = 1
-colorscheme nord
+colorscheme monotone
+let s:monotone_current_hour = 0
+let s:monotone_flux_time_offset = 13
+let s:monotone_flux_range = [0, 5]
 
-" Italicize comments
-" highlight Comment cterm=italic
+function! s:MonotoneFlux()
+  let l:current_hour = str2nr(strftime("%H"), 10)
+  if l:current_hour == s:monotone_current_hour
+    return
+  endif
+  let s:monotone_current_hour = l:current_hour
+  let l:flux_factor = abs(s:monotone_flux_time_offset - s:monotone_current_hour)
+  let l:flux_factor_clamped = max([s:monotone_flux_range[0], min([l:flux_factor, s:monotone_flux_range[1]])])
+
+  call g:Monotone(10, l:flux_factor_clamped * 10, 90 - l:flux_factor_clamped * 3)
+endfunction
+autocmd CursorMoved,CursorHold,CursorHoldI,WinEnter,WinLeave,FocusLost,FocusGained,VimResized,ShellCmdPost * nested
+  \ call s:MonotoneFlux()
+
 " }}}
 " ============================================================================
 " Autocommands {{{
@@ -216,28 +227,29 @@ nnoremap <silent> <leader>gt :TestVisit<CR>
 " Lightline Statusline {{{
 " ============================================================================
 " showing git branch depends on fugitive
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ 'active': {
-      \   'left': [[ 'mode', 'paste' ],
-      \            [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'filename': 'LightlineFilename'
-      \ },
-      \ }
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+" let g:lightline = {
+"       \ 'colorscheme': 'nord',
+"       \ 'active': {
+"       \   'left': [[ 'mode', 'paste' ],
+"       \            [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'fugitive#head',
+"       \   'filename': 'LightlineFilename'
+"       \ },
+"       \ }
 
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
-" don't need to show line w/ ---INSERT---, etc.
-set noshowmode
+" function! LightlineFilename()
+"   let root = fnamemodify(get(b:, 'git_dir'), ':h')
+"   let path = expand('%:p')
+"   if path[:len(root)-1] ==# root
+"     return path[len(root)+1:]
+"   endif
+"   return expand('%')
+" endfunction
+" " don't need to show line w/ ---INSERT---, etc.
+" set noshowmode
 " }}}
 " ============================================================================
 " Ansible {{{

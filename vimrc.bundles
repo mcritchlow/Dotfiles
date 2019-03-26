@@ -42,9 +42,7 @@ call minpac#add('wincent/loupe') "better search highlighting and defaults
 " ============================================================================
 " Theming {{{
 " ============================================================================
-call minpac#add('arcticicestudio/nord-vim')
-call minpac#add('itchyny/lightline.vim')
-
+call minpac#add('Lokaltog/vim-monotone')
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
 " Plug 'majutsushi/tagbar'
 call minpac#add('junegunn/vim-emoji') "because emoji!
