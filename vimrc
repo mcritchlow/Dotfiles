@@ -43,6 +43,9 @@ set wildmode=list:longest,list:full
 set textwidth=120
 set colorcolumn=+1
 
+" showing git branch depends on fugitive
+set statusline=%<%F\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
 " Numbers
 set number
 set numberwidth=5
@@ -222,34 +225,6 @@ nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
 nnoremap <silent> <leader>gt :TestVisit<CR>
 
-" }}}
-" ============================================================================
-" Lightline Statusline {{{
-" ============================================================================
-" showing git branch depends on fugitive
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-" let g:lightline = {
-"       \ 'colorscheme': 'nord',
-"       \ 'active': {
-"       \   'left': [[ 'mode', 'paste' ],
-"       \            [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
-"       \ },
-"       \ 'component_function': {
-"       \   'gitbranch': 'fugitive#head',
-"       \   'filename': 'LightlineFilename'
-"       \ },
-"       \ }
-
-" function! LightlineFilename()
-"   let root = fnamemodify(get(b:, 'git_dir'), ':h')
-"   let path = expand('%:p')
-"   if path[:len(root)-1] ==# root
-"     return path[len(root)+1:]
-"   endif
-"   return expand('%')
-" endfunction
-" " don't need to show line w/ ---INSERT---, etc.
-" set noshowmode
 " }}}
 " ============================================================================
 " Ansible {{{
