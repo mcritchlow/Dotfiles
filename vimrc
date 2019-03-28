@@ -139,6 +139,15 @@ augroup END
 nnoremap <Space> za
 vnoremap <Space> za
 
+" Center current search on screen
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+
 " Open urlview on current file
 nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
 

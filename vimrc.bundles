@@ -29,7 +29,6 @@ call minpac#add('editorconfig/editorconfig-vim')
 " ============================================================================
 call minpac#add('tpope/vim-repeat') "repeat map commands (surround)
 call minpac#add('tpope/vim-unimpaired') " [ and ] mappings for quickfix, buffers, etc.
-call minpac#add('pbrisbin/vim-mkdir') "TODO: might not need because eunuch
 call minpac#add('tpope/vim-eunuch') "Unix-y stuff.
 call minpac#add('tpope/vim-fugitive') "Git integration
 call minpac#add('tpope/vim-rhubarb') "Github integration
@@ -37,7 +36,6 @@ call minpac#add('tpope/vim-projectionist') "Project config for alternate files (
 call minpac#add('bronson/vim-trailing-whitespace') "make trailing whitespace annoying
 call minpac#add('tpope/vim-markdown') "add folding to markdown files
 call minpac#add('nelstrom/vim-markdown-folding') "add folding to markdown files
-call minpac#add('wincent/loupe') "better search highlighting and defaults
 " }}}
 " ============================================================================
 " Theming {{{
