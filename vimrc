@@ -96,23 +96,23 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 colorscheme monotone
-let s:monotone_current_hour = 0
-let s:monotone_flux_time_offset = 13
-let s:monotone_flux_range = [0, 5]
+" let s:monotone_current_hour = 0
+" let s:monotone_flux_time_offset = 13
+" let s:monotone_flux_range = [0, 5]
 
-function! s:MonotoneFlux()
-  let l:current_hour = str2nr(strftime("%H"), 10)
-  if l:current_hour == s:monotone_current_hour
-    return
-  endif
-  let s:monotone_current_hour = l:current_hour
-  let l:flux_factor = abs(s:monotone_flux_time_offset - s:monotone_current_hour)
-  let l:flux_factor_clamped = max([s:monotone_flux_range[0], min([l:flux_factor, s:monotone_flux_range[1]])])
+" function! s:MonotoneFlux()
+"   let l:current_hour = str2nr(strftime("%H"), 10)
+"   if l:current_hour == s:monotone_current_hour
+"     return
+"   endif
+"   let s:monotone_current_hour = l:current_hour
+"   let l:flux_factor = abs(s:monotone_flux_time_offset - s:monotone_current_hour)
+"   let l:flux_factor_clamped = max([s:monotone_flux_range[0], min([l:flux_factor, s:monotone_flux_range[1]])])
 
-  call g:Monotone(10, l:flux_factor_clamped * 10, 90 - l:flux_factor_clamped * 3)
-endfunction
-autocmd CursorMoved,CursorHold,CursorHoldI,WinEnter,WinLeave,FocusLost,FocusGained,VimResized,ShellCmdPost * nested
-  \ call s:MonotoneFlux()
+"   call g:Monotone(10, l:flux_factor_clamped * 10, 90 - l:flux_factor_clamped * 3)
+" endfunction
+" autocmd CursorMoved,CursorHold,CursorHoldI,WinEnter,WinLeave,FocusLost,FocusGained,VimResized,ShellCmdPost * nested
+"   \ call s:MonotoneFlux()
 
 " }}}
 " ============================================================================
