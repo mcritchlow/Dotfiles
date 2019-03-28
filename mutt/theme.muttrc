@@ -16,7 +16,7 @@
 #color index         J_magent        color1          "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~F !~p !~P"
 
 # basic colors ---------------------------------------------------------
-color normal        color11         default
+color normal        color7        default
 color error         color1          default
 color tilde         color0          default
 color message       color6          default
@@ -80,9 +80,9 @@ color index         color3          color1          "~v~(~D)"                   
 # message headers ------------------------------------------------------
 
 #color header        color10         default         "^"
-color hdrdefault    color10         default
-color header        color11         default         "^(From)"
-color header        color4          default         "^(Subject)"
+color hdrdefault    color12          default
+color header        color12         default         "^(From)"
+color header        color12          default         "^(Subject)"
 
 # body -----------------------------------------------------------------
 
@@ -92,7 +92,7 @@ color quoted2       color3          default
 color quoted3       color1          default
 color quoted4       color9          default
 
-color signature     color10         default
+color signature     color12         default
 color bold          color0          default
 color underline     color0          default
 color normal        default         default
