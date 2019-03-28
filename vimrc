@@ -44,7 +44,7 @@ set textwidth=120
 set colorcolumn=+1
 
 " showing git branch depends on fugitive
-set statusline=%<%F\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%F%y\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Numbers
 set number
