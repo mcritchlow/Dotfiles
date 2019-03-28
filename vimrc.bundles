@@ -64,13 +64,9 @@ call minpac#add('keith/tmux.vim')
 " ============================================================================
 " Languages {{{
 " ============================================================================
+call minpac#add('sheerun/vim-polyglot')
 call minpac#add('vim-ruby/vim-ruby')
-call minpac#add('pangloss/vim-javascript')
-call minpac#add('kchmck/vim-coffee-script')
 call minpac#add('ap/vim-css-color')
-call minpac#add('pearofducks/ansible-vim')
-call minpac#add('PotatoesMaster/i3-vim-syntax')
-call minpac#add('xuhdev/vim-latex-live-preview', { 'type': 'opt' })
 call minpac#add('fatih/vim-go', { 'do': 'GoUpdateBinaries' })
 
 " }}}
