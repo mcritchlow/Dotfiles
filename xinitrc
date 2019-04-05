@@ -28,6 +28,9 @@ else
   [ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
 fi
 
+# render Java apps less horribly
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # if Kinesis keyboard is not plugged in, swap caps and escape
 if ! cat /sys/bus/usb/devices/*/product | grep -q "Advantage2"; then
   setxkbmap -option caps:swapescape
