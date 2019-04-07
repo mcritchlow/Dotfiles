@@ -1,0 +1,28 @@
+# vim: set ft=conf:
+# Additional shortcuts
+# Often making use of scripts
+#
+# start a terminal
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# start your launcher
+# TODO: find wayland apps to replace x stuff
+# TODO: see https://drewdevault.com/2019/03/11/Sway-1.0-released.html for list
+# TODO: clipboard manager?
+# TODO: screenshots, A/V stuff
+bindsym $mod+d exec $menu
+bindsym $mod+w firefox
+bindsym $mod+p passmenu_dmenu
+bindsym $mod+p flatpak_dmenu
+# TODO: rewrite for non-xrandr
+bindsym $mod+p display_manager
+
+bindsym $mod+Shift+x system_dmenu
