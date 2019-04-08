@@ -58,7 +58,7 @@ bindkey '^F' fzf-cd-widget #override Alt-C (because DWM..)
 
 # make Vi-mode more obvious
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg_[brightyellow]%} [% NORMAL]% %{$reset_color%}"
+  VIM_PROMPT="%B%F{yellow]} [% NORMAL]% %f%b"
   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
   zle reset-prompt
 }
