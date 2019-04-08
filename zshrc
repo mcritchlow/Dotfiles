@@ -1,9 +1,9 @@
 # give us access to ^Q
 stty -ixon
 
-autoload -Uz compinit colors
-colors
+autoload -Uz compinit promptinit
 compinit
+promptinit
 
 setopt promptsubst COMPLETE_ALIASES extendedglob hist_ignore_all_dups hist_ignore_space share_history
 
@@ -20,12 +20,12 @@ source ~/.shared_shell/aliases
 git_prompt_info() {
   current_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
   if [[ -n $current_branch ]]; then
-    echo " %{$fg[yellow]%}($current_branch)%{$reset_color%}"
+    echo " %B%F{green}($current_branch)%f%b"
   fi
 }
 # Allow exported PS1 variable to override default prompt.
 if ! env | grep -q '^PS1='; then
-  PS1='${SSH_CONNECTION+"%{$fg[green]%}%n@%m:"}%{$fg_bold[white]%}%~%{$reset_color%}$(git_prompt_info) %# '
+  PS1='${SSH_CONNECTION+"%F{white}%%n@%m:"%F{white}%~%f$(git_prompt_info) %# '
 fi
 
 # Set GPG TTY
