@@ -16,6 +16,9 @@ source ~/.shared_shell/functions
 source ~/.shared_shell/aliases
 [[ -f ~/.shared_shell/aliases.local ]] && source ~/.shared_shell/aliases.local
 
+# Set autosuggest highlight to be more visible
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
+
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   current_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
