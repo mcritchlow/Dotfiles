@@ -33,7 +33,7 @@ bundler-search() {
   #  2. Which gem names to search (defaults to all gems)
 
   pattern="$1"; shift
-  ag "$pattern" "$(bundle show --paths "$@")"
+  rg "$pattern" "$(bundle show --paths "$@")"
 }
 
 # update personal repos
@@ -133,7 +133,9 @@ fzf-down() {
 }
 
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--ansi"
 
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND | with-dir"
 if [ -x ~/.vim/pack/minpac/start/fzf.vim/bin/preview.rb ]; then

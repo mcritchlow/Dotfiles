@@ -255,6 +255,12 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 nnoremap <c-p> :Files<cr>
 
+" Add preview to Rg command
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 " File preview using Highlight (http://www.andre-simon.de/doku/highlight/en/highlight.php)
 " let g:fzf_files_options =
 "   \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
@@ -284,20 +290,20 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " split Ag line into parts
-function! s:ag_to_qf(line)
+function! s:rg_to_qf(line)
     let parts = split(a:line, ':')
     return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
             \ 'text': join(parts[3:], ':')}
 endfunction
 
 " manage selected line from search result
-function! s:ag_handler(lines)
+function! s:rg_handler(lines)
     if len(a:lines) < 2 | return | endif
 
     let cmd = get({'ctrl-x': 'split',
                   \ 'ctrl-v': 'vertical split',
                   \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
-    let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+    let list = map(a:lines[1:], 's:rg_to_qf(v:val)')
 
     let first = list[0]
     execute cmd escape(first.filename, ' %#\')
@@ -311,12 +317,12 @@ function! s:ag_handler(lines)
     endif
 endfunction
 
-" bundler show command integration via fzf/ag
+" bundler show command integration via fzf/rg
 " https://github.com/junegunn/fzf/wiki/Examples-(vim)#narrow-ag-results-within-vim
 command! -nargs=* Bsearch call fzf#run({
-  \ 'source':  printf('ag --nogroup --column --color "%s" $(bundle show --paths)',
+  \ 'source':  printf('rg --no-heading --column --color=always "%s" $(bundle show --paths)',
   \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
-  \ 'sink*':    function('<sid>ag_handler'),
+  \ 'sink*':    function('<sid>rg_handler'),
   \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
   \            '--multi --reverse --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
   \            '--color hl:68,hl+:110',
