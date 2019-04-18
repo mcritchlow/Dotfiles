@@ -13,6 +13,15 @@ pacman-remove() {
   sudo pacman -Rns "$1"
 }
 
+# Switch lpass accounts
+# options: work, personal
+# must line up w/ directories in ~/.local/share
+lpass-switch-account() {
+  local account="${1-work}"
+  rm -rf ~/.local/share/lpass
+  ln -fs ~/.local/share/$account ~/.local/share/lpass
+}
+
 wttr() {
     # change Paris to your default location
     local request="wttr.in/${1-92024}"
