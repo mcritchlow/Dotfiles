@@ -46,6 +46,7 @@ set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
 set signature=~/.mutt/work.signature
 set alias_file=~/projects/personal/sync-stuff/mutt/ucsd.aliases
+set query_command="echo ; cat ~/projects/personal/sync-stuff/mutt/ucsd.aliases | awk '{print $2, $3, $4, $5 }' | fzf -q %s | awk '{print $1}'"
 source $alias_file
 
 ## Macros
