@@ -265,7 +265,7 @@ drv() {
 
 # da [FUZZY PATTERN] - Select a docker container to attach to
 da() {
-  docker ps -a | sed '1d' | fzf -1 -q "$1" | awk '{print $1}') | xargs -r docker attach
+  docker ps -a | sed '1d' | fzf -1 -q "$1" | awk '{print $1}' | xargs -r docker attach
 }
 
 # GIT heart FZF
