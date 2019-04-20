@@ -1,0 +1,53 @@
+### KolabNow - Personal ###
+IMAPStore kolab-remote
+Host imap.kolabnow.com
+User matt@critchlow.xyz
+PassCmd "pass show matt@critchlow.xyz/Email/kolabnow.com | head -n1"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore kolab-local
+Path ~/.mail/kolab/
+Inbox ~/.mail/kolab/INBOX
+Subfolders Verbatim
+
+Channel kolab
+Master :kolab-remote:
+Slave :kolab-local:
+Patterns *
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Automatically delete missing mailboxes and mail, both locally and on the server
+Expunge Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+
+### Office365 - Work ###
+IMAPStore ucsd-remote
+Host outlook.office365.com
+User mcritchlow@ucsd.edu
+PassCmd "pass show matt@critchlow.xyz/Mail/UCSDMail | head -n1"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+# This is needed because exchange is terrible
+PipelineDepth 1
+
+MaildirStore ucsd-local
+Path ~/.mail/ucsd/
+Inbox ~/.mail/ucsd/INBOX
+Subfolders Verbatim
+
+Channel ucsd
+Master :ucsd-remote:
+Slave :ucsd-local:
+# Exclude everything under the internal [Gmail] folder, except the interesting folders
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+# Or include everything
+Patterns * !Archive* !"RSS Subscriptions" !Calendar !Tasks !Cabinet !Contacts !"Conversation History" !Documents !Notes
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Automatically delete missing mailboxes and mail, both locally and on the server
+Expunge Both
+# Save the synchronization state files in the relevant directory
+SyncState *
