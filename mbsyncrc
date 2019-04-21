@@ -41,10 +41,16 @@ Subfolders Verbatim
 Channel ucsd
 Master :ucsd-remote:
 Slave :ucsd-local:
-# Exclude everything under the internal [Gmail] folder, except the interesting folders
-# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
-# Or include everything
-Patterns * !Archive* !"RSS Subscriptions" !Calendar !Tasks !Cabinet !Contacts !"Conversation History" !Documents !Notes
+Patterns *
+Patterns !Archive*
+Patterns !RSS*
+Patterns !Calendar
+Patterns !Tasks
+Patterns !Cabinet
+Patterns !Contacts
+Patterns !Conversation*
+Patterns !Documents
+Patterns !Notes
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
 # Automatically delete missing mailboxes and mail, both locally and on the server
