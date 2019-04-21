@@ -1,10 +1,8 @@
 # vim: filetype=muttrc
 #
 ## General Setup
-set mail_check=60 #check for new mail every 60 seconds
+set mail_check=10 #check for new mail every 30 seconds
 set timeout=300
-set imap_keepalive=300 # keep imap connection alive by polling 900 seconds
-set imap_check_subscribed # check all folders for new mail
 set text_flowed=yes #sets format=flowed for text email
 set ssl_starttls=yes
 set ssl_force_tls=yes
