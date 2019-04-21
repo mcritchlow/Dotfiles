@@ -37,6 +37,7 @@ set folder="~/.mail/ucsd"
 set spoolfile="+INBOX"
 set record="+Sent Items"
 set trash="+Deleted Items"
+set postponed="+Drafts"
 set smtp_url=smtps://mcritchlow@smtp.ucsd.edu/
 set smtp_pass=$imap_pass
 set header_cache = "~/.mutt/cache/headers"
