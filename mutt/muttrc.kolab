@@ -29,20 +29,19 @@ bind pager R group-reply
 
 
 ## Account info
-set imap_user=`pass show matt@critchlow.xyz/Email/kolabnow.com | grep username | cut -d" " -f2`
-set imap_pass=`pass show matt@critchlow.xyz/Email/kolabnow.com | head -n1`
-set from=$imap_user
+set from="matt@critchlow.xyz"
 set use_from=yes
 set realname='Matt Critchlow'
 set forward_format="Fwd: %s"
 set mime_forward=no
 set mime_forward_rest=yes
+set mbox_type=Maildir
 set folder="~/.mail/kolab"
 set spoolfile="+INBOX"
 set postponed="+Drafts"
 set trash="+Trash"
 set record="+Sent"
-set smtp_url = "smtp://$imap_user:$imap_pass@smtp.kolabnow.com:587"
+set sendmail="/usr/bin/msmtp -a kolab"
 set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"

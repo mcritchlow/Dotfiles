@@ -28,21 +28,19 @@ bind pager gg top
 bind pager R group-reply
 
 ## Account info
-set imap_user="mcritchlow@ucsd.edu"
-set imap_pass=`pass show matt@critchlow.xyz/Mail/UCSDMail | head -n1`
-set from=$imap_user
+set from="mcritchlow@ucsd.edu"
 set use_from=yes
 set realname='Matthew Critchlow'
 set forward_format="Fwd: %s"
 set mime_forward=no
 set mime_forward_rest=yes
+set mbox_type=Maildir
 set folder="~/.mail/ucsd"
 set spoolfile="+INBOX"
 set record="+Sent Items"
 set trash="+Deleted Items"
 set postponed="+Drafts"
-set smtp_url=smtps://mcritchlow@smtp.ucsd.edu/
-set smtp_pass=$imap_pass
+set sendmail="/usr/bin/msmtp -a ucsd"
 set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
