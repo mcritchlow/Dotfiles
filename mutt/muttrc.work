@@ -12,7 +12,7 @@ set net_inc=50 # Display download progress every 50k
 set fast_reply #don't prompt for to/subject
 set menu_scroll=yes #scroll instead of page
 # set edit_headers #can tweak headers in editor/vim
-set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+set new_mail_command="notify-send 'New Work Email' '%n new messages, %u unread.' &"
 
 ## Bindings
 # Index
