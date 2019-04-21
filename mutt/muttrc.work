@@ -16,11 +16,13 @@ set menu_scroll=yes #scroll instead of page
 ## Bindings
 # Index
 bind index G last-entry
+bind index g noop
 bind index gg first-entry
 bind index R group-reply
 
 # Pager
 bind pager G bottom
+bind pager g noop
 bind pager gg top
 bind pager R group-reply
 
