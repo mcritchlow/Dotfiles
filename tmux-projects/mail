@@ -1,8 +1,8 @@
 #!/bin/sh
 tmux new-session -s mail -n personal -d
-tmux send-keys -t mail "mutt -F $HOME/.mutt/muttrc.kolab" C-m
+tmux send-keys -t mail "neomutt -F $HOME/.mutt/muttrc.kolab" C-m
 tmux new-window -n work -t mail
-tmux send-keys -t mail:2 "mutt -F $HOME/.mutt/muttrc.work" C-m
+tmux send-keys -t mail:2 "neomutt -F $HOME/.mutt/muttrc.work" C-m
 tmux new-window -n terminal -t mail
 tmux select-window -t mail:1
 tmux attach -t mail
