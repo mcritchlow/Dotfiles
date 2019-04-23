@@ -63,3 +63,5 @@
   autosquash = true
 [help]
   autocorrect = 1
+[diff "ansible-vault"]
+	textconv = ansible-vault view
