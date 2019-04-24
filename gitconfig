@@ -57,6 +57,7 @@
 [commit]
   template = ~/.gitmessage
   gpgsign = true
+	verbose = true
 [fetch]
   prune = true
 [rebase]
