@@ -2,8 +2,10 @@
 
 echo "Syncing IMAP remotes with mbsync..."
 /usr/bin/mbsync -Va
+echo "DONE: Syncing IMAP remotes with mbsync..."
 
 if [ -f ~/.notmuch-config ]; then
   echo "Updating notmuch search index..."
-  notmuch new
+  notmuch new --quiet
+  echo "DONE: Updating notmuch search index..."
 fi
