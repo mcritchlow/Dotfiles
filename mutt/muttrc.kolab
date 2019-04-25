@@ -51,6 +51,9 @@ set query_command="echo ; cat ~/projects/personal/sync-stuff/mutt/kolab.aliases 
 source $alias_file
 
 ## Macros
+# Add notmuch search
+macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
+
 macro index,pager A ":set confirmappend=no delete=yes\n<save-message>=Archive\n:set confirmappend=yes delete=ask-yes\n"
 macro index \cd "<delete-pattern>~s .*<Enter>" "Delete all messages in current folder"
 # Links
