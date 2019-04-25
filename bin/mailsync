@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Syncing IMAP remotes with mbsync..."
+/usr/bin/mbsync -Va
+
+if [ -f ~/.notmuch-config ]; then
+  echo "Updating notmuch search index..."
+  notmuch new
+fi
