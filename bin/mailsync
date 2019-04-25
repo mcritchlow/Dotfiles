@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Internet connectivity check
+ping -q -c 1 1.1.1.1 > /dev/null || exit
+
 echo "Syncing IMAP remotes with mbsync..."
 /usr/bin/mbsync -Va
 echo "DONE: Syncing IMAP remotes with mbsync..."
