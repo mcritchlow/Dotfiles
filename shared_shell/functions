@@ -300,7 +300,7 @@ gdb() {
     --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -200' |
   sed 's/^..//' | cut -d' ' -f1 |
   sed 's#^remotes/##' |
-  xargs -r git branch -d
+  xargs -r git branch -D
 }
 
 gt() {
