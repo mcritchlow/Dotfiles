@@ -21,6 +21,7 @@ if grep -q "arch4k" /etc/hostname; then
   # Double the GTK+3 widget scale. NOTE: You must set the GTK+3 font to half size. Hopefully this changes soon.
   export GDK_SCALE=2
   export GDK_DPI_SCALE=0.5
+  # This seems to make HiDPI terrible for zoom. investigate..
   export QT_AUTO_SCREEN_SCALE_FACTOR=1
   export QT_STYLE_OVERRIDE=Breeze
 else
