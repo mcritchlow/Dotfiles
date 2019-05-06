@@ -21,6 +21,8 @@
   cma = commit -a -m
   ci = commit -v
 
+  fuckit = reset --hard
+
   r = reset
   r1 = reset HEAD^
   r2 = reset HEAD^^
