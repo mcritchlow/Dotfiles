@@ -1,11 +1,11 @@
 [init]
-  templatedir = ~/.git_template
+  templatedir = ~/.config/git/git_template
 [user]
   name = Matt Critchlow
   email = matt@critchlow.xyz
   signingkey = 5B86D84AB60CAB15
 [includeIf "gitdir:~/projects/ucsd/"]
-  path = ~/.gitconfig.work
+  path = ~/.config/git/config.work
 [push]
   default = current
 [color]
@@ -53,11 +53,11 @@
 
   lg = log --graph --decorate --oneline
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.config/git/ignore
   editor = vim
   autocrlf = input
 [commit]
-  template = ~/.gitmessage
+  template = ~/.config/git/gitmessage
   gpgsign = true
 	verbose = true
 [fetch]
