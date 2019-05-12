@@ -10,4 +10,7 @@ password=$(printf '%s\n' "${password_files[@]}" | dmenu -i -l 20 "$@")
 
 [[ -n $password ]] || exit
 
+# username
+pass show "$password" | grep username | cut -d ' ' -f2 | xclip -sel clip
+# password
 pass show -c "$password" 2>/dev/null
