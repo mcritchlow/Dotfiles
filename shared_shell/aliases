@@ -41,6 +41,7 @@ alias hc="history -c"
 alias which='type -p'
 alias k5='kill -9 %%'
 alias gst='git status'
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
 alias gv='vim +GV +"autocmd BufWipeout <buffer> qall"'
 alias memhogs='ps axc -o cmd:15,%mem --sort=-%mem | head'
 alias cpuhogs='ps axc -o cmd:15,%cpu --sort=-%cpu | head'
