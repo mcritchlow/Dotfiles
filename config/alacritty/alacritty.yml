@@ -163,7 +163,7 @@ colors:
     foreground: '0xFCFCFA'
 
   cursor:
-    text: '0xFF6188'
+    text: '0xFCFCFA'
     cursor: '0xFF6188'
 
   # Normal colors
