@@ -1,0 +1,112 @@
+#!/usr/bin/env ruby
+
+#
+# Convert alacritty theme to a file w/ st and xresources
+# see: https://github.com/jwilm/alacritty/wiki/Color-schemes
+#
+require 'yaml'
+require 'erb'
+
+# Read Alacritty theme
+# example: monokai-pro.yaml
+alacritty_theme = ARGV[0]
+# theme name for output files
+theme_name = alacritty_theme.split('.')[0]
+
+theme = YAML.load_file(alacritty_theme)
+
+def self.to_hex(color)
+  color.gsub('0x', '#')
+end
+
+# Xresources and St templates
+# The value of x is: <%= x %>
+xresources_template = ERB.new <<-EOF
+! special
+*.foreground:      <%=to_hex(theme['colors']['primary']['foreground']) %>
+*.background:      <%=to_hex(theme['colors']['primary']['background']) %>
+*.cursor:          #ff5500
+
+! black
+*.color0:   <%=to_hex(theme['colors']['normal']['black']) %>
+*.color8:   <%=to_hex(theme['colors']['bright']['black']) %>
+
+! red
+*.color1:   <%=to_hex(theme['colors']['normal']['red']) %>
+*.color9:   <%=to_hex(theme['colors']['bright']['red']) %>
+
+! green
+*.color2:   <%=to_hex(theme['colors']['normal']['green']) %>
+*.color10:  <%=to_hex(theme['colors']['bright']['green']) %>
+
+! yellow
+*.color3:   <%=to_hex(theme['colors']['normal']['yellow']) %>
+*.color11:  <%=to_hex(theme['colors']['bright']['yellow']) %>
+
+! blue
+*.color4:   <%=to_hex(theme['colors']['normal']['blue']) %>
+*.color12:  <%=to_hex(theme['colors']['bright']['blue']) %>
+
+! magenta
+*.color5:   <%=to_hex(theme['colors']['normal']['magenta']) %>
+*.color13:  <%=to_hex(theme['colors']['bright']['magenta']) %>
+
+! cyan
+*.color6:   <%=to_hex(theme['colors']['normal']['cyan']) %>
+*.color14:  <%=to_hex(theme['colors']['bright']['cyan']) %>
+
+! white
+*.color7:   <%=to_hex(theme['colors']['normal']['white']) %>
+*.color15:  <%=to_hex(theme['colors']['bright']['white']) %>
+EOF
+
+puts "Creating #{theme_name}.xresources .."
+File.open("#{theme_name}.xresources", 'w') do |f|
+  f.write xresources_template.result(binding)
+end
+
+suckless_terminal_template = ERB.new <<-EOF
+/* Terminal colors (16 first used in escape sequence) */
+static const char *colorname[] = {
+
+  /* 8 normal colors */
+  [0] = "<%=to_hex(theme['colors']['normal']['black']) %>", /* black   */
+  [1] = "<%=to_hex(theme['colors']['normal']['red']) %>", /* red     */
+  [2] = "<%=to_hex(theme['colors']['normal']['green']) %>", /* green   */
+  [3] = "<%=to_hex(theme['colors']['normal']['yellow']) %>", /* yellow  */
+  [4] = "<%=to_hex(theme['colors']['normal']['blue']) %>", /* blue    */
+  [5] = "<%=to_hex(theme['colors']['normal']['magenta']) %>", /* magenta */
+  [6] = "<%=to_hex(theme['colors']['normal']['cyan']) %>", /* cyan    */
+  [7] = "<%=to_hex(theme['colors']['normal']['white']) %>", /* white   */
+
+  /* 8 bright colors */
+  [8] = "<%=to_hex(theme['colors']['bright']['black']) %>", /* black   */
+  [9] = "<%=to_hex(theme['colors']['bright']['red']) %>", /* red     */
+  [10] = "<%=to_hex(theme['colors']['bright']['green']) %>", /* green   */
+  [11] = "<%=to_hex(theme['colors']['bright']['yellow']) %>", /* yellow  */
+  [12] = "<%=to_hex(theme['colors']['bright']['blue']) %>", /* blue    */
+  [13] = "<%=to_hex(theme['colors']['bright']['magenta']) %>", /* magenta */
+  [14] = "<%=to_hex(theme['colors']['bright']['cyan']) %>", /* cyan    */
+  [15] = "<%=to_hex(theme['colors']['bright']['white']) %>", /* white   */
+
+  /* special colors */
+  [256] = "<%=to_hex(theme['colors']['primary']['background']) %>", /* background */
+  [257] = "<%=to_hex(theme['colors']['primary']['foreground']) %>", /* foreground */
+  [258] = "#ff5500", /* cursor */
+};
+
+/* Terminal colors (16 first used in escape sequence) */
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor
+ */
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 258;
+static unsigned int defaultrcs = 256;
+
+EOF
+puts "Creating #{theme_name}.st .."
+File.open("#{theme_name}.st", 'w') do |f|
+  f.write suckless_terminal_template.result(binding)
+end
