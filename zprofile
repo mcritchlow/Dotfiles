@@ -1,4 +1,4 @@
-# autostart X/i3wm at login
+# autostart X/dwm at login
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
