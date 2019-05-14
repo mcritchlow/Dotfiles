@@ -13,11 +13,12 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 current_project=$(git remote -v | grep origin | head -n1 | awk '{print $2}' | sed 's/.*\///' | sed 's/\.git//')
 gitlab_mr_address=$(pass show GitlabEmails/"${current_project}" | head -n1)
 gitlab_mr_email=/tmp/gitlab-${current_project}.mail
+from_email=$(git config user.email)
 
 # Setup email template
 cat << EOF > "${gitlab_mr_email}"
 To: ${gitlab_mr_address}
-From: mcritchlow@ucsd.edu
+From: ${from_email}
 Subject: ${current_branch}
 Related to #issuenumber
 
