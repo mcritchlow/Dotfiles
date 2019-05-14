@@ -1,0 +1,55 @@
+#!/bin/bash
+# Create a Gitlab merge request for the current branch
+# see: https://docs.gitlab.com/ee/user/project/merge_requests/#create-new-merge-requests-by-email
+
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+is_in_git_repo || exit 1
+
+# Setup mail variables
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+current_project=$(git remote -v | grep origin | head -n1 | awk '{print $2}' | sed 's/.*\///' | sed 's/\.git//')
+gitlab_mr_address=$(pass show GitlabEmails/"${current_project}" | head -n1)
+gitlab_mr_email=/tmp/gitlab-${current_project}.mail
+
+# Setup email template
+cat << EOF > "${gitlab_mr_email}"
+To: ${gitlab_mr_address}
+From: mcritchlow@ucsd.edu
+Subject: ${current_branch}
+Related to #issuenumber
+
+### Local Checklist
+- [ ] Read our [Contributing guide](/CONTRIBUTING.md) (for newcomers)
+- [ ] Tests written and passing locally?
+- [ ] Code style checked?
+- [ ] QA-ed locally?
+- [ ] Rebased with master branch?
+- [ ] Configuration updated (if needed)?
+- [ ] Documentation updated (if needed)?
+
+### What does this Merge Request do?
+
+### Why are we doing this? Any context of related work or Epic?
+References #issuenumber
+
+### Where should a reviewer start?
+
+### Manual testing steps?
+
+### Database changes
+
+### New ENV variables
+
+### Screenshots
+
+EOF
+
+# Make changes to email template as needed
+vim "$gitlab_mr_email"
+
+# send mail
+echo "Sending Gitlab Create Merge Request email..."
+/usr/bin/msmtp -a ucsd "$gitlab_mr_address" < "$gitlab_mr_email"
