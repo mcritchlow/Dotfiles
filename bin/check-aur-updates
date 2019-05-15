@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# Check for updates in each AUR repo
+
+aur_folder=~/projects/aur
+for d in "$aur_folder"/*; do
+  cd "$d" || continue
+  current_head=$(git log | head -1 | cut -d ' ' -f2)
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+  git pull --quiet origin "$current_branch"
+
+  new_head=$(git log | head -1 | cut -d ' ' -f2)
+  if [[ "$current_head" == "$new_head" ]]; then
+    echo "${d##*/} -- no update available"
+  else
+    echo "${d##*/} -- update available!"
+  fi
+done
