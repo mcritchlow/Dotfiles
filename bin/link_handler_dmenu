@@ -1,26 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 # Feed this script a link and it will give dmenu
 # some choice programs to use to open it.
-
-# The URL will be shown visually in 30 characters or less.
-if [[ "${#1}" -gt 30 ]];
-then
-visual="${1:0:20}"..."${1: -7}"
-else
-visual="$1"
-fi
-echo $visual
 
 # Download location
 downloads=$HOME/Downloads
 
-x=$(echo -e "mpv\nmpv (loop)\nwget\nsxiv\nbrowser\nw3m\nyoutube-dl" | dmenu -i -p "How should I open '$visual'?")
+x=$(printf "mpv\\nmpv (loop)\\nwget\\nsxiv\\nbrowser\\nw3m\\nyoutube-dl" | dmenu -i -p "How should I open link?")
 case "$x" in
-  mpv) mpv -quiet "$1" 2&>/dev/null & disown ;;
-  "mpv (loop)") mpv -quiet --loop "$1" 2&>/dev/null & disown ;;
-  wget) cd "$downloads" && wget "$1" 2&>/dev/null & disown ;;
-  browser) firefox "$1" 2&>/dev/null & disown ;;
-  sxiv) sxiv "$1" 2&>/dev/null & disown ;;
-  w3m) w3m "$1" 2&>/dev/null & disown ;;
-  "youtube-dl") cd "$downloads" && youtube-dl "$1" 2&>/dev/null & disown ;;
+  mpv) mpv -quiet "$1" >/dev/null 2>&1 & ;;
+  "mpv (loop)") mpv -quiet --loop "$1" >/dev/null 2>&1 & ;;
+  wget) cd "$downloads" && wget "$1" >/dev/null 2>&1 & ;;
+  browser) firefox "$1" >/dev/null 2>&1 & ;;
+  sxiv) sxiv "$1" >/dev/null 2>&1 & ;;
+  w3m) w3m "$1" >/dev/null 2>&1 & ;;
+  "youtube-dl") cd "$downloads" && youtube-dl "$1" >/dev/null 2>&1 & ;;
 esac

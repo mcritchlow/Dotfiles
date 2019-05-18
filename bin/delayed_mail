@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Script to iterate over delayed messages stored in a csv file and send them via mutt. Can be put in cron or a systemd
 # timer to periodically check and send

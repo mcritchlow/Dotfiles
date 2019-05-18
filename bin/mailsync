@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Internet connectivity check
 ping -q -c 1 1.1.1.1 > /dev/null || exit

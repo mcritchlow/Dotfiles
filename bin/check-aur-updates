@@ -1,10 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Check for updates in each AUR repo
-
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-reset=$(tput sgr0)
 
 aur_folder=~/projects/aur
 for d in "$aur_folder"/*; do
@@ -15,9 +11,9 @@ for d in "$aur_folder"/*; do
   git pull --quiet origin "$current_branch"
 
   new_head=$(git log | head -1 | cut -d ' ' -f2)
-  if [[ "$current_head" == "$new_head" ]]; then
-    echo -e "${yellow}${d##*/} -- no update available${reset}"
+  if [ "$current_head" = "$new_head" ]; then
+    printf "%s%s -- no update available%s\n" "$(tput setaf 3)" "${d##*/}" "$(tput sgr0)"
   else
-    echo -e "${green}${d##*/} -- update available!${reset}"
+    printf "%s%s -- update available!%s\n" "$(tput setaf 2)" "${d##*/}" "$(tput sgr0)"
   fi
 done

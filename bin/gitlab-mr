@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Create a Gitlab merge request for the current branch
 # see: https://docs.gitlab.com/ee/user/project/merge_requests/#create-new-merge-requests-by-email
 

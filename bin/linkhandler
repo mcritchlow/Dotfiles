@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Yanked from Luke Smith (thanks!)
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.scripts/linkhandler
@@ -23,13 +23,13 @@ sxivFiles="png jpg jpeg jpe"
 wgetFiles="mp3 flac opus mp3?source=feed pdf"
 
 if echo $sxivFiles | grep -w $ext > /dev/null; then
-  sxiv "$1" >/dev/null & disown
+  sxiv "$1" >/dev/null 2>&1 &
 elif echo $mpvFiles | grep -w $ext > /dev/null; then
-  mpv -quiet "$1" > /dev/null & disown
+  mpv -quiet "$1" > /dev/null 2>&1 &
 elif echo $wgetFiles | grep -w $ext > /dev/null; then
-  cd "$downloads" && wget "$1" >/dev/null & disown
+  cd "$downloads" && wget "$1" >/dev/null 2>&1 &
 elif echo "$@" | grep "$vidsites">/dev/null; then
-  mpv -quiet "$1" > /dev/null & disown
+  mpv -quiet "$1" > /dev/null 2>&1 &
 else
-  firefox "$1" 2>/dev/null & disown
+  firefox "$1" 2>/dev/null 2>&1 &
 fi

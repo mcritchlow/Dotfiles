@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # for testing dunst changes. Thanks to: https://raw.githubusercontent.com/Kaligule/dunst-config/master/reload
 pkill dunst
 dunst -config ~/.config/dunst/dunstrc &

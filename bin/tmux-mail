@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if tmux ls | grep 'mail' > /dev/null; then
   tmux attach-session -t mail
 else

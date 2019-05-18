@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # allow uefi or legacy testing
 BIOS=${1:-legacy}
 
