@@ -32,6 +32,7 @@ call minpac#add('tpope/vim-repeat') "repeat map commands (surround)
 call minpac#add('tpope/vim-unimpaired') " [ and ] mappings for quickfix, buffers, etc.
 call minpac#add('tpope/vim-eunuch') "Unix-y stuff.
 call minpac#add('tpope/vim-fugitive') "Git integration
+call minpac#add('shumphrey/fugitive-gitlab.vim') "Gitlab integration for Fugitive
 call minpac#add('tpope/vim-rhubarb') "Github integration
 call minpac#add('tpope/vim-projectionist') "Project config for alternate files (spec/impl), custom nav
 call minpac#add('bronson/vim-trailing-whitespace') "make trailing whitespace annoying
