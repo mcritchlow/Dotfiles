@@ -73,3 +73,5 @@
 [sendemail]
 	smtpserver = /usr/bin/msmtp
 	annotate = yes
+[format]
+	signoff = yes
