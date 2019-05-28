@@ -29,7 +29,7 @@ set smarttab      " sw at the start of the line, sts everywhere else
 set ttimeoutlen=50  " Make Esc work faster
 set visualbell
 set list "show tabs
-set listchars=eol:⏎,trail:␠,nbsp:⎵,tab:⭾--
+set listchars=eol:⏎,tab:⭾--
 
 " Softtabs, 2 spaces
 set tabstop=2
