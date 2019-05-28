@@ -1,9 +1,7 @@
 [init]
   templatedir = ~/.config/git/git_template
-[user]
-  name = Matt Critchlow
-  email = matt@critchlow.xyz
-  signingkey = 5B86D84AB60CAB15
+[includeIf "gitdir:~/projects/personal/"]
+  path = ~/.config/git/config.personal
 [includeIf "gitdir:~/projects/ucsd/"]
   path = ~/.config/git/config.work
 [push]
@@ -70,8 +68,5 @@
 	textconv = ansible-vault view
 [pull]
 	rebase = true
-[sendemail]
-	smtpserver = /usr/bin/msmtp
-	annotate = yes
 [format]
 	signoff = yes

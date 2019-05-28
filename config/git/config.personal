@@ -1,12 +1,11 @@
 [user]
   name = Matt Critchlow
-  email = mcritchlow@ucsd.edu
+  email = matt@critchlow.xyz
   signingkey = 5B86D84AB60CAB15
 [sendemail]
-  from = Matt Critchlow <mcritchlow@ucsd.edu>
 	smtpserver = /usr/bin/msmtp
   smtpserveroption=-a
-  smtpserveroption=ucsd
+  smtpserveroption=kolab
 	annotate = yes
 	suppresscc = self
   confirm = always
