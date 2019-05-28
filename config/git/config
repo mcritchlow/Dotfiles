@@ -72,3 +72,4 @@
 	rebase = true
 [sendemail]
 	smtpserver = /usr/bin/msmtp
+	annotate = yes
