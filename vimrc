@@ -28,6 +28,8 @@ set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
 set ttimeoutlen=50  " Make Esc work faster
 set visualbell
+set list "show tabs
+set listchars=tab:<->
 
 " Softtabs, 2 spaces
 set tabstop=2
