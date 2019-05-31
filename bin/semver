@@ -1,0 +1,47 @@
+#!/bin/sh
+# semver - Simple semantic versioning script
+# usage: semver [VERSION_TYPE]
+# VERSION_TYPE: one of "patch" "minor" "major" (defaults to patch)
+
+# Create tempfile to hold git shortlog
+temp_file=$(mktemp)
+trap 'rm -f $temp_file' 0 2 3 15
+
+# Get current version and capture shortlog
+
+if [ "$(git tag --list)" ]; then
+  current_version=$(git describe | cut -d '-' -f1)
+  git shortlog --no-merges "$current_version"..HEAD > "$temp_file"
+else
+  # Set new version, and add all commits
+  current_version="0.0.0"
+  git shortlog --no-merges > "$temp_file"
+fi
+echo "current version: $current_version"
+
+major_version=$(echo "$current_version" | cut -d '.' -f1)
+minor_version=$(echo "$current_version" | cut -d '.' -f2)
+patch_version=$(echo "$current_version" | cut -d '.' -f3)
+
+# Default to a patch version, unless major or minor are specified
+version_type="${1:-patch}"
+echo "version type: $version_type"
+
+# Increment
+case $version_type in
+  "patch") patch_version=$((patch_version + 1));;
+  "minor")
+    minor_version=$((minor_version + 1))
+    patch_version=0
+    ;;
+  "major")
+    major_version=$((major_version + 1))
+    minor_version=0
+    patch_version=0
+    ;;
+esac
+new_version="$major_version.$minor_version.$patch_version"
+echo "new version: $new_version"
+
+# Generate new version and allow for editing tag/release message
+git tag -e -a "$new_version" -F "$temp_file"
