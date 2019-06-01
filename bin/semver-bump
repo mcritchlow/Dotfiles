@@ -1,33 +1,53 @@
 #!/bin/sh
-# semver - Simple semantic versioning script
-# usage: semver [VERSION_TYPE]
-# VERSION_TYPE: one of "patch" "minor" "major" (defaults to patch)
+
+if [ -z ${1+x} ]; then
+cat <<EOF
+semver-bump - Simple semantic versioning script
+usage: semver [VERSION_TYPE]
+VERSION_TYPE: one of "patch" "minor" "major"
+
+Patch Examples: current tag/version of 1.2.3
+$ semver-bump patch
+=> 1.2.4
+
+$ semver-bump minor
+=> 1.3.0
+
+$ semver-bump major
+=> 2.0.0
+
+No Patch Examples: current tag/version of 1.2
+$ semver-bump minor
+=> 1.3
+
+$ semver-bump major
+=> 2.0
+
+EOF
+exit 0
+fi
+
+# First tag/version to assign, if none exists
+FIRST_VERSION="0.0.0"
 
 # Create tempfile to hold git shortlog
 temp_file=$(mktemp)
 trap 'rm -f $temp_file' 0 2 3 15
 
-# Get current version and capture shortlog
-
 if [ "$(git tag --list)" ]; then
   current_version=$(git describe | cut -d '-' -f1)
-  git shortlog --no-merges "$current_version"..HEAD > "$temp_file"
 else
-  # Set new version, and add all commits
-  current_version="0.0.0"
-  git shortlog --no-merges > "$temp_file"
+  current_version="$FIRST_VERSION"
 fi
-echo "current version: $current_version"
-
 major_version=$(echo "$current_version" | cut -d '.' -f1)
 minor_version=$(echo "$current_version" | cut -d '.' -f2)
 patch_version=$(echo "$current_version" | cut -d '.' -f3)
+if [ -z "${patch_version}" ]; then
+  no_patch="yes"
+fi
 
-# Default to a patch version, unless major or minor are specified
 version_type="${1:-patch}"
-echo "version type: $version_type"
-
-# Increment
+# Increment version
 case $version_type in
   "patch") patch_version=$((patch_version + 1));;
   "minor")
@@ -40,8 +60,21 @@ case $version_type in
     patch_version=0
     ;;
 esac
-new_version="$major_version.$minor_version.$patch_version"
-echo "new version: $new_version"
+
+if [ "$no_patch" = "yes" ]; then
+  new_version="$major_version.$minor_version"
+else
+  new_version="$major_version.$minor_version.$patch_version"
+fi
+# Get current version and capture shortlog
+printf "%s %s:\n\n" "$(basename "$(pwd)")" ${new_version} > "$temp_file"
+if [ "$current_version" = "$FIRST_VERSION" ]; then
+  # first tag, so add all commits
+  git shortlog --no-merges >> "$temp_file"
+else
+  git shortlog --no-merges "$current_version"..HEAD >> "$temp_file"
+fi
 
 # Generate new version and allow for editing tag/release message
 git tag -e -a "$new_version" -F "$temp_file"
+echo "new version: $new_version"
