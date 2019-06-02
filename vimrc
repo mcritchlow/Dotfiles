@@ -55,8 +55,6 @@ set number
 set numberwidth=5
 
 " Ruby
-let ruby_fold = 1
-let ruby_foldable_groups = 'class module def' "only fold higher level groups
 let g:ruby_indent_block_style = 'do'
 let ruby_spellcheck_strings = 1
 
