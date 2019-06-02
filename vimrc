@@ -149,6 +149,10 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" Load gitlab API key on commit
+" Used by fugitive for GBrowse
+" Used in commits via omni-completion (C-x + C-o)
+" let g:gitlab_api_keys = {'gitlab.com': system('pass show GitlabEmails/vim-integration | head -n1 | tr -d "\n"')}
 
 " Open urlview on current file
 nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
