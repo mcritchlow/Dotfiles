@@ -185,13 +185,15 @@ fco_preview() {
 
 # fshow - git commit browser
 fshow() {
+  local _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+  local _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | head -200'"
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(blue)%cr" "$@" |
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --header "Press CTRL-S to toggle sort" \
-      --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
-                 xargs -I % sh -c 'git show --color=always % | head -200 '" \
-      --bind "enter:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs git rev-parse | xargs -I % sh -c 'vim fugitive://\$(git rev-parse --show-toplevel)/.git//% < /dev/tty'"
+      --header "Press ctrl-s to sort, ctrl-y to copy hash" \
+      --preview "$_viewGitLogLine" \
+      --bind "ctrl-y:execute:$_gitLogLineToHash | xclip -rmlastnl -selection clipboard" \
+      --bind "ctrl-m:execute:$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | less -R'"
 }
 
 # ftags - search ctags
