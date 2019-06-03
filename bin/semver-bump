@@ -67,7 +67,7 @@ else
   new_version="$major_version.$minor_version.$patch_version"
 fi
 # Get current version and capture shortlog
-printf "%s %s:\n\n" "$(basename "$(pwd)")" ${new_version} > "$temp_file"
+printf "Release %s:\n\n" ${new_version} > "$temp_file"
 if [ "$current_version" = "$FIRST_VERSION" ]; then
   # first tag, so add all commits
   git shortlog --no-merges >> "$temp_file"
