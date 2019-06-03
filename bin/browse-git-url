@@ -1,0 +1,30 @@
+#!/bin/sh
+# Given a filename and a line number, construct a URL for the remote file online
+[ -z "$1" ] && exit 1
+
+# Given a filename
+# TODO: make more flexible, don't require line numbers
+# TODO: support xclip instead of xdg-open
+git_file="$1"
+start_line="$2"
+end_line="$3"
+
+cd "${git_file%/*}" || exit 1
+
+_project_top_level="$(git rev-parse --show-toplevel)"
+project="${_project_top_level##*/}"
+relative_path=${git_file##*/$project/}
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+# # Determine the remote system (gitlab, github, sr.ht)
+remote=$(git remote -v | head -n1 | tr -d '\n')
+if [ -z "${remote##*git.sr.ht*}" ]; then
+  account=$(echo "$remote" | cut -d ':' -f2 | cut -d '/' -f1)
+  xdg-open "https://git.sr.ht/$account/$project/tree/$branch/$relative_path#L$start_line"
+elif [ -z "${remote##*gitlab*}" ]; then
+  account=$(echo "$remote" | cut -d '/' -f4)
+  xdg-open "https://gitlab.com/$account/$project/blob/$branch/$relative_path#L$start_line-$end_line"
+elif [ -z "${remote##*github*}" ]; then
+  account=$(echo "$remote" | cut -d '/' -f4)
+  xdg-open "https://github.com/$account/$project/blob/$branch/$relative_path#L$start_line-L$end_line"
+fi
