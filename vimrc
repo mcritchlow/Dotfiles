@@ -48,7 +48,7 @@ set textwidth=120
 set colorcolumn=+1
 
 " Simple statusline
-set statusline=%<%F\ -\ Filetype:\ %y\ %h%m%r%=%-14.(%03l,%02c%V%)\ %P
+set statusline=%<%F\ %y\ %q%h%m%r%=%-14.(%03l,%02c%V%)\ %P
 
 " Numbers
 set number
