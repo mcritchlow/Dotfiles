@@ -49,13 +49,14 @@ set colorcolumn=+1
 
 " Git info for statusline
 function! StatuslineGit()
-  let l:is_git_repo = system('git rev-parse HEAD > /dev/null 2>&1')
-  if v:shell_error != 0
-    return ''
-  else
-    let l:branchname = system('git rev-parse --abbrev-ref HEAD | tr -d "\\n"')
-    return strlen(l:branchname) > 0?'[Git('.l:branchname.')]':''
-  endif
+  return ''
+  " let l:is_git_repo = system('git rev-parse HEAD > /dev/null 2>&1')
+  " if v:shell_error != 0
+  "   return ''
+  " else
+  "   let l:branchname = system('git rev-parse --abbrev-ref HEAD | tr -d "\\n"')
+  "   return strlen(l:branchname) > 0?'[Git('.l:branchname.')]':''
+  " endif
 endfunction
 set statusline=%<%F%y\ %h%m%r%{StatuslineGit()}%=%-14.(%l,%c%V%)\ %P
 
