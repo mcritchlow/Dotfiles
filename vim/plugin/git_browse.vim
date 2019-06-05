@@ -3,14 +3,14 @@ if exists('g:loaded_git_browse') || &compatible
 endif
 let g:loaded_git_browse = 1
 
-function s:OpenGitURL()
+function s:GitOpenURL()
   let s:url = s:GitURL()
   execute ":silent !xdg-open " . shellescape(s:url,1)
   execute ':redraw!'
   echom "Opened " . s:url . " in browser.."
 endfunction
 
-function s:CopyGitURL()
+function s:GitCopyURL()
   let s:url = s:GitURL()
   execute ":silent !echo " . shellescape(s:url,1) . " | xclip -r -sel clip"
   execute ':redraw!'
@@ -27,5 +27,5 @@ function s:GitURL()
 endfunction
 
 " define mapping poings
-command -range=% CopyGitURL call <SID>CopyGitURL()
-command -range=% OpenGitURL call <SID>OpenGitURL()
+command -range=% GitCopyURL call <SID>GitCopyURL()
+command -range=% GitOpenURL call <SID>GitOpenURL()
