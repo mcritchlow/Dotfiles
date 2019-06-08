@@ -225,11 +225,6 @@ let g:ale_linters = {
 " ============================================================================
 " Vim Test {{{
 " ============================================================================
-" If a project uses docker-compose, change test executable
-if filereadable("docker-compose.yml")
-  let test#ruby#rspec#executable = 'docker-compose exec web bundle exec rspec'
-endif
-
 " vim-test sends command to send to tmux usign Vim Tmux Runner
 let test#strategy = "dispatch"
 " vim-test mappings
@@ -334,3 +329,8 @@ command! -nargs=* Bsearch call fzf#run({
   \ 'down':    '50%'
   \ })
 " }}}
+
+" Support local project settings, such as custom test commands, formatting, etc.
+if filereadable(expand("vimrc.local"))
+  exe 'source vimrc.local'
+endif
