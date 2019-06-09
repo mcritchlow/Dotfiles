@@ -7,7 +7,7 @@ require 'tempfile'
 require 'yaml'
 
 calcurse_home = "#{ENV['HOME']}/.config/calcurse/"
-config = YAML.safe_load(File.open("#{ENV['HOME']}/.bin/config.yml"))['calcurse']
+config = YAML.safe_load(File.open("#{ENV['HOME']}/.local/bin/config.yml"))['calcurse']
 
 FileUtils.mv("#{calcurse_home}/apts", "#{calcurse_home}/apts.back")
 

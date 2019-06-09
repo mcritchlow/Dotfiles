@@ -3,7 +3,7 @@ Description=Newsboat Queue Management Script
 After=graphical.target
 
 [Service]
-ExecStart=/home/mcritchlow/.bin/newsboat_queue_listener
+ExecStart=/home/mcritchlow/.local/bin/newsboat_queue_listener
 
 [Install]
 WantedBy=default.target

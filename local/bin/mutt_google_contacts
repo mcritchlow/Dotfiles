@@ -15,7 +15,7 @@ MUTT_ALIASES_LOCATION = ENV['HOME'] + '/projects/personal/sync-stuff/mutt/google
 
 # Setup credentials
 OAUTH_CLIENT_ID = ENV['HOME'] + '/projects/personal/sync-stuff/mutt/client_id.json'.freeze
-TOKEN_STORE_FILE = ENV['HOME'] + '/.bin/google-contacts-tokens.yaml'.freeze
+TOKEN_STORE_FILE = ENV['HOME'] + '/.local/bin/google-contacts-tokens.yaml'.freeze
 OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
 USER_ID = 'matt.critchlow@gmail.com'.freeze
 

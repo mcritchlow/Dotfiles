@@ -1,3 +1,0 @@
-#!/bin/sh
-# entr command to run `~/.bin/newsboat_queue_download` when newsboat queue is changed
-echo ~/.local/share/newsboat/queue | entr -p ~/.bin/newsboat_queue_download 2>/dev/null

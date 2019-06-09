@@ -3,7 +3,7 @@ Description=FlatPak Updates Notification
 After=graphical.target
 
 [Service]
-ExecStart=/home/mcritchlow/.bin/flatpak-updates
+ExecStart=/home/mcritchlow/.local/bin/flatpak-updates
 
 [Install]
 WantedBy=default.target

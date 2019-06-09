@@ -1,6 +1,6 @@
 typeset -U path
 # various bins
-path=(~/.bin ~/bin ~/.local/bin $path[@])
+path=(~/bin ~/.local/bin $path[@])
 
 # load Go
 if test -d "$HOME/go"; then
