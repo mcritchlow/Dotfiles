@@ -28,8 +28,6 @@ set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
 set ttimeoutlen=50  " Make Esc work faster
 set visualbell
-set list "show tabs
-set listchars=eol:⏎,tab:⭾--
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
