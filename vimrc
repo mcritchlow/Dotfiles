@@ -31,12 +31,6 @@ set visualbell
 set list "show tabs
 set listchars=eol:⏎,tab:⭾--
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
