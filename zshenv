@@ -15,8 +15,10 @@ if test -d "$HOME/.rbenv"; then
 fi
 
 export WWW_HOME="https://duckduckgo.com"
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR="vim"
+export VISUAL="vim"
+export BROWSER="firefox"
+export TERMINAL="st"
 # Lastpass
 export LPASS_PINENTRY="/usr/bin/pinentry-curses"
 # don't allow agent to expire
