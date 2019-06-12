@@ -9,27 +9,21 @@
 # otherwise it opens link in browser.
 
 # Download location
-downloads=$HOME/Downloads
+downloads=$HOME/Downloads/
 
-# List of sites that will be opened in mpv.
-vidsites="youtube.com
-  \|youtu.be
-  \|hooktube.com
-  \|bitchute.com
-  "
-ext="${1##*.}"
-mpvFiles="mkv mp4 gif webm"
-sxivFiles="png jpg jpeg jpe"
-wgetFiles="mp3 flac opus mp3?source=feed pdf"
+# If no url given. Opens browser. For using script as $BROWSER.
+[ -z "$1" ] && { "$BROWSER"; exit; }
 
-if echo $sxivFiles | grep -w $ext > /dev/null; then
-  sxiv "$1" >/dev/null 2>&1 &
-elif echo $mpvFiles | grep -w $ext > /dev/null; then
-  mpv -quiet "$1" > /dev/null 2>&1 &
-elif echo $wgetFiles | grep -w $ext > /dev/null; then
-  cd "$downloads" && wget "$1" >/dev/null 2>&1 &
-elif echo "$@" | grep "$vidsites">/dev/null; then
-  mpv -quiet "$1" > /dev/null 2>&1 &
-else
-  firefox "$1" 2>/dev/null 2>&1 &
-fi
+case "$1" in
+	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*)
+		setsid mpv --input-ipc-server=/tmp/mpvsoc"$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
+	*png|*jpg|*jpe|*jpeg|*gif)
+		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+	*mp3|*flac|*opus|*mp3?source*)
+    notify-send -t 3000 "Queuing $1 for download..."
+    idnum="$(tsp curl -L "$1" --output "$downloads${1##*/}")"
+    tsp -D "$idnum" notify-send "$1 done." ;;
+	*)
+		if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
+		else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
+esac

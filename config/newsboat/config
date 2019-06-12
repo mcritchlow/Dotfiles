@@ -3,7 +3,6 @@ notify-program "/usr/bin/notify-send"
 
 external-url-viewer "BROWSER=linkhandler urlscan"
 
-
 download-path "~/Podcasts/"
 
 bind-key j down
