@@ -21,7 +21,7 @@ typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
-  current_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+  current_branch=$(git branch --show-current 2> /dev/null)
   if [[ -n $current_branch ]]; then
     echo " %B%F{green}($current_branch)%f%b"
   fi

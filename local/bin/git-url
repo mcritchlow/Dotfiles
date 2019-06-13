@@ -12,7 +12,7 @@ cd "${git_file%/*}" || exit 1
 _project_top_level="$(git rev-parse --show-toplevel)"
 project="${_project_top_level##*/}"
 relative_path=${git_file##*/$project/}
-branch=$(git rev-parse --abbrev-ref HEAD)
+branch=$(git branch --show-current)
 
 # # Determine the remote system (gitlab, github, sr.ht)
 remote=$(git remote -v | head -n1 | tr -d '\n')

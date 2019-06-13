@@ -9,7 +9,7 @@ is_in_git_repo() {
 is_in_git_repo || exit 1
 
 # Setup mail variables
-current_branch=$(git rev-parse --abbrev-ref HEAD)
+current_branch=$(git branch --show-current)
 current_project=$(git remote -v | grep origin | head -n1 | awk '{print $2}' | sed 's/.*\///' | sed 's/\.git//')
 gitlab_mr_address=$(pass show GitlabEmails/"${current_project}" | head -n1)
 gitlab_mr_email=/tmp/gitlab-${current_project}.mail

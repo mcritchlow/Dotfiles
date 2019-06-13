@@ -6,7 +6,7 @@ aur_folder=~/projects/aur
 for d in "$aur_folder"/*; do
   cd "$d" || continue
   current_head=$(git log | head -1 | cut -d ' ' -f2)
-  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  current_branch=$(git branch --show-current)
 
   git pull --quiet origin "$current_branch"
 
