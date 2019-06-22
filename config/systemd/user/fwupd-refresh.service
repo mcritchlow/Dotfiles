@@ -1,0 +1,6 @@
+[Unit]
+Description=Firmware Update (LVFS) synchronization service
+
+[Service]
+Type=oneshot
+ExecStart=/home/mcritchlow/.local/bin/fwupd-refresh

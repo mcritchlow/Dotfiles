@@ -1,0 +1,10 @@
+[Unit]
+Description=Firmware Update (LVFS) synchronization timer
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=30d
+Unit=fwupd-refresh.service
+
+[Install]
+WantedBy=timers.target

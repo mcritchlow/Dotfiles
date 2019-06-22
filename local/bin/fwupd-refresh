@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# if no fwupd installed
+if test ! -f /usr/bin/fwupdmgr; then
+  exit 0
+fi
+fwupdmgr refresh
+notify-send --expire-time=60000 --app-name="Firmware Updates" "Metadata refreshed!"
+
