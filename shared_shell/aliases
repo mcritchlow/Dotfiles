@@ -62,6 +62,7 @@ alias reflector-update="sudo reflector --country 'United States' --latest 200 --
 # alias tmux="TERM=xterm-256color tmux"
 alias tls="tmux ls"
 alias td="tmux detach"
+alias tms="tmux new-session -s"
 
 # Lastpass
 alias lplogin='lpass login --trust matt@critchlow.xyz'
