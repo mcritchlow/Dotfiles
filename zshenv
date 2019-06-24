@@ -9,8 +9,10 @@ if test -d "$HOME/go"; then
 fi
 
 # load rbenv
-if test -d "$HOME/.rbenv"; then
-  path=(~/.rbenv/bin ~/.rbenv/plugins/ruby-build/bin $path[@])
+export RBENV_ROOT="$HOME/projects/personal/rbenv"
+export RBENV_DEFAULT_GEMS="$HOME/.config/rbenv/default-gems"
+if test -d "$RBENV_ROOT"; then
+  path=($RBENV_ROOT/bin $RBENV_ROOT/plugins/ruby-build/bin $path[@])
   eval "$(rbenv init - )"
 fi
 
