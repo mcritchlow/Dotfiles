@@ -1,0 +1,7 @@
+[Unit]
+Description=rbenv update repos service
+
+[Service]
+Type=oneshot
+ExecStart=/home/mcritchlow/.local/bin/rbenv-update-repos
+Environment="RBENV_ROOT=/home/mcritchlow/projects/personal/rbenv"

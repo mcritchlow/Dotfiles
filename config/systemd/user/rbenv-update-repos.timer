@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer to update rbenv and plugins
+
+[Timer]
+OnBootSec=15m
+OnUnitActiveSec=1w
+Unit=rbenv-update-repos.service
+
+[Install]
+WantedBy=timers.target
