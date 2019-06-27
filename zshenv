@@ -2,6 +2,8 @@ typeset -U path
 # various bins
 path=(~/bin ~/.local/bin $path[@])
 
+[[ $XDG_CONFIG_HOME ]] || export XDG_CONFIG_HOME="$HOME/.config"
+
 # load Go
 if test -d "$HOME/go"; then
   export GOPATH="$HOME/go"
@@ -10,7 +12,7 @@ fi
 
 # load rbenv
 export RBENV_ROOT="$HOME/projects/personal/rbenv"
-export RBENV_DEFAULT_GEMS="$HOME/.config/rbenv/default-gems"
+export RBENV_DEFAULT_GEMS="$XDG_CONFIG_HOME/rbenv/default-gems"
 if test -d "$RBENV_ROOT"; then
   path=($RBENV_ROOT/bin $RBENV_ROOT/plugins/ruby-build/bin $path[@])
   eval "$(rbenv init - )"

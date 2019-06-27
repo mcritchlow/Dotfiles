@@ -6,7 +6,7 @@ require 'open-uri'
 require 'tempfile'
 require 'yaml'
 
-calcurse_home = "#{ENV['HOME']}/.config/calcurse/"
+calcurse_home = "#{ENV['XDG_CONFIG_HOME']}/calcurse/"
 config = YAML.safe_load(File.open("#{ENV['HOME']}/.local/bin/config.yml"))['calcurse']
 
 FileUtils.mv("#{calcurse_home}/apts", "#{calcurse_home}/apts.back")
