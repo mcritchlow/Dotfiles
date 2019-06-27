@@ -2,5 +2,5 @@
 if tmux ls | grep 'mail' > /dev/null; then
   tmux attach-session -t mail
 else
-  "$HOME/.tmux-projects/mail"
+  "$XDG_CONFIG_HOME/tmux/projects/mail"
 fi

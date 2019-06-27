@@ -229,7 +229,7 @@ ftm() {
 # fts [FUZZY PATTERN] - Launch tmux session from ~/.tmux-projects
 fts() {
   local tmux_project
-  local base="$HOME/.tmux-projects"
+  local base="$XDG_CONFIG_HOME/tmux/projects"
   tmux_project=$(ls "$base" | \
     fzf --height 25% --select-1 --exit-0) &&
   sh "$base/$tmux_project"

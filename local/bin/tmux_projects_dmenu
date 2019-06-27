@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 shopt -s nullglob globstar
 
-projects_base="$HOME/.tmux-projects"
+projects_base="$XDG_CONFIG_HOME/tmux/projects"
 
 project=$(ls $projects_base | dmenu -i "$@")
 
