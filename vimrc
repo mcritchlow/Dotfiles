@@ -320,6 +320,28 @@ command! -nargs=* Bsearch call fzf#run({
   \            '--color hl:68,hl+:110',
   \ 'down':    '50%'
   \ })
+"
+" manage selected line from GitLineHistory search result
+" for now, read commit into a vsplit
+function! s:git_log_lines_handler(lines)
+    if len(a:lines) < 2 | return | endif
+    let parts = split(a:lines[1], ' ')
+    echom parts[0]
+    vnew
+    setlocal buftype=nofile bufhidden=wipe filetype=gitcommit nobuflisted noswapfile nowrap
+    execute 'silent! read !git show '. parts[0]
+    execute 'normal!gg'
+endfunction
+
+" show commit history for a given line
+command! -nargs=* GitLineHistory call fzf#run({
+  \ 'source':  printf('git log --oneline --no-patch -L %s,%s:%s', line('.'), line('.'), shellescape(expand("%"))),
+  \ 'sink*':    function('<sid>git_log_lines_handler'),
+  \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x '.
+  \            '--reverse '.
+  \            '--preview="git show --color=always {1}" '.
+  \            '--color hl:68,hl+:110'
+  \ })
 " }}}
 
 " Support local project settings, such as custom test commands, formatting, etc.
