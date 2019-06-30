@@ -59,7 +59,6 @@ alias remove-orphans="sudo pacman -Rns \$(pacman -Qtdq)"
 alias reflector-update="sudo reflector --country 'United States' --latest 200 --age 24 --sort rate --save /etc/pacman.d/mirrorlist"
 
 # Tmux
-alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 alias tls="tmux ls"
 alias td="tmux detach"
 alias tms="tmux new-session -s"
