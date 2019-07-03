@@ -2,8 +2,8 @@
 Description=Timer to update rbenv and plugins
 
 [Timer]
-OnBootSec=15m
-OnUnitActiveSec=1w
+OnCalendar=weekly
+Persistent=true
 Unit=rbenv-update-repos.service
 
 [Install]

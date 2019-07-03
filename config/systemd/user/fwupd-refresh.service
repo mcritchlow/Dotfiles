@@ -1,5 +1,7 @@
 [Unit]
 Description=Firmware Update (LVFS) synchronization service
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=oneshot

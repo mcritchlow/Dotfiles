@@ -2,8 +2,9 @@
 Description=Firmware Update (LVFS) synchronization timer
 
 [Timer]
-OnBootSec=5m
-OnUnitActiveSec=30d
+OnCalendar=monthly
+RandomizedDelaySec=5m
+Persistent=true
 Unit=fwupd-refresh.service
 
 [Install]
