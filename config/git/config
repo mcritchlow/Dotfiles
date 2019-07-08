@@ -28,6 +28,8 @@
   rh1 = reset HEAD^ --hard
   rh2 = reset HEAD^^ --hard
 
+  rbi = rebase -i origin/master
+
   st = status
   sh = show
   d = diff
