@@ -80,9 +80,9 @@ color index         color3          color1          "~v~(~D)"                   
 # message headers ------------------------------------------------------
 
 #color header        color10         default         "^"
-color hdrdefault    color12          default
-color header        color12         default         "^(From)"
-color header        color12          default         "^(Subject)"
+color hdrdefault    color8          default
+color header        color8         default         "^(From)"
+color header        color8          default         "^(Subject)"
 
 # body -----------------------------------------------------------------
 
