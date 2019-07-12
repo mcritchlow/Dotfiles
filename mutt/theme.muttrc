@@ -1,20 +1,5 @@
 # vim: filetype=muttrc
 
-# custom body highlights -----------------------------------------------
-# highlight my name and other personally relevant strings
-#color body          color3          default         "(ethan|schoonover)"
-# custom index highlights ----------------------------------------------
-# messages which mention my name in the body
-#color index         color3          default         "~b \"phil(_g|\!| gregory| gold)|pgregory\" !~N !~T !~F !~p !~P"
-#color index         J_cream         color15         "~b \"phil(_g|\!| gregory| gold)|pgregory\" ~N !~T !~F !~p !~P"
-#color index         color3          color6          "~b \"phil(_g|\!| gregory| gold)|pgregory\" ~T !~F !~p !~P"
-#color index         color3          J_magent        "~b \"phil(_g|\!| gregory| gold)|pgregory\" ~F !~p !~P"
-## messages which are in reference to my mails
-#color index         J_magent        default         "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" !~N !~T !~F !~p !~P"
-#color index         J_magent        color15         "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~N !~T !~F !~p !~P"
-#color index         J_magent        color6          "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~T !~F !~p !~P"
-#color index         J_magent        color1          "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~F !~p !~P"
-
 # basic colors ---------------------------------------------------------
 color normal        color7        default
 color error         color1          default
@@ -23,9 +8,8 @@ color message       color6          default
 color markers       color1          color7
 color attachment    color7          default
 color search        color13         default
-#color status        J_black         J_status
-color status        color6        default
-color indicator     color15          color8
+color status        default        default
+color indicator     color15          color0
 color tree          color3          default                                     # arrow in threads
 
 # basic monocolor screen
@@ -36,30 +20,25 @@ mono  error         bold
 
 # index ----------------------------------------------------------------
 
-#color index         color1          default         "~D(!~p|~p)"               # deleted
-#color index         color0          default         ~F                         # flagged
-#color index         color9          default         ~=                         # duplicate messages
-#color index         color10         default         "~A!~N!~T!~p!~Q!~F!~D!~P"  # the rest
-#color index         J_base          default         "~A~N!~T!~p!~Q!~F!~D"      # the rest, new
 color index         color1          default         "~A"                        # all messages
 color index         color9          default         "~E"                        # expired messages
 color index         color4          default         "~N"                        # new messages
-color index         color4          default         "~O"                        # old messages
+color index         default          default         "~O"                        # old messages
 color index         color13         default         "~Q"                        # messages that have been replied to
-color index         color6         default         "~R"                        # read messages
-color index         color15          default         "~U"                        # unread messages
-color index         color15          default         "~U~$"                      # unread, unreferenced messages
+color index         default         default         "~R"                        # read messages
+color index         color4          default         "~U"                        # unread messages
+color index         color4          default         "~U~$"                      # unread, unreferenced messages
 color index         color11         default         "~v"                        # messages part of a collapsed thread
 color index         color11         default         "~P"                        # messages from me
-color index         color6          default         "~p!~F"                     # messages to me
-color index         color6          default         "~N~p!~F"                   # new messages to me
-color index         color15          default         "~U~p!~F"                   # unread messages to me
-color index         color6         default         "~R~p!~F"                   # messages to me
+color index         default          default         "~p!~F"                     # messages to me
+color index         color4          default         "~N~p!~F"                   # new messages to me
+color index         color4          default         "~U~p!~F"                   # unread messages to me
+color index         default         default         "~R~p!~F"                   # messages to me
 color index         color1          default         "~F"                        # flagged messages
 color index         color1          default         "~F~p"                      # flagged messages to me
-color index         color1          default         "~N~F"                      # new flagged messages
-color index         color1          default         "~N~F~p"                    # new flagged messages to me
-color index         color1          default         "~U~F~p"                    # new flagged messages to me
+color index         color4          default         "~N~F"                      # new flagged messages
+color index         color4          default         "~N~F~p"                    # new flagged messages to me
+color index         color4          default         "~U~F~p"                    # new flagged messages to me
 color index         color9          default          "~D"                        # deleted messages
 color index         color14         default         "~v~(!~N)"                  # collapsed thread with no unread
 color index         color3          default         "~v~(~N)"                   # collapsed thread with some unread
@@ -72,10 +51,6 @@ color index         color2          color0          "~N~v~(~F~N)"               
 color index         color2          color0          "~N~v~(~F)"                 # collapsed thread with unread parent, no unread inside, but some flagged
 color index         color6          color0          "~v~(~p)"                   # collapsed thread with unread parent, no unread inside, some to me directly
 color index         color3          color1          "~v~(~D)"                   # thread with deleted (doesn't differentiate between all or partial)
-#color index         color3          default         "~(~N)"                    # messages in threads with some unread
-#color index         color2          default         "~S"                       # superseded messages
-#color index         color1          default         "~T"                       # tagged messages
-#color index         color9          color1          "~="                       # duplicated messages
 
 # message headers ------------------------------------------------------
 
@@ -118,26 +93,4 @@ mono  body          bold                            "^gpg: BAD signature from.*"
 # yes, an insance URL regex
 color body          color1          default         "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
 # and a heavy handed email regex
-#color body          J_magent        default         "((@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]),)*@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]):)?[0-9a-z_.+%$-]+@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\])"
-
-# Various smilies and the like
-#color body          color15         default         "<[Gg]>"                            # <g>
-#color body          color15         default         "<[Bb][Gg]>"                        # <bg>
-#color body          color3          default         " [;:]-*[})>{(<|]"                  # :-) etc...
-# *bold*
-#color body          color4          default         "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
-#mono  body          bold                            "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
-# _underline_
-#color body          color4          default         "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
-#mono  body          underline                       "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
-# /italic/  (Sometimes gets directory names)
-#color body         color4          default         "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
-#mono body          underline                       "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
-
-# Border lines.
-#color body          color4          default         "( *[-+=#*~_]){6,}"
-
-#folder-hook .                  "color status        J_black         J_status        "
-#folder-hook gmail/inbox        "color status        J_black         color3          "
-#folder-hook gmail/important    "color status        J_black         color3          "
-
+color body          color5        default         "((@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]),)*@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]):)?[0-9a-z_.+%$-]+@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\])"
