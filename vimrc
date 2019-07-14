@@ -35,6 +35,9 @@ let g:is_posix = 1
 
 set wildmode=list:longest,list:full
 
+set grepprg=rg\ --vimgrep
+set grepformat=%f:%l:%c:%m
+
 " Make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
