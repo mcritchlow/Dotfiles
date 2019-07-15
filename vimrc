@@ -35,8 +35,14 @@ let g:is_posix = 1
 
 set wildmode=list:longest,list:full
 
+" set :grep to use ripgrep
 set grepprg=rg\ --vimgrep
 set grepformat=%f:%l:%c:%m
+command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+
+
+" remove legacy path entry
+set path-=/usr/include
 
 " Make it obvious where 120 characters is
 set textwidth=120
