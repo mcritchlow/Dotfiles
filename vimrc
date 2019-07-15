@@ -40,27 +40,10 @@ set grepprg=rg\ --vimgrep
 set grepformat=%f:%l:%c:%m
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
 
-" TODO: move to plugin
-" TODO: figure out quickfix formatting
-function! s:fd_to_qf(line)
-  return {'filename': a:line}
-endfunction
-
 " load file find results into quickfix
 function! s:find_files(search_for)
-  let list = systemlist("fd ".a:search_for)
-  let qf_data = map(list, 's:fd_to_qf(v:val)')
-  " call map(list, {key, val -> key . '-' . val})
-			" :call map(mylist, '"> " . v:val . " <"')
-  " let qf_data = map(list, {'filename': val})
-  " let results = split(execute(":silent !fd ". a:search_for), "\n")
-  " execute ':redraw!'
-  echom qf_data
-  if len(qf_data) > 0
-    call setqflist(list)
-    copen
-    wincmd p
-  endif
+  cexpr system("fd -t f ".a:search_for." -exec echo {}:1:1:".a:search_for)
+  copen
 endfunction
 command! -nargs=1 FindFiles call s:find_files(<f-args>)
 
