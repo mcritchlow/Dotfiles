@@ -38,7 +38,7 @@ call minpac#add('nelstrom/vim-markdown-folding') "add folding to markdown files
 " ============================================================================
 " Theming {{{
 " ============================================================================
-call minpac#add('Lokaltog/vim-monotone')
+call minpac#add('rakr/vim-one')
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
 " Plug 'majutsushi/tagbar'
 call minpac#add('junegunn/vim-emoji') "because emoji!
