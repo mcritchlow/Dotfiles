@@ -50,4 +50,7 @@ fi
 
 /usr/local/bin/slstatus &
 
+# set wm background color
+ xsetroot -solid "#0184BC"
+
 exec dwm 2> /tmp/dwm.log
