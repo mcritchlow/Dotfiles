@@ -84,3 +84,6 @@
 	signoff = yes
 [difftool]
 	prompt = no
+	trustExitCode = true
+[mergetool "vimdiff"]
+	trustExitCode = true
