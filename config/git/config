@@ -33,6 +33,8 @@
   st = status
   sh = show
   d = diff
+  dt = difftool
+  mt = mergetool
   co = checkout
 
   ph = push
@@ -66,9 +68,19 @@
   autosquash = true
 [help]
   autocorrect = 1
+[merge]
+  tool = vimdiff
+  conflictstyle=diff3
+  prompt=false
+[diff]
+  tool = vimdiff
+[diff "vimdiff"]
+  cmd = vim -d $LOCAL $REMOTE
 [diff "ansible-vault"]
 	textconv = ansible-vault view
 [pull]
 	rebase = true
 [format]
 	signoff = yes
+[difftool]
+	prompt = no
