@@ -246,6 +246,8 @@ let g:ansible_unindent_after_newline = 1
 " ============================================================================
 " interactive patch
 nnoremap <silent> <Leader>gap :Git add --patch<CR>
+" commit
+nnoremap <silent> <Leader>gc :Git commit<CR>
 " }}}
 " ============================================================================
 " Editor Config {{{
