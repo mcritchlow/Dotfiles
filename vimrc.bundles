@@ -30,6 +30,7 @@ call minpac#add('editorconfig/editorconfig-vim')
 call minpac#add('ConradIrwin/vim-bracketed-paste') "enable bracketed paste
 call minpac#add('tpope/vim-repeat') "repeat map commands (surround)
 call minpac#add('tpope/vim-unimpaired') " [ and ] mappings for quickfix, buffers, etc.
+call minpac#add('tpope/vim-fugitive') " all things git, it's worth it
 call minpac#add('tpope/vim-projectionist') "Project config for alternate files (spec/impl), custom nav
 call minpac#add('bronson/vim-trailing-whitespace') "make trailing whitespace annoying
 call minpac#add('tpope/vim-markdown') "add folding to markdown files
