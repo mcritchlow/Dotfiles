@@ -3,20 +3,20 @@
         "default": [
             [
                 "header",
-                "yellow",
-                "black",
+                "white",
+                "light blue",
                 "standout"
             ],
             [
                 "footer",
-                "yellow",
-                "black",
+                "white",
+                "light blue",
                 "standout"
             ],
             [
                 "search",
-                "yellow",
-                "black",
+                "default",
+                "default",
                 "standout"
             ],
             [
@@ -31,25 +31,25 @@
             ],
             [
                 "urlref:number:braces",
-                "light gray",
-                "black"
+                "black",
+                "white"
             ],
             [
                 "urlref:number",
-                "yellow",
                 "black",
+                "white",
                 "standout"
             ],
             [
                 "urlref:url",
-                "white",
                 "black",
+                "white",
                 "standout"
             ],
             [
                 "url:sel",
-                "yellow",
                 "black",
+                "dark blue",
                 "bold"
             ]
         ],
