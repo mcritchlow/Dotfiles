@@ -57,6 +57,29 @@ update-personal-repos() {
   cd $current_path
 }
 
+# A function to extract correctly any archive based on extension
+# USE: extract imazip.zip
+#      extract imatar.tar
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)  tar xjf $1      ;;
+            *.tar.gz)   tar xzf $1      ;;
+            *.bz2)      bunzip2 $1      ;;
+            *.rar)      unrar x $1      ;;
+            *.gz)       gunzip $1       ;;
+            *.tar)      tar xf $1       ;;
+            *.tbz2)     tar xjf $1      ;;
+            *.tgz)      tar xzf $1      ;;
+            *.zip)      unzip $1        ;;
+            *.Z)        uncompress $1   ;;
+            *)          echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
 # Replace a A/V file metadata title with one that has no emojis
 # This is needed because dwm barfs horrendously when emojis are in the metadata title/window
 ffmpeg-emoji-fix() {
