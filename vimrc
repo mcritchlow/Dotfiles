@@ -241,6 +241,13 @@ nnoremap <silent> <Leader>gt :TestVisit<CR>
 " indentation will completely reset (unindent to column 0) after two newlines in insert-mode.
 let g:ansible_unindent_after_newline = 1
 " }}}
+" Go {{{
+" ============================================================================
+" Fix imports and formatting on save
+let g:go_fmt_command = "goimports"
+" disable fmt on save, use :GoFmt as needed
+let g:go_fmt_autosave = 0
+" }}}
 " ============================================================================
 " Editor Config {{{
 " ============================================================================
