@@ -8,7 +8,7 @@ color message       color6          default
 color markers       color1          color7
 color attachment    color7          default
 color search        color13         default
-color status        color0        color4
+color status        color15        color4
 color indicator     color0          color7
 color tree          color3          default                                     # arrow in threads
 
