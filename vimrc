@@ -33,7 +33,14 @@ set visualbell
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
+" Search/Find
+set wildmenu
+set wildignore+=tmp/**,**/node_modules/**
 set wildmode=list:longest,list:full
+" remove legacy path entry
+set path-=/usr/include
+" have find recursively search working directory vim started in
+set path+=**
 
 " set :grep to use ripgrep
 set grepprg=rg\ --vimgrep
@@ -47,8 +54,6 @@ function! s:find_files(search_for)
 endfunction
 command! -nargs=1 FindFiles call s:find_files(<f-args>)
 
-" remove legacy path entry
-set path-=/usr/include
 
 " Make it obvious where 120 characters is
 set textwidth=120
@@ -160,7 +165,6 @@ nnoremap <leader><leader> <c-^>
 
 " Show list of TODO entries
 " Ignore tmp folder in projects, usually Hydra-based ones
-set wildignore+=tmp/**
 noremap <Leader>T :noautocmd vimgrep /TODO/j **/*.*<CR>:cw<CR>
 
 " Get off my lawn
