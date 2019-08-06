@@ -287,6 +287,12 @@ drv() {
   docker volume ls | sed '1d'| fzf -m | awk '{print $2}' | xargs -r docker volume rm
 }
 
+# drvc [FUZZY PATTERN] - Choose a docker volume to check contents of
+drvc() {
+  local volume=$(docker volume ls | sed '1d' | awk '{print $2}' | fzf)
+  docker run --rm -i -v"$volume":/tmp/myvolume busybox find /tmp/myvolume
+}
+
 # da [FUZZY PATTERN] - Select a docker container to attach to
 da() {
   docker ps -a | sed '1d' | fzf -1 -q "$1" | awk '{print $1}' | xargs -r docker attach
