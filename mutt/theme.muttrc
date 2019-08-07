@@ -9,7 +9,7 @@ color markers       color1          color7
 color attachment    color7          default
 color search        color13         default
 color status        color15        color4
-color indicator     color0          color7
+color indicator     color15          color7
 color tree          color3          default                                     # arrow in threads
 
 # basic monocolor screen
