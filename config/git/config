@@ -87,3 +87,5 @@
 	trustExitCode = true
 [mergetool "vimdiff"]
 	trustExitCode = true
+[rerere]
+	enabled = true
