@@ -46,6 +46,8 @@ set path+=**
 set grepprg=rg\ --vimgrep
 set grepformat=%f:%l:%c:%m
 command! -nargs=+ Grep execute 'silent grep! <args>' | copen
+" grep for word under cursor
+nnoremap <leader>g :silent execute "grep! " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>:redraw!<cr>
 
 " load file find results into quickfix
 function! s:find_files(search_for)
