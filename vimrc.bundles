@@ -2,6 +2,7 @@
 " ============================================================================
 " MINPAC BLOCK {{{
 " ============================================================================
+packadd! matchit "for textobj plugins
 packadd minpac
 call minpac#init()
 call minpac#add('k-takata/minpac', {'type':'opt'})
