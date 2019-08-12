@@ -16,7 +16,8 @@ function! s:YardTags()
   call add(yard_tags, "# @return [T] <description of return>")
   call append(line('.')-1, yard_tags)
   " indent appended lines (maybe a better way to do this) + select method definition line
-  execute "normal! k>" . len(yard_tags) . "kjf<va<"
+  let indent_lines = len(yard_tags) - 1
+  execute "normal! k>" . indent_lines . "kf<va<"
 endfunction
 
 " pull method parameters from definition line
