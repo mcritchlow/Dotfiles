@@ -113,16 +113,7 @@ syntax enable
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.light': {
-  \       'allow_bold': 1,
-  \       'allow_italic': 1,
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
-set background=light
+colorscheme monotone
 
 " }}}
 " ============================================================================
