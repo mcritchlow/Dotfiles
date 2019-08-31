@@ -22,23 +22,23 @@ mono  error         bold
 
 color index         color1          default         "~A"                        # all messages
 color index         color9          default         "~E"                        # expired messages
-color index         color4          default         "~N"                        # new messages
+color index         default          default         "~N"                        # new messages
 color index         default          default         "~O"                        # old messages
 color index         color13         default         "~Q"                        # messages that have been replied to
-color index         default         default         "~R"                        # read messages
-color index         color4          default         "~U"                        # unread messages
-color index         color4          default         "~U~$"                      # unread, unreferenced messages
+color index         color8         default         "~R"                        # read messages
+color index         default          default         "~U"                        # unread messages
+color index         default          default         "~U~$"                      # unread, unreferenced messages
 color index         color11         default         "~v"                        # messages part of a collapsed thread
 color index         color11         default         "~P"                        # messages from me
 color index         default          default         "~p!~F"                     # messages to me
-color index         color4          default         "~N~p!~F"                   # new messages to me
-color index         color4          default         "~U~p!~F"                   # unread messages to me
+color index         default          default         "~N~p!~F"                   # new messages to me
+color index         default          default         "~U~p!~F"                   # unread messages to me
 color index         default         default         "~R~p!~F"                   # messages to me
 color index         color1          default         "~F"                        # flagged messages
 color index         color1          default         "~F~p"                      # flagged messages to me
-color index         color4          default         "~N~F"                      # new flagged messages
-color index         color4          default         "~N~F~p"                    # new flagged messages to me
-color index         color4          default         "~U~F~p"                    # new flagged messages to me
+color index         default          default         "~N~F"                      # new flagged messages
+color index         default          default         "~N~F~p"                    # new flagged messages to me
+color index         default          default         "~U~F~p"                    # new flagged messages to me
 color index         color9          default          "~D"                        # deleted messages
 color index         color14         default         "~v~(!~N)"                  # collapsed thread with no unread
 color index         color3          default         "~v~(~N)"                   # collapsed thread with some unread
@@ -55,9 +55,9 @@ color index         color3          color1          "~v~(~D)"                   
 # message headers ------------------------------------------------------
 
 #color header        color10         default         "^"
-color hdrdefault    color8          default
-color header        color8         default         "^(From)"
-color header        color8          default         "^(Subject)"
+color hdrdefault    color12          default
+color header        color12         default         "^(From)"
+color header        color12          default         "^(Subject)"
 
 # body -----------------------------------------------------------------
 
