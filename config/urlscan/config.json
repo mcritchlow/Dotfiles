@@ -3,6 +3,59 @@
         "default": [
             [
                 "header",
+                "black",
+                "light gray",
+                "standout"
+            ],
+            [
+                "footer",
+                "black",
+                "light gray",
+                "standout"
+            ],
+            [
+                "search",
+                "black",
+                "light gray",
+                "standout"
+            ],
+            [
+                "msgtext",
+                "",
+                ""
+            ],
+            [
+                "msgtext:ellipses",
+                "white",
+                "black"
+            ],
+            [
+                "urlref:number:braces",
+                "white",
+                "black"
+            ],
+            [
+                "urlref:number",
+                "white",
+                "black",
+                "standout"
+            ],
+            [
+                "urlref:url",
+                "white",
+                "black",
+                "standout"
+            ],
+            [
+                "url:sel",
+                "black",
+                "light gray",
+                "bold"
+            ]
+        ],
+        "color": [
+            [
+                "header",
                 "white",
                 "light blue",
                 "standout"
@@ -50,59 +103,6 @@
                 "url:sel",
                 "black",
                 "dark blue",
-                "bold"
-            ]
-        ],
-        "bw": [
-            [
-                "header",
-                "black",
-                "light gray",
-                "standout"
-            ],
-            [
-                "footer",
-                "black",
-                "light gray",
-                "standout"
-            ],
-            [
-                "search",
-                "black",
-                "light gray",
-                "standout"
-            ],
-            [
-                "msgtext",
-                "",
-                ""
-            ],
-            [
-                "msgtext:ellipses",
-                "white",
-                "black"
-            ],
-            [
-                "urlref:number:braces",
-                "white",
-                "black"
-            ],
-            [
-                "urlref:number",
-                "white",
-                "black",
-                "standout"
-            ],
-            [
-                "urlref:url",
-                "white",
-                "black",
-                "standout"
-            ],
-            [
-                "url:sel",
-                "black",
-                "light gray",
                 "bold"
             ]
         ]
