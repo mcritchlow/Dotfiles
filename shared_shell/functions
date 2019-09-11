@@ -263,6 +263,39 @@ fks() {
   tmux kill-session -t "$session"
 }
 
+# Podman heart FZF
+# -------------
+# prcv [FUZZY PATTERN] - Choose a podman container to remove (and associated volumes)
+prcv() {
+  podman ps -a | sed '1d' | fzf -m | awk '{print $1}' | xargs -r podman rm -v
+}
+
+# drc [FUZZY PATTERN] - Choose a podman container to remove
+prc() {
+  podman ps -a | sed '1d' | fzf -m | awk '{print $1}' | xargs -r podman rm
+}
+
+
+# dri [FUZZY PATTERN] - Choose a podman image to remove
+pri() {
+  podman images | sed '1d' | fzf -m | awk '{print $3}' | xargs -r podman rmi
+}
+
+# drv [FUZZY PATTERN] - Choose a podman volume to remove
+prv() {
+  podman volume ls | sed '1d'| fzf -m | awk '{print $2}' | xargs -r podman volume rm
+}
+
+# drvc [FUZZY PATTERN] - Choose a podman volume to check contents of
+prvc() {
+  local volume=$(podman volume ls | sed '1d' | awk '{print $2}' | fzf)
+  podman run --rm -i -v"$volume":/tmp/myvolume busybox find /tmp/myvolume
+}
+
+# da [FUZZY PATTERN] - Select a podman container to attach to
+pa() {
+  podman ps -a | sed '1d' | fzf -1 -q "$1" | awk '{print $1}' | xargs -r podman attach
+}
 # Docker heart FZF
 # -------------
 
