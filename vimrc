@@ -88,9 +88,6 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Use +/CLIPBOARD for clipboard
-" use unnamed for the */PRIMARY
-set clipboard^=unnamedplus
 " }}}
 "  ============================================================================
 " Load Plugins {{{
