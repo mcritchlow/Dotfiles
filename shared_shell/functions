@@ -180,6 +180,13 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_ALT_C_COMMAND='fd --type directory --color=always --follow --hidden --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
+# fkc - fuzzy kubernetes config
+fkc() {
+  selected_konfig=$(find ~/.kube/configs -maxdepth 1 -type f | cut -d "/" -f 6 | fzf)
+  export KUBECONFIG=~/.kube/configs/$selected_konfig
+}
+
+
 # fco - checkout git branch/tag
 fco() {
   local tags branches target
