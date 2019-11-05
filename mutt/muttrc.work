@@ -14,6 +14,15 @@ set menu_scroll=yes #scroll instead of page
 # set edit_headers #can tweak headers in editor/vim
 set new_mail_command="notify-send 'New Work Email' '%n new messages, %u unread.' &"
 
+# Ask if the user wishes to abort sending if $abort_noattach_regex is found in the
+# body, but no attachments have been added
+# It can be set to:
+#    "yes"     : always abort
+#    "ask-yes" : ask whether to abort
+#    "no"      : send the mail
+set abort_noattach = ask-yes
+set abort_noattach_regex = "\\<attach(|ed|ments?)\\>"
+
 ## Bindings
 # Index
 bind index \Cf noop
