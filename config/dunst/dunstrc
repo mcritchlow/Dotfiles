@@ -136,7 +136,7 @@
     # icon path
     icon_position = left
     max_icon_size = 32
-    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/16x16/legacy/
+    icon_path = /usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/devices/:/usr/share/icons/Adwaita/32x32/legacy/
 
     # dmenu path
     dmenu = /usr/local/bin/dmenu -p dunst:
