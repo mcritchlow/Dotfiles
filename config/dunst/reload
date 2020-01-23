@@ -3,7 +3,7 @@
 pkill dunst
 dunst -config ~/.config/dunst/dunstrc &
 
-notify-send -u critical "Test message: critical test 1"
+notify-send -u critical "Test message: critical test 1 https://raw.githubusercontent.com/Kaligule/dunst-config/master/reload"
 notify-send -u normal "Test message: normal test 2"
 notify-send -u normal "Test message: normal test 2. But with much more text than usual to see how things wrap, shrink,
 recoil in horror, wet the bed, etc. Plus goats"
