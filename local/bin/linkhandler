@@ -20,9 +20,9 @@ case "$1" in
 	*png|*jpg|*jpe|*jpeg|*gif)
 		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	*mp3|*flac|*opus|*mp3?source*)
-    notify-send -t 3000 "Queuing $1 for download..."
+    notify-send -a "Link Handler" -t 3000 "Queuing $1 for download..."
     idnum="$(tsp curl -L "$1" --output "$downloads${1##*/}")"
-    tsp -D "$idnum" notify-send "$1 done." ;;
+    tsp -D "$idnum" notify-send -a "Link Handler" "$1 download complete." ;;
 	*)
 		if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
 		else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
