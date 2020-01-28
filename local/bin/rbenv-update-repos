@@ -15,7 +15,7 @@ update_repo() {
 
   new_head=$(git log | head -1 | cut -d ' ' -f2)
   if test "$current_head" != "$new_head"; then
-    notify-send -a "RBENV Updater" -t 50000 "RBENV: updated ${d##*/}..."
+    notify-send -i utilities-terminal -a "RBENV Updater" -t 50000 "RBENV: updated ${d##*/}..."
   fi
 }
 

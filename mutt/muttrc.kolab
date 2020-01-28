@@ -12,7 +12,7 @@ set net_inc=50 # Display download progress every 50k
 set fast_reply #don't prompt for to/subject
 set menu_scroll=yes #scroll instead of page
 # set edit_headers #can tweak headers in editor/vim
-set new_mail_command="notify-send -a 'Neomutt' 'New Personal Email' '%n new messages, %u unread.' &"
+set new_mail_command="notify-send -i mail-message-new -a 'Neomutt' 'New Personal Email' '%n new messages, %u unread.' &"
 
 # Ask if the user wishes to abort sending if $abort_noattach_regex is found in the
 # body, but no attachments have been added
