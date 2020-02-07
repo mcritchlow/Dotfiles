@@ -1,5 +1,16 @@
 # Shell functions
 # --------------------------------------------------------------------
+
+# Build a new rails app w/ docker
+# expected args: app name, app database
+new-rails-app(){
+  local name="${1-blog}"
+  local db="${2-postgresql}"
+  docker pull registry.gitlab.com/ucsdlibrary/rails-builder:stable
+  docker run --rm -it -e APP_NAME="$name" -e APP_DB="$db" --mount type=bind,source="$(pwd)",target=/builder registry.gitlab.com/ucsdlibrary/rails-builder:stable
+  sudo chown -R "$UID":"$GID" "$name"
+  cd "$name" || exit
+}
 # Sometimes gpg-agent struggles w/ ssh..
 gpg-reload-agent() {
   systemctl --user restart gpg-agent.service
