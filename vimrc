@@ -29,6 +29,9 @@ set smarttab      " sw at the start of the line, sts everywhere else
 set ttimeoutlen=50  " Make Esc work faster
 set visualbell
 
+" look in git directory for tags too
+set tags^=./.git/tags
+
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
