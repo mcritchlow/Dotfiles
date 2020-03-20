@@ -12,8 +12,6 @@ call minpac#add('k-takata/minpac', {'type':'opt'})
 " Ruby/Rails {{{
 " ============================================================================
 call minpac#add('tpope/vim-rails')
-call minpac#add('tpope/vim-rake')
-call minpac#add('tpope/vim-bundler')
 call minpac#add('tpope/vim-endwise') " add end after if, do, def
 
 " }}}
