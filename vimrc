@@ -114,6 +114,33 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 colorscheme monotone
+if exists('*term_setansicolors')
+  let g:terminal_ansi_colors = repeat([0], 16)
+
+  let g:terminal_ansi_colors[0] = "#403E41"
+  let g:terminal_ansi_colors[8] = "#727072"
+
+  let g:terminal_ansi_colors[1] = "#FF6188"
+  let g:terminal_ansi_colors[9] = "#FF6188"
+
+  let g:terminal_ansi_colors[2] = "#A9DC76"
+  let g:terminal_ansi_colors[10] = "#A9DC76"
+
+  let g:terminal_ansi_colors[3] = "#FFD866"
+  let g:terminal_ansi_colors[11] = "#FFD866"
+
+  let g:terminal_ansi_colors[4] = "#399EE6"
+  let g:terminal_ansi_colors[12] = "#399EE6"
+
+  let g:terminal_ansi_colors[5] = "#AB9DF2"
+  let g:terminal_ansi_colors[13] = "#AB9DF2"
+
+  let g:terminal_ansi_colors[6] = "#78DCE8"
+  let g:terminal_ansi_colors[14] = "#78DCE8"
+
+  let g:terminal_ansi_colors[7] = "#FCFCFA"
+  let g:terminal_ansi_colors[15] = "#FCFCFA"
+endif
 
 " }}}
 " ============================================================================
@@ -275,6 +302,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+
+" Use new fancy vim popup window for fzf
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Customize fzf colors to match color scheme
 let g:fzf_colors =
