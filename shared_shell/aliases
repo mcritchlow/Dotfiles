@@ -11,7 +11,7 @@ alias cd.='cd ..'
 alias cd..='cd ..'
 alias cat='bat'
 alias ls='exa'
-alias l='exa --all --long --git --header --group'
+alias l='exa --all --long --git --header --group --classify'
 alias lss='exa --all --long --reverse --sort=size --header --group'
 alias tree='exa --all --tree'
 alias sls="stat -c '%n (%F) %a %A' *"
