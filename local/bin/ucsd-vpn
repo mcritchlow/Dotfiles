@@ -1,6 +1,6 @@
 #!/bin/sh
 GROUP="2-Step Secured - EasyConnect"
-USERNAME="mcritchlow"
+USERNAME="mcritchlow@library"
 VPN_SERVER="vpn.ucsd.edu"
 PIDFILE=/run/openconnect_vpn.pid
 
