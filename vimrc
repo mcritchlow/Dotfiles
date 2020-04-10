@@ -384,7 +384,25 @@ command! -nargs=* GitLineHistory call fzf#run({
   \            '--preview="git show --color=always {1}" '.
   \            '--color hl:68,hl+:110'
   \ })
+
+function! s:git_coauthors_handler(lines)
+  let authors_template = ["Co-authored-by:"]
+  call add(authors_template, a:lines[0])
+  call append(line('.'), join(authors_template, " "))
+endfunction
+
+
+" find recent co-authors for commit message
+command! -nargs=* GitCoAuthors call fzf#run({
+  \ 'source':  'git log --pretty=format:"%an <%ae>" -1000 | sort | uniq',
+  \ 'sink*':    function('<sid>git_coauthors_handler'),
+  \ 'options': '--ansi '.
+  \            '--reverse '.
+  \            '--color hl:68,hl+:110'
+  \ })
+"
 " }}}
+imap <c-g>a <c-o>:GitCoAuthors<cr>
 
 " Support local project settings, such as custom test commands, formatting, etc.
 if filereadable(expand("vimrc.local"))
