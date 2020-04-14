@@ -282,20 +282,8 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " FZF {{{
 " ============================================================================
 " use FZF like CTRL-P
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 nnoremap <c-p> :Files<cr>
 
-" Add preview to Rg command
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-" File preview using Highlight (http://www.andre-simon.de/doku/highlight/en/highlight.php)
-" let g:fzf_files_options =
-"   \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-" inoremap <expr> <c-x><c-t> fzf#complete('tmuxwords.rb --all-but-current --scroll 500 --min 5')
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file)
