@@ -49,6 +49,7 @@ call minpac#add('junegunn/vim-emoji') "because emoji!
 call minpac#add('tpope/vim-commentary') "comments w/ gc motion
 call minpac#add('christoomey/vim-sort-motion') "sorting with gs motion
 call minpac#add('tpope/vim-surround') " cs motion for changing quotes, tags, etc.
+call minpac#add('tommcdo/vim-lion')
 
 " }}}
 " ============================================================================
