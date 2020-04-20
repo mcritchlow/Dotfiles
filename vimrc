@@ -47,19 +47,6 @@ set path-=/usr/include
 " have find recursively search working directory vim started in
 set path+=**
 
-" set :grep to use ripgrep
-set grepprg=rg\ --vimgrep
-set grepformat=%f:%l:%c:%m
-command! -nargs=+ Grep execute 'silent grep! <args>' | copen
-
-" load file find results into quickfix
-function! s:find_files(search_for)
-  cexpr system("fd -t f ".a:search_for." -exec echo {}:1:1:".a:search_for)
-  copen
-endfunction
-command! -nargs=1 FindFiles call s:find_files(<f-args>)
-
-
 " Make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
@@ -275,8 +262,6 @@ let g:go_fmt_autosave = 0
 " ============================================================================
 " Editor Config {{{
 " ============================================================================
-" Play nice w/ Vim fugitive
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " }}}
 " ============================================================================
 " FZF {{{
@@ -329,46 +314,6 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" split Ag line into parts
-function! s:rg_to_qf(line)
-    let parts = split(a:line, ':')
-    return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
-            \ 'text': join(parts[3:], ':')}
-endfunction
-
-" manage selected line from search result
-function! s:rg_handler(lines)
-    if len(a:lines) < 2 | return | endif
-
-    let cmd = get({'ctrl-x': 'split',
-                  \ 'ctrl-v': 'vertical split',
-                  \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
-    let list = map(a:lines[1:], 's:rg_to_qf(v:val)')
-
-    let first = list[0]
-    execute cmd escape(first.filename, ' %#\')
-    execute first.lnum
-    execute 'normal!' first.col.'|zz'
-
-    if len(list) > 1
-      call setqflist(list)
-      copen
-      wincmd p
-    endif
-endfunction
-
-" bundler show command integration via fzf/rg
-" https://github.com/junegunn/fzf/wiki/Examples-(vim)#narrow-ag-results-within-vim
-command! -nargs=* Bsearch call fzf#run({
-  \ 'source':  printf('rg --no-heading --column --color=always "%s" $(bundle show --paths)',
-  \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
-  \ 'sink*':    function('<sid>rg_handler'),
-  \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-  \            '--multi --reverse --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
-  \            '--color hl:68,hl+:110',
-  \ 'down':    '50%'
-  \ })
-"
 " manage selected line from GitLineHistory search result
 " for now, read commit into a vsplit
 function! s:git_log_lines_handler(lines)
@@ -396,7 +341,6 @@ function! s:git_coauthors_handler(lines)
   call add(authors_template, a:lines[0])
   call append(line('.'), join(authors_template, " "))
 endfunction
-
 
 " find recent co-authors for commit message
 command! -nargs=* GitCoAuthors call fzf#run({
