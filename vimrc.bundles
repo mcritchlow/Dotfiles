@@ -1,84 +1,82 @@
 " vim: set foldmethod=marker foldlevel=99:
 " ============================================================================
-" MINPAC BLOCK {{{
+" Plug {{{
 " ============================================================================
 packadd! matchit "for textobj plugins
-packadd minpac
-call minpac#init()
-call minpac#add('k-takata/minpac', {'type':'opt'})
+call plug#begin('~/.vim/plugged')
 
 " Define bundles via Github repos
 " ============================================================================
 " Ruby/Rails {{{
 " ============================================================================
-call minpac#add('tpope/vim-rails')
-call minpac#add('tpope/vim-endwise') " add end after if, do, def
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise' " add end after if, do, def
 
 " }}}
 " ============================================================================
 " Testing/Validation {{{
 " ============================================================================
-call minpac#add('janko-m/vim-test')
-call minpac#add('christoomey/vim-tmux-runner')
-call minpac#add('w0rp/ale')
-call minpac#add('editorconfig/editorconfig-vim')
+Plug 'janko-m/vim-test'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'w0rp/ale'
+Plug 'editorconfig/editorconfig-vim'
 " }}}
 " ============================================================================
 " General Nice Things {{{
 " ============================================================================
-call minpac#add('ConradIrwin/vim-bracketed-paste') "enable bracketed paste
-call minpac#add('tpope/vim-repeat') "repeat map commands (surround)
-call minpac#add('tpope/vim-unimpaired') " [ and ] mappings for quickfix, buffers, etc.
-call minpac#add('bronson/vim-trailing-whitespace') "make trailing whitespace annoying
-call minpac#add('tpope/vim-markdown') "add folding to markdown files
-call minpac#add('nelstrom/vim-markdown-folding') "add folding to markdown files
+Plug 'ConradIrwin/vim-bracketed-paste' "enable bracketed paste
+Plug 'tpope/vim-repeat' "repeat map commands (surround)
+Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
+Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
+Plug 'tpope/vim-markdown' "add folding to markdown files
+Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
 " }}}
 " ============================================================================
 " Theming {{{
 " ============================================================================
-call minpac#add('Lokaltog/vim-monotone')
+Plug 'Lokaltog/vim-monotone'
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
 " Plug 'majutsushi/tagbar'
-call minpac#add('junegunn/vim-emoji') "because emoji!
+Plug 'junegunn/vim-emoji' "because emoji!
 
 " }}}
 " ============================================================================
 " Custom Motions {{{
 " ============================================================================
-call minpac#add('tpope/vim-commentary') "comments w/ gc motion
-call minpac#add('christoomey/vim-sort-motion') "sorting with gs motion
-call minpac#add('tpope/vim-surround') " cs motion for changing quotes, tags, etc.
-call minpac#add('junegunn/vim-easy-align') "text alignment for tables, etc.
+Plug 'tpope/vim-commentary' "comments w/ gc motion
+Plug 'christoomey/vim-sort-motion' "sorting with gs motion
+Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
+Plug 'junegunn/vim-easy-align' "text alignment for tables, etc.
 
 " }}}
 " ============================================================================
 " Tmux {{{
 " ============================================================================
-call minpac#add('christoomey/vim-tmux-navigator')
-call minpac#add('keith/tmux.vim')
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'keith/tmux.vim'
 
 " }}}
 " ============================================================================
 " Languages {{{
 " ============================================================================
-call minpac#add('sheerun/vim-polyglot')
-call minpac#add('vim-ruby/vim-ruby')
-call minpac#add('ap/vim-css-color')
-call minpac#add('fatih/vim-go')
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-ruby/vim-ruby'
+Plug 'ap/vim-css-color'
+Plug 'fatih/vim-go'
 
 " }}}
 " ============================================================================
 " Fuzzy Finder (FZF) {{{
 " ============================================================================
-call minpac#add('junegunn/fzf.vim')
+Plug 'junegunn/fzf.vim'
 
 " }}}
 " ============================================================================
 " Custom Text Objects {{{
 " ============================================================================
-call minpac#add('kana/vim-textobj-indent')
-call minpac#add('kana/vim-textobj-user')
-call minpac#add('nelstrom/vim-textobj-rubyblock')
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
 " }}}
-
+call plug#end()
 " }}}

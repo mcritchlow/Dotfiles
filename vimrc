@@ -84,9 +84,11 @@ set diffopt+=vertical
 "  ============================================================================
 " Load Plugins {{{
 " ============================================================================
-" minpac commands:
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 " setup minpac
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
