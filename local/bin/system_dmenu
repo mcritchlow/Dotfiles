@@ -6,7 +6,7 @@ chosen=$(printf "lock\\nreboot\\nshutdown" | dmenu -i -p "Systemctl Options")
 # commit any sync-stuff changes prior to lock/reboot/shutdown
 commit_sync_changes() {
   # return immediately if network is down
-  iface=$(ip link show | grep -Eo 'wlp[[:alnum:]]+')
+  iface=$(ip link show | grep -Eo 'wlan[[:alnum:]]+')
   if ip link show "$iface" | grep -q 'DOWN'; then echo "no internet connection" && return; fi
 
   cd ~/projects/personal/sync-stuff || return
