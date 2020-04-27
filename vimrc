@@ -169,10 +169,6 @@ nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
-" Show list of TODO entries
-" Ignore tmp folder in projects, usually Hydra-based ones
-noremap <Leader>T :noautocmd vimgrep /TODO/j **/*.*<CR>:cw<CR>
-
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -272,6 +268,10 @@ let g:go_fmt_autosave = 0
 " ============================================================================
 " use FZF like CTRL-P
 nnoremap <c-p> :Files<cr>
+" additional fzf mappings
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>h :History<cr>
+nnoremap <Leader>T :Tags<cr>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
