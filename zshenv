@@ -19,5 +19,3 @@ export TERMINAL="st"
 export LPASS_PINENTRY="/usr/bin/pinentry-curses"
 # don't allow agent to expire
 export LPASS_AGENT_TIMEOUT=0
-# prefer libvirt provider for vagrant
-export VAGRANT_DEFAULT_PROVIDER="libvirt"
