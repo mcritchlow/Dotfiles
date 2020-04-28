@@ -223,6 +223,11 @@ let g:ale_sign_warning = '⚠️'
 let g:ale_open_list = 0
 let g:ale_loclist = 0
 
+" container-based executable paths
+" ruby
+let g:ale_ruby_rubocop_executable = 'ale-rubocop'
+let g:ale_ruby_rubocop_options = '--config .rubocop.yml'
+
 let g:ale_fixers = {
       \  'ruby':['rubocop']
       \ }
