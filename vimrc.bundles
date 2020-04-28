@@ -62,7 +62,6 @@ Plug 'keith/tmux.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ap/vim-css-color'
-Plug 'fatih/vim-go'
 
 " }}}
 " ============================================================================
