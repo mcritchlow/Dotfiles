@@ -32,6 +32,7 @@ set ttimeoutlen=50  " Make Esc work faster
 set visualbell
 
 " look in git directory for tags too
+set tagcase=followscs
 set tags^=.git/tags
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
