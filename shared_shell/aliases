@@ -68,10 +68,10 @@ alias tms="tmux new-session -s"
 alias lplogin='lpass login --trust matt@critchlow.xyz'
 alias lploginwork='lpass login --trust mcritchlow@ucsd.edu'
 
-# Brightlight shortcuts
-alias br100='brightlight -p -w 100'
-alias br50='brightlight -p -w 50'
-alias br25='brightlight -p -w 25'
+# light shortcuts
+alias br100='light -S 100'
+alias br50='light -S 50'
+alias br25='light -S 25'
 
 # Music (mpd + mpc)
 alias mpcPlaylistReset='mpc update --wait && mpc clear && mpc ls | mpc add'
