@@ -278,7 +278,7 @@ let g:go_fmt_autosave = 0
 nnoremap <c-p> :Files<cr>
 " additional fzf mappings
 nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>h :History<cr>
+nnoremap <Leader>h :Helptags<cr>
 nnoremap <Leader>T :Tags<cr>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
