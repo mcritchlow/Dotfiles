@@ -180,11 +180,6 @@ export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --ex
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--ansi"
 
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND | with-dir"
-if [ -x ~/.vim/pack/minpac/start/fzf.vim/bin/preview.rb ]; then
-  export FZF_CTRL_T_OPTS="--preview '~/.vim/pack/minpac/start/fzf.vim/bin/preview.rb {} | head -200'"
-fi
-
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -sel clip -i)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
 
 # fzf-cd-widget

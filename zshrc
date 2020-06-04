@@ -8,8 +8,8 @@ promptinit
 setopt promptsubst COMPLETE_ALIASES extendedglob hist_ignore_all_dups hist_ignore_space share_history
 
 # Things to source
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source ~/.vim/plugged/fzf/shell/key-bindings.zsh
+source ~/.vim/plugged/fzf/shell/completion.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.shared_shell/functions
 [[ -f ~/.shared_shell/functions.local ]] && source ~/.shared_shell/functions.local

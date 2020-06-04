@@ -1,6 +1,6 @@
 typeset -U path
 # various bins
-path=(~/bin ~/.local/bin $path[@])
+path=(~/.vim/plugged/fzf/bin ~/bin ~/.local/bin $path[@])
 
 [[ $XDG_CONFIG_HOME ]] || export XDG_CONFIG_HOME="$HOME/.config"
 
