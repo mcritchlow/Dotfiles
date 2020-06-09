@@ -100,8 +100,14 @@ endif
 " Load theme {{{
 " ============================================================================
 set termguicolors
+" Set truecolor fg color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" Set truecolor bg color
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" Set kitty escape sequence for undercurl
+let &t_Cs = "\<Esc>[4:3m"
+" Reset to no underline after undercurl
+let &t_Ce = "\<Esc>[4:0m"
 colorscheme monotone
 if exists('*term_setansicolors')
   let g:terminal_ansi_colors = repeat([0], 16)
