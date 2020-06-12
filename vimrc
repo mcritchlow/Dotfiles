@@ -251,7 +251,7 @@ let g:ale_linters = {
 " Vim Test {{{
 " ============================================================================
 " vim-test sends command to send to tmux usign Vim Tmux Runner
-let test#strategy = "vtr"
+let test#strategy = "kitty"
 " vim-test mappings
 nnoremap <silent> <Leader>f :TestFile<CR>
 nnoremap <silent> <Leader>t :TestNearest<CR>

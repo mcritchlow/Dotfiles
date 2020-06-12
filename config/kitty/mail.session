@@ -1,0 +1,15 @@
+new_tab Personal
+# Set the working directory for windows in the current tab
+cd ~
+# Create a window and run the specified command in it
+launch neomutt -F ~/.mutt/muttrc.kolab
+
+new_tab Work
+# make Work email focus
+focus
+cd ~
+launch neomutt -F ~/.mutt/muttrc.work
+
+new_tab Terminal
+cd ~
+launch zsh
