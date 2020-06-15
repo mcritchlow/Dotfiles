@@ -63,9 +63,9 @@ update-personal-repos() {
   local projects=('dotfiles' 'laptop' 'sync-stuff')
   for project in $projects
   do
-    cd "$project_base/$project" && git pull origin master
+    cd "$project_base/$project" && git pull origin trunk
   done
-  cd $current_path
+  cd "$current_path" || return
 }
 
 # A function to extract correctly any archive based on extension
