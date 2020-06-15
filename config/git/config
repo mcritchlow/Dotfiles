@@ -28,7 +28,7 @@
   rh1 = reset HEAD^ --hard
   rh2 = reset HEAD^^ --hard
 
-  rbi = rebase -i origin/master
+  rbi = rebase -i origin/trunk
 
   st = status
   sh = show
@@ -39,19 +39,19 @@
 
   ph = push
   pht = push --tags
-  phom = push origin master
-  phomf = push origin master --force-with-lease
-  phomt = push origin master --tags
-  phum = push upstream master
-  phumt = push upstream master --tags
+  phom = push origin trunk
+  phomf = push origin trunk --force-with-lease
+  phomt = push origin trunk --tags
+  phum = push upstream trunk
+  phumt = push upstream trunk --tags
 
   pl = pull
   plt = pull --tags
-  plom = pull origin master
-  plomr = pull origin master --rebase
-  plomt = pull origin master --tags
-  plum = pull upstream master
-  plumt = pull upstream master --tags
+  plom = pull origin trunk
+  plomr = pull origin trunk --rebase
+  plomt = pull origin trunk --tags
+  plum = pull upstream trunk
+  plumt = pull upstream trunk --tags
 
   lg = log --graph --decorate --oneline
 [core]
