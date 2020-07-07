@@ -33,7 +33,7 @@
   st = status
   sh = show
   d = diff
-  dt = difftool
+  dt = difftool --no-symlinks --dir-diff
   mt = mergetool
   co = checkout
 
@@ -73,18 +73,21 @@
   conflictstyle=diff3
   prompt=false
 [diff]
-  tool = vimdiff
-[diff "vimdiff"]
-  cmd = vim -d $LOCAL $REMOTE
+    tool = kitty
+    guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE
 [diff "ansible-vault"]
 	textconv = ansible-vault view
 [pull]
 	rebase = true
 [format]
 	signoff = yes
-[difftool]
-	prompt = no
-	trustExitCode = true
 [mergetool "vimdiff"]
 	trustExitCode = true
 [rerere]
