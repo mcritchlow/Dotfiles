@@ -30,7 +30,6 @@ Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
 Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
 Plug 'tpope/vim-markdown' "add folding to markdown files
 Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
-Plug 'knubie/vim-kitty-navigator' "support kitty/vim window movement
 " }}}
 " ============================================================================
 " Theming {{{

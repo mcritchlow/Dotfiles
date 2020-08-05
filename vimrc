@@ -104,10 +104,6 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " Set truecolor bg color
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" Set kitty escape sequence for undercurl
-let &t_Cs = "\<Esc>[4:3m"
-" Reset to no underline after undercurl
-let &t_Ce = "\<Esc>[4:0m"
 colorscheme monotone
 if exists('*term_setansicolors')
   let g:terminal_ansi_colors = repeat([0], 16)
@@ -251,7 +247,7 @@ let g:ale_linters = {
 " Vim Test {{{
 " ============================================================================
 " vim-test sends command to send to tmux usign Vim Tmux Runner
-let test#strategy = "kitty"
+let test#strategy = "vimterminal"
 " vim-test mappings
 nnoremap <silent> <Leader>f :TestFile<CR>
 nnoremap <silent> <Leader>t :TestNearest<CR>
