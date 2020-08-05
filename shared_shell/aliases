@@ -79,7 +79,7 @@ alias br25='light -S 25'
 
 # Music (mpd + mpc)
 alias mpcPlaylistReset='mpc update --wait && mpc clear && mpc ls | mpc add'
-alias music-lofi-beats='mpv https://youtu.be/5qap5aO4i9A &'
+alias music-lofi-beats='mpv --video=no https://youtu.be/5qap5aO4i9A &'
 
 # Cowsay + Ansible
 alias ansible-playbook-random='ANSIBLE_COW_SELECTION=random ansible-playbook'
