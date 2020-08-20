@@ -1,5 +1,6 @@
 auto-reload yes
 notify-program "/usr/bin/notify-send"
+show-read-feeds no
 
 external-url-viewer "BROWSER=linkhandler urlscan"
 
