@@ -28,6 +28,7 @@ set relativenumber
 set hlsearch
 set smartcase     " Case insensitive searches become sensitive with capitals
 set smarttab      " sw at the start of the line, sts everywhere else
+set signcolumn=number "display signs in number column, or auto if none (default)
 set ttimeoutlen=50  " Make Esc work faster
 set visualbell
 
