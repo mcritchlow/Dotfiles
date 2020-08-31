@@ -29,7 +29,6 @@ Plug 'tpope/vim-repeat' "repeat map commands (surround)
 Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
 Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
 Plug 'tpope/vim-markdown' "add folding to markdown files
-Plug 'nelstrom/vim-markdown-folding' "add folding to markdown files
 " }}}
 " ============================================================================
 " Theming {{{
