@@ -71,5 +71,5 @@ source $HOME/.config/nvim/plugin_config/fzf.vim
 
 " Support local project settings, such as custom test commands, formatting, etc.
 if filereadable(expand("vimrc.local"))
-  source "vimrc.local"
+  source vimrc.local
 endif
