@@ -27,7 +27,7 @@ alias gdo="cd ~/Documents/"
 
 # projects
 alias gd="cd ~/projects/personal/dotfiles/"
-alias gdv="cd ~/projects/personal/dotfiles/ && vim"
+alias gdv="cd ~/projects/personal/dotfiles/ && nvim"
 # project bases
 alias gw="cd ~/projects/ucsd/"
 alias gp="cd ~/projects/personal/"
@@ -36,6 +36,7 @@ alias gaur="cd ~/projects/aur/"
 # operational
 alias t='sxiv -Ztq * >/dev/null 2>&1'
 alias o='xdg-open'
+alias vim='nvim'
 alias v='vim'
 alias vi='vim'
 alias vi2='vi -O2 '

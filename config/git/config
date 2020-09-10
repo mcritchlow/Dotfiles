@@ -56,7 +56,7 @@
   lg = log --graph --decorate --oneline
 [core]
   excludesfile = ~/.config/git/ignore
-  editor = vim
+  editor = nvim
   autocrlf = input
 [commit]
   template = ~/.config/git/gitmessage
@@ -75,7 +75,7 @@
 [diff]
   tool = vimdiff
 [diff "vimdiff"]
-  cmd = vim -d $LOCAL $REMOTE
+  cmd = nvim -d $LOCAL $REMOTE
 [diff "ansible-vault"]
 	textconv = ansible-vault view
 [pull]
