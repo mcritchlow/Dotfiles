@@ -17,6 +17,7 @@ noremap \ ,
 
 set ignorecase    " ignore case in search patterns
 set smartcase     " override ignorecase if search container upper case characthers
+set noswapfile " swapfiles get really annoying w/ fg/bg jobs
 set cursorline
 set relativenumber
 " set signcolumn=number "display signs in number column, or auto if none (default)
