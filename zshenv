@@ -1,6 +1,6 @@
 typeset -U path
 # various bins
-path=(~/.vim/plugged/fzf/bin ~/bin ~/.local/bin $path[@])
+path=(~/.local/share/nvim/plugged/fzf/bin ~/bin ~/.local/bin $path[@])
 
 [[ $XDG_CONFIG_HOME ]] || export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -11,8 +11,8 @@ if test -d "$HOME/go"; then
 fi
 
 export WWW_HOME="https://duckduckgo.com"
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export BROWSER="firefox"
 export TERMINAL="alacritty"
 # Lastpass
