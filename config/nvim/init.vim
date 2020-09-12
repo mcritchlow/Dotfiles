@@ -63,6 +63,7 @@ source $HOME/.config/nvim/plugin_config/theme.vim
 " Load Plugin Configuration and Mappings {{{
 " ============================================================================
 source $HOME/.config/nvim/plugin_config/general_mappings.vim
+source $HOME/.config/nvim/plugin_config/nvim_colorizer.vim
 source $HOME/.config/nvim/plugin_config/easy_align.vim
 source $HOME/.config/nvim/plugin_config/markdown.vim
 source $HOME/.config/nvim/plugin_config/ale.vim

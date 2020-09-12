@@ -57,7 +57,7 @@ Plug 'keith/tmux.vim'
 " ============================================================================
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-ruby/vim-ruby'
-Plug 'ap/vim-css-color'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " }}}
 " ============================================================================
