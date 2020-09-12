@@ -11,6 +11,10 @@
 " ============================================================================
 " Core Settings {{{
 " ============================================================================
+"
+" common directory variables
+let g:plugin_config_path = expand('$HOME/.config/nvim/plugin_config/')
+
 let mapleader = ","
 " use \ instead of comma for reverse f-searches
 noremap \ ,
@@ -55,21 +59,23 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
   autocmd VimEnter * call PlugInstall --sync | $MYVIMRC
 endif
 
-source $HOME/.config/nvim/plugin_config/base.vim
-source $HOME/.config/nvim/plugin_config/theme.vim
+execute 'source ' . g:plugin_config_path . 'base.vim'
+execute 'source ' . g:plugin_config_path . 'theme.vim'
 " }}}
 
 "  ============================================================================
 " Load Plugin Configuration and Mappings {{{
 " ============================================================================
-source $HOME/.config/nvim/plugin_config/general_mappings.vim
-source $HOME/.config/nvim/plugin_config/nvim_colorizer.vim
-source $HOME/.config/nvim/plugin_config/easy_align.vim
-source $HOME/.config/nvim/plugin_config/markdown.vim
-source $HOME/.config/nvim/plugin_config/ale.vim
-source $HOME/.config/nvim/plugin_config/vim_test.vim
-source $HOME/.config/nvim/plugin_config/fzf.vim
+execute 'source ' . g:plugin_config_path . 'general_mappings.vim'
+execute 'source ' . g:plugin_config_path . 'general_autocommands.vim'
+execute 'source ' . g:plugin_config_path . 'nvim_colorizer.vim'
+execute 'source ' . g:plugin_config_path . 'easy_align.vim'
+execute 'source ' . g:plugin_config_path . 'markdown.vim'
+execute 'source ' . g:plugin_config_path . 'ale.vim'
+execute 'source ' . g:plugin_config_path . 'vim_test.vim'
+execute 'source ' . g:plugin_config_path . 'fzf.vim'
 " }}}
+"
 
 " Support local project settings, such as custom test commands, formatting, etc.
 if filereadable(expand("vimrc.local"))
