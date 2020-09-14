@@ -50,6 +50,9 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+" Set path to project directory (and down)
+set path=.,**
+
 " }}}
 "  ============================================================================
 " Load Plugins and Theme {{{
