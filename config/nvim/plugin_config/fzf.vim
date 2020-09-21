@@ -27,9 +27,6 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-" Use new fancy vim popup window for fzf
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
 " Always enable preview window on the right with 60% width
 let g:fzf_preview_window = 'right:60%'
 
