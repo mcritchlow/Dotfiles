@@ -265,6 +265,7 @@ ftm() {
 fmusic() {
   streams="Chilled Cow - Lo-fi hip hop radio | https://youtu.be/5qap5aO4i9A
   Steezy - Coffee Shop radio | https://youtu.be/-5KAN9_CzSA
+  Steezy - Beats to sleep/study to | https://youtu.be/ePXRyWgWkTE
   Aplitude - Rainy Days in Tokyo | https://youtu.be/ivNIpLdzh7M"
   stream=$(echo "$streams" | fzf | cut -d '|' -f 2 | tr -d ' ')
   setsid mpv --video=no --quiet "$stream" >/dev/null 2>&1 &
