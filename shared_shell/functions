@@ -261,6 +261,15 @@ ftm() {
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
+# fmusic - Choose a youtube stream to listen to
+fmusic() {
+  streams="Chilled Cow - Lo-fi hip hop radio | https://youtu.be/5qap5aO4i9A
+  Steezy - Coffee Shop radio | https://youtu.be/-5KAN9_CzSA
+  Aplitude - Rainy Days in Tokyo | https://youtu.be/ivNIpLdzh7M"
+  stream=$(echo "$streams" | fzf | cut -d '|' -f 2 | tr -d ' ')
+  setsid mpv --video=no --quiet "$stream" >/dev/null 2>&1 &
+}
+
 # fts [FUZZY PATTERN] - Launch tmux session from ~/.tmux-projects
 fts() {
   local tmux_project
