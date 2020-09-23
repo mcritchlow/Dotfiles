@@ -38,6 +38,4 @@ macro , open-in-browser
 macro w set browser "w3m"; open-in-browser ; set browser linkhandler
 macro v set browser "mpv --ytdl-format='bestvideo[height<=720]+bestaudio/best[height<=720]'"; open-in-browser ; set browser linkhandler
 macro p set browser "link_handler_dmenu"; open-in-browser ; set browser linkhandler
-# c copies the link to the clipboard.
-# The line below is probably the skiddiest line I've ever written.
-macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
+macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler
