@@ -33,6 +33,8 @@ if test -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1; then
   /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 fi
 
+/usr/bin/redshift &
+
 /usr/local/bin/slstatus &
 
 exec dwm 2> /tmp/dwm.log
