@@ -136,52 +136,34 @@ debug:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Monokai Pro)
 colors:
-  # Default colors
   primary:
-    background: '0x000000'
-    # background: '0x2D2A2E'
-    foreground: '0xFCFCFA'
+    background: "0x2c2e34"
+    foreground: "0xe2e2e3"
 
   cursor:
-    text: '0xFCFCFA'
-    cursor: '0xFF6188'
+    text: "0xFCFCFA"
+    cursor: "0xFF6188"
 
-  # Normal colors
   normal:
-    black:   '0x403E41'
-    red:     '0xFF6188'
-    green:   '0xA9DC76'
-    yellow:  '0xFFD866'
-    blue:    '0xFC9867'
-    magenta: '0xAB9DF2'
-    cyan:    '0x78DCE8'
-    white:   '0xFCFCFA'
+    black: "0x181819"
+    red: "0xfc5d7c"
+    green: "0x9ed072"
+    yellow: "0xe7c664"
+    blue: "0x76cce0"
+    magenta: "0xb39df3"
+    cyan: "0xf39660"
+    white: "0xe2e2e3"
 
-  # Bright colors
   bright:
-    black:   '0x727072'
-    red:     '0xFF6188'
-    green:   '0xA9DC76'
-    yellow:  '0xFFD866'
-    blue:    '0xFC9867'
-    magenta: '0xAB9DF2'
-    cyan:    '0x78DCE8'
-    white:   '0xFCFCFA'
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
+    black: "0x181819"
+    red: "0xfc5d7c"
+    green: "0x9ed072"
+    yellow: "0xe7c664"
+    blue: "0x76cce0"
+    magenta: "0xb39df3"
+    cyan: "0xf39660"
+    white: "0xe2e2e3"
 
   # Indexed Colors
   #

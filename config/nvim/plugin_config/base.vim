@@ -35,7 +35,7 @@ Plug 'tpope/vim-markdown' "add folding to markdown files
 " ============================================================================
 " Theming {{{
 " ============================================================================
-Plug 'Lokaltog/vim-monotone'
+Plug 'sainnhe/sonokai'
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
 " Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-emoji' "because emoji!
