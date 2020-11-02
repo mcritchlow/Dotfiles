@@ -19,7 +19,6 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 " Testing/Validation {{{
 " ============================================================================
 Plug 'janko-m/vim-test'
-Plug 'christoomey/vim-tmux-runner'
 Plug 'w0rp/ale'
 Plug 'editorconfig/editorconfig-vim'
 " }}}
@@ -31,6 +30,8 @@ Plug 'tpope/vim-repeat' "repeat map commands (surround)
 Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
 Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
 Plug 'tpope/vim-markdown' "add folding to markdown files
+Plug 'tpope/vim-fugitive' "git integration
+
 " }}}
 " ============================================================================
 " Theming {{{
