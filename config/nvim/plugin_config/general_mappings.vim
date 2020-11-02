@@ -29,4 +29,4 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Terminal
-tnoremap <Esc> <C-\><C-n>
+tnoremap <C-o> <C-\><C-n>
