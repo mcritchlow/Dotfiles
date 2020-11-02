@@ -33,7 +33,7 @@ set textwidth=120 " Make it obvious where 120 characters is
 set colorcolumn=+1
 
 " Simple statusline
-set statusline=%<%F\ %y\ %q%h%m%r%=%-14.(%03l,%02c%V%)\ %P
+set statusline=%<%F\ %y\ %{FugitiveStatusline()}\ %q%h%m%r%=%-14.(%03l,%02c%V%)\ %P
 
 " Numbers
 set number
