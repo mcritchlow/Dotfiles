@@ -19,7 +19,7 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 " Testing/Validation {{{
 " ============================================================================
 Plug 'janko-m/vim-test'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 " }}}
 " ============================================================================
