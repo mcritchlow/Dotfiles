@@ -31,6 +31,7 @@ Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
 Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
 Plug 'tpope/vim-markdown' "add folding to markdown files
 Plug 'tpope/vim-fugitive' "git integration
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } "nvim in...browser!
 
 " }}}
 " ============================================================================

@@ -66,6 +66,7 @@ execute 'source ' . g:plugin_config_path . 'theme.vim'
 " ============================================================================
 execute 'source ' . g:plugin_config_path . 'general_mappings.vim'
 execute 'source ' . g:plugin_config_path . 'general_autocommands.vim'
+execute 'source ' . g:plugin_config_path . 'firenvim.vim'
 execute 'source ' . g:plugin_config_path . 'nvim_colorizer.vim'
 execute 'source ' . g:plugin_config_path . 'easy_align.vim'
 execute 'source ' . g:plugin_config_path . 'markdown.vim'

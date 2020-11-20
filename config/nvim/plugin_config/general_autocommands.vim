@@ -6,4 +6,8 @@ augroup MyAutocmds
   if exists('##TextYankPost')
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 300)
   endif
+
+  " Fire Neovim
+  au BufEnter github.com_*.txt set filetype=markdown
+  au BufEnter gitlab.com_*.txt set filetype=markdown
 augroup end
