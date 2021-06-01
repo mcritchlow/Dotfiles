@@ -4,7 +4,7 @@ augroup MyAutocmds
   " Briefly highlight yanked text for visual feedback if it is what we want
   " on_yank parameters are highlight group and time (in ms)
   if exists('##TextYankPost')
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 300)
+    autocmd TextYankPost * lua require'vim.highlight'.on_yank {higroup='Substitute', timeout=300}
   endif
 
   " Fire Neovim
