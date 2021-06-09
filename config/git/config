@@ -79,6 +79,8 @@
   cmd = nvim -d $LOCAL $REMOTE
 [diff "ansible-vault"]
 	textconv = ansible-vault view
+[diff "k8secret"]
+	textconv = k8secret-view
 [pull]
 	rebase = true
 [format]
