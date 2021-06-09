@@ -37,4 +37,7 @@ fi
 
 /usr/local/bin/slstatus &
 
+# make backup of resolv.conf
+sudo cp /etc/resolv.conf /tmp/resolv.conf
+
 exec dwm 2> /tmp/dwm.log
