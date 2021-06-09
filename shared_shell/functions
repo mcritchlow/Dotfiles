@@ -25,6 +25,14 @@ pacman-remove() {
   sudo pacman -Rns "$1"
 }
 
+# Kill pid using dmenu
+killpid ()
+{
+  local pid_to_kill
+  pid_to_kill="$(ps -eo pid,cmd | dmenu -p 'PID to kill: ' -l 25 | tr -s ' ' | cut -d ' ' -f2)"
+  sudo kill "$pid_to_kill"
+}
+
 # Switch lpass accounts
 # options: work, personal
 # must line up w/ directories in ~/.local/share
@@ -267,7 +275,7 @@ fmusic() {
   Steezy - Coffee Shop radio | https://youtu.be/-5KAN9_CzSA
   Steezy - Beats to sleep/study to | https://www.youtube.com/watch?v=9_CcYN8MVO8
   Aplitude - Rainy Days in Tokyo | https://youtu.be/ivNIpLdzh7M"
-  stream=$(echo "$streams" | fzf | cut -d '|' -f 2 | tr -d ' ')
+  stream=$(echo "$streams" | dmenu | cut -d '|' -f 2 | tr -d ' ')
   setsid mpv --video=no --quiet "$stream" >/dev/null 2>&1 &
 }
 
