@@ -32,6 +32,9 @@ set wildignore+=tmp/**,**/node_modules/**
 set textwidth=120 " Make it obvious where 120 characters is
 set colorcolumn=+1
 
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
+
 " Simple statusline
 set statusline=%<%F\ %y\ %{FugitiveStatusline()}\ %q%h%m%r%=%-14.(%03l,%02c%V%)\ %P
 
@@ -45,7 +48,8 @@ set splitright
 
 " Autocomplete with dictionary words when spell check is on
 set dictionary+=/usr/share/dict/words
-set complete+=kspell
+set completeopt=menuone,noselect
+" set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
@@ -72,7 +76,10 @@ execute 'source ' . g:plugin_config_path . 'easy_align.vim'
 execute 'source ' . g:plugin_config_path . 'markdown.vim'
 execute 'source ' . g:plugin_config_path . 'ale.vim'
 execute 'source ' . g:plugin_config_path . 'vim_test.vim'
-execute 'source ' . g:plugin_config_path . 'fzf.vim'
+execute 'source ' . g:plugin_config_path . 'telescope.vim'
+" execute 'source ' . g:plugin_config_path . 'fzf.vim'
+execute 'source ' . g:plugin_config_path . 'completion.vim'
+execute 'source ' . g:plugin_config_path . 'treesitter.vim'
 " }}}
 "
 

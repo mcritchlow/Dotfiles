@@ -11,6 +11,9 @@ let g:ale_loclist = 0
 let g:ale_ruby_rubocop_executable = 'ale-rubocop'
 let g:ale_ruby_rubocop_options = '--config .rubocop.yml'
 
+let g:ale_ruby_standardrb_executable = 'ale-standardrb'
+let g:ale_ruby_standardrb_options = '--config .standard.yml'
+
 let g:ale_json_jsonlint_executable = 'ale-jsonlint'
 let g:ale_json_jsonlint_use_global = 1
 

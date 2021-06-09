@@ -19,7 +19,7 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 " Testing/Validation {{{
 " ============================================================================
 Plug 'janko-m/vim-test'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 " }}}
 " ============================================================================
@@ -61,17 +61,36 @@ Plug 'keith/tmux.vim'
 " ============================================================================
 " Languages {{{
 " ============================================================================
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'RRethy/nvim-treesitter-textsubjects'
+Plug 'folke/lua-dev.nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-ruby/vim-ruby'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " }}}
 " ============================================================================
+" Neovim Completion/LSP {{{
+" ============================================================================
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'glepnir/lspsaga.nvim'
+" }}}
+" ============================================================================
+" Snippets {{{
+" ============================================================================
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
+" }}}
+" ============================================================================
 " Fuzzy Finder (FZF) {{{
 " ============================================================================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 " }}}
 " ============================================================================
 " Custom Text Objects {{{
