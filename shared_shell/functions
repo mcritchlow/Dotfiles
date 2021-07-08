@@ -344,7 +344,7 @@ drc() {
 
 # dri [FUZZY PATTERN] - Choose a docker image to remove
 dri() {
-  docker images | sed '1d' | fzf -m | awk '{print $3}' | xargs -r docker rmi
+  docker images | sed '1d' | fzf -m | awk '{print $1":"$2}' | xargs -r docker rmi
 }
 
 # drv [FUZZY PATTERN] - Choose a docker volume to remove
