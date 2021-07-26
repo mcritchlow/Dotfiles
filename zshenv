@@ -19,3 +19,7 @@ export TERMINAL="alacritty"
 export LPASS_PINENTRY="/usr/bin/pinentry-curses"
 # don't allow agent to expire
 export LPASS_AGENT_TIMEOUT=0
+# Starlight config in an XDG_CONFIG_HOME directory instead of root
+export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/config.toml"
+# Bat theme (it defaults to a dark theme)
+export BAT_THEME="GitHub"
