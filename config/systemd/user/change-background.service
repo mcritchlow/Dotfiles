@@ -1,0 +1,9 @@
+[Unit]
+Description=Change background with feh
+After=graphical.target
+
+[Service]
+ExecStart=/usr/bin/feh --no-fehbg --auto-rotate --bg-center --randomize -r /home/mcritchlow/Pictures/backgrounds
+
+[Install]
+WantedBy=default.target
