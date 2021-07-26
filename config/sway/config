@@ -5,7 +5,8 @@
 # Logo key. Use Mod4 for Super.
 set $mod Mod1
 set $term alacritty
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# For wofi
+set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
 
 
 include @sysconfdir@/sway/config.d/*
