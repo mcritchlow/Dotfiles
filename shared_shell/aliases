@@ -54,7 +54,7 @@ alias pause-notifications='killall -SIGUSR1 dunst'
 alias resume-notifications='killall -SIGUSR2 dunst'
 
 # arch
-alias pacman-update="clear && echo pacman hungry! | figlet && sudo pacman -Syu --noconfirm && echo pacman full! | figlet"
+alias pacman-update="clear && echo pacman hungry! | figlet && sudo systemctl start reflector.service && sudo pacman -Syu --noconfirm && echo pacman full! | figlet"
 alias aur-update="clear && echo AUR time! | figlet && cd ~/projects/personal/laptop/ && ansible-playbook aur.yml --skip-tags work"
 alias checkupdates="checkupdates | less"
 alias aur-update-work="clear && echo AUR time! | figlet && cd ~/projects/personal/laptop/ && ansible-playbook aur.yml"
