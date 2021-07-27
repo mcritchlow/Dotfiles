@@ -19,18 +19,6 @@ source ~/.shared_shell/aliases
 # Set autosuggest highlight to be more visible
 typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
 
-# modify the prompt to contain git branch name if applicable
-git_prompt_info() {
-  current_branch=$(git branch --show-current 2> /dev/null)
-  if [[ -n $current_branch ]]; then
-    echo " %B%F{green}($current_branch)%f%b"
-  fi
-}
-# Allow exported PS1 variable to override default prompt.
-if ! env | grep -q '^PS1='; then
-  PS1='${SSH_CONNECTION+"%F{white}%%n@%m:"%F{white}%~%f$(git_prompt_info) %# '
-fi
-
 # Set GPG TTY
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -59,14 +47,6 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey '^F' fzf-cd-widget #override Alt-C (because DWM..)
 
-# make Vi-mode more obvious
-function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%B%F{yellow]} [% NORMAL]% %f%b"
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
-  zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
 # Per readme, source highlighting last since it wraps ZLE widgets
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(starship init zsh)"
