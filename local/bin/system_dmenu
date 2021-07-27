@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # dmenu script for managing systemctl
-chosen=$(printf "lock\\nreboot\\nshutdown" | dmenu -i -p "Systemctl Options")
+if [ "${WAYLAND_DISPLAY}" ]; then
+  chosen=$(printf "lock\\nreboot\\nshutdown" | bemenu -i -p "Systemctl Options")
+else
+  chosen=$(printf "lock\\nreboot\\nshutdown" | dmenu -i -p "Systemctl Options")
+fi
 
 # commit any sync-stuff changes prior to lock/reboot/shutdown
 commit_sync_changes() {
@@ -18,8 +22,19 @@ commit_sync_changes() {
 
 }
 
+# kill vpn if running on reboot or shutdown
+# why: it leaves an unusable resolv.conf
+kill_vpn() {
+  vpn_pid=$(pidof openconnect)
+  if [ "$vpn_pid" ]; then
+    sudo kill "$vpn_pid"
+    # replace resolve.conf, as killing openconnect doesn't seem to always work
+    sudo cp /tmp/resolv.conf /etc/resolv.conf
+  fi
+}
+
 case "$chosen" in
   lock) commit_sync_changes && slock ;;
-  reboot) commit_sync_changes && systemctl reboot ;;
-  shutdown) commit_sync_changes && systemctl poweroff -i ;;
+  reboot) commit_sync_changes && kill_vpn && systemctl reboot ;;
+  shutdown) commit_sync_changes && kill_vpn && systemctl poweroff -i ;;
 esac
