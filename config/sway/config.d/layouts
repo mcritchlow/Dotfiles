@@ -5,7 +5,7 @@
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
-bindsym $mod+apostrophesplit horizontal ;; exec $term
+bindsym $mod+apostrophe split horizontal ;; exec $term
 bindsym $mod+slash split vertical ;; exec $term
 
 # Switch the current container between different layout styles
