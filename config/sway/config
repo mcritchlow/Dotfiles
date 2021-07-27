@@ -8,4 +8,7 @@ set $term alacritty
 # For wofi
 set $menu bemenu-run | xargs swaymsg exec --
 
+set $font_family monospace
+set $font_size 11
+
 include ~/.config/sway/config.d/*

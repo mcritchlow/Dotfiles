@@ -19,10 +19,8 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 # TODO: clipboard manager?
 # TODO: screenshots, A/V stuff
 bindsym $mod+d exec $menu
-bindsym $mod+w firefox
-bindsym $mod+p passmenu_dmenu
-bindsym $mod+p flatpak_dmenu
-# TODO: rewrite for non-xrandr
-bindsym $mod+p display_manager
+# bindsym $mod+w firefox
+# bindsym $mod+p passmenu_dmenu
+# bindsym $mod+p flatpak_dmenu
 
 bindsym $mod+Shift+x system_dmenu

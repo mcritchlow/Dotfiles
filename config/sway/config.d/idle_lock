@@ -14,5 +14,6 @@ exec swayidle -w \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 # Lock the screen
-bindsym $mod+l exec "swaylock -f -c 000000"
+# TODO: this is in conflict. switch binding (better yet make this a script)
+# bindsym $mod+l exec "swaylock -f -c 000000"
 
