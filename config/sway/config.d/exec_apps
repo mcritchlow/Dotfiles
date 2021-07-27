@@ -1,0 +1,6 @@
+# vim: set ft=conf:
+# exec mako >/tmp/mako.log 2>&1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec kanshi >/tmp/kanshi.log 2>&1
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec systemd-notify --ready

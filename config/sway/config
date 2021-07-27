@@ -6,7 +6,6 @@
 set $mod Mod1
 set $term alacritty
 # For wofi
-set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
+set $menu bemenu-run | xargs swaymsg exec --
 
-
-include @sysconfdir@/sway/config.d/*
+include ~/.config/sway/config.d/*
