@@ -23,3 +23,9 @@ export LPASS_AGENT_TIMEOUT=0
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/config.toml"
 # Bat theme (it defaults to a dark theme)
 export BAT_THEME="GitHub"
+# render Java apps less horribly
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+if [ "${WAYLAND_DISPLAY}" ]; then
+export MOZ_ENABLE_WAYLAND=1
+fi
