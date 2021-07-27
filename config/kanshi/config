@@ -1,6 +1,6 @@
 profile {
 	output eDP-1 disable
-	output DP-1 mode 1900x1200 position 0,0
+	output "Dell Inc. DELL U2412M YMYH144H21KS"
 }
 
 profile {
