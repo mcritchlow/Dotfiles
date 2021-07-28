@@ -3,12 +3,12 @@
 if [ "${WAYLAND_DISPLAY}" ]; then
   grimshot="/usr/share/sway/scripts/grimshot --notify"
   case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfullscreen (copy)" | bemenu -l 6 -i -p "Screenshot which area?")" in
-    "a selected area") "$grimshot save area" ;;
-    "current window") "$grimshot save active" ;;
-    "full screen") "$grimshot save screen" ;;
-    "a selected area (copy)") "$grimshot copy area" ;;
-    "current window (copy)") "$grimshot copy active" ;;
-    "full screen (copy)") "$grimshot save screen" ;;
+    "a selected area") $grimshot save area ;;
+    "current window") $grimshot save active ;;
+    "full screen") $grimshot save screen ;;
+    "a selected area (copy)") $grimshot copy area ;;
+    "current window (copy)") $grimshot copy active ;;
+    "full screen (copy)") $grimshot save screen ;;
   esac
 else
   case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfullscreen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
