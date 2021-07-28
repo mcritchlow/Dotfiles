@@ -2,8 +2,11 @@
 #
 exec mako >/tmp/mako.log 2>&1
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec kanshi >/tmp/kanshi.log 2>&1
 exec wl-paste -t text --watch clipman store
+# Setup wlsunset with hard-coded gps coordinates
+exec wlsunset -l 33.06 -L -117.3
 
 # sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
 # See FS#63021
