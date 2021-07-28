@@ -28,5 +28,7 @@ export BAT_THEME="GitHub"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 if [ "${WAYLAND_DISPLAY}" ]; then
-export MOZ_ENABLE_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1 #use firefox in native wayland
+export MOZ_DBUS_REMOTE=1 #open links in firefox
+export BEMENU_OPTS="--fn='monospace 16'"
 fi
