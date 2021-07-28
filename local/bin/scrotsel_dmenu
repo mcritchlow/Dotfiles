@@ -1,13 +1,14 @@
 #!/bin/sh
 # TODO: eventually remove xorg version
 if [ "${WAYLAND_DISPLAY}" ]; then
+  grimshot="/usr/share/sway/scripts/grimshot --notify"
   case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfullscreen (copy)" | bemenu -l 6 -i -p "Screenshot which area?")" in
-    "a selected area") grim -g "$(slurp)" ;;
-    "current window") grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" ;;
-    "full screen") grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" ;;
-    "a selected area (copy)") grim -g "$(slurp)" - | wl-copy ;;
-    "current window (copy)") grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy ;;
-    "full screen (copy)") grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" - | wl-copy ;;
+    "a selected area") "$grimshot save area" ;;
+    "current window") "$grimshot save active" ;;
+    "full screen") "$grimshot save screen" ;;
+    "a selected area (copy)") "$grimshot copy area" ;;
+    "current window (copy)") "$grimshot copy active" ;;
+    "full screen (copy)") "$grimshot save screen" ;;
   esac
 else
   case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfullscreen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in

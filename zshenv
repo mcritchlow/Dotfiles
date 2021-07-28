@@ -3,6 +3,7 @@ typeset -U path
 path=(~/.local/share/nvim/plugged/fzf/bin ~/bin ~/.local/bin $path[@])
 
 [[ $XDG_CONFIG_HOME ]] || export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_PICTURES_DIR="$HOME/Pictures"
 
 # load Go
 if test -d "$HOME/go"; then
@@ -25,8 +26,6 @@ export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/config.toml"
 export BAT_THEME="GitHub"
 # render Java apps less horribly
 export _JAVA_AWT_WM_NONREPARENTING=1
-# Grim default pictures location
-export GRIM_DEFAULT_DIR="$HOME/Pictures"
 
 if [ "${WAYLAND_DISPLAY}" ]; then
 export MOZ_ENABLE_WAYLAND=1
