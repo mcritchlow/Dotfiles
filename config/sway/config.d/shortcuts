@@ -13,7 +13,7 @@ bindsym $mod+Shift+c reload
 # exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-bindsym $mod+d exec $menu_run
+bindsym $mod+s exec $menu_run
 bindsym $mod+p exec $local_bin/passmenu_dmenu
 bindsym $mod+c exec clipman pick -t $menu
 bindsym $mod+Shift+x exec $local_bin/system_dmenu
