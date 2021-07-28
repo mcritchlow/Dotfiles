@@ -25,6 +25,8 @@ export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/config.toml"
 export BAT_THEME="GitHub"
 # render Java apps less horribly
 export _JAVA_AWT_WM_NONREPARENTING=1
+# Grim default pictures location
+export GRIM_DEFAULT_DIR="$HOME/Pictures"
 
 if [ "${WAYLAND_DISPLAY}" ]; then
 export MOZ_ENABLE_WAYLAND=1
