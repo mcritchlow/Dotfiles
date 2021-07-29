@@ -1,0 +1,10 @@
+default_border pixel
+hide_edge_borders smart
+smart_borders on
+
+output * bg $wallpaper fill
+
+# class                 border bg   text indicator child_border
+client.focused          $bga    $bg  $fg  $bga      $bg
+client.focused_inactive $bg    $bg  $fgi $bg       $bg
+client.unfocused        $bg    $bg  $fgu $bg       $bg
