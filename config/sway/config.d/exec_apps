@@ -8,6 +8,10 @@ exec wl-paste -t text --watch clipman store
 # Setup wlsunset with hard-coded gps coordinates
 exec wlsunset -l 33.06 -L -117.3
 
+# Set gtk-3 themes
+# should eventually be fixed via: https://github.com/swaywm/wlroots/pull/1324
+exec_always wayland-gsettings
+
 # sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
 # See FS#63021
 # Adapted from xorg's 50-systemd-user.sh, which achieves a similar goal.
