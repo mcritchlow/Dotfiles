@@ -3,10 +3,10 @@
 # dmenu script for managing systemctl
 if [ "${WAYLAND_DISPLAY}" ]; then
   chosen=$(printf "lock\\nreboot\\nshutdown" | bemenu -i -p "Systemctl Options")
-  lock_app=slock
+  lock_app=swaylock
 else
   chosen=$(printf "lock\\nreboot\\nshutdown" | dmenu -i -p "Systemctl Options")
-  lock_app=swaylock
+  lock_app=slock
 fi
 
 # commit any sync-stuff changes prior to lock/reboot/shutdown
