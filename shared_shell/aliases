@@ -2,6 +2,9 @@
 # Aliases
 # --------------------------------------------------------------------
 
+# Wayland Slack
+alias wslack='flatpak run --env=GDK_BACKEND=wayland --socket=wayland com.slack.Slack --enable-features=UseOzonePlatform --ozone-platform=wayland &'
+
 # navigation
 alias ..='cd ..'
 alias ...='cd ../..'
