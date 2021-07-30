@@ -2,6 +2,13 @@
 nnoremap <Space> za
 vnoremap <Space> za
 
+" Y behaves like C and D (to end of line)
+nnoremap Y y$
+
+" Move selected lines in Visual
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Center current search on screen
 nnoremap n nzz
 nnoremap N Nzz
@@ -9,6 +16,8 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+" Join lines and center
+nnoremap J mzJ`z
 
 " Open urlview on current file
 nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
