@@ -1,8 +1,8 @@
-profile {
+profile multihead {
 	output eDP-1 disable
 	output "Dell Inc. DELL U2412M YMYH144H21KS"
 }
 
-profile {
+profile laptop {
 	output eDP-1 mode 1900x1080 position 0,0
 }
