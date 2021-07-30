@@ -16,7 +16,7 @@ set $mod Mod1
 # Application defaults
 set $term alacritty
 set $menu bemenu
-set $menu_run bemenu-run | xargs swaymsg exec --
+set $menu_run bemenu-run | xargs swaymsg exec
 
 # Theme
 # TODO: map to github terminal theme colors
