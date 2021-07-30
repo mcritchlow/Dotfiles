@@ -1,5 +1,8 @@
 # vim: set ft=conf:
 
+# Don't use xwayland. We're committed.
+xwayland disable
+
 # Read `man 5 sway` for a complete reference.
 ### Variables
 # Path to local bin files
