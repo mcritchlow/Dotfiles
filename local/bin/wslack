@@ -1,0 +1,5 @@
+# #!/usr/bin/env sh
+# Wayland Slack
+slack --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland
+# Logging
+slack --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland > /tmp/slack.log 2>&1
