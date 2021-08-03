@@ -5,13 +5,13 @@
 # Download location
 downloads=$HOME/Downloads
 
-x=$(printf "mpv\\nmpv (loop)\\nwget\\nsxiv\\nbrowser\\nw3m\\nyoutube-dl" | dmenu -i -p "How should I open link?")
+x=$(printf "mpv\\nmpv (loop)\\nwget\\nimv\\nbrowser\\nw3m\\nyoutube-dl" | dmenu -i -p "How should I open link?")
 case "$x" in
   mpv) mpv -quiet "$1" >/dev/null 2>&1 & ;;
   "mpv (loop)") mpv -quiet --loop "$1" >/dev/null 2>&1 & ;;
   wget) cd "$downloads" && wget "$1" >/dev/null 2>&1 & ;;
   browser) firefox "$1" >/dev/null 2>&1 & ;;
-  sxiv) sxiv "$1" >/dev/null 2>&1 & ;;
+  imv) imv "$1" >/dev/null 2>&1 & ;;
   w3m) w3m "$1" >/dev/null 2>&1 & ;;
   "youtube-dl") cd "$downloads" && youtube-dl "$1" >/dev/null 2>&1 & ;;
 esac

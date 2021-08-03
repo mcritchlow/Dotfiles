@@ -3,7 +3,7 @@
 # Yanked from Luke Smith (thanks!)
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.scripts/linkhandler
 # Feed script a url.
-# If an image, it will view in sxiv,
+# If an image, it will view in imv,
 # if a video or gif, it will view in mpv
 # if a music file or pdf, it will download,
 # otherwise it opens link in browser.
@@ -18,7 +18,7 @@ case "$1" in
 	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*)
 		setsid mpv --input-ipc-server=/tmp/mpvsoc"$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
 	*png|*jpg|*jpe|*jpeg|*gif)
-		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && imv "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	*mp3|*flac|*opus|*mp3?source*)
     notify-send -a "Link Handler" -t 3000 "Queuing $1 for download..."
     idnum="$(tsp curl -L "$1" --output "$downloads${1##*/}")"
