@@ -2,9 +2,6 @@
 # Aliases
 # --------------------------------------------------------------------
 
-# Wayland Slack
-alias wslack='flatpak run --env=GDK_BACKEND=wayland --socket=wayland com.slack.Slack --enable-features=UseOzonePlatform --ozone-platform=wayland &'
-
 # navigation
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -37,7 +34,7 @@ alias gp="cd ~/projects/personal/"
 alias gaur="cd ~/projects/aur/"
 
 # operational
-alias t='sxiv -Ztq * >/dev/null 2>&1'
+alias t="imv ."
 alias o='xdg-open'
 alias vim='nvim'
 alias vimdiff='nvim -d'

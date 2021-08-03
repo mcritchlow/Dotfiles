@@ -25,11 +25,11 @@ pacman-remove() {
   sudo pacman -Rns "$1"
 }
 
-# Kill pid using dmenu
+# Kill pid using bemenu
 killpid ()
 {
   local pid_to_kill
-  pid_to_kill="$(ps -eo pid,cmd | dmenu -p 'PID to kill: ' -l 25 | tr -s ' ' | cut -d ' ' -f2)"
+  pid_to_kill="$(ps -eo pid,cmd | bemenu -p 'PID to kill: ' -l 25 | tr -s ' ' | cut -d ' ' -f2)"
   sudo kill "$pid_to_kill"
 }
 
@@ -189,7 +189,7 @@ export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --ex
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--ansi --color=light"
 
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -sel clip -i)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --bind' ctrl-y:execute-silent(echo -n {2..} | wl-copy -n)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
 
 # fzf-cd-widget
 export FZF_ALT_C_COMMAND='fd --type directory --color=always --follow --hidden --exclude .git'
@@ -236,7 +236,7 @@ fshow() {
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --header "Press ctrl-s to sort, ctrl-y to copy hash" \
       --preview="git show --color=always {2} | head -200" \
-      --bind "ctrl-y:execute:echo {2} | xclip -rmlastnl -selection clipboard" \
+      --bind "ctrl-y:execute:echo {2} | wl-copy -n" \
       --bind "ctrl-m:execute:sh -c 'git show --color=always {2} | less -R'"
 }
 
@@ -276,7 +276,7 @@ fmusic() {
   Steezy - Coffee Shop radio | https://youtu.be/-5KAN9_CzSA
   Steezy - Beats to sleep/study to | https://www.youtube.com/watch?v=9_CcYN8MVO8
   Aplitude - Rainy Days in Tokyo | https://youtu.be/ivNIpLdzh7M"
-  stream=$(echo "$streams" | dmenu -l 10 | cut -d '|' -f 2 | tr -d ' ')
+  stream=$(echo "$streams" | bemenu -l 10 | cut -d '|' -f 2 | tr -d ' ')
   setsid mpv --video=no --quiet "$stream" >/dev/null 2>&1 &
 }
 
