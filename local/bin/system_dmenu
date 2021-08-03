@@ -2,7 +2,7 @@
 
 # dmenu script for managing systemctl
 if [ "${WAYLAND_DISPLAY}" ]; then
-  chosen=$(printf "lock\\nreboot\\nshutdown" | bemenu -i -p "Systemctl Options")
+  chosen=$(printf "exit\\nlock\\nreboot\\nshutdown" | bemenu -i -p "Systemctl Options")
   lock_app=swaylock
 else
   chosen=$(printf "lock\\nreboot\\nshutdown" | dmenu -i -p "Systemctl Options")
@@ -36,6 +36,7 @@ kill_vpn() {
 }
 
 case "$chosen" in
+  exit) commit_sync_changes && swaymsg exit ;;
   lock) commit_sync_changes && "$lock_app" ;;
   reboot) commit_sync_changes && kill_vpn && systemctl reboot ;;
   shutdown) commit_sync_changes && kill_vpn && systemctl poweroff -i ;;
