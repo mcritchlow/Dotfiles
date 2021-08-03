@@ -38,6 +38,8 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } "nvim in...bro
 " Theming {{{
 " ============================================================================
 Plug 'sainnhe/sonokai'
+Plug 'sainnhe/gruvbox-material'
+Plug 'projekt0n/github-nvim-theme'
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
 " Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-emoji' "because emoji!
