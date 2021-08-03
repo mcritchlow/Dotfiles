@@ -1,8 +1,17 @@
-# autostart X/dwm at login
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
+# autostart window manager at login
+#
+ENVIRONMENTD="$HOME/.config/environment.d"
+set -a
+if [ -d "$ENVIRONMENTD" ]; then
+    for conf in $(ls "$ENVIRONMENTD"/*.conf)
+    do
+        . "$conf"
+    done
 fi
+set +a
 
-# ensure dotfiles bin directory is loaded first
-# here for both non-ineractive (dmenu) and interactive shells
-export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+  exec sway > /tmp/sway.log 2>&1
+fi
