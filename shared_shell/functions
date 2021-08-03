@@ -189,7 +189,7 @@ export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --ex
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--ansi --color=light"
 
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --bind' ctrl-y:execute-silent(echo -n {2..} | wl-copy -n)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind='ctrl-y:execute-silent(echo -n {2..} | wl-copy --trim-newline)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
 
 # fzf-cd-widget
 export FZF_ALT_C_COMMAND='fd --type directory --color=always --follow --hidden --exclude .git'
