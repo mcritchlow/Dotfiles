@@ -7,7 +7,7 @@ xwayland disable
 ### Variables
 # Path to local bin files
 set $local_bin /home/mcritchlow/.local/bin
-set $wallpaper /home/mcritchlow/Pictures/backgrounds/kieran-kensi-easter.jpg
+set $wallpaper /home/mcritchlow/Pictures/background.jpg
 #
 # Logo key. Use Mod1 for Alt.
 # Logo key. Use Mod4 for Super.
