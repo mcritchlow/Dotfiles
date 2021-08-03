@@ -276,7 +276,7 @@ fmusic() {
   Steezy - Coffee Shop radio | https://youtu.be/-5KAN9_CzSA
   Steezy - Beats to sleep/study to | https://www.youtube.com/watch?v=9_CcYN8MVO8
   Aplitude - Rainy Days in Tokyo | https://youtu.be/ivNIpLdzh7M"
-  stream=$(echo "$streams" | bemenu -l 10 | cut -d '|' -f 2 | tr -d ' ')
+  stream=$(echo "$streams" | bemenu -p 'YouTube Stream: ' -l 10 | cut -d '|' -f 2 | tr -d ' ')
   setsid mpv --video=no --quiet "$stream" >/dev/null 2>&1 &
 }
 
