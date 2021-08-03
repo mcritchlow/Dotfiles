@@ -12,7 +12,7 @@ endfunction
 
 function s:GitCopyURL()
   let s:url = s:GitURL()
-  execute ":silent !echo " . shellescape(s:url,1) . " | xclip -r -sel clip"
+  execute ":silent !echo " . shellescape(s:url,1) . " | wl-copy -n"
   execute ':redraw!'
   echom "Copied " . s:url . " to clipboard.."
 endfunction
