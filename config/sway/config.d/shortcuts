@@ -14,17 +14,24 @@ bindsym --locked XF86AudioStop exec playerctl stop
 bindsym --locked XF86MonBrightnessDown exec /usr/bin/light -U 10
 bindsym --locked XF86MonBrightnessUp exec /usr/bin/light -A 10
 
+# notifications
+bindsym Control+Space exec makoctl dismiss
+bindsym $mod+Shift+Space exec makoctl dismiss --all
+
 # start a terminal
 bindsym $mod+Return exec $term
+
+# cage'd terminal
+# will swallow other apps like mpv, zathura, etc
+# Caged Terminal
+bindsym $mod+Shift+Return exec cage $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-
+# Menus for bemenu/dmenu
 bindsym $mod+s exec $menu_run
 bindsym $mod+p exec $local_bin/passmenu_dmenu
 bindsym $mod+c exec clipman pick -t $menu

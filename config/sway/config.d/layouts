@@ -17,7 +17,8 @@ bindsym $mod+slash split vertical ;; exec $term
 bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
+# TODO: this conflicts with make dismiss --all, find something else
+# bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
