@@ -93,6 +93,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'cwebster2/github-coauthors.nvim'
 " }}}
 " ============================================================================
 " Custom Text Objects {{{
