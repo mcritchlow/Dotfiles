@@ -29,7 +29,7 @@ pacman-remove() {
 killpid ()
 {
   local pid_to_kill
-  pid_to_kill="$(ps -eo pid,cmd | bemenu -p 'PID to kill: ' -l 25 | tr -s ' ' | cut -d ' ' -f2)"
+  pid_to_kill="$(ps -eo pid,cmd | bemenu -p 'PID to kill: ' -l 25 | tr -s ' ' | cut -d ' ' -f1)"
   sudo kill "$pid_to_kill"
 }
 
