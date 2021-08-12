@@ -16,6 +16,6 @@ bindsym $mod+t scratchpad show
 # Scratchpads
 #
 # Terminal
+for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratchpad"] resize set 75 ppt 75 ppt
 for_window [app_id="scratchpad"] move scratchpad
-exec $term --class scratchpad
