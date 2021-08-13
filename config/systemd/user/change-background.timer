@@ -1,9 +1,0 @@
-[Unit]
-Description=Change background image XX:10 each hour
-
-[Timer]
-OnCalendar=*-*-* *:10:00
-Persistent=true
-
-[Install]
-WantedBy=timers.target

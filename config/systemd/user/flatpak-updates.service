@@ -1,9 +1,0 @@
-[Unit]
-Description=FlatPak Updates Notification
-After=graphical.target
-
-[Service]
-ExecStart=/home/mcritchlow/.local/bin/flatpak-updates
-
-[Install]
-WantedBy=default.target

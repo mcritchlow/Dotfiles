@@ -1,9 +1,0 @@
-[Unit]
-Description=Newsboat Queue Management Script
-After=graphical.target
-
-[Service]
-ExecStart=/home/mcritchlow/.local/bin/newsboat_queue_listener
-
-[Install]
-WantedBy=default.target
