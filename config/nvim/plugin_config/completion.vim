@@ -47,7 +47,7 @@ local on_attach = function(_client, bufnr)
 end
 
 -- Enable the following language servers
-local servers = { 'bashls',}
+local servers = {'bashls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
         on_attach = on_attach,
@@ -55,14 +55,20 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- TODO not working well for helm files..
-local util = require 'lspconfig/util'
-local repo_root = util.root_pattern(".git")(vim.fn.getcwd())
-nvim_lsp.yamlls.setup {
-  filetypes = { "yaml" },
+nvim_lsp.ansiblels.setup{
+  filetypes = { "yaml.ansible", "yaml" },
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+-- TODO not working well for helm files..
+local util = require 'lspconfig/util'
+local repo_root = util.root_pattern(".git")(vim.fn.getcwd())
+-- nvim_lsp.yamlls.setup {
+--   filetypes = { "yaml" },
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
 
 nvim_lsp.efm.setup{
   init_options = {documentFormatting = true},
