@@ -1,5 +1,6 @@
 [init]
   templatedir = ~/.config/git/git_template
+	defaultBranch = trunk
 [includeIf "gitdir:~/projects/personal/"]
   path = ~/.config/git/config.personal
 [includeIf "gitdir:~/projects/ucsd/"]
