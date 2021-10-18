@@ -54,14 +54,3 @@ imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-
-" nvim-compe completion
-"
-" confirm <CR> has issues with endwise
-" https://github.com/hrsh7th/nvim-compe/issues/171#issuecomment-841830819
-imap <silent><expr> <CR>      compe#confirm('<CR>') . "\<Plug>DiscretionaryEnd"
-
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
