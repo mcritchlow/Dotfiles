@@ -131,11 +131,11 @@ nvim_lsp.sumneko_lua.setup(luadev)
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
 -- Compe setup
-local cmp = require'cmp'
+local lspkind = require('lspkind')
+local cmp = require('cmp')
 cmp.setup({
     snippet = {
       expand = function(args)
-        -- For `vsnip` user.
         vim.fn["vsnip#anonymous"](args.body)
       end,
     },
@@ -160,7 +160,16 @@ cmp.setup({
           }
       },
       { name = 'path' },
-    }
+    },
+    formatting = {
+      format = require("lspkind").cmp_format({with_text = true, menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          vsnip = "[Snippet]",
+          nvim_lua = "[Lua]",
+        })}),
+    },
+
 })
 
 local t = function(str)

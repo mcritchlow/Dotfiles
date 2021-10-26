@@ -82,6 +82,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'glepnir/lspsaga.nvim'
+Plug 'onsails/lspkind-nvim'
 " }}}
 " ============================================================================
 " Snippets {{{
