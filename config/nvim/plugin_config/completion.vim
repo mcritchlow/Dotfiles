@@ -152,7 +152,13 @@ cmp.setup({
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'vsnip' },
-      { name = 'buffer' },
+      { name = 'buffer',
+          opts = {
+            get_bufnrs = function()
+               return vim.api.nvim_list_bufs()
+            end
+          }
+      },
       { name = 'path' },
     }
 })
