@@ -39,14 +39,15 @@ local on_attach = function(_client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
 
--- Enable the following language servers
-local servers = {'bashls'}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
+nvim_lsp.bashls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    bashIde = {
+      highlightParsingErrors = false -- let shellcheck do this
+    }
   }
-end
+}
 
 nvim_lsp.ansiblels.setup{
   filetypes = { "yaml.ansible", "yaml" },
@@ -105,27 +106,34 @@ local luadev = require("lua-dev").setup({
 })
 nvim_lsp.sumneko_lua.setup(luadev)
 
--- nvim_lsp.sumneko_lua.setup {
---   cmd = {sumneko_binary_path, "-E", sumneko_root_path.."/main.lua" };
---   on_attach = on_attach,
---   settings = {
---       Lua = {
---           runtime = {
---               version = 'LuaJIT',
---               path = vim.split(package.path, ';'),
---           },
---           diagnostics = {
---               globals = {'vim'},
---           },
---           workspace = {
---               library = {
---                   [vim.fn.expand('$VIMRUNTIME/lua')] = true,
---                   [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
---               },
---           },
---       },
---   },
+-- Null-ls configuration
+local null_ls = require("null-ls")
+local null_ls_sources = {
+  null_ls.builtins.diagnostics.shellcheck,
+}
+
+-- To register project-specific sources:
+-- Set something like the following in a project vimrc.local file
+-- local null_ls = require("null-ls")
+-- local null_ls_sources = {
+--   null_ls.builtins.diagnostics.standardrb.with({
+--     command = "bin/null-ls-exec",
+--     args = { "standardrb"," --no-fix", "-f", "json", "--stdin", "$FILENAME" },
+--   }),
+--   null_ls.builtins.formatting.standardrb.with({
+--     command = "bin/null-ls-exec",
+--     args = { "standardrb"," --fix", "--format", "quiet", "--stderr", "--stdin", "$FILENAME" },
+--   }),
 -- }
+-- null_ls.register(null_ls_sources)
+
+null_ls.config({ sources = null_ls_sources })
+-- null_ls.config({ debug = true, sources = null_ls_sources }) -- for DEBUG
+
+nvim_lsp["null-ls"].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 
 -- Map :Format to vim.lsp.buf.formatting()
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])

@@ -19,7 +19,6 @@ Plug 'tpope/vim-endwise' " add end after if, do, def
 " Testing/Validation {{{
 " ============================================================================
 Plug 'janko-m/vim-test'
-" Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 " }}}
 " ============================================================================
@@ -83,6 +82,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'onsails/lspkind-nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 " }}}
 " ============================================================================
 " Snippets {{{
