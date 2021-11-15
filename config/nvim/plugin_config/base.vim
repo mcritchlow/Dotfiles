@@ -83,6 +83,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
 " }}}
 " ============================================================================
 " Snippets {{{
