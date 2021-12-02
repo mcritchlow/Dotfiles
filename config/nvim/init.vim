@@ -57,6 +57,9 @@ set diffopt+=vertical
 " Set path to project directory (and down)
 set path=.,**
 
+" Load project-specific .nvimrc files
+set exrc
+
 " }}}
 "  ============================================================================
 " Load Plugins and Theme {{{
@@ -81,10 +84,6 @@ execute 'source ' . g:plugin_config_path . 'trouble.vim'
 " execute 'source ' . g:plugin_config_path . 'fzf.vim'
 execute 'source ' . g:plugin_config_path . 'completion.vim'
 execute 'source ' . g:plugin_config_path . 'treesitter.vim'
+" execute 'source ' . g:plugin_config_path . 'refactoring.vim'
 " }}}
 "
-
-" Support local project settings, such as custom test commands, formatting, etc.
-if filereadable(expand("vimrc.local"))
-  source vimrc.local
-endif
