@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+# Example for a given .nvimrc
+# You would run: solargraph-lsp app from the command line to setup the LSP
+# -- Setup lsp server(s)
+# local nvim_lsp = require('lspconfig')
+# nvim_lsp.solargraph.setup{
+#   cmd = { "solargraph-lsp", "app", "-T", "app", "solargraph", "stdio" },
+#   on_attach = on_attach,
+#   capabilities = capabilities,
+#   settings = {
+#     solargraph = {
+#       diagnostics = false
+#     }
+#   }
+# }
+
+service_name="$1"
+shift
+echo "Installing solargraph LSP in application container..."
+docker-compose exec "$service_name" gem install solargraph
+docker-compose exec "$service_name" solargraph download-core
+docker-compose exec "$service_name" solargraph bundle
+docker-compose exec "$service_name" yard gems
+echo "Finished installing solargraph LSP in application container..."
