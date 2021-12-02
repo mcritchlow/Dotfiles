@@ -10,4 +10,4 @@ tags
 tmp/**/*
 !tmp/cache/.keep
 vimrc.local
-bin/null-ls-exec
+.solargraph.yml
