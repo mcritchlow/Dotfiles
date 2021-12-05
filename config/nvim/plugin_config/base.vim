@@ -47,7 +47,7 @@ Plug 'junegunn/vim-emoji' "because emoji!
 " ============================================================================
 " Custom Motions {{{
 " ============================================================================
-Plug 'tpope/vim-commentary' "comments w/ gc motion
+Plug 'numToStr/Comment.nvim' "comments w/ gc motion
 Plug 'christoomey/vim-sort-motion' "sorting with gs motion
 Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
 Plug 'junegunn/vim-easy-align' "text alignment for tables, etc.
@@ -62,7 +62,11 @@ Plug 'keith/tmux.vim'
 " ============================================================================
 " Languages {{{
 " ============================================================================
+" Plug 'mcritchlow/refactoring.nvim'
+" TODO: replace after get Ruby PR in
+" Plug 'ThePrimeagen/refactoring.nvim' " Bring back once settled down a bit
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'RRethy/nvim-treesitter-textsubjects'
 Plug 'folke/lua-dev.nvim'
 Plug 'sheerun/vim-polyglot'

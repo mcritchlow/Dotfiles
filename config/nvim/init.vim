@@ -84,6 +84,7 @@ execute 'source ' . g:plugin_config_path . 'trouble.vim'
 " execute 'source ' . g:plugin_config_path . 'fzf.vim'
 execute 'source ' . g:plugin_config_path . 'completion.vim'
 execute 'source ' . g:plugin_config_path . 'treesitter.vim'
+execute 'source ' . g:plugin_config_path . 'comment_nvim.vim'
 " execute 'source ' . g:plugin_config_path . 'refactoring.vim'
 " }}}
 "
