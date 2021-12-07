@@ -1,17 +1,5 @@
 set completeopt=menu,menuone,noselect
 lua << EOF
--- treesitter
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-}
 -- LSP settings
 local nvim_lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
