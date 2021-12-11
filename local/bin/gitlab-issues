@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+#
+GRAPHQL_TOKEN="$1"
+PROJECT_PATH="$2" # example: surfliner/surfliner
+
+query=$(cat <<EOF
+query {
+  project(fullPath: \"${PROJECT_PATH}\") {
+    name
+    issues {
+      nodes {
+        iid
+        title
+        description
+      }
+    }
+  }
+}
+EOF
+)
+query="$(echo $query)" # flatten to single line for curl
+
+curl "https://gitlab.com/api/graphql" --header "Authorization: Bearer $GRAPHQL_TOKEN" \
+     --header "Content-Type: application/json" --request POST \
+     --data "{\"query\": \"$query\"}"
