@@ -9,6 +9,10 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
   },
+  indent = {
+    enable = true,
+    -- disable = { "c", "rust" },  -- list of language that will be disabled
+  },
   textsubjects = {
     enable = true,
       keymaps = {
