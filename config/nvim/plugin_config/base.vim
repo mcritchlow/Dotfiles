@@ -12,7 +12,6 @@ call plug#begin(stdpath('data') . '/plugged')
 " Ruby/Rails {{{
 " ============================================================================
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-endwise' " add end after if, do, def
 
 " }}}
 " ============================================================================
@@ -85,6 +84,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'https://git.sr.ht/~mcritchlow/cmp-gitlab-issues'
 Plug 'onsails/lspkind-nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
