@@ -51,21 +51,6 @@ local repo_root = util.root_pattern(".git")(vim.fn.getcwd())
 --   capabilities = capabilities,
 -- }
 
-nvim_lsp.efm.setup{
-  init_options = {documentFormatting = true},
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"sh"},
-  settings = {
-    rootMarkers = {".git/"},
-    languages = {
-      sh = {
-        {lintCommand = 'shellcheck -f gcc -x', lintSource = 'shellcheck', lintFormats= {'%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m', '%f:%l:%c: %tote: %m'}}
-      }
-    }
-  }
-}
-
 local sumneko_root_path = vim.fn.getenv("HOME").."/projects/personal/lua-language-server" -- Change to your sumneko root installation
 local sumneko_binary_path = "/usr/bin/lua-language-server" -- Change to your OS specific output folder
 local luadev = require("lua-dev").setup({
