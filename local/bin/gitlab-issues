@@ -21,5 +21,6 @@ EOF
 query="$(echo $query)" # flatten to single line for curl
 
 curl "https://gitlab.com/api/graphql" --header "Authorization: Bearer $GRAPHQL_TOKEN" \
+     --silent \
      --header "Content-Type: application/json" --request POST \
      --data "{\"query\": \"$query\"}"
