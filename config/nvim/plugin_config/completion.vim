@@ -36,20 +36,35 @@ nvim_lsp.bashls.setup{
   }
 }
 
-nvim_lsp.ansiblels.setup{
-  filetypes = { "yaml.ansible", "yaml" },
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
 -- TODO not working well for helm files..
 local util = require 'lspconfig/util'
 local repo_root = util.root_pattern(".git")(vim.fn.getcwd())
--- nvim_lsp.yamlls.setup {
---   filetypes = { "yaml" },
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
+nvim_lsp.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.find_git_ancestor,
+  single_file_support = true,
+  settings = {
+    redhat = { telemetry = { enabled = false } },
+    yaml = {
+      completion = true,
+      schemaStore = {
+        enable = true,
+        url = "https://www.schemastore.org/api/json/catalog.json",
+      },
+      schemas = {
+        ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = { "*.gitlab-ci.yml","ci/**/*.yml" }
+      },
+    },
+  },
+}
+
+-- TODO: setup renovate json schema
+nvim_lsp.jsonls.setup {
+  cmd = { "jsonls-docker" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 local sumneko_root_path = vim.fn.getenv("HOME").."/projects/personal/lua-language-server" -- Change to your sumneko root installation
 local sumneko_binary_path = "/usr/bin/lua-language-server" -- Change to your OS specific output folder

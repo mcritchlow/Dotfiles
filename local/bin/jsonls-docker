@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# re: --pid=host
+# fix for crash after launching. see: https://github.com/neovim/neovim/issues/14504
+docker run \
+  -i \
+  --rm \
+  --pid=host \
+  registry.gitlab.com/mcritchlow1/jsonls-container-image:aa33bd3e845945f1439603ad9142d27cb91a28f1 vscode-json-language-server --stdio 2>/dev/null
