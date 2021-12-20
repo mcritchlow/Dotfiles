@@ -26,7 +26,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ConradIrwin/vim-bracketed-paste' "enable bracketed paste
 Plug 'tpope/vim-repeat' "repeat map commands (surround)
 Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
-Plug 'bronson/vim-trailing-whitespace' "make trailing whitespace annoying
 Plug 'tpope/vim-markdown' "add folding to markdown files
 Plug 'tpope/vim-fugitive' "git integration
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } "nvim in...browser!
@@ -35,8 +34,6 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } "nvim in...bro
 " ============================================================================
 " Theming {{{
 " ============================================================================
-Plug 'sainnhe/sonokai'
-Plug 'sainnhe/gruvbox-material'
 Plug 'projekt0n/github-nvim-theme'
 "commented out temporarily. need to get universal-ctags or other ruby friendly parser in
 " Plug 'majutsushi/tagbar'
@@ -76,11 +73,13 @@ Plug 'norcalli/nvim-colorizer.lua'
 " ============================================================================
 " Neovim Completion/LSP {{{
 " ============================================================================
+Plug 'b0o/SchemaStore.nvim' " for json-ls schemas
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-buffer'
+" remove commit in cmp-path once https://github.com/hrsh7th/cmp-path/issues/23 is fixed
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
@@ -106,6 +105,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'cwebster2/github-coauthors.nvim'
 " }}}
 " ============================================================================
