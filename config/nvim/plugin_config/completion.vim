@@ -59,11 +59,15 @@ nvim_lsp.yamlls.setup {
   },
 }
 
--- TODO: setup renovate json schema
 nvim_lsp.jsonls.setup {
   cmd = { "jsonls-docker" },
   on_attach = on_attach,
   capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    }
+  }
 }
 
 local sumneko_root_path = vim.fn.getenv("HOME").."/projects/personal/lua-language-server" -- Change to your sumneko root installation
@@ -152,14 +156,14 @@ cmp.setup({
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'vsnip' },
+      { name = 'path' },
       { name = 'buffer',
-          options = {
+          option = {
             get_bufnrs = function()
                return vim.api.nvim_list_bufs()
             end
-          }
+          },
       },
-      { name = 'path' },
     },
     formatting = {
       format = require("lspkind").cmp_format({with_text = true, menu = ({
@@ -194,6 +198,18 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = 'single',
 })
+
+-- we want no virtual_text but show via hover
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
+-- and we'd like nice symbols
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
