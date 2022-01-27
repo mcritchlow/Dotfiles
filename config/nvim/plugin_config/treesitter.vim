@@ -11,12 +11,14 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
-    -- disable = { "c", "rust" },  -- list of language that will be disabled
+    disable = { "ruby" },  -- list of language that will be disabled
   },
   textsubjects = {
     enable = true,
       keymaps = {
           ['.'] = 'textsubjects-smart',
+          [';'] = 'textsubjects-container-outer',
+          ['i;'] = 'textsubjects-container-inner',
       }
   },
 }
