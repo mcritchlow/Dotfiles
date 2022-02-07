@@ -71,7 +71,7 @@
 [help]
   autocorrect = 1
 [merge]
-  tool = vimdiff
+	tool = diffconflicts
   conflictstyle=diff3
   prompt=false
 [diff]
@@ -93,3 +93,8 @@
 	trustExitCode = true
 [rerere]
 	enabled = true
+[mergetool "diffconflicts"]
+	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
