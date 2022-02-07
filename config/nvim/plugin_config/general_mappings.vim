@@ -19,9 +19,6 @@ nnoremap g# g#zz
 " Join lines and center
 nnoremap J mzJ`z
 
-" Open urlview on current file
-nnoremap <leader>u :w<Home>silent <End> !urlscan<CR>
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
