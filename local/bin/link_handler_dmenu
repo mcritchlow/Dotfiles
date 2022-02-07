@@ -5,7 +5,7 @@
 # Download location
 downloads=$HOME/Downloads
 
-x=$(printf "mpv\\nmpv (loop)\\nwget\\nimv\\nbrowser\\nw3m\\nyoutube-dl" | dmenu -i -p "How should I open link?")
+x=$(printf "mpv\\nmpv (loop)\\nwget\\nimv\\nbrowser\\nw3m\\nyoutube-dl" | bemenu -i -p "How should I open link?")
 case "$x" in
   mpv) mpv -quiet "$1" >/dev/null 2>&1 & ;;
   "mpv (loop)") mpv -quiet --loop "$1" >/dev/null 2>&1 & ;;
