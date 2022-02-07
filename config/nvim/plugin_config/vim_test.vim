@@ -1,4 +1,5 @@
-let test#strategy = "neovim"
+let test#strategy = "harpoon"
+" let test#strategy = "neovim"
 
 nnoremap <silent> <Leader>f :TestFile<CR>
 nnoremap <silent> <Leader>t :TestNearest<CR>
