@@ -23,6 +23,7 @@ Plug 'editorconfig/editorconfig-vim'
 " ============================================================================
 " General Nice Things {{{
 " ============================================================================
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } } " help w/ docs (yard, etc)
 Plug 'ConradIrwin/vim-bracketed-paste' "enable bracketed paste
 Plug 'tpope/vim-repeat' "repeat map commands (surround)
 Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
@@ -104,6 +105,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'ThePrimeagen/harpoon' " NOT fuzzy, which might be a win sometimes
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'cwebster2/github-coauthors.nvim'
