@@ -4,15 +4,33 @@ require("harpoon").setup({
       ["$HOME/projects/ucsd/surfliner/tidewater"] = {
           term = {
               cmds = {
-                  "docker-compose build && docker-compose up",
-                  "docker-compose exec web bin/tidewater_consumer"
+                  "docker-compose build && docker-compose up\n",
+                  "docker-compose down -v\n",
+                  "docker-compose exec web bin/tidewater_consumer\n"
               }
           }
       },
       ["$HOME/projects/ucsd/surfliner/comet"] = {
           term = {
               cmds = {
-                  "docker-compose build && docker-compose up",
+                  "docker-compose build && docker-compose up\n",
+                  "docker-compose down -v\n"
+              }
+          }
+      },
+      ["$HOME/projects/ucsd/surfliner/shoreline/discovery"] = {
+          term = {
+              cmds = {
+                  "docker-compose build && docker-compose up\n",
+                  "docker-compose down -v\n"
+              }
+          }
+      },
+      ["$HOME/projects/ucsd/surfliner/starlight"] = {
+          term = {
+              cmds = {
+                  "docker-compose build && docker-compose up\n",
+                  "docker-compose down -v\n"
               }
           }
       },
@@ -21,10 +39,6 @@ require("harpoon").setup({
 EOF
 
 " Terminal commands
-" ueoa is first through fourth finger left hand home row.
-" This just means I can crush, with opposite hand, the 4 terminal positions
-"
-" These functions are stored in harpoon.  A plugn that I am developing
 nnoremap <silent><leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <silent><C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <silent><leader>tc :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
@@ -40,5 +54,7 @@ nnoremap <silent><leader>tt :lua require("harpoon.term").gotoTerminal(1)<CR>
 nnoremap <silent><leader>td :lua require("harpoon.term").gotoTerminal(2)<CR>
 " terminal for (e)xtra commands
 nnoremap <silent><leader>te :lua require("harpoon.term").gotoTerminal(3)<CR>
+" start compose
 nnoremap <silent><leader>cd :lua require("harpoon.term").sendCommand(2, 1)<CR>
-nnoremap <silent><leader>ce :lua require("harpoon.term").sendCommand(3, 2)<CR>
+" stop compose
+nnoremap <silent><leader>ce :lua require("harpoon.term").sendCommand(2, 2)<CR>
