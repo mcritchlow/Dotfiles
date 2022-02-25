@@ -10,4 +10,7 @@ augroup MyAutocmds
   " Fire Neovim
   au BufEnter github.com_*.txt set filetype=markdown
   au BufEnter gitlab.com_*.txt set filetype=markdown
+
+  " turn off line numbers in terminal
+  au TermOpen * setlocal listchars= nonumber norelativenumber
 augroup end
