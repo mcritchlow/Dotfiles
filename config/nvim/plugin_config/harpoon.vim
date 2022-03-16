@@ -34,6 +34,22 @@ require("harpoon").setup({
               }
           }
       },
+      ["$HOME/projects/ucsd/surfliner/superskunk"] = {
+          term = {
+              cmds = {
+                  "docker-compose build && docker-compose up\n",
+                  "docker-compose down -v\n"
+              }
+          }
+      },
+      ["$HOME/projects/ucsd/alma-apbatch"] = {
+          term = {
+              cmds = {
+                  "docker-compose build && docker-compose up\n",
+                  "docker-compose down -v\n"
+              }
+          }
+      },
   }
 })
 EOF
