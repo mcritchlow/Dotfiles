@@ -2,6 +2,7 @@
 #
 API_TOKEN="$1" #'email@example.com:<api_token>'
 QUERY="$2" # jql query
+# example: "project = 'TDX' AND parent = TDX-170 ORDER BY created DESC"
 
 curl --request POST \
   --silent \
