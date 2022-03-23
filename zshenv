@@ -14,7 +14,7 @@ fi
 export WWW_HOME="https://duckduckgo.com"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export BROWSER="firefox"
+export BROWSER="chromium"
 export TERMINAL="alacritty"
 # Lastpass
 export LPASS_PINENTRY="/usr/bin/pinentry-gnome3"
