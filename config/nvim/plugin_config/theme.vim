@@ -7,5 +7,6 @@ lua << EOF
 vim.o.background = "light"
 require("github-theme").setup({
   theme_style = "light",
+  hide_inactive_statusline = false
 })
 EOF
