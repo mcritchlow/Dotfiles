@@ -13,6 +13,7 @@ fi
 
 export WWW_HOME="https://duckduckgo.com"
 export EDITOR="nvim"
+export THOR_MERGE="nvim"
 export VISUAL="nvim"
 export BROWSER="chromium"
 export TERMINAL="alacritty"
