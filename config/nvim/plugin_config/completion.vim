@@ -149,8 +149,9 @@ cmp.setup({
       ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
       ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
     },
-    documentation = {
-      border = 'single',
+    window = {
+      documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
     },
     sources = {
       { name = 'nvim_lsp' },
