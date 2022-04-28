@@ -148,7 +148,7 @@ cmp.setup({
       documentation = cmp.config.window.bordered(),
       -- completion = cmp.config.window.bordered(),
     },
-    sources = {
+    sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'vsnip' },
@@ -160,7 +160,7 @@ cmp.setup({
             end
           },
       },
-    },
+    }),
     formatting = {
       format = require("lspkind").cmp_format({with_text = true, menu = ({
           buffer = "[Buffer]",
