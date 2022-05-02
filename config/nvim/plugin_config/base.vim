@@ -49,6 +49,7 @@ Plug 'numToStr/Comment.nvim' "comments w/ gc motion
 Plug 'christoomey/vim-sort-motion' "sorting with gs motion
 Plug 'tpope/vim-surround' " cs motion for changing quotes, tags, etc.
 Plug 'junegunn/vim-easy-align' "text alignment for tables, etc.
+Plug 'ggandor/lightspeed.nvim' "move around with s/S commands with hints
 
 " }}}
 " ============================================================================
