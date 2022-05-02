@@ -30,7 +30,6 @@ Plug 'tpope/vim-unimpaired' " [ and ] mappings for quickfix, buffers, etc.
 Plug 'tpope/vim-markdown' "add folding to markdown files
 Plug 'tpope/vim-fugitive' "git integration
 Plug 'whiteinge/diffconflicts' "git merge conflicts less horrifying to look at
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } "nvim in...browser!
 
 " }}}
 " ============================================================================
