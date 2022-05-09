@@ -85,7 +85,6 @@ return packer.startup(function(use)
     config = require "plugins.configs.telescope",
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-  use { "junegunn/fzf", run = "fzf#install()" }
 
   -- LSP
   use {
