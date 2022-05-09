@@ -1,4 +1,4 @@
-lua require("mcritchlow.config.telescope")
+lua require("mcritchlow.plugins.config.telescope")
 lua require('telescope').load_extension('githubcoauthors')
 
 " Mappings

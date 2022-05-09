@@ -7,6 +7,9 @@ end
 -- For mappings we want to use silent
 local silent = { silent = true }
 
+-- Y behaves like C and D (to end of line)
+map('n', 'Y', 'y$')
+
 -- Center current search on screen
 map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
@@ -54,20 +57,24 @@ map('n', '<Leader>gt', ':TestVisit<CR>', silent)
 -- imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 -- smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 --
--- Telescrope
--- Example
-map("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], silent)
+-- telescope
+require('telescope').load_extension('githubcoauthors')
 
--- map('n', '<leader>ps'. telescope_builtin.grep_string({ search = vim.fn.input("Grep For > ")})<CR>)
--- map('n', '<C-p> :lua require('telescope.builtin').git_files()<CR>
--- map('n', '<Leader>pf :lua require('telescope.builtin').find_files()<CR>
--- map('n', '
--- map('n', '<leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
--- map('n', '<leader>pb :lua require('telescope.builtin').buffers()<CR>
--- map('n', '<leader>vh :lua require('telescope.builtin').help_tags()<CR>
--- map('n', '<leader>vrc :lua require('theprimeagen.telescope').search_dotfiles()<CR>
--- map('n', '<leader>va :lua require('theprimeagen.telescope').anime_selector()<CR>
--- map('n', '<leader>vc :lua require('theprimeagen.telescope').chat_selector()<CR>
--- map('n', '<leader>gc :lua require('theprimeagen.telescope').git_branches()<CR>
--- map('n', '<leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
--- map('n', '<leader>gm :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+-- telescope: files/words
+map("n", "<Leader>ps", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>", silent)
+map("n", "<Leader>pw", "<cmd>lua grep_string { search = vim.fn.expand('<cword>') }<CR>", silent)
+map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>", silent)
+map("n", "<Leader>pf", "<cmd>lua require('telescope.builtin').git_files()<CR>", silent)
+
+
+-- telescope: Vim helpers
+map("n", "<Leader>vb", "<cmd>lua require('telescope.builtin').buffers()<CR>", silent)
+map("n", "<Leader>vh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", silent)
+
+-- telescope: git
+map("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<CR>", silent)
+map("n", "<Leader>gc", "<cmd>lua require('mcritchlow.config.telescope').git_commits_with_sha()<CR>", silent)
+map("i", "<C-g>a <C-o>", "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>", silent)
+
+-- telescope: dotfiles
+map("n", "<Leader>vrc", "<cmd>lua require('mcritchlow.config.telescope').search_dotfiles()<CR>", silent)

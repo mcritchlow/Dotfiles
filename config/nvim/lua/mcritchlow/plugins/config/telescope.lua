@@ -1,6 +1,11 @@
--- TODO use fzf or fzy for extension??
+local ok, telescope = pcall(require, "telescope")
+
+if not ok then
+    return
+end
+
 local actions = require('telescope.actions')
-require('telescope').setup{
+telescope.setup{
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
