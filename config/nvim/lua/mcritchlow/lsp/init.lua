@@ -5,7 +5,7 @@ if not ok then
 end
 
 -- Some LSP UI customization
-local signs = require "mcritchlow.utils.signs"
+local signs = require("mcritchlow.utils").signs
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -74,5 +74,5 @@ lsp_installer.setup {
 }
 
 for _, server in ipairs(servers) do
-  require("mcrichlow.lsp.servers." .. server).setup(on_attach, capabilities)
+  require("mcritchlow.lsp.servers." .. server).setup(on_attach, capabilities)
 end

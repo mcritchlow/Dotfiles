@@ -69,6 +69,8 @@ telescope.setup{
 }
 -- Use fzf extension for telescope
 require('telescope').load_extension('fzf')
+-- Git coauthors (which-key mapping in mappings.lua)
+require('telescope').load_extension('githubcoauthors')
 
 M = {}
 

@@ -41,29 +41,29 @@ return packer.startup(function(use)
   -- Utils
   use { "tpope/vim-repeat" }
   use { "tpope/vim-unimpaired" }
-  use { "tpope/vim-markdown", config = require "mcritchlow.plugins.config.markdown" }
+  use { "tpope/vim-markdown", config = require("mcritchlow.plugins.config.markdown") }
   use { "tpope/vim-fugitive" }
   use { "whiteinge/diffconflicts" }
   use { "christoomey/vim-sort-motion" }
   use { "ggandor/lightspeed.nvim" }
   use { "folke/lua-dev.nvim" }
-  use { "ThePrimeagen/harpoon", config = require "mcritchlow.plugins.config.harpoon" }
+  use { "ThePrimeagen/harpoon", config = require("mcritchlow.plugins.config.harpoon") }
   use {
     "kyazdani42/nvim-tree.lua",
     requires = {
       "kyazdani42/nvim-web-devicons",
     },
-    config = require "mcritchlow.plugins.configs.nvimtree"
+    config = require("mcritchlow.plugins.config.nvimtree")
   }
 
   -- Testing
-  use { "vim-test/vim-test", config = require "mcritchlow.plugins.config.vim_test" }
+  use { "vim-test/vim-test", config = require("mcritchlow.plugins.config.vim_test") }
 
   -- Keymapping fancy fancy
   use { "folke/which-key.nvim" }
 
   -- Comment
-  use { "numToStr/Comment.nvim", config = require "mcritchlow.plugins.config.comment" }
+  use { "numToStr/Comment.nvim", config = require("mcritchlow.plugins.config.comment") }
 
   -- Completion
   use {
@@ -82,7 +82,7 @@ return packer.startup(function(use)
       "kyazdani42/nvim-web-devicons",
       "rafamadriz/friendly-snippets",
     },
-    config = require "mcritchlow.plugins.configs.cmp",
+    config = require("mcritchlow.plugins.config.cmp"),
   }
 
   -- Telescope
@@ -92,7 +92,7 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
       "cwebster2/github-coauthors.nvim"
     },
-    config = require "mcritchlow.plugins.configs.telescope",
+    config = require("mcritchlow.plugins.config.telescope"),
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
@@ -109,7 +109,7 @@ return packer.startup(function(use)
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   }
-  use { "folke/trouble.nvim", config = require "mcritchlow.plugins.config.trouble" }
+  use { "folke/trouble.nvim", config = require("mcritchlow.plugins.config.trouble") }
 
   -- Text Object stuff
   use { "kana/vim-textobj-user" }
@@ -124,9 +124,9 @@ return packer.startup(function(use)
       "RRethy/nvim-treesitter-textsubjects"
     },
     run = ":TSUpdate",
-    config = require "mcritchlow.plugins.config.treesitter",
+    config = require("mcritchlow.plugins.config.treesitter"),
   }
-  use { "norcalli/nvim-colorizer.lua", config = require "mcritchlow.plugins.config.colorizer" }
+  use { "norcalli/nvim-colorizer.lua", config = require("mcritchlow.plugins.config.colorizer") }
   use { "sheerun/vim-polyglot" }
   use { "vim-ruby/vim-ruby" }
 
