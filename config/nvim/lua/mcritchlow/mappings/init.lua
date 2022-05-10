@@ -45,6 +45,16 @@ local which_key_opts = {
     nowait = true,
 }
 
+-- vsnip mappings
+local vsnip_mappings = {
+		['<C-j>'] = { "vsnip#expandable() ? '<Plug>(vsnip-expand)': '<C-j>'", '[VSNIP] expand', expr=true},
+		['<C-l>'] = { "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)': '<C-l>'", '[VSNIP] expand or jump', expr=true},
+		['<Tab>'] = { "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)': '<Tab>'", '[VSNIP] jump to next', expr=true},
+		['<S-Tab>'] = { "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)': '<S-Tab>'", '[VSNIP] jump to previous', expr=true},
+}
+wk.register(vsnip_mappings, {mode = 'i'})
+wk.register(vsnip_mappings, {mode = 's'})
+
 require('telescope').load_extension('githubcoauthors')
 wk.register({
     ["<C-g>a <C-o>"] = { "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>", "[TELESCOPE] Git co-authors" },

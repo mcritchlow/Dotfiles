@@ -12,6 +12,7 @@ local options = {
   background = "light",
   completeopt = { 'menuone', 'noinsert' },
   cursorline = true,
+  exrc = true, -- .nvimrc files
   fileencoding = "utf-8",
   ignorecase = true,
   noswapfile = true,
