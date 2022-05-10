@@ -9,6 +9,9 @@ if not ok_lspkind then
 	return
 end
 
+-- Set custom vsnip_snippet_dir
+vim.g.vsnip_snippet_dir = vim.loop.os_homedir .. "/.config/vsnip"
+
 cmp.setup({
 	snippet = {
 		expand = function(args)

@@ -14,6 +14,9 @@ _M.setSpacesSize = function(filetypes)
     end
 end
 
+-- Signs for tree view, diagnostics, etc
+_M.signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+
 -- Get the index of an array/list item
 -- Example usage
 -- utils.indexOf(my_array, "an-item") -> 3

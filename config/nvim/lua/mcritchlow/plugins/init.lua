@@ -48,9 +48,19 @@ return packer.startup(function(use)
   use { "ggandor/lightspeed.nvim" }
   use { "folke/lua-dev.nvim" }
   use { "ThePrimeagen/harpoon", config = require "mcritchlow.plugins.config.harpoon" }
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+    },
+    config = require "mcritchlow.plugins.configs.nvimtree",
+  }
 
   -- Testing
   use { "vim-test/vim-test", config = require "mcritchlow.plugins.config.vim_test" }
+
+  -- Keymapping fancy fancy
+  use { "folke/which-key.nvim" }
 
   -- Comment
   use { "numToStr/Comment.nvim", config = require "mcritchlow.plugins.config.comment" }
@@ -82,7 +92,7 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
       "cwebster2/github-coauthors.nvim"
     },
-    config = require "plugins.configs.telescope",
+    config = require "mcritchlow.plugins.configs.telescope",
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
@@ -100,7 +110,7 @@ return packer.startup(function(use)
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   }
-  use { "folke/trouble.nvim" }
+  use { "folke/trouble.nvim", config = require "mcritchlow.plugins.config.trouble" }
 
   -- Text Object stuff
   use { "kana/vim-textobj-user" }

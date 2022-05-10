@@ -1,9 +1,16 @@
+local ok, wk = pcall(require, "which-key")
+
+if not ok then
+    return
+end
+--
 -- Mappings
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true }
+    if opts then options = vim.tbl_extend('force', options, opts) end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
+
 -- For mappings we want to use silent
 local silent = { silent = true }
 
@@ -19,7 +26,7 @@ map('n', 'g*', 'g*zz')
 map('n', 'g#', 'g#zz')
 
 -- Switch between the last two files
-map('n', '<leader><leader>','<c-^>')
+map('n', '<leader><leader>', '<c-^>')
 
 -- Quicker window movement
 map('n', '<C-j>', '<C-w>j')
@@ -28,21 +35,59 @@ map('n', '<C-h>', '<C-w>h')
 map('n', '<C-l>', '<C-w>l')
 
 -- Terminal
-map('t','<C-o>', '<C-\\><C-n>')
+map('t', '<C-o>', '<C-\\><C-n>')
 
--- EasyAlign
-map('n', 'ga', '<Plug>(EasyAlign)', { noremap = false })
-map('x', 'ga', '<Plug>(EasyAlign)', { noremap = false })
+local which_key_opts = {
+    mode = "n",
+    prefix = "",
+    silent = true,
+    noremap = true,
+    nowait = true,
+}
 
--- VimTest
+require('telescope').load_extension('githubcoauthors')
+wk.register({
+    ["<C-g>a <C-o>"] = { "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>", "[TELESCOPE] Git co-authors" },
+}, { mode = "i", noremap = true })
 
-map('n', '<Leader>f', ':TestFile<CR>', silent)
-map('n', '<Leader>t', ':TestNearest<CR>', silent)
-map('n', '<Leader>l', ':TestLast<CR>', silent)
-map('n', '<Leader>s', ':TestSuite<CR>', silent)
-map('n', '<Leader>gt', ':TestVisit<CR>', silent)
+wk.register({
+    ["<c-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
+
+    ["<leader>f"] = {
+        name = "[TELESCOPE]",
+        b = { "<cmd>Telescope buffers<cr>", "[TELESCOPE] Find buffers" },
+        c = { "<cmd>lua require('mcritchlow.config.telescope').git_commits_with_sha()<cr>", "[TELESCOPE] Marks" },
+        d = { "<cmd>lua require('mcritchlow.config.telescope').search_dotfiles()<cr>", "[TELESCOPE] Marks" },
+        f = { "<cmd>Telescope find_files<cr>", "[TELESCOPE] Find buffers" },
+        g = { "<cmd>Telescope git_branches<cr>", "[TELESCOPE] Git branches" },
+        h = { "<cmd>Telescope help_tags<cr>", "[TELESCOPE] Help tags" },
+        s = { "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>", "[TELESCOPE] Find work by grep" },
+        w = { "<cmd>Telescope grep_string search=vim.fn.expand('<cword>')<cr>", "[TELESCOPE] Find word on cursor" },
+    },
+
+    ["<leader>t"] = {
+        name = "[TEST]",
+        f = { "<cmd>TestFile<cr>", "[TEST] Current file" },
+        t = { "<cmd>TestNearest<cr>", "[TEST] Nearest test" },
+        l = { "<cmd>TestLast<cr>", "[TEST] Last test" },
+        s = { "<cmd>TestSuite<cr>", "[TEST] Test suite" },
+        v = { "<cmd>TestVisit<cr>", "[TEST] Visit test" },
+    },
+
+    ["<leader>x"] = {
+        name = "[TROUBLE]",
+        x = { "<cmd>TroubleToggle<cr>", "[TROUBLE] Toggle menu" },
+        w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "[TROUBLE] Workspace diagnostics" },
+        d = { "<cmd>TroubleToggle document_diagnostics<cr>", "[TROUBLE] Document diagnostics" },
+        q = { "<cmd>TroubleToggle quickfix<cr>", "[TROUBLE] Quickfix" },
+        l = { "<cmd>TroubleToggle loclist<cr>", "[TROUBLE] Visit test" },
+    },
+}, which_key_opts)
+
+wk.setup {}
 
 -- TODO nvim-vsnip
+-- how to do this in lua?
 -- " Expand
 -- imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 -- smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -56,25 +101,3 @@ map('n', '<Leader>gt', ':TestVisit<CR>', silent)
 -- smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
 -- imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 -- smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
---
--- telescope
-require('telescope').load_extension('githubcoauthors')
-
--- telescope: files/words
-map("n", "<Leader>ps", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>", silent)
-map("n", "<Leader>pw", "<cmd>lua grep_string { search = vim.fn.expand('<cword>') }<CR>", silent)
-map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>", silent)
-map("n", "<Leader>pf", "<cmd>lua require('telescope.builtin').git_files()<CR>", silent)
-
-
--- telescope: Vim helpers
-map("n", "<Leader>vb", "<cmd>lua require('telescope.builtin').buffers()<CR>", silent)
-map("n", "<Leader>vh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", silent)
-
--- telescope: git
-map("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<CR>", silent)
-map("n", "<Leader>gc", "<cmd>lua require('mcritchlow.config.telescope').git_commits_with_sha()<CR>", silent)
-map("i", "<C-g>a <C-o>", "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>", silent)
-
--- telescope: dotfiles
-map("n", "<Leader>vrc", "<cmd>lua require('mcritchlow.config.telescope').search_dotfiles()<CR>", silent)

@@ -31,7 +31,7 @@ vim.diagnostic.config({
 })
 
 -- and we'd like nice symbols
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = require("mcritchlow.utils").signs
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
