@@ -15,11 +15,6 @@ wk.register({
     ["<C-o>"] = { "<C-\\><C-n>", "[TERMINAL] Exit to Normal mode" },
 }, { mode = "t", noremap = true })
 
--- insert mode
-wk.register({
-    ["<C-g>a <C-o>"] = { "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>", "[TELESCOPE] Git co-authors" },
-}, { mode = "i", noremap = true })
-
 -- vsnip mappings
 local vsnip_mappings = {
 		['<C-j>'] = { "vsnip#expandable() ? '<Plug>(vsnip-expand)': '<C-j>'", '[VSNIP] expand', expr=true},
@@ -38,6 +33,8 @@ local normal_opts = {
     noremap = true,
     nowait = true,
 }
+
+-- TODO: add harpoon
 wk.register({
     ["Y"] = { "Y$", "Y behaves like C and D" },
     ["n"] = { "nzz", "[MOVEMENT] Center 'n' search" },
@@ -57,6 +54,7 @@ wk.register({
     },
     ["<leader>f"] = {
         name = "[TELESCOPE]",
+        a = { "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>", "[TELESCOPE] Git Authors" },
         b = { "<cmd>Telescope buffers<cr>", "[TELESCOPE] Find buffers" },
         c = { "<cmd>lua require('mcritchlow.plugins.config.telescope').git_commits_with_sha()<cr>", "[TELESCOPE] Marks" },
         d = { "<cmd>lua require('mcritchlow.plugins.config.telescope').search_dotfiles()<cr>", "[TELESCOPE] Marks" },
