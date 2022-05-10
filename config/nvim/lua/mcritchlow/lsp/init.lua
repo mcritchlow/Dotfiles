@@ -4,9 +4,23 @@ if not ok then
   return
 end
 
+-- Some LSP UI customization
+local signs = require "mcritchlow.utils.signs"
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
-local utils = require "utils"
-local null_ls = require "lsp.servers.null-ls"
+-- Set borders
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'single',
+})
+
+-- we want no virtual_text but show via hover
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
 local servers = {
   "bashls",
@@ -17,11 +31,6 @@ local servers = {
 }
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -66,32 +75,3 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts.border = opts.border or { { " ", "FloatBorder" } }
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
-
---
--- Null-ls configuration
-local null_ls = require("null-ls")
-local null_ls_sources = {
-  null_ls.builtins.diagnostics.shellcheck,
-}
-
--- To register project-specific sources:
--- Set something like the following in a project vimrc.local file
--- local null_ls = require("null-ls")
--- local null_ls_sources = {
---   null_ls.builtins.diagnostics.standardrb.with({
---     command = "bin/null-ls-exec",
---     args = { "standardrb"," --no-fix", "-f", "json", "--stdin", "$FILENAME" },
---   }),
---   null_ls.builtins.formatting.standardrb.with({
---     command = "bin/null-ls-exec",
---     args = { "standardrb"," --fix", "--format", "quiet", "--stderr", "--stdin", "$FILENAME" },
---   }),
--- }
--- null_ls.register(null_ls_sources)
-
-null_ls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  sources = null_ls_sources
-})
--- null_ls.setup({ debug = true, sources = null_ls_sources }) -- for DEBUG

@@ -1,5 +1,5 @@
-local utils = require "utils"
-local theme = require "theme"
+local utils = require "mcritchlow.utils"
+local theme = require "mcritchlow.theme"
 
 vim.g.mapleader = ","
 

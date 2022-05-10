@@ -53,7 +53,7 @@ return packer.startup(function(use)
     requires = {
       "kyazdani42/nvim-web-devicons",
     },
-    config = require "mcritchlow.plugins.configs.nvimtree",
+    config = require "mcritchlow.plugins.configs.nvimtree"
   }
 
   -- Testing
@@ -101,7 +101,6 @@ return packer.startup(function(use)
     "williamboman/nvim-lsp-installer",
     requires = {
       "neovim/nvim-lspconfig",
-      "jose-elias-alvarez/typescript.nvim",
       "b0o/SchemaStore.nvim",
       "onsails/lspkind-nvim",
     },

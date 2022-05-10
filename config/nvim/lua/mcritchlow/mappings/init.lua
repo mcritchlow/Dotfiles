@@ -53,6 +53,12 @@ wk.register({
 wk.register({
     ["<c-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
 
+    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()", "[LSP] Previous diagnostic" },
+    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()", "[LSP] Next diagnostic" },
+    ["<leader>l"] = {
+        name = "[LSP]",
+        e = { "<cmd>lua vim.diagnostic.open_float()<cr>", "[LSP] View diagnosticson cursor" },
+
     ["<leader>f"] = {
         name = "[TELESCOPE]",
         b = { "<cmd>Telescope buffers<cr>", "[TELESCOPE] Find buffers" },
