@@ -11,6 +11,14 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+-- Floating border
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or { { " ", "FloatBorder" } }
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- Set borders
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -21,14 +29,6 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.diagnostic.config({
   virtual_text = false,
 })
-
-local servers = {
-  "bashls",
-  "sumneko_lua",
-  "jsonls",
-  "yamlls",
-  "dockerls",
-}
 
 local opts = { noremap = true, silent = true }
 local on_attach = function(client, bufnr)
@@ -51,6 +51,15 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
+local servers = {
+  "bashls",
+  "dockerls",
+  "jsonls",
+  "null-ls",
+  "sumneko_lua",
+  "yamlls",
+}
+
 -- Install LSP servers
 lsp_installer.setup {
   ensure_installed = servers,
@@ -66,12 +75,4 @@ lsp_installer.setup {
 
 for _, server in ipairs(servers) do
   require("mcrichlow.lsp.servers." .. server).setup(on_attach, capabilities)
-end
-
--- Floating border
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or { { " ", "FloatBorder" } }
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end

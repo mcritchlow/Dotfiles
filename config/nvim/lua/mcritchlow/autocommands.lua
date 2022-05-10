@@ -16,5 +16,4 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.opt_local.number = false
     vim.opt_local.relative_number = false
   end,
-  group = highlight_group,
 })
