@@ -26,8 +26,6 @@ local options = {
   termguicolors = true,
   textwidth = 120,
 }
--- t_8b = utils.replaceTermCodes("<Esc>").."[48;2;%lu;%lu;%lum",
--- t_8f = utils.replaceTermCodes("<Esc>").."[38;2;%lu;%lu;%lum",
 
 -- Append, prepend, etc. stuff
 vim.opt.tags:append(".git/tags")

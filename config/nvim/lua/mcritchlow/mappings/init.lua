@@ -4,6 +4,12 @@ if not ok then
     return
 end
 
+-- Set keymappings we don't need managed by which-key
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
 -- terminal mode
 wk.register({
     ["<C-o>"] = { "<C-\\><C-n>", "[TERMINAL] Exit to Normal mode" },
@@ -41,11 +47,7 @@ wk.register({
     ["g*"] = { "g*zz", "[MOVEMENT] Center 'g*' search" },
     ["g#"] = { "g#zz", "[MOVEMENT] Center 'g#' search" },
     ["<leader><leader>"] = { "<c-^>", "[MOVEMENT] Last file" },
-    ["<c-j"] = { "<c-w>j", "[MOVEMENT] Down" },
-    ["<c-k"] = { "<c-w>k", "[MOVEMENT] Up" },
-    ["<c-h"] = { "<c-w>h", "[MOVEMENT] Left" },
-    ["<c-l"] = { "<c-w>l", "[MOVEMENT] Right" },
-    ["<c-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
+    ["<C-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
 
     ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()", "[LSP] Previous diagnostic" },
     ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()", "[LSP] Next diagnostic" },
