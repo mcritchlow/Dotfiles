@@ -10,10 +10,12 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
+vim.keymap.set("t", "<C-o>", "<C-\\><C-n>")
+
 -- terminal mode
-wk.register({
-    ["<C-o>"] = { "<C-\\><C-n>", "[TERMINAL] Exit to Normal mode" },
-}, { mode = "t", noremap = true })
+-- wk.register({
+--     ["<C-o>"] = { "<C-\\><C-n>", "[TERMINAL] Exit to Normal mode" },
+-- }, { mode = "t", noremap = true })
 
 -- vsnip mappings
 local vsnip_mappings = {
@@ -34,7 +36,6 @@ local normal_opts = {
     nowait = true,
 }
 
--- TODO: add harpoon
 wk.register({
     ["Y"] = { "Y$", "Y behaves like C and D" },
     ["n"] = { "nzz", "[MOVEMENT] Center 'n' search" },
@@ -51,6 +52,20 @@ wk.register({
     ["<leader>l"] = {
         name = "[LSP]",
         e = { "<cmd>lua vim.diagnostic.open_float()<cr>", "[LSP] View diagnosticson cursor" },
+    },
+    ["<leader>h"] = {
+        name = "[HARPOON]",
+        m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "[HARPOON] Add file" },
+        u = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "[HARPOON] View file menu" },
+        c = { "<cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<cr>", "[HARPOON] View command menu" },
+        a = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "[HARPOON] Open File 1" },
+        s = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "[HARPOON] Open File 2" },
+        d = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "[HARPOON] Open File 3" },
+        f = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "[HARPOON] Open File 4" },
+        t = { "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", "[HARPOON] Go to Terminal 1 (docker-compose)" },
+        x = { "<cmd>lua require('harpoon.term').gotoTerminal(2)<cr>", "[HARPOON] Go to Terminal 2 (extra)" },
+        b = { "<cmd>lua require('harpoon.term').sendCommand(1,1)<cr>", "[HARPOON] Run Compose build" },
+        k = { "<cmd>lua require('harpoon.term').sendCommand(2,2)<cr>", "[HARPOON] Run Command 2 (compose down)" },
     },
     ["<leader>f"] = {
         name = "[TELESCOPE]",
