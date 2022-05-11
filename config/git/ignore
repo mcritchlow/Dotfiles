@@ -11,4 +11,5 @@ tmp/**/*
 vimrc.local
 .solargraph.yml
 .nvimrc
+.nvimrc.lua
 solargraph_rails_definitions.rb
