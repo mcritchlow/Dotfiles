@@ -4,67 +4,35 @@ if not ok then
     return
 end
 
+local harpoon_repos = {
+    "$HOME/projects/ucsd/surfliner/tidewater",
+    "$HOME/projects/ucsd/surfliner/comet",
+    "$HOME/projects/ucsd/surfliner/shoreline",
+    "$HOME/projects/ucsd/surfliner/tidewater",
+    "$HOME/projects/ucsd/surfliner/starlight",
+    "$HOME/projects/ucsd/surfliner/superskunk",
+    "$HOME/projects/ucsd/alma-apbatch",
+    "$HOME/projects/ucsd/highfive",
+}
+
+local compose_commands = {
+    term = {
+        cmds = {
+            "docker-compose build && docker-compose up",
+            "docker-compose down -v",
+        }
+    }
+}
+
+local harpoon_projects = {}
+for _, repo in pairs(harpoon_repos) do
+    harpoon_projects[repo] = compose_commands
+end
+
+
 harpoon.setup({
     global_settings = {
         enter_on_sendcmd = true
     },
-    projects = {
-        ["$HOME/projects/ucsd/surfliner/tidewater"] = {
-            term = {
-                cmds = {
-                    "docker-compose build && docker-compose up",
-                    "docker-compose down -v",
-                    "docker-compose exec web bin/tidewater_consumer"
-                }
-            }
-        },
-        ["$HOME/projects/ucsd/surfliner/comet"] = {
-            term = {
-                cmds = {
-                    "docker-compose build && docker-compose up",
-                    "docker-compose down -v"
-                }
-            }
-        },
-        ["$HOME/projects/ucsd/surfliner/shoreline/discovery"] = {
-            term = {
-                cmds = {
-                    "docker-compose build && docker-compose up",
-                    "docker-compose down -v"
-                }
-            }
-        },
-        ["$HOME/projects/ucsd/surfliner/starlight"] = {
-            term = {
-                cmds = {
-                    "docker-compose build && docker-compose up",
-                    "docker-compose down -v"
-                }
-            }
-        },
-        ["$HOME/projects/ucsd/surfliner/superskunk"] = {
-            term = {
-                cmds = {
-                    "docker-compose build && docker-compose up",
-                    "docker-compose down -v"
-                }
-            }
-        },
-        ["$HOME/projects/ucsd/alma-apbatch"] = {
-            term = {
-                cmds = {
-                    "docker-compose build && docker-compose up",
-                    "docker-compose down -v"
-                }
-            }
-        },
-        ["$HOME/projects/ucsd/highfive"] = {
-            term = {
-                cmds = {
-                    "docker-compose build && docker-compose up",
-                    "docker-compose down -v"
-                }
-            }
-        },
-    }
+    projects = harpoon_projects
 })
