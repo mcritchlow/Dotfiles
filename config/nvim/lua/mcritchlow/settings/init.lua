@@ -26,6 +26,8 @@ local options = {
   textwidth = 120,
 }
 
+utils.setSpacesSize { go = 4, python = 4, rust = 4, markdown = 4, css = 2, html = 2, javascript = 2 }
+
 -- Append, prepend, etc. stuff
 vim.opt.tags:append(".git/tags")
 vim.opt.wildignore:prepend({ "tmp/**", "**/node_modules/**"})
