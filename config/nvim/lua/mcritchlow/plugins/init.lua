@@ -34,6 +34,7 @@ packer.init {
 }
 
 return packer.startup(function(use)
+  use { "wbthomason/packer.nvim" }
 
   -- Theme
   use { "projekt0n/github-nvim-theme" }
@@ -95,13 +96,15 @@ return packer.startup(function(use)
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
   -- LSP
+  use { "b0o/SchemaStore.nvim" }
+  use { "onsails/lspkind-nvim" }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use {
     "williamboman/nvim-lsp-installer",
-    requires = {
+    {
       "neovim/nvim-lspconfig",
-      "b0o/SchemaStore.nvim",
-      "onsails/lspkind-nvim",
-    },
+      config = require("mcritchlow.lsp")
+    }
   }
   use {
     "jose-elias-alvarez/null-ls.nvim",

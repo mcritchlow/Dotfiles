@@ -5,7 +5,8 @@ _M.init = function()
   if themeLoaded then
     github.setup({
       theme_style = "light",
-      hide_inactive_statusline = false
+      hide_inactive_statusline = false,
+      sidebars = {'NvimTree'},
     })
   end
 end
