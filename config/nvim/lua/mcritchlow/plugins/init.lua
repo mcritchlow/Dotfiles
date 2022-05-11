@@ -29,8 +29,8 @@ packer.init {
   git = {
     clone_timeout = 600,
   },
-  auto_clean = true,
-  compile_on_sync = false,
+  -- auto_clean = true,
+  -- compile_on_sync = false,
 }
 
 return packer.startup(function(use)
@@ -40,12 +40,10 @@ return packer.startup(function(use)
 
   -- Utils
   use { "tpope/vim-repeat" }
-  use { "tpope/vim-unimpaired" }
   use { "tpope/vim-markdown", config = require("mcritchlow.plugins.config.markdown") }
   use { "tpope/vim-fugitive" }
   use { "whiteinge/diffconflicts" }
   use { "christoomey/vim-sort-motion" }
-  use { "ggandor/lightspeed.nvim" }
   use { "folke/lua-dev.nvim" }
   use { "ThePrimeagen/harpoon", config = require("mcritchlow.plugins.config.harpoon") }
   use {

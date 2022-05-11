@@ -12,11 +12,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 vim.keymap.set("t", "<C-o>", "<C-\\><C-n>")
 
--- terminal mode
--- wk.register({
---     ["<C-o>"] = { "<C-\\><C-n>", "[TERMINAL] Exit to Normal mode" },
--- }, { mode = "t", noremap = true })
-
 -- vsnip mappings
 local vsnip_mappings = {
 		['<C-j>'] = { "vsnip#expandable() ? '<Plug>(vsnip-expand)': '<C-j>'", '[VSNIP] expand', expr=true},
@@ -30,14 +25,14 @@ wk.register(vsnip_mappings, {mode = 's'})
 -- normal mode
 local normal_opts = {
     mode = "n",
-    prefix = "",
-    silent = true,
     noremap = true,
     nowait = true,
+    prefix = "",
+    silent = true,
 }
 
 wk.register({
-    ["Y"] = { "Y$", "Y behaves like C and D" },
+    ["Y"] = { "y$", "Y behaves like C and D" },
     ["n"] = { "nzz", "[MOVEMENT] Center 'n' search" },
     ["N"] = { "Nzz", "[MOVEMENT] Center 'N' search" },
     ["*"] = { "*zz", "[MOVEMENT] Center '*' search" },
@@ -47,6 +42,10 @@ wk.register({
     ["<leader><leader>"] = { "<c-^>", "[MOVEMENT] Last file" },
     ["<C-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
 
+    ["]q"] = { "<cmd>cnext<cr>", "[MOVEMENT] Next quickfix" },
+    ["[q"] = { "<cmd>cprevious<cr>", "[MOVEMENT] Previous quickfix" },
+    ["]t"] = { "<cmd>tabn<cr>", "[MOVEMENT] Next tab" },
+    ["[t"] = { "<cmd>tabp<cr>", "[MOVEMENT] Previous tab" },
     ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()", "[LSP] Previous diagnostic" },
     ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()", "[LSP] Next diagnostic" },
     ["<leader>l"] = {
@@ -77,7 +76,7 @@ wk.register({
         g = { "<cmd>Telescope git_branches<cr>", "[TELESCOPE] Git branches" },
         h = { "<cmd>Telescope help_tags<cr>", "[TELESCOPE] Help tags" },
         s = { "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>", "[TELESCOPE] Find work by grep" },
-        w = { "<cmd>Telescope grep_string search=vim.fn.expand('<cword>')<cr>", "[TELESCOPE] Find word on cursor" },
+        w = { "<cmd>lua require('telescope.builtin').grep_string({search = vim.fn.expand('<cword>')})<cr>", "[TELESCOPE] Find word on cursor" },
     },
 
     ["<leader>t"] = {
