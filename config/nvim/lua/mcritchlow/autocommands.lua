@@ -19,40 +19,17 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- replace ftdetect vim files:
--- TODO: turn into helper method?
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
-    pattern = "*.css.scss",
-    callback = function()
-        vim.opt.filetype = "css"
-    end,
-})
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
-    pattern = "*.html.erb",
-    callback = function()
-        vim.opt.filetype = "html"
-    end,
-})
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
-    pattern = ".{jscs,jshint,eslint}rc",
-    callback = function()
-        vim.opt.filetype = "json"
-    end,
-})
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
-    pattern = "*mutt-*",
-    callback = function()
-        vim.opt.filetype = "mail"
-    end,
-})
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
-    pattern = "/tmp/gitlab-*.mail",
-    callback = function()
-        vim.opt.filetype = "mail"
-    end,
-})
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
-    pattern = "*.{md,markdown}",
-    callback = function()
-        vim.opt.filetype = "markdown"
-    end,
-})
+local ftdetect_autocmds = {
+  css = "*.css.scss",
+  json = ".{jscs,jshint,eslint}rc",
+  mail = "*neomutt-*",
+  markdown = "*.{md,markdown}",
+}
+for filetype, pattern in pairs(ftdetect_autocmds) do
+  vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
+      pattern = pattern,
+      callback = function()
+          vim.opt.filetype = filetype
+      end,
+  })
+end
