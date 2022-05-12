@@ -1,5 +1,15 @@
 local _M = {}
 
+-- Support dynamically reloading lua modules in config
+_M.reloadModule = function(name)
+    local ok, plenary = pcall(require, "plenary.reload")
+    if not ok then
+        return
+    end
+    plenary.reload_module(name)
+    require(name)
+end
+
 -- Example usage
 -- utils.setSpacesSize{ go = 4, ruby = 2, python = 4, java = 4 }
 _M.setSpacesSize = function(filetypes)
@@ -33,7 +43,7 @@ end
 -- Example usage
 -- utils.replaceTermCodes("<Esc>")
 _M.replaceTermCodes = function(value)
-  return vim.api.nvim_replace_termcodes(value, true, true, true)
+    return vim.api.nvim_replace_termcodes(value, true, true, true)
 end
 
 return _M

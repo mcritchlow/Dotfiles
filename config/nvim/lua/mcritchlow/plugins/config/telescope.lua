@@ -1,19 +1,24 @@
 local ok, telescope = pcall(require, "telescope")
 
 if not ok then
-    return
+  return
 end
 
 local actions = require('telescope.actions')
-telescope.setup{
+telescope.setup {
   extensions = {
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
     }
+  },
+  pickers = {
+    find_files = {
+      find_command = { "fd", "--ignore", "-L", "-tf", "-tl", "--strip-cwd-prefix" }
+    },
   },
   defaults = {
     vimgrep_arguments = {
@@ -43,9 +48,9 @@ telescope.setup{
       prompt_position = "bottom",
       preview_cutoff = 120,
     },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_sorter = require 'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
     path_display = {
       "absolute",
     },
@@ -55,15 +60,15 @@ telescope.setup{
     color_devicons = true,
     use_less = true,
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
     mappings = {
-        i = {
-          ["<esc>"] = actions.close,
-          ["<C-x>"] = false,
-          ["<C-q>"] = actions.send_to_qflist,
-        },
+      i = {
+        ["<esc>"] = actions.close,
+        ["<C-x>"] = false,
+        ["<C-q>"] = actions.send_to_qflist,
+      },
     }
   }
 }
@@ -96,7 +101,7 @@ M.git_commits_with_sha = function()
     map('i', '<c-y>', copy_commit_sha)
     map('n', '<c-y>', copy_commit_sha)
     return true
-  end})
+  end })
 end
 
 M.file_browser = function()
@@ -112,7 +117,53 @@ M.file_browser = function()
     map('n', '<c-g>', set_new_wd)
 
     return true
-  end})
+  end })
+end
+
+-- TODO: figure out reload. it's close!
+M.reload = function()
+  local utils = require("mcritchlow.utils")
+  -- Telescope will give us something like mcritchlow/utils.lua,
+  -- so this function convert the selected entry to
+  -- the module name: mcritchlow.utils
+  local function get_module_name(s)
+    local module_name;
+
+    module_name = s:gsub("%.lua", "")
+    module_name = module_name:gsub("%/", ".")
+    module_name = module_name:gsub("%.init", "")
+
+    return module_name
+  end
+
+  local prompt_title = "~ neovim modules ~"
+
+  -- sets the path to the lua folder
+  local path = "$HOME/.config/nvim/lua"
+
+  local opts = {
+    prompt_title = prompt_title,
+    cwd = path,
+
+    attach_mappings = function(_, map)
+      -- Adds a new map to ctrl+e.
+      map("i", "<c-e>", function(_)
+        vim.notify("Reloading module..", vim.log.levels.INFO)
+        -- these two a very self-explanatory
+        local entry = require("telescope.actions.state").get_selected_entry()
+        local name = get_module_name(entry.value)
+
+        -- call the helper method to reload the module
+        utils.reloadModule(name)
+        vim.notify(name .. " reloaded!", vim.log.levels.INFO)
+      end)
+
+      return true
+    end
+  }
+
+  -- call the builtin method to list files
+  require('telescope.builtin').find_files(opts)
 end
 
 return M

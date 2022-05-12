@@ -75,6 +75,7 @@ wk.register({
         f = { "<cmd>Telescope find_files<cr>", "[TELESCOPE] Find buffers" },
         g = { "<cmd>Telescope git_branches<cr>", "[TELESCOPE] Git branches" },
         h = { "<cmd>Telescope help_tags<cr>", "[TELESCOPE] Help tags" },
+        r = { "<cmd>lua require('mcritchlow.plugins.config.telescope').reload()<cr>", "[TELESCOPE] Reload Config" },
         s = { "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>", "[TELESCOPE] Find work by grep" },
         w = { "<cmd>lua require('telescope.builtin').grep_string({search = vim.fn.expand('<cword>')})<cr>", "[TELESCOPE] Find word on cursor" },
     },
