@@ -43,6 +43,7 @@ return packer.startup(function(use)
   use { "tpope/vim-repeat" }
   use { "tpope/vim-markdown", config = require("mcritchlow.plugins.config.markdown") }
   use { "tpope/vim-fugitive" }
+  use { "tpope/vim-surround" }
   use { "whiteinge/diffconflicts" }
   use { "christoomey/vim-sort-motion" }
   use { "folke/lua-dev.nvim" }
@@ -98,7 +99,6 @@ return packer.startup(function(use)
   -- LSP
   use { "b0o/SchemaStore.nvim" }
   use { "onsails/lspkind-nvim" }
-  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use {
     "williamboman/nvim-lsp-installer",
     {
