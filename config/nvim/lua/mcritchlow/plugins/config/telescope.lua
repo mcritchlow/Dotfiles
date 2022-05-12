@@ -120,7 +120,7 @@ M.file_browser = function()
   end })
 end
 
--- TODO: figure out reload. it's close!
+-- Choose config module to reload
 M.reload = function()
   local utils = require("mcritchlow.utils")
   -- Telescope will give us something like mcritchlow/utils.lua,
