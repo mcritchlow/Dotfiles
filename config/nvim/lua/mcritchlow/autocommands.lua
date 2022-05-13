@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 local ftdetect_autocmds = {
   css = "*.css.scss",
   json = ".{jscs,jshint,eslint}rc",
+  lua = ".nvimrc.lua",
   mail = "*neomutt-*",
   markdown = "*.{md,markdown}",
 }
