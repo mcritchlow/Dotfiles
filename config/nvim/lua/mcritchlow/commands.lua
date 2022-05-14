@@ -1,5 +1,6 @@
 -- Format buffer using LSP
 vim.api.nvim_create_user_command("Format", function()
+  -- TODO: in neovim 0.8, this will be: vim.lsp.buf.format
   vim.lsp.buf.formatting()
 end, {
   desc = "Format buffer with LSP"

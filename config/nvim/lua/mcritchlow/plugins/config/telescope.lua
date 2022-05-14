@@ -154,7 +154,7 @@ M.reload = function()
         local name = get_module_name(entry.value)
 
         -- call the helper method to reload the module
-        utils.reloadModule(name)
+        utils.reload_module(name)
         vim.notify(name .. " reloaded!", vim.log.levels.INFO)
       end)
 
