@@ -25,7 +25,11 @@ local M = {}
 M.setup = function(on_attach, capabilities)
     null_ls.setup {
         sources = {
-            diagnostics.shellcheck
+            diagnostics.shellcheck,
+            null_ls.builtins.diagnostics.jsonlint.with({
+                command = "docker-jsonlint",
+                args = { "--compact" },
+            }),
         },
         on_attach = on_attach,
         capabilities = capabilities
