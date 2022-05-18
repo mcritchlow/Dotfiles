@@ -1,6 +1,6 @@
 local M = {}
 M.setup = function(on_attach, capabilities)
-    local lspconfig = require "lspconfig"
+    local lspconfig = require("lspconfig")
     local json_caps = capabilities
     json_caps.textDocument.completion.completionItem.snippetSupport = true
 
@@ -12,6 +12,8 @@ M.setup = function(on_attach, capabilities)
         capabilities = json_caps,
         settings = {
             json = {
+                format = { enable = true },
+                validate = { enable = true },
                 schemas = require('schemastore').json.schemas(),
             }
         }
