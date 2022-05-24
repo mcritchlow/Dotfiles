@@ -18,6 +18,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+-- Don't show statusline in certain buffers
+vim.api.nvim_create_autocmd({"WinEnter","TabEnter","WinLeave","BufEnter","VimEnter"}, {
+  pattern = "*NvimTree*",
+  callback = function()
+    vim.opt_local.statusline = '%#Normal#'
+  end
+})
+
 -- replace ftdetect vim files:
 local ftdetect_autocmds = {
   css = "*.css.scss",
@@ -27,7 +35,7 @@ local ftdetect_autocmds = {
   markdown = "*.{md,markdown}",
 }
 for filetype, pattern in pairs(ftdetect_autocmds) do
-  vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
+  vim.api.nvim_create_autocmd({"BufRead","BufNewFile"}, {
       pattern = pattern,
       callback = function()
           vim.opt.filetype = filetype
