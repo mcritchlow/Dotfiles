@@ -15,3 +15,4 @@ nvim-local.lua
 .nvimrc.lua
 solargraph_rails_definitions.rb
 !.gitlab-ci.yml
+!.env
