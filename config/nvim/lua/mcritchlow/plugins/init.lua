@@ -102,7 +102,8 @@ return packer.startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
-      "cwebster2/github-coauthors.nvim"
+      "cwebster2/github-coauthors.nvim",
+      "nvim-telescope/telescope-ui-select.nvim"
     },
     config = function()
       require("mcritchlow.plugins.config.telescope")

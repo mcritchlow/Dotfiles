@@ -7,6 +7,9 @@ end
 local actions = require('telescope.actions')
 telescope.setup {
   extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_cursor {}
+    },
     fzf = {
       fuzzy = true, -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
@@ -76,6 +79,8 @@ telescope.setup {
 require('telescope').load_extension('fzf')
 -- Git coauthors (which-key mapping in mappings.lua)
 require('telescope').load_extension('githubcoauthors')
+-- Have telescope used for vim.ui.select
+require("telescope").load_extension("ui-select")
 
 M = {}
 
