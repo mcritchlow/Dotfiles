@@ -18,6 +18,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+-- Run gofmt + goimport on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    require('go.format').goimport()
+  end
+})
+
 -- Don't show statusline in certain buffers
 vim.api.nvim_create_autocmd({"WinEnter","TabEnter","WinLeave","BufEnter","VimEnter"}, {
   pattern = "*NvimTree*",
