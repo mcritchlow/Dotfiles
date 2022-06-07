@@ -136,9 +136,12 @@ return packer.startup(function(use)
   use { "kana/vim-textobj-indent" }
   use { "nelstrom/vim-textobj-rubyblock" }
 
-  -- use { "ray-x/go.nvim" }
   use { "ray-x/go.nvim", config = function()
     require("mcritchlow.plugins.config.go")
+  end }
+
+  use { "ray-x/lsp_signature.nvim", config = function()
+    require("mcritchlow.plugins.config.lsp_signature")  
   end }
 
   -- Syntax
