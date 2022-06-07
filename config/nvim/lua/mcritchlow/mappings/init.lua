@@ -46,8 +46,8 @@ wk.register({
     ["[q"] = { "<cmd>cprevious<cr>", "[MOVEMENT] Previous quickfix" },
     ["]t"] = { "<cmd>tabn<cr>", "[MOVEMENT] Next tab" },
     ["[t"] = { "<cmd>tabp<cr>", "[MOVEMENT] Previous tab" },
-    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()", "[LSP] Previous diagnostic" },
-    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()", "[LSP] Next diagnostic" },
+    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "[LSP] Previous diagnostic" },
+    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "[LSP] Next diagnostic" },
     ["<leader>l"] = {
         name = "[LSP]",
         e = { "<cmd>lua vim.diagnostic.open_float()<cr>", "[LSP] View diagnosticson cursor" },
