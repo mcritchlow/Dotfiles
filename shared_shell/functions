@@ -2,6 +2,18 @@
 # Shell functions
 # --------------------------------------------------------------------
 
+# Kubernetes switch context
+ksc() {
+  kubectl config use-context $(kubectl config get-contexts --no-headers | awk {'print $2'} | fzf)
+}
+
+# Delete all deployments in a namespace
+helm-clean() {
+  local namespace
+  namespace=$(kubectl get ns | awk '{print $1}' | fzf)
+  helm list --namespace "$namespace" --short | xargs -L1 helm delete --namespace "$namespace"
+}
+
 # Build a new rails app w/ docker
 # expected args: app name, app database
 new-rails-app(){
