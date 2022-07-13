@@ -9,9 +9,19 @@ end_line="$3"
 
 cd "${git_file%/*}" || exit 1
 
+# Parameter Expansion is used below. see man bash
+# ${parameter#word}
+# ${parameter##word}
+#        Remove  matching  prefix  pattern.   The word is expanded to produce a pattern just as in pathname expansion, and matched against the expanded value of parameter using the
+#        rules described under Pattern Matching below.  If the pattern matches the beginning of the value of parameter, then the result of the expansion is the  expanded  value  of
+#        parameter with the shortest matching pattern (the ``#'' case) or the longest matching pattern (the ``##'' case) deleted.  If parameter is @ or *, the pattern removal oper‐
+#        ation is applied to each positional parameter in turn, and the expansion is the resultant list.  If parameter is an array variable subscripted with @ or *, the pattern re‐
+#        moval operation is applied to each member of the array in turn, and the expansion is the resultant list.
+
+
 _project_top_level="$(git rev-parse --show-toplevel)"
 project="${_project_top_level##*/}"
-relative_path=${git_file##*/$project/}
+relative_path=${git_file#*/$project/}
 branch=$(git branch --show-current)
 
 # # Determine the remote system (gitlab, github, sr.ht)
