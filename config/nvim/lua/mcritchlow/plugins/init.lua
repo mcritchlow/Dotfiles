@@ -44,6 +44,7 @@ return packer.startup(function(use)
   use { "tpope/vim-markdown", config = function()
     require("mcritchlow.plugins.config.markdown")
   end }
+  use {"ellisonleao/glow.nvim", branch = 'main'}
   use { "tpope/vim-fugitive" }
   use { "tpope/vim-surround" }
   use { "whiteinge/diffconflicts" }
@@ -61,6 +62,7 @@ return packer.startup(function(use)
       require("mcritchlow.plugins.config.nvimtree")
     end
   }
+  use { "gpanders/editorconfig.nvim" }
 
   -- Testing
   use { "vim-test/vim-test", config = function()
@@ -115,8 +117,9 @@ return packer.startup(function(use)
   use { "b0o/SchemaStore.nvim" }
   use { "onsails/lspkind-nvim" }
   use {
-    "williamboman/nvim-lsp-installer",
+    "williamboman/mason.nvim",
     requires = {
+      "williamboman/mason-lspconfig",
       "neovim/nvim-lspconfig",
     },
     config = function()
@@ -141,7 +144,7 @@ return packer.startup(function(use)
   end }
 
   use { "ray-x/lsp_signature.nvim", config = function()
-    require("mcritchlow.plugins.config.lsp_signature")  
+    require("mcritchlow.plugins.config.lsp_signature")
   end }
 
   -- Syntax
@@ -149,7 +152,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     requires = {
       "nvim-treesitter/playground",
-      -- "RRethy/nvim-treesitter-textsubjects"
+      "nvim-treesitter/nvim-treesitter-textobjects"
     },
     run = ":TSUpdate",
     config = function()

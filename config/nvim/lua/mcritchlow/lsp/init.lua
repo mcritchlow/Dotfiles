@@ -1,4 +1,4 @@
-local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local ok, mason = pcall(require, "mason")
 
 if not ok then
   return
@@ -31,42 +31,14 @@ vim.diagnostic.config({
 })
 
 local on_attach = function(client, bufnr)
-  local telescope = require('telescope.builtin')
-  local opts = { buffer = bufnr }
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-  vim.keymap.set('n', 'gd', telescope.lsp_definitions, opts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', 'gi', telescope.lsp_implementations, opts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
-  vim.keymap.set('n', '<leader>wl', function()
-    vim.inspect(vim.lsp.buf.list_workspace_folders())
-  end, opts)
-  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  vim.keymap.set('n', 'gr', telescope.lsp_references, opts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-  vim.keymap.set('n', '<leader>so', telescope.lsp_document_symbols, opts)
+  require("mcritchlow.utils").lsp_keymaps(bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local servers = {
-  "bashls",
-  "dockerls",
-  "jsonls",
-  "null-ls",
-  "sumneko_lua",
-  "yamlls",
-}
-
 -- Install LSP servers
-lsp_installer.setup {
-  ensure_installed = servers,
+mason.setup {
   automatic_installation = true,
   ui = {
     icons = {
@@ -75,6 +47,21 @@ lsp_installer.setup {
       server_uninstalled = "✗"
     },
   },
+}
+
+local servers = {
+  "bashls",
+  "dockerls",
+  "gopls",
+  "jsonls",
+  "null-ls",
+  "sumneko_lua",
+  "terraformls",
+  "yamlls",
+}
+
+require("mason-lspconfig").setup {
+  ensure_installed = servers
 }
 
 for _, server in ipairs(servers) do
