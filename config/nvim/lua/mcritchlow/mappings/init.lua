@@ -98,6 +98,13 @@ wk.register({
 		q = { "<cmd>TroubleToggle quickfix<cr>", "[TROUBLE] Quickfix" },
 		l = { "<cmd>TroubleToggle loclist<cr>", "[TROUBLE] Visit test" },
 	},
+	["<leader>d"] = {
+		b = { "<cmd>GoBreakToggle<cr>", "[DAP] Toggle Breakpoint" },
+		d = { "<cmd>GoDebug<cr>", "[DAP] Run debugger" },
+		k = { "<cmd>GoDbgKeys<cr>", "[DAP] Show keymapping for debug mode" },
+		name = "[DAP]",
+		t = { "<cmd>GoDebug -t<cr>", "[DAP] Run debugger for tests" },
+	},
 }, normal_opts)
 
 wk.setup {}

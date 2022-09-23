@@ -139,6 +139,19 @@ return packer.startup(function(use)
   use { "kana/vim-textobj-indent" }
   use { "nelstrom/vim-textobj-rubyblock" }
 
+  -- debuggers
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = {
+      "mfussenegger/nvim-dap",
+      "theHamsta/nvim-dap-virtual-text",
+      "ray-x/guihua.lua",
+    },
+    config = function()
+      require("mcritchlow.plugins.config.dap")
+    end
+  }
+
   use { "ray-x/go.nvim", config = function()
     require("mcritchlow.plugins.config.go")
   end }
