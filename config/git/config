@@ -49,8 +49,10 @@
 
   pl = pull
   plt = pull --tags
-  plom = pull origin trunk
-  plomr = pull origin trunk --rebase
+  plom = pull origin main
+  plot = pull origin trunk
+  plomr = pull origin main --rebase
+  plotr = pull origin trunk --rebase
   plomt = pull origin trunk --tags
   plum = pull upstream trunk
   plumt = pull upstream trunk --tags
