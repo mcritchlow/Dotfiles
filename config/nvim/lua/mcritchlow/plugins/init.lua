@@ -38,6 +38,8 @@ return packer.startup(function(use)
 
   -- Theme
   use { "projekt0n/github-nvim-theme" }
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+  use { "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" }
 
   -- Utils
   use { "tpope/vim-repeat" }

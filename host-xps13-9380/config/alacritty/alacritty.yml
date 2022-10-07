@@ -138,98 +138,85 @@ debug:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# github Alacritty Colors
 colors:
-  # Default colors
-  primary:
-    background: '0xffffff'
-    foreground: '0x586069'
+    # Default colors
+    primary:
+        background: "#EFF1F5" # base
+        foreground: "#4C4F69" # text
+        # Bright and dim foreground colors
+        dim_foreground: "#4C4F69" # text
+        bright_foreground: "#4C4F69" # text
 
-  cursor:
-    text: '0xFCFCFA'
-    cursor: '0xFF6188'
+    # Cursor colors
+    cursor:
+        text: "#EFF1F5" # base
+        cursor: "#DC8A78" # rosewater
+    vi_mode_cursor:
+        text: "#EFF1F5" # base
+        cursor: "#7287FD" # lavender
 
-  # Normal colors
-  normal:
-    black:   '0xCCCCCC'
-    red:     '0xd03d3d'
-    green:   '0x14ce14'
-    yellow:  '0x949800'
-    blue:    '0x0451a5'
-    magenta: '0xbc05bc'
-    cyan:    '0x0598BC'
-    white:   '0x586069'
+    # Search colors
+    search:
+        matches:
+            foreground: "#EFF1F5" # base
+            background: "#6C6F85" # subtext0
+        focused_match:
+            foreground: "#EFF1F5" # base
+            background: "#40A02B" # green
+        footer_bar:
+            foreground: "#EFF1F5" # base
+            background: "#6C6F85" # subtext0
 
-  # Bright colors
-  bright:
-    black:   '0x666666'
-    red:     '0xcd3131'
-    green:   '0x14ce14'
-    yellow:  '0xb5ba00'
-    blue:    '0x0451a5'
-    magenta: '0xbc05bc'
-    cyan:    '0x0598BC'
-    white:   '0x586069'
+    # Keyboard regex hints
+    hints:
+        start:
+            foreground: "#EFF1F5" # base
+            background: "#DF8E1D" # yellow
+        end:
+            foreground: "#EFF1F5" # base
+            background: "#6C6F85" # subtext0
 
-  indexed_colors:
-    - { index: 16, color: '0xd18616' }
-    - { index: 17, color: '0xcd3131' }
+    # Selection colors
+    selection:
+        text: "#EFF1F5" # base
+        background: "#DC8A78" # rosewater
 
-#colors:
-#  primary:
-#    background: "0x2c2e34"
-#    foreground: "0xe2e2e3"
+    # Normal colors
+    normal:
+        black: "#5C5F77" # subtext1
+        red: "#D20F39" # red
+        green: "#40A02B" # green
+        yellow: "#DF8E1D" # yellow
+        blue: "#1E66F5" # blue
+        magenta: "#EA76CB" # pink
+        cyan: "#179299" # teal
+        white: "#ACB0BE" # surface2
 
-#  cursor:
-#    text: '0xFCFCFA'
-#    cursor: '0xFF6188'
+    # Bright colors
+    bright:
+        black: "#6C6F85" # subtext0
+        red: "#D20F39" # red
+        green: "#40A02B" # green
+        yellow: "#DF8E1D" # yellow
+        blue: "#1E66F5" # blue
+        magenta: "#EA76CB" # pink
+        cyan: "#179299" # teal
+        white: "#BCC0CC" # surface1
 
-#  normal:
-#    black: "0x181819"
-#    red: "0xfc5d7c"
-#    green: "0x9ed072"
-#    yellow: "0xe7c664"
-#    blue: "0x76cce0"
-#    magenta: "0xb39df3"
-#    cyan: "0xf39660"
-#    white: "0xe2e2e3"
+    # Dim colors
+    dim:
+        black: "#5C5F77" # subtext1
+        red: "#D20F39" # red
+        green: "#40A02B" # green
+        yellow: "#DF8E1D" # yellow
+        blue: "#1E66F5" # blue
+        magenta: "#EA76CB" # pink
+        cyan: "#179299" # teal
+        white: "#ACB0BE" # surface2
 
-#  bright:
-#    black: "0x181819"
-#    red: "0xfc5d7c"
-#    green: "0x9ed072"
-#    yellow: "0xe7c664"
-#    blue: "0x76cce0"
-#    magenta: "0xb39df3"
-#    cyan: "0xf39660"
-#    white: "0xe2e2e3"
-
-#  # Indexed Colors
-#  #
-#  # The indexed colors include all colors from 16 to 256.
-#  # When these are not set, they're filled with sensible defaults.
-#  #
-#  # Example:
-#  #   `- { index: 16, color: '0xff00ff' }`
-#  #
-#  indexed_colors: []
-  # Keyboard regex hints
-  hints:
-    # Fist character in the hint label
-    #
-    # Allowed values are CellForeground/CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    start:
-      foreground: '#1d1f21'
-      background: '#e9ff5e'
-
-    # All characters after the first one in the hint label
-    #
-    # Allowed values are CellForeground/CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    end:
-      foreground: '#e9ff5e'
-      background: '#1d1f21'
+    indexed_colors:
+        - { index: 16, color: "#FE640B" }
+        - { index: 17, color: "#DC8A78" }
 
 # Visual Bell
 #

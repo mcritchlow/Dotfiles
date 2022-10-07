@@ -26,12 +26,12 @@ bind-key U show-urls
 bind-key x pb-delete
 bind-key T toggle-show-read-feeds
 
-color listnormal color7 default
+color listnormal default default
 color listfocus black color7 standout
-color listnormal_unread color15 default
-color listfocus_unread black color15 standout
+color listnormal_unread color7 default
+color listfocus_unread black color7 standout
 color info color15 black
-color article white default
+color article black default
 
 browser linkhandler
 macro , open-in-browser
