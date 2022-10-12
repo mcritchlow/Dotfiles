@@ -1,3 +1,13 @@
+-- Highlight all instances of TODO
+local todo_highlight_group = vim.api.nvim_create_augroup("HighlightTODO", { clear = true })
+vim.api.nvim_create_autocmd({"WinEnter","VimEnter"}, {
+  pattern = "*",
+  callback = function()
+    vim.fn.matchadd('Todo', "TODO", -1)
+  end,
+  group = todo_highlight_group,
+})
+
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
