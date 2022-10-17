@@ -30,8 +30,21 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
+-- For auto-format w/ lsp on save
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local on_attach = function(client, bufnr)
   require("mcritchlow.utils").lsp_keymaps(bufnr)
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+    })
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
