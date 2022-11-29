@@ -36,10 +36,16 @@ _M.init = function()
         cmp = true,
         telescope = true,
         nvimtree = true,
+        gitsigns = false,
+        dashboard = false,
+        notify = false,
         harpoon = true,
         markdown = true,
         which_key = true,
         lsp_trouble = true,
+        indent_blankline = {
+          enabled = false
+        },
         dap = {
           enabled = true,
           enabled_ui = true
@@ -63,8 +69,7 @@ _M.init = function()
       color_overrides = {},
       highlight_overrides = {},
     })
-    -- vim.g.colorscheme = "catppuccin"
-    vim.cmd [[colorscheme catppuccin]]
+    vim.api.nvim_command "colorscheme catppuccin"
   end
 end
 
