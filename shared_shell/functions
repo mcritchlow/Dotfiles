@@ -7,6 +7,26 @@ ksc() {
   kubectl config use-context $(kubectl config get-contexts --no-headers | awk {'print $2'} | fzf)
 }
 
+# Kubernetes setup a debug session pod in a namespace
+# we assume the k8s context is already set
+k8s-debug-start() {
+  local namespace
+  podname='ephemeral-debug-pod'
+  namespace=$(kubectl get ns | awk '{print $1}' | fzf)
+  kubectl run "$podname" --image=k8s.gcr.io/pause --wait=true --restart=Never --namespace="$namespace"
+  kubectl debug -it "$podname" --image=alpine:latest --target="$podname" --namespace "$namespace"
+}
+
+# Kubernetes delete a debug session pod from a namespace
+# we assume the k8s context is already set
+k8s-debug-stop() {
+  local namespace
+  podname='ephemeral-debug-pod'
+  namespace=$(kubectl get ns | awk '{print $1}' | fzf)
+  kubectl delete pod --namespace="$namespace" "$podname"
+}
+
+
 # Delete all deployments in a namespace
 helm-clean() {
   local namespace
