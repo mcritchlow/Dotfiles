@@ -38,20 +38,18 @@ return packer.startup(function(use)
 
   -- Theme
   use { "projekt0n/github-nvim-theme" }
-  -- use { "catppuccin/nvim", as = "catppuccin" }
-  use { "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" }
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Utils
   use { "tpope/vim-repeat" }
   use { "tpope/vim-markdown", config = function()
     require("mcritchlow.plugins.config.markdown")
   end }
-  use {"ellisonleao/glow.nvim", branch = 'main'}
   use { "tpope/vim-fugitive" }
   use { "tpope/vim-surround" }
   use { "whiteinge/diffconflicts" }
   use { "christoomey/vim-sort-motion" }
-  use { "folke/lua-dev.nvim" }
+  use { "folke/neodev.nvim" }
   use { "ThePrimeagen/harpoon", config = function()
     require("mcritchlow.plugins.config.harpoon")
   end }
