@@ -1,7 +1,7 @@
 #!/bin/sh
-GROUP="2-Step Secured - EasyConnect"
+GROUP="2-Step Secured - allthruucsd"
 USERNAME="mcritchlow@library"
-VPN_SERVER="vpn.ucsd.edu"
+VPN_SERVER="vpn-2.ucsd.edu"
 PIDFILE=/run/openconnect_vpn.pid
 
 PASS=$(pass show matt@critchlow.xyz/Mail/UCSDMail | head -n1)
