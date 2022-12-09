@@ -13,6 +13,8 @@ local harpoon_repos = {
     "$HOME/projects/ucsd/surfliner/superskunk",
     "$HOME/projects/ucsd/alma-apbatch",
     "$HOME/projects/ucsd/highfive",
+    "$HOME/projects/ucsd/patronload",
+    "$HOME/projects/ucsd/damspas",
 }
 
 local compose_commands = {
