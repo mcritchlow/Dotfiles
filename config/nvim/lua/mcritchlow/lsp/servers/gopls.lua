@@ -49,6 +49,10 @@ M.setup = function(on_attach, capabilities)
     -- lsp_cfg = false
     lsp_cfg = {
       capabilities = go_caps,
+    },
+    lsp_inlay_hints = {
+      enable = true,
+      -- only_current_line = true
     }
   })
 
@@ -70,21 +74,20 @@ M.setup = function(on_attach, capabilities)
           test = true,
           tidy = true,
         },
-        hints = {
-          assignVariableTypes = true,
-          compositeLiteralFields = true,
-          compositeLiteralTypes = true,
-          constantValues = true,
-          functionTypeParameters = true,
-          parameterNames = true,
-          rangeVariableTypes = true,
-        },
+        -- hints = {
+        --   assignVariableTypes = true,
+        --   compositeLiteralFields = true,
+        --   compositeLiteralTypes = true,
+        --   constantValues = true,
+        --   functionTypeParameters = true,
+        --   parameterNames = true,
+        --   rangeVariableTypes = true,
+        -- },
         usePlaceholders = true,
         completeUnimported = true,
         staticcheck = true,
         matcher = "Fuzzy",
         diagnosticsDelay = "500ms",
-        experimentalWatchedFileDelay = "100ms",
         symbolMatcher = "fuzzy",
       }
     },
