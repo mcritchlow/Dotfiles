@@ -13,7 +13,7 @@ M.setup = function(on_attach, capabilities)
   })
 
   local lspconfig = require("lspconfig")
-  lspconfig.sumneko_lua.setup({
+  lspconfig.lua_ls.setup({
     settings = {
       Lua = {
         completion = {

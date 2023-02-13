@@ -4,6 +4,9 @@ if not ok then
   return
 end
 
+-- Enable debug logging if/when needed
+vim.lsp.set_log_level("debug")
+
 -- Some LSP UI customization
 local signs = require("mcritchlow.utils").signs
 for type, icon in pairs(signs) do
@@ -28,6 +31,7 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 -- we want no virtual_text but show via hover
 vim.diagnostic.config({
   virtual_text = false,
+  severity_sort = true,
 })
 
 -- For auto-format w/ lsp on save
@@ -67,15 +71,15 @@ local servers = {
   "dockerls",
   "gopls",
   "jsonls",
-  "null-ls",
-  "sumneko_lua",
-  "terraformls",
+  "lua_ls",
   "yamlls",
 }
 
 require("mason-lspconfig").setup {
   ensure_installed = servers
 }
+
+table.insert(servers, "null-ls")
 
 for _, server in ipairs(servers) do
   require("mcritchlow.lsp.servers." .. server).setup(on_attach, capabilities)
