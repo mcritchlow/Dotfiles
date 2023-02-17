@@ -94,6 +94,15 @@ _M.lsp_keymaps = function(bufnr)
       prefix = "",
       silent = true,
   }
+  -- normal mode
+  local vwk_opts = {
+      mode = "v",
+      buffer = bufnr,
+      noremap = true,
+      nowait = true,
+      prefix = "",
+      silent = true,
+  }
   local telescope = require('telescope.builtin')
   local opts = { buffer = bufnr }
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -112,6 +121,12 @@ _M.lsp_keymaps = function(bufnr)
       sh = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "[LSP] Signature Help" },
     }
   }, wk_opts)
+
+  wk.register({
+    ["<leader>l"] = {
+      ca = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "[LSP] Code Actions" },
+    }
+  }, vwk_opts)
 
   -- wk.reg
 
