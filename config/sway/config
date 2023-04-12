@@ -11,7 +11,7 @@ set $wallpaper /home/mcritchlow/Pictures/background.jpg
 #
 # Logo key. Use Mod1 for Alt.
 # Logo key. Use Mod4 for Super.
-set $mod Mod1
+set $mod Mod4
 
 # Application defaults
 set $term alacritty

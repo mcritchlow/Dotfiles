@@ -14,6 +14,7 @@
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 #
+# advantage 360 10730:864:Kinesis_Kinesis_Adv360
 # default Dell keyboard layout
 # swap caps and escape
 input "1:1:AT_Translated_Set_2_keyboard" {
