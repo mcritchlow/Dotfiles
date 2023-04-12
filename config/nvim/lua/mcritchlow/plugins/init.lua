@@ -89,8 +89,6 @@ return packer.startup(function(use)
       "hrsh7th/cmp-vsnip",
       "hrsh7th/vim-vsnip",
       "hrsh7th/vim-vsnip-integ",
-      "https://git.sr.ht/~mcritchlow/cmp-gitlab-issues",
-      "https://git.sr.ht/~mcritchlow/cmp-jira-issues",
       "kyazdani42/nvim-web-devicons",
       "rafamadriz/friendly-snippets",
     },
@@ -105,13 +103,15 @@ return packer.startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
       "cwebster2/github-coauthors.nvim",
-      "nvim-telescope/telescope-ui-select.nvim"
     },
     config = function()
       require("mcritchlow.plugins.config.telescope")
     end
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+
+  -- nicer vim.ui.select and vim.ui.input
+  use {'stevearc/dressing.nvim'}
 
   -- LSP
   use { "b0o/SchemaStore.nvim" }

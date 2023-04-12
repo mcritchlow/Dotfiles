@@ -68,6 +68,7 @@ mason.setup {
 
 local servers = {
   "bashls",
+  "docker_compose_language_service",
   "dockerls",
   "gopls",
   "jsonls",

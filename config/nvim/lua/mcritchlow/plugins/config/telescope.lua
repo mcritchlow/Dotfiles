@@ -5,11 +5,26 @@ if not ok then
 end
 
 local actions = require('telescope.actions')
+local action_state = require("telescope.actions.state")
+
+local custom_actions = {}
+
+function custom_actions.fzf_multi_select(prompt_bufnr)
+  local picker = action_state.get_current_picker(prompt_bufnr)
+  local num_selections = table.getn(picker:get_multi_selection())
+
+  if num_selections > 1 then
+    -- actions.file_edit throws - context of picker seems to change
+    --actions.file_edit(prompt_bufnr)
+    actions.send_selected_to_qflist(prompt_bufnr)
+    actions.open_qflist()
+  else
+    actions.file_edit(prompt_bufnr)
+  end
+end
+
 telescope.setup {
   extensions = {
-    ["ui-select"] = {
-      require("telescope.themes").get_cursor {}
-    },
     fzf = {
       fuzzy = true, -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
@@ -70,8 +85,16 @@ telescope.setup {
       i = {
         ["<esc>"] = actions.close,
         ["<C-x>"] = false,
+        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+        ["<cr>"] = custom_actions.fzf_multi_select,
         ["<C-q>"] = actions.send_to_qflist,
       },
+      n = {
+        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+        ["<cr>"] = custom_actions.fzf_multi_select
+      }
     }
   }
 }
@@ -79,8 +102,6 @@ telescope.setup {
 require('telescope').load_extension('fzf')
 -- Git coauthors (which-key mapping in mappings.lua)
 require('telescope').load_extension('githubcoauthors')
--- Have telescope used for vim.ui.select
-require("telescope").load_extension("ui-select")
 
 M = {}
 
