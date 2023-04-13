@@ -44,7 +44,6 @@ local on_attach = function(client, bufnr)
       group = augroup,
       buffer = bufnr,
       callback = function()
-        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
         vim.lsp.buf.format({ bufnr = bufnr })
       end,
     })
@@ -80,8 +79,13 @@ require("mason-lspconfig").setup {
   ensure_installed = servers
 }
 
-table.insert(servers, "null-ls")
+-- Create separate table to include null-ls for setup
+-- mason-lspconfig gets confused if we add null-ls
+local lsp_servers = { "null-ls" }
+for _, s in ipairs(servers) do
+  table.insert(lsp_servers, s)
+end
 
-for _, server in ipairs(servers) do
+for _, server in ipairs(lsp_servers) do
   require("mcritchlow.lsp.servers." .. server).setup(on_attach, capabilities)
 end
