@@ -62,7 +62,6 @@ return packer.startup(function(use)
       require("mcritchlow.plugins.config.nvimtree")
     end
   }
-  use { "gpanders/editorconfig.nvim" }
 
   -- Testing
   use { "vim-test/vim-test", config = function()
