@@ -1,85 +1,71 @@
--- Ensure paq is installed
--- Auto install packer.nvim if not exists
-local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = vim.fn.system {
+-- Ensure Lazy is installed
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-vim.cmd [[packadd packer.nvim]]
+vim.opt.rtp:prepend(lazypath)
 
-local ok, packer = pcall(require, "packer")
-
-if not ok then
-  return
-end
-
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "single" }
+require("lazy").setup({
+  {
+    "catppuccin/nvim",
+    -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    name = "catppuccin",
+    config = function()
+      require("mcritchlow.plugins.config.theme")
     end,
-    prompt_border = "single",
   },
-  git = {
-    clone_timeout = 600,
-  },
-  auto_clean = true,
-  compile_on_sync = true
-}
-
-return packer.startup(function(use)
-  use { "wbthomason/packer.nvim" }
-
-  -- Theme
-  use { "projekt0n/github-nvim-theme" }
-  use { "catppuccin/nvim", as = "catppuccin" }
-
   -- Utils
-  use { "tpope/vim-repeat" }
-  use { "tpope/vim-markdown", config = function()
-    require("mcritchlow.plugins.config.markdown")
-  end }
-  use { "tpope/vim-fugitive" }
-  use { "tpope/vim-surround" }
-  use { "whiteinge/diffconflicts" }
-  use { "christoomey/vim-sort-motion" }
-  use { "folke/neodev.nvim" }
-  use { "ThePrimeagen/harpoon", config = function()
-    require("mcritchlow.plugins.config.harpoon")
-  end }
-  use {
+  "tpope/vim-repeat",
+  {
+    "tpope/vim-markdown",
+    config = function()
+      require("mcritchlow.plugins.config.markdown")
+    end,
+  },
+  "tpope/vim-fugitive",
+  "tpope/vim-surround",
+  "whiteinge/diffconflicts",
+  { "christoomey/vim-sort-motion", lazy = false },
+  "folke/neodev.nvim",
+  {
+    "ThePrimeagen/harpoon",
+    config = function()
+      require("mcritchlow.plugins.config.harpoon")
+    end,
+  },
+  {
     "kyazdani42/nvim-tree.lua",
-    requires = {
+    dependencies = {
       "kyazdani42/nvim-web-devicons",
     },
     config = function()
       require("mcritchlow.plugins.config.nvimtree")
-    end
-  }
-
-  -- Testing
-  use { "vim-test/vim-test", config = function()
-    require("mcritchlow.plugins.config.vim_test")
-  end }
-
-  -- Keymapping fancy fancy
-  use { "folke/which-key.nvim" }
-
-  -- Comment
-  use { "numToStr/Comment.nvim", config = function()
-    require("mcritchlow.plugins.config.comment")
-  end }
-
-  -- Completion
-  use {
+    end,
+  },
+  {
+    "vim-test/vim-test",
+    config = function()
+      require("mcritchlow.plugins.config.vim_test")
+    end,
+  },
+  "folke/which-key.nvim",
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("mcritchlow.plugins.config.comment")
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
-    requires = {
+    dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
@@ -93,91 +79,90 @@ return packer.startup(function(use)
     },
     config = function()
       require("mcritchlow.plugins.config.cmp")
-    end
-  }
-
-  -- Telescope
-  use {
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "cwebster2/github-coauthors.nvim",
     },
     config = function()
       require("mcritchlow.plugins.config.telescope")
-    end
-  }
-  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-
-  -- nicer vim.ui.select and vim.ui.input
-  use {'stevearc/dressing.nvim'}
-
+    end,
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make"
+  },
+  "stevearc/dressing.nvim",
   -- LSP
-  use { "b0o/SchemaStore.nvim" }
-  use { "onsails/lspkind-nvim" }
-  use {
+  "b0o/SchemaStore.nvim",
+  "onsails/lspkind-nvim",
+  {
     "williamboman/mason.nvim",
-    requires = {
+    dependencies = {
       "williamboman/mason-lspconfig",
       "neovim/nvim-lspconfig",
     },
     config = function()
       require("mcritchlow.lsp")
-    end
-  }
-  use {
+    end,
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-  }
-  use { "folke/trouble.nvim", config = function()
-    require("mcritchlow.plugins.config.trouble")
-  end }
-
-  -- Text Object stuff
-  use { "kana/vim-textobj-user" }
-  use { "kana/vim-textobj-indent" }
-  use { "nelstrom/vim-textobj-rubyblock" }
-
-  -- debuggers
-  use {
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "folke/trouble.nvim",
+    config = function()
+      require("mcritchlow.plugins.config.trouble")
+    end,
+  },
+  -- "kana/vim-textobj-user",
+  -- "kana/vim-textobj-indent",
+  -- "nelstrom/vim-textobj-rubyblock",
+  {
     "rcarriga/nvim-dap-ui",
-    requires = {
+    dependencies = {
       "mfussenegger/nvim-dap",
       "theHamsta/nvim-dap-virtual-text",
       "ray-x/guihua.lua",
     },
     config = function()
       require("mcritchlow.plugins.config.dap")
-    end
-  }
+    end,
+  },
+  {
+    "ray-x/go.nvim",
+    config = function()
+      require("mcritchlow.plugins.config.go")
+    end,
+  },
 
-  use { "ray-x/go.nvim", config = function()
-    require("mcritchlow.plugins.config.go")
-  end }
-
-  use { "ray-x/lsp_signature.nvim", config = function()
-    require("mcritchlow.plugins.config.lsp_signature")
-  end }
-
-  -- Syntax
-  use {
+  {
+    "ray-x/lsp_signature.nvim",
+    config = function()
+      require("mcritchlow.plugins.config.lsp_signature")
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
-    requires = {
+    dependencies = {
       "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-textobjects"
     },
-    run = ":TSUpdate",
+    build = ":TSUpdate",
     config = function()
       require("mcritchlow.plugins.config.treesitter")
-    end
-  }
-  use { "norcalli/nvim-colorizer.lua", config = function()
-    require("mcritchlow.plugins.config.colorizer")
-  end }
-  use { "sheerun/vim-polyglot" }
-  use { "vim-ruby/vim-ruby" }
-
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+    end,
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("mcritchlow.plugins.config.colorizer")
+    end,
+  },
+  "sheerun/vim-polyglot",
+  "vim-ruby/vim-ruby",
+})

@@ -1,5 +1,4 @@
 local utils = require("mcritchlow.utils")
-local theme = require("mcritchlow.theme")
 
 vim.g.mapleader = ","
 
@@ -38,6 +37,3 @@ vim.opt.diffopt:append('vertical')
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
-
--- Setup theme
-theme.init()
