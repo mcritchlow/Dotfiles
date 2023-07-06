@@ -8,7 +8,6 @@ local ts_languages = {
   "bash",
   "dockerfile",
   "go",
-  "vimdoc",
   "java",
   "javascript",
   "json",
@@ -22,6 +21,7 @@ local ts_languages = {
   "rust",
   "scss",
   "vim",
+  "vimdoc",
   "yaml"
 }
 

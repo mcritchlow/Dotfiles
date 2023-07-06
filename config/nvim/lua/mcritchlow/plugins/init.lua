@@ -119,9 +119,15 @@ require("lazy").setup({
       require("mcritchlow.plugins.config.trouble")
     end,
   },
-  -- "kana/vim-textobj-user",
-  -- "kana/vim-textobj-indent",
-  -- "nelstrom/vim-textobj-rubyblock",
+  { "kana/vim-textobj-user", name="vim-textobj-user" },
+  {
+    "kana/vim-textobj-indent",
+    dependencies = { "vim-textobj-user" },
+  },
+  {
+    "nelstrom/vim-textobj-rubyblock",
+    dependencies = { "vim-textobj-user" },
+  },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
