@@ -13,6 +13,7 @@ M.setup = function(on_attach, capabilities)
         settings = {
             redhat = { telemetry = { enabled = false } },
             yaml = {
+                customTags = { "!reference sequence" },
                 completion = true,
                 schemaStore = {
                     enable = true,
