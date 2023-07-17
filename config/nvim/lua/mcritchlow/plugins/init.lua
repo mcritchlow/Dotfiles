@@ -41,10 +41,11 @@ require("lazy").setup({
       require("mcritchlow.plugins.config.harpoon")
     end,
   },
+  { "kyazdani42/nvim-web-devicons", name = "nvim-web-devicons" },
   {
     "kyazdani42/nvim-tree.lua",
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-web-devicons",
     },
     config = function()
       require("mcritchlow.plugins.config.nvimtree")
@@ -74,17 +75,18 @@ require("lazy").setup({
       "hrsh7th/cmp-vsnip",
       "hrsh7th/vim-vsnip",
       "hrsh7th/vim-vsnip-integ",
-      "kyazdani42/nvim-web-devicons",
+      "nvim-web-devicons",
       "rafamadriz/friendly-snippets",
     },
     config = function()
       require("mcritchlow.plugins.config.cmp")
     end,
   },
+  { "nvim-lua/plenary.nvim", name = "plenary.nvim" },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      "plenary.nvim",
       "cwebster2/github-coauthors.nvim",
     },
     config = function()
@@ -111,7 +113,7 @@ require("lazy").setup({
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "plenary.nvim" },
   },
   {
     "folke/trouble.nvim",
