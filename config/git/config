@@ -20,7 +20,7 @@
   cma = commit -a -m
   ci = commit -v
 
-  fuckit = reset --hard
+  abort = reset --hard
 
   r = reset
   r1 = reset HEAD^
