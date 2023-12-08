@@ -64,10 +64,6 @@ alias orphans="pacman -Qdt"
 alias remove-orphans="sudo pacman -Rns \$(pacman -Qtdq)"
 alias reflector-update="sudo reflector --country 'United States' --latest 200 --age 24 --sort rate --save /etc/pacman.d/mirrorlist"
 
-# email
-alias email-ucsd="neomutt -F /home/mcritchlow/.mutt/muttrc.work"
-alias email-personal="neomutt -F /home/mcritchlow/.mutt/muttrc.kolab"
-
 # Tmux
 alias tls="tmux ls"
 alias td="tmux detach"
