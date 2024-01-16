@@ -33,7 +33,7 @@ require("lazy").setup({
   "tpope/vim-fugitive",
   "tpope/vim-surround",
   "whiteinge/diffconflicts",
-  { "christoomey/vim-sort-motion", lazy = false },
+  { "christoomey/vim-sort-motion",  lazy = false },
   "folke/neodev.nvim",
   {
     "ThePrimeagen/harpoon",
@@ -57,7 +57,14 @@ require("lazy").setup({
       require("mcritchlow.plugins.config.vim_test")
     end,
   },
-  "folke/which-key.nvim",
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+  },
   {
     "numToStr/Comment.nvim",
     config = function()
@@ -121,7 +128,7 @@ require("lazy").setup({
       require("mcritchlow.plugins.config.trouble")
     end,
   },
-  { "kana/vim-textobj-user", name="vim-textobj-user" },
+  { "kana/vim-textobj-user", name = "vim-textobj-user" },
   {
     "kana/vim-textobj-indent",
     dependencies = { "vim-textobj-user" },
@@ -143,6 +150,15 @@ require("lazy").setup({
   },
   {
     "ray-x/go.nvim",
+    dependencies = { -- optional packages
+      "ray-x/guihua.lua",
+      "williamboman/mason-lspconfig",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()',
     config = function()
       require("mcritchlow.plugins.config.go")
     end,
