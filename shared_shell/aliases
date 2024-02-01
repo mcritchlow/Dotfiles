@@ -58,7 +58,7 @@ alias resume-notifications='killall -SIGUSR2 dunst'
 alias pacman-update="ansible localhost -m pacman -a 'update_cache=yes upgrade=yes'"
 # alias pacman-update="clear && && ansible-playbook ~/projects/personal/laptop/packages.yml"
 alias aur-update="clear && ansible-playbook ~/projects/personal/laptop/aur.yml"
-alias checkupdates="checkupdates | less"
+alias checkupdates="checkupdates | column -t | more"
 alias aur-update-work="clear && echo AUR time! | figlet && cd ~/projects/personal/laptop/ && ansible-playbook aur.yml"
 alias orphans="pacman -Qdt"
 alias remove-orphans="sudo pacman -Rns \$(pacman -Qtdq)"
