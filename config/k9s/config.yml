@@ -1,12 +1,24 @@
 k9s:
+  ui:
+    skin: catppuccin-latte
+  liveViewAutoRefresh: false
   refreshRate: 2
   maxConnRetry: 5
   enableMouse: false
+  enableImageScan: false
   headless: false
   logoless: false
   crumbsless: false
   readOnly: false
+  noExitOnCtrlC: false
   noIcons: false
+  shellPod:
+    image: busybox:1.35.0
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi
+  skipLatestRevCheck: false
   logger:
     tail: 1000
     buffer: 5000
@@ -14,27 +26,34 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: libcluster-prod
-  currentCluster: libcluster-prod
+  currentContext: lib-k8s-np-a
+  currentCluster: lib-k8s-np-a
+  keepMissingClusters: false
   clusters:
-    libcluster-prod:
+    lib-k8s-a:
       namespace:
-        active: shoreline-staging
+        active: highfive-prod
+        lockFavorites: false
         favorites:
-        - shoreline-staging
+        - highfive-prod
         - default
       view:
         active: pods
       featureGates:
         nodeShell: false
-      shellPod:
-        image: busybox:1.31
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
+      portForwardAddress: localhost
+    lib-k8s-np-a:
+      namespace:
+        active: tidewater-review
+        lockFavorites: false
+        favorites:
+        - tidewater-review
+        - all
+        - default
+      view:
+        active: pods
+      featureGates:
+        nodeShell: false
       portForwardAddress: localhost
   thresholds:
     cpu:
@@ -43,3 +62,5 @@ k9s:
     memory:
       critical: 90
       warn: 70
+  screenDumpDir: /tmp/k9s-screens-mcritchlow
+  disablePodCounting: false

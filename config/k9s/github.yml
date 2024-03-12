@@ -1,15 +1,16 @@
-# K9s Gruvbox Light Skin Contributed by [@indiebrain](https://github.com/indiebrain)
-foreground: &foreground "#3c3735"
-background: &background "#fbf1c7"
-current_line: &current_line "#ebdbb2"
+# K9s Github Light Skin Contributed by [@indiebrain](https://github.com/indiebrain)
+foreground: &foreground "#586069"
+background: &background "#ffffff"
+current_line: &current_line "#FCFCFA"
 selection: &selection "#3c3735"
 comment: &comment "#bdad93"
-cyan: &cyan "#689d69"
-green: &green "#989719"
+cyan: &cyan "#0598BC"
+yellow: &yellow "#949800"
+green: &green "#14ce14"
 orange: &orange "#d79920"
-magenta: &magenta "#b16185"
-blue: &blue "#448488"
-red: &red "#cc231c"
+magenta: &magenta "#bc05bc"
+blue: &blue "#0451a5"
+red: &red "#d03d3d"
 
 k9s:
   body:
@@ -55,7 +56,7 @@ k9s:
       modifyColor: *blue
       addColor: *green
       errorColor: *red
-      highlightcolor: *orange
+      highlightColor: *orange
       killColor: *comment
       completedColor: *comment
     title:
