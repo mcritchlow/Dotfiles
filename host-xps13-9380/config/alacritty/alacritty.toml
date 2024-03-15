@@ -5,84 +5,84 @@ animation = "EaseOutExpo"
 color = "0xffffff"
 duration = 0
 
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[[colors.indexed_colors]]
-color = "#FE640B"
-index = 16
-
-[[colors.indexed_colors]]
-color = "#DC8A78"
-index = 17
-
-[colors.bright]
-black = "#6C6F85"
-blue = "#1E66F5"
-cyan = "#179299"
-green = "#40A02B"
-magenta = "#EA76CB"
-red = "#D20F39"
-white = "#BCC0CC"
-yellow = "#DF8E1D"
-
-[colors.cursor]
-cursor = "#DC8A78"
-text = "#EFF1F5"
-
-[colors.dim]
-black = "#5C5F77"
-blue = "#1E66F5"
-cyan = "#179299"
-green = "#40A02B"
-magenta = "#EA76CB"
-red = "#D20F39"
-white = "#ACB0BE"
-yellow = "#DF8E1D"
-
-[colors.hints.end]
-background = "#6C6F85"
-foreground = "#EFF1F5"
-
-[colors.hints.start]
-background = "#DF8E1D"
-foreground = "#EFF1F5"
-
-[colors.normal]
-black = "#5C5F77"
-blue = "#1E66F5"
-cyan = "#179299"
-green = "#40A02B"
-magenta = "#EA76CB"
-red = "#D20F39"
-white = "#ACB0BE"
-yellow = "#DF8E1D"
+# [colors]
+# draw_bold_text_with_bright_colors = true
 
 [colors.primary]
 background = "#EFF1F5"
-bright_foreground = "#4C4F69"
-dim_foreground = "#4C4F69"
 foreground = "#4C4F69"
+dim_foreground = "#4C4F69"
+bright_foreground = "#4C4F69"
 
-[colors.search.focused_match]
-background = "#40A02B"
-foreground = "#EFF1F5"
-
-# [colors.search.footer_bar]
-# background = "#6C6F85"
-# foreground = "#EFF1F5"
-
-[colors.search.matches]
-background = "#6C6F85"
-foreground = "#EFF1F5"
-
-[colors.selection]
-background = "#DC8A78"
+[colors.cursor]
 text = "#EFF1F5"
+cursor = "#DC8A78"
 
 [colors.vi_mode_cursor]
-cursor = "#7287FD"
 text = "#EFF1F5"
+cursor = "#7287FD"
+
+[colors.search.matches]
+foreground = "#EFF1F5"
+background = "#6C6F85"
+
+[colors.search.focused_match]
+foreground = "#EFF1F5"
+background = "#40A02B"
+
+[colors.footer_bar]
+foreground = "#EFF1F5"
+background = "#6C6F85"
+
+[colors.hints.start]
+foreground = "#EFF1F5"
+background = "#DF8E1D"
+
+[colors.hints.end]
+foreground = "#EFF1F5"
+background = "#6C6F85"
+
+[colors.selection]
+text = "#EFF1F5"
+background = "#DC8A78"
+
+[colors.normal]
+black = "#5C5F77"
+red = "#D20F39"
+green = "#40A02B"
+yellow = "#DF8E1D"
+blue = "#1E66F5"
+magenta = "#EA76CB"
+cyan = "#179299"
+white = "#ACB0BE"
+
+[colors.bright]
+black = "#6C6F85"
+red = "#D20F39"
+green = "#40A02B"
+yellow = "#DF8E1D"
+blue = "#1E66F5"
+magenta = "#EA76CB"
+cyan = "#179299"
+white = "#BCC0CC"
+
+[colors.dim]
+black = "#5C5F77"
+red = "#D20F39"
+green = "#40A02B"
+yellow = "#DF8E1D"
+blue = "#1E66F5"
+magenta = "#EA76CB"
+cyan = "#179299"
+white = "#ACB0BE"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#FE640B"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#DC8A78"
 
 [cursor]
 style = "Block"
@@ -131,7 +131,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 decorations = "full"
 dynamic_padding = false
 dynamic_title = true
-opacity = 0.8
+# opacity = 0.8
 startup_mode = "Windowed"
 
 [window.dimensions]
