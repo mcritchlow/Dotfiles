@@ -219,13 +219,20 @@ fzf-down() {
 
 export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--ansi --color=light"
+# export FZF_DEFAULT_OPTS="--ansi --color=light"
+export FZF_DEFAULT_OPTS=" \
+--ansi \
+--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+--color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind='ctrl-y:execute-silent(echo -n {2..} | wl-copy --trim-newline)+abort' --header 'Press CTRL-Y to copy command into clipboard' --border"
 
 # fzf-cd-widget
 export FZF_ALT_C_COMMAND='fd --type directory --color=always --follow --hidden --exclude .git'
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# TODO: fix preview. it's including git files..
+# TODO: fix alt-c theme, looks horrible
+export FZF_ALT_C_OPTS="--preview 'exa --all --tree --no-git {} | head -200'"
 
 # fkc - fuzzy kubernetes config
 fkc() {
