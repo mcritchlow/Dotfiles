@@ -11,7 +11,5 @@ fi
 set +a
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
   exec sway > /tmp/sway.log 2>&1
 fi
