@@ -19,14 +19,11 @@ end
 -- }
 -- null_ls.register(null_ls_sources)
 
-local diagnostics = null_ls.builtins.diagnostics
-
 local M = {}
 M.setup = function(on_attach, capabilities)
     null_ls.setup {
-        sources = {
-            diagnostics.shellcheck,
-        },
+        -- debug = true,
+        sources = {},
         on_attach = on_attach,
         capabilities = capabilities
     }

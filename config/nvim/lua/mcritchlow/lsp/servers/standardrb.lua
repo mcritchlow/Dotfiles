@@ -2,17 +2,13 @@ local M = {}
 M.setup = function(on_attach, capabilities)
     local lspconfig = require "lspconfig"
 
-    lspconfig.bashls.setup {
+    lspconfig.standardrb.setup {
         on_attach = on_attach,
+        cmd = { "standardrb", "--lsp" },
         flags = {
             debounce_text_changes = 150,
         },
         capabilities = capabilities,
-        settings = {
-            bashIde = {
-                highlightParsingErrors = true -- let shellcheck do this
-            }
-        }
     }
 end
 

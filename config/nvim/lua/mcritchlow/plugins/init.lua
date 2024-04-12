@@ -143,6 +143,7 @@ require("lazy").setup({
       "mfussenegger/nvim-dap",
       "theHamsta/nvim-dap-virtual-text",
       "ray-x/guihua.lua",
+      "nvim-neotest/nvim-nio",
     },
     config = function()
       require("mcritchlow.plugins.config.dap")
