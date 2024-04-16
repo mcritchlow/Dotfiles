@@ -5,7 +5,7 @@ if not ok then
 end
 
 -- Enable debug logging if/when needed
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 -- Some LSP UI customization
 local signs = require("mcritchlow.utils").signs
