@@ -7,3 +7,5 @@ fi
 fwupdmgr refresh
 notify-send --icon=utilities-terminal --expire-time=60000 --app-name="Firmware Updates" "Metadata refreshed!"
 
+echo $NOTHING
+

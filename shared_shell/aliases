@@ -2,6 +2,9 @@
 # Aliases
 # --------------------------------------------------------------------
 
+# dotfiles helper
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 # navigation
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -94,3 +97,7 @@ alias docker-nuke='docker system prune -f --all --volumes'
 
 # Flatpak
 alias fpu='flatpak update --noninteractive'
+
+# Sway
+alias enable-laptop-screen="swaymsg 'output eDP-1 enable'"
+alias fix-monitor-resolution="swaymsg 'output DP-2 pos 0 0 res 2560x1440'"

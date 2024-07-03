@@ -14,7 +14,8 @@ set $wallpaper /home/mcritchlow/Pictures/background.jpg
 set $mod Mod4
 
 # Application defaults
-set $term alacritty
+set $term foot
+# TODO: uninstall whatever sway silverblue installs and install this instead, maybe for terminal too to keep it easy?
 set $menu bemenu
 set $menu_run bemenu-run -p Run | xargs swaymsg exec
 

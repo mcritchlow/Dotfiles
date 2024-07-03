@@ -40,6 +40,7 @@ M.setup = function(on_attach, capabilities)
 
   go.setup({
     gopls_cmd = { vim.fn.stdpath 'data' .. 'lsp_servers/gopls/gopls' },
+    -- gofmt = 'gofumpt',
     fillstruct = 'gopls',
     dap_debug = true,
     dap_debug_gui = true,

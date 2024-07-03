@@ -1,6 +1,33 @@
 # vim: set filetype=sh:
 # Shell functions
 # --------------------------------------------------------------------
+#
+youtube-dl-auth() {
+  # yt-dlp --cookies-from-browser firefox <url to video>
+  youtube-dl --cookies-from-browser firefox "$1"
+}
+
+# mount the kinesis 360 v-Drive
+adv360-mount() {
+  mountpoint='/mnt/ADV360'
+  vdrive='/dev/sda'
+  if [ -b "$vdrive" ]; then
+    if [ ! -d "$mountpoint" ]; then
+      sudo mkdir "$mountpoint"
+    fi
+    sudo mount "$vdrive" "$mountpoint"
+    notify-send "Advantage 360 v-Drive mounted to /mnt/ADV360"
+  else
+    notify-send "Advantage 360 v-Drive is not mountable on /dev/sda"
+    notify-send "Did you press 'smart-set' + 'v-Drive' keys?"
+  fi
+}
+
+# unmount the kinesis 360 v-Drive
+adv360-umount() {
+  mountpoint='/mnt/ADV360'
+  sudo umount "$mountpoint"
+}
 
 # Kubernetes switch context
 ksc() {
@@ -61,6 +88,7 @@ pacman-remove() {
 killpid ()
 {
   local pid_to_kill
+  # pid_to_kill="$(ps -eo pid,cmd | bemenu -p 'PID to kill: ' -l 25 | tr -s ' ' | cut -d ' ' -f1)"
   pid_to_kill="$(ps -eo pid,cmd | bemenu -p 'PID to kill: ' -l 25 | tr -s ' ' | cut -d ' ' -f2)"
   sudo kill "$pid_to_kill"
 }
