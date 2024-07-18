@@ -57,6 +57,9 @@ alias resume-notifications='killall -SIGUSR2 dunst'
 alias dbox-create='distrobox assemble create --file ~/.config/distrobox/arch-manifest.ini'
 alias dbox-rm='distrobox assemble rm --file ~/.config/distrobox/arch-manifest.ini'
 
+# sway
+alias enable-laptop-screen="swaymsg 'output eDP-1 enable'"
+
 # arch
 # TODO: don't use playbook here, run a system update task directly
 alias pacman-update="ansible localhost -m pacman -a 'update_cache=yes upgrade=yes'"
